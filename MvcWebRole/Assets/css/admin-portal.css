@@ -1,0 +1,58 @@
+﻿body {
+}
+
+div.content-container {
+    padding-top: 80px;
+}
+
+div.popupMessagesContainer {
+    position: absolute;
+    bottom: 0px;
+    width: 100%;
+}
+
+div.popupMessages {
+    -webkit-border-top-left-radius: 12px;
+    -webkit-border-top-right-radius: 12px;
+    -moz-border-radius-topleft: 12px;
+    -moz-border-radius-topright: 12px;
+    border-top-left-radius: 12px;
+    border-top-right-radius: 12px;
+    border: 1px solid black;
+    border-bottom: 0px solid black;
+    width: 40%;
+    margin-left: auto;
+    margin-right: auto;
+    background-color: gray;
+}
+
+    div.popupMessages table {
+        margin-bottom: 0px;
+        color: white;
+        font-size: small;
+    }
+
+        div.popupMessages table tr td {
+            border-top: 0px solid black;
+        }
+
+        div.popupMessages table tr > td:first-of-type {
+            width: 15%;
+        }
+
+
+
+div.center-page-inner table {
+	margin-left: auto;
+}
+
+div.login-title h6 {
+    text-align: right;
+    margin-top: -15px;
+    color: gray;
+}
+
+table.table-login tr td {
+    text-align: right;
+    padding: 0 10px;
+}

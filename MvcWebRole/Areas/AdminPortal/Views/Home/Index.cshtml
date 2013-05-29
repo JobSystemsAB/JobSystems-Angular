@@ -1,0 +1,63 @@
+﻿<html data-ng-app="AdminPortalApp">
+<head>
+
+    @* Stylesheets *@
+    <link href="~/assets/css/global.css" rel="stylesheet" type="text/css" />
+    <link href="~/assets/css/admin-portal.css" rel="stylesheet" type="text/css" />
+    <link href="~/assets/bootstrap/css/bootstrap.css" rel="stylesheet" type="text/css" />
+    <link href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css" rel="stylesheet" type="text/css" />
+
+    <title>Admin Portal</title>
+</head>
+
+<body>
+
+    <div data-ng-controller="AdminMenuController" id="menu">
+        <div ng-include src="'Assets/js/Angular/partials/admin-portal/menu.html'"></div>
+    </div>
+
+    <div>
+        <div data-ng-view=""></div>
+    </div>
+
+    <div data-ng-controller="InfoMessageController" class="footer">
+        <div ng-include src="'Assets/js/Angular/partials/global/info-message.html'"></div>
+    </div>
+
+
+
+
+    @* jQuery *@
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/jquery-ui.min.js"></script>
+
+    @* Angular *@
+    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.0.6/angular.min.js"></script>
+    <script src="~/Assets/js/libs/angular-resource.js"></script>
+    <script src="~/Assets/js/libs/angular-strap.js"></script>
+    <script src="~/Assets/js/libs/date.js"></script>
+    <script src="~/Assets/js/libs/ui-bootstrap-tpls-0.3.0.min.js"></script>
+
+    @* Useful libs *@
+    <script src="~/Assets/js/libs/underscore.js"></script>
+    <script src="~/Assets/js/libs/sha3.js"></script>
+
+    @* Controllers, Apps, Resources *@
+    <script src="~/Assets/js/angular/resources/resources.js"></script>
+
+    <script src="~/Assets/js/angular/apps/admin-portal.js"></script>
+
+    <script src="~/Assets/js/angular/controllers/database-table/administrator.js"></script>
+    <script src="~/Assets/js/angular/controllers/database-table/assignment.js"></script>
+    <script src="~/Assets/js/angular/controllers/database-table/client.js"></script>
+    <script src="~/Assets/js/angular/controllers/database-table/performer.js"></script>
+    <script src="~/Assets/js/angular/controllers/database-table/timereport.js"></script>
+    
+    <script src="~/Assets/js/angular/controllers/admin-portal/login.js"></script>
+    <script src="~/Assets/js/angular/controllers/admin-portal/menu.js"></script>
+    
+    <script src="~/Assets/js/angular/controllers/global/info-message.js"></script>
+
+</body>
+
+</html>

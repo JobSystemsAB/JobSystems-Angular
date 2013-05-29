@@ -1,0 +1,59 @@
+﻿<html data-ng-app="MainPageApp">
+<head>
+
+    @* Stylesheets *@
+    <link href="~/assets/css/global.css" rel="stylesheet" type="text/css" />
+    <link href="~/assets/css/main-page.css" rel="stylesheet" type="text/css" />
+    <link href="~/assets/bootstrap/css/bootstrap.css" rel="stylesheet" type="text/css" />
+    <link href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css" rel="stylesheet" type="text/css" />
+
+    <title>Main Page</title>
+
+</head>
+
+<body>
+
+    <header>
+    </header>
+
+    <div class="content-container">
+
+        @* Placeholder for Views *@
+        <div data-ng-view=""></div>
+
+    </div>
+
+    <footer>
+        <div class="footer footer-extra">
+            <div class="img-rounded icon-facebook cursor-pointer footer-icon"></div>
+            <div class="img-rounded icon-twitter cursor-pointer footer-icon"></div>
+            <div class="img-rounded icon-linkedin cursor-pointer footer-icon"></div>
+            <div class="img-rounded icon-rss cursor-pointer footer-icon"></div>
+        </div>
+    </footer>
+
+
+
+    @* Angular *@
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/jquery-ui.min.js"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.0.6/angular.min.js"></script>
+    <script src="~/Assets/js/libs/angular-resource.js"></script>
+    <script src="~/Assets/js/libs/angular-strap.js"></script>
+    <script src="~/Assets/js/libs/date.js"></script>
+    <script src="~/Assets/js/libs/ui-bootstrap-tpls-0.3.0.min.js"></script>
+
+    @* Useful libs *@
+    <script src="~/Assets/js/libs/underscore.js"></script>
+    <script src="~/Assets/js/libs/sha3.js"></script>
+
+    @* Controllers, Apps, Resources *@
+    <script src="~/Assets/js/angular/resources/resources.js"></script>
+    <script src="~/Assets/js/angular/apps/main-page.js"></script>
+    <script src="~/Assets/js/angular/controllers/garden-input-form.js"></script>
+    <script src="~/Assets/js/angular/controllers/garden-performers-overview.js"></script>
+
+
+</body>
+
+</html>

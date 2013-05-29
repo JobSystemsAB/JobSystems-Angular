@@ -1,0 +1,26 @@
+﻿<div data-ng-controller="AdminLoginController" class="center-page-outer">
+    <div class="center-page-inner">
+
+        <div class="login-title">
+        <h1>Inloggning för administratörer</h1>
+        <h6>powered by JobSystems AB</h6>
+        <hr />
+        </div>
+
+        <table class="table-condensed table-login">
+            <tr>
+                <td><label class="control-label">E-post adress:</label></td>
+                <td><input type="text" placeholder="Användarnamn" data-ng-model="username"></td>
+            </tr>
+            <tr>
+                <td><label class="control-label">Lösenord:</label></td>
+                <td><input type="password" placeholder="Lösenord" data-ng-model="password"></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td><button type="submit" class="btn" data-ng-click="SignIn()">Logga in</button></td>
+            </tr>
+        </table>
+
+    </div>
+</div>

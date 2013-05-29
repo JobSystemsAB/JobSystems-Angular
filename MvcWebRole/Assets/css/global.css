@@ -1,0 +1,81 @@
+﻿/* -- POSITIONING -- */
+
+div.center-page-outer {
+	display: block;
+    position: absolute;
+    top: 25%;
+    left: 50%;
+}
+
+div.center-page-inner {
+	right: 50%;
+    position: relative;
+}
+
+div.footer {
+    width: 100%;
+    display: block;
+    position: fixed;
+    bottom: 0;
+    padding: 0;
+}
+
+/* -- FORMS -- */
+
+input {
+    height: 25px !important;
+    line-height: 25px !important;
+}
+
+/* -- MENU -- */
+
+#menu {
+    margin-bottom: 80px;
+}
+
+div.menu {
+    width: 100%;
+    display: block;
+    position: absolute;
+    top: 0px;
+    padding: 0;
+    border-bottom: solid 1px black;
+    background-color: gray;
+}
+
+    div.menu a {
+        padding: 5px 11px;
+        color: white;
+    }
+
+        div.menu a:hover {
+            cursor: pointer;
+            text-decoration: none;
+        }
+
+        div.menu a.selected {
+            color: black;
+            border: solid 1px black;
+            border-bottom: solid 1px white;
+            padding: 5px 10px;
+            background-color: white;
+        }
+
+    div.menu ul {
+        list-style-type: none;
+        margin: auto;
+        padding: 0;
+    }
+
+        div.menu ul li {
+            float: left;
+            padding: 0 10px;
+            margin: 3px;
+            margin-top: 10px;
+        }
+
+    div.menu div.menuLogout {
+        position: absolute;
+        display: block;
+        right: 0px;
+    }

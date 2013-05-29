@@ -1,0 +1,92 @@
+﻿<div data-ng-controller="DatabaseTableTimeReportController">
+
+    <table class="table table-striped table-condensed">
+        <thead>
+            <tr>
+                <th>
+                    <button data-ng-click="open(null)" class="btn"><i class="icon-plus"></i></button>
+                </th>
+                <th data-ng-click="sort('id')" class="sortOption">Id</th>
+                <th data-ng-click="sort('assignmentId')" class="sortOption">Uppdrags Id</th>
+                <th data-ng-click="sort('assignmentInfo.ClientInfo.companyName')" class="sortOption">Företagsnamn</th>
+                <th data-ng-click="sort('assignmentInfo.ClientInfo.organisationNumber')" class="sortOption">Företagets organisationsnummer</th>
+                <th data-ng-click="sort('performerId')" class="sortOption">Utförar Id</th>
+                <th data-ng-click="sort('performerInfo.firstName')" class="sortOption">Utförares Förnamn</th>
+                <th data-ng-click="sort('performerInfo.lastName')" class="sortOption">Utförares Efternamn</th>
+                <th data-ng-click="sort('performerInfo.birthDate')" class="sortOption">Utförares Födelsedatum</th>
+                <th data-ng-click="sort('hours')" class="sortOption">Timmar</th>
+                <th data-ng-click="sort('minutes')" class="sortOption">Minuter</th>
+                <th>Ändra</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr data-ng-repeat="timeReport in timeReports | orderBy: orderOption">
+
+                <td>
+                    <button data-ng-click="delete(timeReport.id)" class="btn"><i class="icon-trash"></i></button>
+                </td>
+                <td>{{ timeReport.id }}</td>
+                <td>{{ timeReport.assignmentId }}</td>
+                <td>{{ timeReport.assignmentInfo.clientInfo.companyName }}</td>
+                <td>{{ timeReport.assignmentInfo.clientInfo.organisationNumber }}</td>
+                <td>{{ timeReport.performerId }}</td>
+                <td>{{ timeReport.performerInfo.firstName }}</td>
+                <td>{{ timeReport.performerInfo.lastName }}</td>
+                <td>{{ timeReport.performerInfo.birthDate }}</td>
+                <td>{{ timeReport.hours }}</td>
+                <td>{{ timeReport.minutes }}</td>
+                <td>
+                    <button data-ng-click="open(timeReport.id)" class="btn"><i class="icon-pencil"></i></button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+    <div modal="shouldBeOpen" close="close()" options="opts">
+        <div class="modal-header">
+            <h4></h4>
+        </div>
+        <div class="modal-body">
+            <form>
+                <table class="table table-striped table-condensed">
+                    <tr>
+                        <td>
+                            <label>Uppdrag:</label></td>
+                        <td>
+                            <select data-ng-model="currentTimeReport.assignmentId"
+                                    data-ng-options="assignment.id as assignment.displayName for assignment in assignments">
+                                <option value="">-- Välj uppdrag --</option>
+                            </select></td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <label>Utförare:</label></td>
+                        <td>
+                            <select data-ng-model="currentTimeReport.performerId" 
+                                    data-ng-options="performer.id as performer.displayName for performer in performers">
+                                <option value="">-- Välj utförare --</option>
+                            </select></td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <label>Timmar:</label></td>
+                        <td>
+                            <input type="text" data-ng-model="currentTimeReport.hours" class="ui-spinner" /></td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <label>Minuter:</label></td>
+                        <td>
+                            <input type="text" data-ng-model="currentTimeReport.minutes" class="ui-spinner" /></td>
+                    </tr>
+                </table>
+            </form>
+        </div>
+        <div class="modal-footer">
+            <button class="btn" data-ng-click="save(currentTimeReport..id)">Save</button>
+            <button class="btn" data-ng-click="remove(currentTimeReport..id)">Delete</button>
+            <button class="btn" data-ng-click="close()">Cancel</button>
+        </div>
+    </div>
+
+</div>
