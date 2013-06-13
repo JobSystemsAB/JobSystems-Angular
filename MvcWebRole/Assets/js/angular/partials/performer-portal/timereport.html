@@ -6,17 +6,37 @@
             </div>
         </td>
         <td style="vertical-align: top;">
-            <select>
+            <select data-ng-change="changeAssignment()" data-ng-model="input.timereport.assignmentId">
                 <option value="">
                     Välj Uppdrag
                 </option>
-                <option data-ng-model="form.assignment" data-ng-repeat="assignment in assignments" value="assignment.id">
+                <option
+                    data-ng-repeat="assignment in assignments" 
+                    value="{{ assignment.id }}" >
                     {{ assignment.description }}
                 </option>
             </select><br />
-            <input type="text" data-ng-model="form.hours" placeholder="Timmar" /><br />
-            <input type="text" data-ng-model="form.minutes" placeholder="Minuter" /><br />
-            <button class="btn">Registrera tid</button>
+            <input type="text" data-ng-model="input.timereport.hours" placeholder="Timmar" /><br />
+            <input type="text" data-ng-model="input.timereport.minutes" placeholder="Minuter" /><br />
+            <button class="btn" data-ng-click="createTimereport()">Registrera tid</button>
+        </td>
+        <td style="vertical-align: top;">
+            <table class="table" data-ng-show="timereports" style="margin-left: 100px;">
+                <thead>
+                    <tr>
+                        <th>Datum</th>
+                        <th>Timmar</th>
+                        <th>Minuter</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr data-ng-repeat="timereport in timereports">
+                        <td>{{ timereport.created.split(' ')[0] }}</td>
+                        <td>{{ timereport.hours }}</td>
+                        <td>{{ timereport.minutes }}</td>
+                    </tr>
+                </tbody>
+            </table>
         </td>
     </tr>
 </table>

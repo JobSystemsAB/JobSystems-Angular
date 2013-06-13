@@ -58,23 +58,6 @@ namespace MvcWebRole.Api.Controllers
             return new PerformerView(performer);
         }
 
-        [HttpGet]
-        public IQueryable<AssignmentView> Assigments(int id)
-        {
-            var performer = this._context.performers.FirstOrDefault(c => c.id == id);
-            if (performer == null)
-            {
-                return null;
-            }
-
-            var result = new List<AssignmentView>();
-            foreach (var assignment in performer.assignments)
-            {
-                result.Add(new AssignmentView(assignment));
-            }
-            return result.AsQueryable();
-        }
-
         [HttpPost]
         [ActionName("DefaultAction")]
         public HttpResponseMessage Create(PerformerView view)
@@ -205,6 +188,46 @@ namespace MvcWebRole.Api.Controllers
         //}
 
         [HttpGet]
+        public IQueryable<AssignmentView> Assigments(int id)
+        {
+            var performer = this._context.performers.FirstOrDefault(c => c.id == id);
+            if (performer == null)
+            {
+                throw new HttpResponseException(Request.CreateResponse(HttpStatusCode.NotFound));
+            }
+
+            var result = new List<AssignmentView>();
+            foreach (var assignment in performer.assignments)
+            {
+                result.Add(new AssignmentView(assignment));
+            }
+            return result.AsQueryable();
+        }
+
+        [HttpGet]
+        public IQueryable<TimeReportView> TimeReports(int performerId, int assignmentId)
+        {
+            var performer = this._context.performers.FirstOrDefault(p => p.id == performerId);
+            if (performer == null)
+            {
+                throw new HttpResponseException(Request.CreateResponse(HttpStatusCode.NotFound));
+            }
+
+            var assignment = performer.assignments.FirstOrDefault(a => a.id == assignmentId);
+            if (assignment == null)
+            {
+                throw new HttpResponseException(Request.CreateResponse(HttpStatusCode.NotFound));            
+            }
+
+            var result = new List<TimeReportView>();
+            foreach (var timereport in assignment.timeReports)
+            {
+                result.Add(new TimeReportView(timereport));
+            }
+            return result.AsQueryable();
+        }
+
+        [HttpGet]
         public int Login(string emailAddress, string password)
         {
             var performer = this._context.performers.FirstOrDefault(p => p.emailAddress == emailAddress);
@@ -214,23 +237,5 @@ namespace MvcWebRole.Api.Controllers
             else
                 return CryptSharp.Crypter.CheckPassword(password, performer.password) ? performer.id : 0;
         }
-
-        //[HttpGet]
-        //public IQueryable<AssignmentView> GetAssignments(int pid)
-        //{
-        //    var performer = this._context.performers.FirstOrDefault(c => c.id == pid);
-        //    if (performer == null)
-        //    {
-        //        throw new HttpResponseException(Request.CreateResponse(HttpStatusCode.NotFound));
-        //    }
-
-        //    var result = new List<AssignmentView>();
-        //    foreach (var assignment in performer.assignments)
-        //    {
-        //        result.Add(new AssignmentView(assignment));
-        //    }
-
-        //    return result.AsQueryable();
-        //}
     }
 }

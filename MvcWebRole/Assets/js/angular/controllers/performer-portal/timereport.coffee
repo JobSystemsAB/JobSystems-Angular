@@ -1,10 +1,14 @@
-﻿window.PerformerTimereportController = ($scope, $rootScope, $http) ->
+﻿window.PerformerTimereportController = ($scope, $rootScope, $http, TimeReport) ->
 
     $scope.assignments = []
+    
+    $scope.input = {}
+    $scope.input.timereport = {}
+    $scope.input.timereport.performerId = 5
 
     $http
         method: 'GET'
-        url: 'api/performer/5/Assigments'
+        url: 'api/performer/' + $scope.input.timereport.performerId + '/Assigments'
     .
     success (data, status) ->
         $scope.status = status
@@ -24,3 +28,34 @@
         dateFormat: 'yy-mm-dd'
         firstDay: 1
         isRTL: false
+
+    $scope.changeAssignment = ->
+        if $scope.input.timereport.assignmentId
+            $http
+                method: 'GET'
+                url: 'api/performer/TimeReports?performerId=' + $scope.input.timereport.performerId + '&assignmentId=' + $scope.input.timereport.assignmentId
+            .success (data, status) ->
+                $scope.timereports = data
+            .error (data, status) ->
+                console.log 'failed!'
+        else
+            $scope.timereports = null
+
+    $scope.createTimereport = ->
+        
+        inputData = new TimeReport($scope.input.timereport)
+
+        inputData.$save(
+            (data) ->
+                $scope.timereports.push data
+            , (err) ->
+                console.log 'error' )
+
+        #$http
+        #    data: $scope.input.timereport
+        #    method: 'POST'
+        #    url: 'api/performer/TimeReports?performerId=' + $scope.input.timereport.performerId + '&assignmentId=' + $scope.input.timereport.assignment
+        #.success (data, status) ->
+        #    $scope.timereports = data
+        #.error (data, status) ->
+        #    console.log 'failed!'
