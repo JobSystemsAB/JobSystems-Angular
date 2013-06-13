@@ -1,0 +1,225 @@
+﻿<div style="margin: 20px 350px">
+
+    <div>
+        <h1>Boka din trädgårdshjälp inom en minut</h1>
+    </div>
+
+    <div class="hero-unit">
+        <table style="width: 100%; border-collapse: separate; border-spacing: 20px;">
+            <tr>
+                <td style="width: 50%; vertical-align: top;">
+                    <h2>Vad?</h2>
+                    <hr style="width: 80%" />
+                    <div data-toggle="buttons-checkbox">
+                        <button data-ng-repeat="task in tasks | orderBy:'name'"
+                            type="button"
+                            class="btn inline"
+                            data-ng-click="addTask(task.id)"
+                            data-ng-class="{'btn-primary': containsTask(task.id)}"
+                            style="margin: 3px;">
+                            {{ task.name }}
+                        </button>
+                    </div>
+                </td>
+                <td style="width: 50%; vertical-align: top;">
+                    <h2>Hur ofta?</h2>
+                    <hr style="width: 80%" />
+                    <div class="btn-group" data-toggle="buttons-radio">
+                        <button class="btn" data-ng-class="{'btn-primary': inputForm.assignment.times == 1}" data-ng-click="inputForm.assignment.times = 1">En gång </button>
+                        <button class="btn" data-ng-class="{'btn-primary': inputForm.assignment.times == 2}" data-ng-click="inputForm.assignment.times = 2">Varannan vecka </button>
+                        <button class="btn" data-ng-class="{'btn-primary': inputForm.assignment.times == 3}" data-ng-click="inputForm.assignment.times = 3">Varje vecka </button>
+                    </div>
+                </td>
+            </tr>
+        </table>
+    </div>
+
+    <div class="hero-unit">
+        <table style="width: 100%; border-collapse: separate; border-spacing: 20px;">
+            <tr>
+                <td style="width: 50%; vertical-align: top;">
+                    <div>
+                        <h2>När?</h2>
+                        <hr style="width: 80%" />
+                        <div>
+                            <div ui-date="dateOptions" name="DateOfBirth" data-ng-model="inputForm.assignment.date"></div>
+                        </div>
+                    </div>
+                </td>
+                <td style="width: 50%; vertical-align: top;">
+                    <div>
+                        <h2>Var?</h2>
+                        <hr style="width: 80%" />
+                        <div>
+                            <input 
+                                type="text" 
+                                placeholder="Adress" 
+                                class="input-xlarge" 
+                                data-ng-model="inputForm.assignment.address.address"
+                                tooltip="Varför vill vi veta detta?" 
+                                tooltip-trigger="focus"
+                                tooltip-placement="right" /><br />
+                            <input 
+                                type="text" 
+                                placeholder="Adress 2" 
+                                class="input-xlarge" 
+                                data-ng-model="inputForm.assignment.address.address2"
+                                tooltip="Varför vill vi veta detta?" 
+                                tooltip-trigger="focus"
+                                tooltip-placement="right"  /><br />
+                            <input 
+                                type="text" 
+                                placeholder="Postnummer" 
+                                class="input-xlarge" 
+                                data-ng-model="inputForm.assignment.address.postalCode"
+                                tooltip="Varför vill vi veta detta?" 
+                                tooltip-trigger="focus"
+                                tooltip-placement="right"  /><br />
+                            <input 
+                                type="text" 
+                                placeholder="Postadress" 
+                                class="input-xlarge" 
+                                data-ng-model="inputForm.assignment.address.postAddress"
+                                tooltip="Varför vill vi veta detta?" 
+                                tooltip-trigger="focus"
+                                tooltip-placement="right"  /><br />
+                            <input 
+                                type="text" 
+                                placeholder="Land" 
+                                class="input-xlarge" 
+                                data-ng-model="inputForm.assignment.address.Country"
+                                tooltip="Varför vill vi veta detta?" 
+                                tooltip-trigger="focus"
+                                tooltip-placement="right"  /><br />
+                        </div>
+                    </div>
+                </td>
+            </tr>
+        </table>
+
+    </div>
+
+    <div class="hero-unit">
+        <h2>Vem?</h2>
+        <hr style="width: 80%;" />
+        <div>
+            <ul class="thumbnails">
+                <li data-ng-repeat="performer in performers | orderBy:'first-name'" class="hero-unit" style="background-color: white; padding: 20px;">
+                    <div>
+                        <h4>{{ performer.firstName }}</h4>
+                        <h4>{{ performer.lastName }}</h4>
+                        <button class="btn" data-ng-click="previewPerformer(performer)">Info</button>
+                        <button class="btn" data-ng-class="{'btn-primary': containsPerformer(performer.id)}" data-ng-click="addPerformer(performer.id)">Välj</button>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="hero-unit" data-ng-show="selectedPerformer">
+        <h2>{{ selectedPerformer.firstName + " " + selectedPerformer.lastName }}</h2>
+        <hr style="width: 80%;" />
+        <form class="form-horizontal">
+            <div class="control-group">
+                <label class="control-label">Post town</label>
+                <div class="controls">
+                    <input type="text" data-ng-model="selectedPerformer.postTown" disabled="disabled" />
+                </div>
+            </div>
+            <div class="control-group">
+                <label class="control-label">Country</label>
+                <div class="controls">
+                    <input type="text" data-ng-model="selectedPerformer.country" disabled="disabled" />
+                </div>
+            </div>
+            <div class="control-group">
+                <label class="control-label">Birth date</label>
+                <div class="controls">
+                    <input type="text" data-ng-model="selectedPerformer.birthDate" disabled="disabled" />
+                </div>
+            </div>
+            <div class="control-group">
+                <label class="control-label">Nr assignments</label>
+                <div class="controls">
+                    <input type="text" data-ng-model="selectedPerformer.assignments.length" disabled="disabled" />
+                </div>
+            </div>
+            <div class="control-group">
+                <label class="control-label">Info</label>
+                <div class="controls">
+                    <input type="text" data-ng-model="selectedPerformer.infoText" disabled="disabled" />
+                </div>
+            </div>
+            <button class="btn" data-ng-click="closePreview()">Stäng</button>
+        </form>
+    </div>
+
+    <div class="hero-unit">
+
+        <table style="width: 100%; border-collapse: separate; border-spacing: 20px;">
+            <tr>
+                <td style="width: 50%; vertical-align: top;">
+                    <h2>Skapa konto</h2>
+                    <hr style="width: 80%" />
+                    <form class="form-horizontal">
+                        <input 
+                            type="text" 
+                            placeholder="Förnamn" 
+                            class="input-xlarge" 
+                            data-ng-model="inputForm.customer.firstName"
+                            tooltip="Varför vill vi veta detta?" 
+                            tooltip-trigger="focus"
+                            tooltip-placement="right" /><br />
+                        <input 
+                            type="text" 
+                            placeholder="Efternamn" 
+                            class="input-xlarge" 
+                            data-ng-model="inputForm.customer.lastName" 
+                            tooltip="Varför vill vi veta detta?" 
+                            tooltip-trigger="focus"
+                            tooltip-placement="right" /><br />
+                        <input 
+                            type="text" 
+                            placeholder="Epost-adress" 
+                            class="input-xlarge" 
+                            data-ng-model="inputForm.customer.emailAddress"
+                            tooltip="Varför vill vi veta detta?" 
+                            tooltip-trigger="focus"
+                            tooltip-placement="right" /><br />
+                        <input 
+                            type="text" 
+                            placeholder="Telefonnummer" 
+                            class="input-xlarge" 
+                            data-ng-model="inputForm.customer.phonenumber"
+                            tooltip="Varför vill vi veta detta?" 
+                            tooltip-trigger="focus"
+                            tooltip-placement="right" /><br />
+                        <input 
+                            type="password" 
+                            placeholder="Lösenord" 
+                            class="input-xlarge" 
+                            data-ng-model="inputForm.customer.password"
+                            tooltip="Varför vill vi veta detta?" 
+                            tooltip-trigger="focus"
+                            tooltip-placement="right" /><br />
+                        <button class="btn">Skapa konto</button>
+                    </form>
+                </td>
+                <td style="width: 50%; vertical-align: top;">
+                    <h2>... eller logga in</h2>
+                    <hr style="width: 80%" />
+                    <form class="form-horizontal">
+                        <input type="text" placeholder="Epost-adress" data-ng-model="inputForm.customer.emailAddress" /><br />
+                        <input type="password" placeholder="Lösenord" data-ng-model="inputForm.customer.password" /><br />
+                        <button class="btn">Logga in</button>
+                    </form>
+                </td>
+            </tr>
+        </table>
+    </div>
+
+    <div>
+        <button class="btn" data-ng-click="order()">Beställ</button>
+    </div>
+
+</div>

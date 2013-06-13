@@ -1,22 +1,22 @@
 ﻿using System.Web.Mvc;
 
-namespace MvcWebRole.Areas.MainPage
+namespace MvcWebRole.Areas.GardenPage
 {
-    public class MainPageAreaRegistration : AreaRegistration
+    public class GardenPageAreaRegistration : AreaRegistration
     {
         public override string AreaName
         {
             get
             {
-                return "MainPage";
+                return "GardenPage";
             }
         }
 
         public override void RegisterArea(AreaRegistrationContext context)
         {
             context.MapRoute(
-                "MainPage_default",
-                "MainPage/",
+                "GardenPage_default",
+                "GardenPage/",
                 new { controller = "Home", action = "Index", id = UrlParameter.Optional }
             );
         }

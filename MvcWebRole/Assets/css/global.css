@@ -1,14 +1,96 @@
-﻿/* -- POSITIONING -- */
+﻿/* -- DEFAULTS -- */
+
+table {
+    border-collapse: separate;
+    border-spacing: 2px;
+}
+
+    /* -- DATEPICKER -- */
+
+    table.ui-datepicker-calendar td {
+        background-color: white;
+        text-align: right;
+        padding: 10px;
+    }
+
+        table.ui-datepicker-calendar td.ui-datepicker-unselectable {
+            background-color: transparent;
+        }
+
+        table.ui-datepicker-calendar td a {
+            color: black;
+        }
+
+        table.ui-datepicker-calendar td.ui-datepicker-week-end a {
+            color: red;
+        }
+
+    table.ui-datepicker-calendar a {
+        text-decoration: none;
+    }
+
+    table.ui-datepicker-calendar td.ui-datepicker-current-day {
+        font-size: 140%;
+        font-weight: bold;
+        padding: 5px;
+    }
+
+.ui-datepicker-prev {
+    margin-left: 10px;
+
+    float: left;
+    display: inline-block;
+    width: 14px;
+    height: 14px;
+    margin-top: 1px;
+    margin-right: 10px;
+    line-height: 14px;
+    vertical-align: text-top;
+    background-image: url("/Assets/bootstrap/img/glyphicons-halflings.png");
+    background-position: 14px 14px;
+    background-repeat: no-repeat;
+    background-position: -432px -72px;
+}
+
+.ui-datepicker-prev span {
+    display: none;
+}
+
+.ui-datepicker-next {
+    float: left;
+    margin-right: 10px;
+
+    display: inline-block;
+    width: 14px;
+    height: 14px;
+    margin-top: 1px;
+    line-height: 14px;
+    vertical-align: text-top;
+    background-image: url("/Assets/bootstrap/img/glyphicons-halflings.png");
+    background-position: 14px 14px;
+    background-repeat: no-repeat;
+    background-position: -456px -72px;
+}
+
+.ui-datepicker-title {
+    margin-left: 100px;
+}
+
+    .ui-datepicker-next span {
+        display: none;
+    }
+
+/* -- POSITIONING -- */
 
 div.center-page-outer {
-	display: block;
+    display: block;
     position: absolute;
     top: 25%;
     left: 50%;
 }
 
 div.center-page-inner {
-	right: 50%;
+    right: 50%;
     position: relative;
 }
 
@@ -20,11 +102,9 @@ div.footer {
     padding: 0;
 }
 
-/* -- FORMS -- */
-
-input {
-    height: 25px !important;
-    line-height: 25px !important;
+div.body {
+    margin-left: 20px;
+    margin-right: 20px;
 }
 
 /* -- MENU -- */
@@ -78,4 +158,47 @@ div.menu {
         position: absolute;
         display: block;
         right: 0px;
+    }
+
+/* -- LINK MENU -- */
+
+div.icon {
+    margin: 5px;
+    background-repeat: no-repeat;
+    background-size: 50px 50px;
+    background-position: center;
+    width: 50px;
+    height: 50px;
+}
+
+div.icon-facebook {
+    background-image: url('/Assets/img/icons/facebook-white.png');
+}
+
+    div.icon-facebook:hover {
+        background-image: url('/Assets/img/icons/facebook-color.png');
+    }
+
+div.icon-linkedin {
+    background-image: url('/Assets/img/icons/linkedin-white.png');
+}
+
+    div.icon-linkedin:hover {
+        background-image: url('/Assets/img/icons/linkedin-color.png');
+    }
+
+div.icon-twitter {
+    background-image: url('/Assets/img/icons/twitter-white.png');
+}
+
+    div.icon-twitter:hover {
+        background-image: url('/Assets/img/icons/twitter-color.png');
+    }
+
+div.icon-rss {
+    background-image: url('/Assets/img/icons/rss-white.png');
+}
+
+    div.icon-rss:hover {
+        background-image: url('/Assets/img/icons/rss-color.png');
     }

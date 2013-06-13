@@ -136,10 +136,12 @@
     <Compile Include="Api\Controllers\AssignmentController.cs" />
     <Compile Include="Api\Controllers\ClientController.cs" />
     <Compile Include="Api\Controllers\Helper\RequireHttpsAttribute.cs" />
+    <Compile Include="Api\Controllers\KnowledgeController.cs" />
     <Compile Include="Api\Controllers\PerformerController.cs" />
     <Compile Include="Api\Controllers\TimeReportController.cs" />
-    <Compile Include="Areas\MainPage\Controllers\HomeController.cs" />
-    <Compile Include="Areas\MainPage\MainPageAreaRegistration.cs" />
+    <Compile Include="Api\Models\KnowledgeView.cs" />
+    <Compile Include="Areas\GardenPage\GardenPageAreaRegistration.cs" />
+    <Compile Include="Areas\GardenPage\Controllers\HomeController.cs" />
     <Compile Include="Areas\PerformerPortal\Controllers\HomeController.cs" />
     <Compile Include="Areas\PerformerPortal\PerformerPortalAreaRegistration.cs" />
     <Compile Include="Database\Models\AdministratorAccessToken.cs" />
@@ -157,9 +159,11 @@
     <Compile Include="Database\Helper\IEntity.cs" />
     <Compile Include="Database\Models\Administrator.cs" />
     <Compile Include="Database\Models\Assignment.cs" />
+    <Compile Include="Database\Models\Category.cs" />
     <Compile Include="Database\Models\Client.cs" />
     <Compile Include="Database\Models\Performer.cs" />
     <Compile Include="Database\Models\PerformerAccessToken.cs" />
+    <Compile Include="Database\Models\Knowledge.cs" />
     <Compile Include="Database\Models\TimeReport.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -179,6 +183,18 @@
     <Compile Include="Migrations\201305211411421_AccessTokens Guid.cs" />
     <Compile Include="Migrations\201305211411421_AccessTokens Guid.Designer.cs">
       <DependentUpon>201305211411421_AccessTokens Guid.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201306101015451_Category Knowledge.cs" />
+    <Compile Include="Migrations\201306101015451_Category Knowledge.Designer.cs">
+      <DependentUpon>201306101015451_Category Knowledge.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201306101055370_Category Knowledge change.cs" />
+    <Compile Include="Migrations\201306101055370_Category Knowledge change.Designer.cs">
+      <DependentUpon>201306101055370_Category Knowledge change.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201306120741427_knowledge has performers.cs" />
+    <Compile Include="Migrations\201306120741427_knowledge has performers.Designer.cs">
+      <DependentUpon>201306120741427_knowledge has performers.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -211,11 +227,11 @@
     <Content Include="Assets\js\angular\apps\admin-portal.js">
       <DependentUpon>admin-portal.coffee</DependentUpon>
     </Content>
-    <Content Include="Assets\js\angular\apps\main-page.js">
-      <DependentUpon>main-page.coffee</DependentUpon>
+    <Content Include="Assets\js\angular\apps\garden-page.js">
+      <DependentUpon>garden-page.coffee</DependentUpon>
     </Content>
-    <Content Include="Assets\js\angular\controllers\admin-portal\app.js">
-      <DependentUpon>app.coffee</DependentUpon>
+    <Content Include="Assets\js\angular\apps\performer-portal.js">
+      <DependentUpon>performer-portal.coffee</DependentUpon>
     </Content>
     <Content Include="Assets\js\angular\controllers\admin-portal\login.js">
       <DependentUpon>login.coffee</DependentUpon>
@@ -238,17 +254,20 @@
     <Content Include="Assets\js\angular\controllers\database-table\timereport.js">
       <DependentUpon>timereport.coffee</DependentUpon>
     </Content>
-    <Content Include="Assets\js\angular\controllers\garden-input-form.js">
-      <DependentUpon>garden-input-form.coffee</DependentUpon>
+    <Content Include="Assets\js\angular\controllers\garden-page\input-form.js">
+      <DependentUpon>input-form.coffee</DependentUpon>
     </Content>
-    <Content Include="Assets\js\angular\controllers\garden-performers-overview.js">
-      <DependentUpon>garden-performers-overview.coffee</DependentUpon>
+    <Content Include="Assets\js\angular\controllers\garden-page\performers-overview.js">
+      <DependentUpon>performers-overview.coffee</DependentUpon>
     </Content>
     <Content Include="Assets\js\angular\controllers\global\info-message.js">
       <DependentUpon>info-message.coffee</DependentUpon>
     </Content>
     <Content Include="Assets\js\angular\controllers\performer-portal\menu.js">
       <DependentUpon>menu.coffee</DependentUpon>
+    </Content>
+    <Content Include="Assets\js\angular\controllers\performer-portal\timereport.js">
+      <DependentUpon>timereport.coffee</DependentUpon>
     </Content>
     <Content Include="Assets\js\angular\partials\admin-portal\login.html" />
     <Content Include="Assets\js\angular\partials\admin-portal\menu.html" />
@@ -257,9 +276,13 @@
     <Content Include="Assets\js\angular\partials\database-table\client.html" />
     <Content Include="Assets\js\angular\partials\database-table\performer.html" />
     <Content Include="Assets\js\angular\partials\database-table\timereport.html" />
+    <Content Include="Assets\js\angular\partials\garden-page\garden.html" />
+    <Content Include="Assets\js\angular\partials\garden-page\link-menu.html" />
+    <Content Include="Assets\js\angular\partials\garden-page\normal-menu.html" />
     <Content Include="Assets\js\angular\partials\global\info-message.html" />
     <Content Include="Assets\js\angular\partials\main-page.html" />
     <Content Include="Assets\js\angular\partials\performer-portal\menu.html" />
+    <Content Include="Assets\js\angular\partials\performer-portal\timereport.html" />
     <Content Include="Assets\js\angular\resources\resources.js">
       <DependentUpon>resources.coffee</DependentUpon>
     </Content>
@@ -286,12 +309,8 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Areas\AdminPortal\Models\" />
-    <Folder Include="Areas\AdminPortal\Views\Shared\" />
-    <Folder Include="Areas\MainPage\Models\" />
-    <Folder Include="Areas\MainPage\Views\Shared\" />
-    <Folder Include="Areas\PerformerPortal\Models\" />
-    <Folder Include="Areas\PerformerPortal\Views\Shared\" />
+    <Folder Include="Areas\GardenPage\Models\" />
+    <Folder Include="Areas\GardenPage\Views\Shared\" />
     <Folder Include="Controllers\" />
     <Folder Include="Models\" />
   </ItemGroup>
@@ -319,6 +338,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201305211411421_AccessTokens Guid.resx">
       <DependentUpon>201305211411421_AccessTokens Guid.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201306101015451_Category Knowledge.resx">
+      <DependentUpon>201306101015451_Category Knowledge.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201306101055370_Category Knowledge change.resx">
+      <DependentUpon>201306101055370_Category Knowledge change.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201306120741427_knowledge has performers.resx">
+      <DependentUpon>201306120741427_knowledge has performers.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
@@ -355,19 +383,16 @@
     <Content Include="Assets\js\angular\resources\resources.coffee" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Assets\js\angular\apps\main-page.coffee" />
+    <Content Include="Assets\js\angular\apps\garden-page.coffee" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Areas\MainPage\Views\Web.config" />
+    <Content Include="Areas\GardenPage\Views\Home\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Areas\MainPage\Views\Home\Index.cshtml" />
+    <Content Include="Assets\js\angular\controllers\garden-page\input-form.coffee" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Assets\js\angular\controllers\garden-input-form.coffee" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="Assets\js\angular\controllers\garden-performers-overview.coffee" />
+    <Content Include="Assets\js\angular\controllers\garden-page\performers-overview.coffee" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Areas\PerformerPortal\Views\Web.config" />
@@ -379,7 +404,13 @@
     <Content Include="Assets\js\angular\controllers\performer-portal\menu.coffee" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Assets\js\angular\controllers\admin-portal\app.coffee" />
+    <Content Include="Assets\js\angular\apps\performer-portal.coffee" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Assets\js\angular\controllers\performer-portal\timereport.coffee" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Areas\GardenPage\Views\Web.config" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

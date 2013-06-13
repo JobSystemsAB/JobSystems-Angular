@@ -16,38 +16,6 @@ div.footer-icon {
     height: 50px;
 }
 
-div.icon-facebook {
-    background-image: url('/Assets/img/icons/facebook-white.png');
-}
-
-    div.icon-facebook:hover {
-        background-image: url('/Assets/img/icons/facebook-color.png');
-    }
-
-div.icon-linkedin {
-    background-image: url('/Assets/img/icons/linkedin-white.png');
-}
-
-    div.icon-linkedin:hover {
-        background-image: url('/Assets/img/icons/linkedin-color.png');
-    }
-
-div.icon-twitter {
-    background-image: url('/Assets/img/icons/twitter-white.png');
-}
-
-    div.icon-twitter:hover {
-        background-image: url('/Assets/img/icons/twitter-color.png');
-    }
-
-div.icon-rss {
-    background-image: url('/Assets/img/icons/rss-white.png');
-}
-
-    div.icon-rss:hover {
-        background-image: url('/Assets/img/icons/rss-color.png');
-    }
-
 div.step {
     background-color: white;
     color: black;

@@ -58,6 +58,23 @@ namespace MvcWebRole.Api.Controllers
             return new PerformerView(performer);
         }
 
+        [HttpGet]
+        public IQueryable<AssignmentView> Assigments(int id)
+        {
+            var performer = this._context.performers.FirstOrDefault(c => c.id == id);
+            if (performer == null)
+            {
+                return null;
+            }
+
+            var result = new List<AssignmentView>();
+            foreach (var assignment in performer.assignments)
+            {
+                result.Add(new AssignmentView(assignment));
+            }
+            return result.AsQueryable();
+        }
+
         [HttpPost]
         [ActionName("DefaultAction")]
         public HttpResponseMessage Create(PerformerView view)

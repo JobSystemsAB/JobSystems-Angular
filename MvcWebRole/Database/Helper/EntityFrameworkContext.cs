@@ -17,5 +17,7 @@ namespace MvcWebRole.Database.Helper
         public DbSet<TimeReport> timeReports { get; set; }
         public DbSet<Administrator> administrators { get; set; }
         public DbSet<AdministratorAccessToken> administratorAccessTokens { get; set; }
+        public DbSet<Knowledge> knowledges { get; set; }
+        public DbSet<Category> categories { get; set; }
     }
 }

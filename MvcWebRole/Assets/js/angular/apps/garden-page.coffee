@@ -1,9 +1,10 @@
-﻿app = angular.module 'MainPageApp', ['services', 'ui.bootstrap', 'ui.date']
+﻿app = angular.module 'GardenPageApp', ['services', 'ui.bootstrap', 'ui.date']
 
 app.config ($routeProvider, $locationProvider) ->
 
     $routeProvider.when '/',
-        templateUrl: 'Assets/js/angular/partials/main-page.html'
+        templateUrl: 'Assets/js/angular/partials/garden-page/garden.html'
+        controller: 'GardenInputFormCtrl'
 
     $routeProvider.otherwise
         redirectTo: '/404'

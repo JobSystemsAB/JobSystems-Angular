@@ -1,1 +1,0 @@
-﻿window.AdminPortalApp = angular.module 'AdminPortalApp', ['ngResource']

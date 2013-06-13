@@ -6,5 +6,8 @@ obj
 TestResults
 
 Debug/
+JobSystemsAngular/Profiles
+JobSystemsAngular/csx
+Database/dbo
 
 *.v11.suo

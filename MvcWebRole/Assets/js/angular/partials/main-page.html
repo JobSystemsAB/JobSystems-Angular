@@ -22,7 +22,33 @@
     <hr />
 
     <div>
-        <h2>Trädgård</h2>
+        
+        <table>
+            <tr>
+                <td style="width: 50%">Vad vi erbjuder:</td>
+                <td style="width: 50%">Vad du behöver:</td>
+            </tr>
+            <tr>
+                <td style="vertical-align: top">
+                    <div class="well">
+                        <div data-ng-repeat="task in tasks | orderBy:'name'" data-ng-click="addTask(task)" class="label" style="margin: 2px 2px; padding: 4px 10px">
+                            <label>{{ task.name }}</label>
+                        </div>
+                    </div>
+                </td>
+                <td style="vertical-align: top">
+                    <div class="well">
+                        <div data-ng-repeat="task in selectedTasks | orderBy:'name'" class="label label-warning" style="margin: 2px 2px; padding: 4px 10px">
+                            <label data-ng-click="removeTask(task.value)">{{ task.name }}</label>
+                        </div>
+                    </div>
+                </td>
+            </tr>
+        </table>
+
+
+
+        <!--<h2>Trädgård</h2>
         <div class="input-append">
             <input type="text" class="input-xxlarge search-input" placeholder="Vad vill du ha hjälp med?" data-ng-model="searchTerm" />
             <div class="search-result">
@@ -43,7 +69,7 @@
                     </tr>
                 </table>
             </div>
-        </div>
+        </div>-->
     </div>
 
     <hr />
@@ -51,7 +77,7 @@
     <div>
         <h2>Utförare:</h2>
         <ul class="thumbnails">
-            <li class="span4" data-ng-repeat="performer in performers" data-ng-click="addPerformer(performer.id)">
+            <li class="span4" data-ng-repeat="performer in performers" data-ng-click="addPerformer(performer)">
                 <div>
                     <div class="well performer-overview-top">
                         <h3>{{ performer.firstName }} {{ performer.lastName }}</h3>

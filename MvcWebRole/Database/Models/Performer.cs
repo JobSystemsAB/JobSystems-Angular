@@ -16,6 +16,7 @@ namespace MvcWebRole.Database.Models
         {
             assignments = new HashSet<Assignment>();
             timeReports = new HashSet<TimeReport>();
+            knowledges = new HashSet<Knowledge>();
         }
 
         [Key]
@@ -29,6 +30,8 @@ namespace MvcWebRole.Database.Models
         public virtual ICollection<Assignment> assignments { get; set; }
 
         public virtual ICollection<TimeReport> timeReports { get; set; }
+
+        public virtual ICollection<Knowledge> knowledges { get; set; }
 
         public string infoText { get; set; }
 

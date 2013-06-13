@@ -2,10 +2,10 @@
 
     $scope.SignIn = ->
 
-        hashPassword = String CryptoJS.SHA3 $scope.password, { outputLength: 256 }
+        hashPassword = String CryptoJS.SHA3 $scope.form.password, { outputLength: 256 }
 
         loginData = 
-            username: $scope.username
+            username: $scope.form.username
             password: hashPassword
 
         $http

@@ -1,0 +1,22 @@
+﻿<table style="border-spacing: 20px; border-collapse: separate;">
+    <tr>
+        <td>
+            <div class="hero-unit">
+                <div ui-date="dateOptions" name="DateOfBirth"></div>
+            </div>
+        </td>
+        <td style="vertical-align: top;">
+            <select>
+                <option value="">
+                    Välj Uppdrag
+                </option>
+                <option data-ng-model="form.assignment" data-ng-repeat="assignment in assignments" value="assignment.id">
+                    {{ assignment.description }}
+                </option>
+            </select><br />
+            <input type="text" data-ng-model="form.hours" placeholder="Timmar" /><br />
+            <input type="text" data-ng-model="form.minutes" placeholder="Minuter" /><br />
+            <button class="btn">Registrera tid</button>
+        </td>
+    </tr>
+</table>

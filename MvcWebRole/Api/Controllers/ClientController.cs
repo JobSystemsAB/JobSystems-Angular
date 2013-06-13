@@ -58,6 +58,17 @@ namespace MvcWebRole.Api.Controllers
         }
 
         [HttpGet]
+        public IQueryable<AssignmentView> Assigments(int clientId)
+        {
+            var result = new List<AssignmentView>();
+            foreach (var assignment in this._context.clients.FirstOrDefault(c => c.id == clientId).assignments)
+            {
+                result.Add(new AssignmentView(assignment));
+            }
+            return result.AsQueryable();
+        }
+
+        [HttpGet]
         [ActionName("DefaultAction")]
         public IQueryable<AssignmentView> GetAssignments(int id)
         {

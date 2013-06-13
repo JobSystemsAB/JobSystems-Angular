@@ -15,6 +15,7 @@ namespace MvcWebRole.Database.Models
         {
             performers = new HashSet<Performer>();
             timeReports = new HashSet<TimeReport>();
+            knowledges = new HashSet<Knowledge>();
         }
 
         [Key]
@@ -28,6 +29,8 @@ namespace MvcWebRole.Database.Models
         public virtual ICollection<Performer> performers { get; set; }
 
         public virtual ICollection<TimeReport> timeReports { get; set; }
+
+        public virtual ICollection<Knowledge> knowledges { get; set; }
 
         public DateTime? created { get; set; }
 

@@ -1,26 +1,28 @@
-﻿<html ng-app>
+﻿<html data-ng-app="PerformerPortalApp">
 <head>
 
     @* Stylesheets *@
     <link href="~/assets/css/global.css" rel="stylesheet" type="text/css" />
     <link href="~/assets/bootstrap/css/bootstrap.css" rel="stylesheet" type="text/css" />
-    <link href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css" rel="stylesheet" type="text/css" />
+    @*<link href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css" rel="stylesheet" type="text/css" />*@
 
     <title>Index</title>
 </head>
 <body>
     <div>
 
-        <div data-ng-controller="PerformerMenuController">
-            <div ng-include src="'Assets/js/Angular/partials/performer-portal/menu.html'"></div>
+        <div data-ng-controller="PerformerMenuController" id="menu">
+            <div data-ng-include="" data-src="'Assets/js/angular/partials/performer-portal/menu.html'"></div>
         </div>
 
-        <div>
-
+        <div class="body">
+            <div data-ng-view=""></div>
         </div>
 
         <div class="footer">
-
+            <div data-ng-controller="InfoMessageController" class="footer">
+                <div data-ng-include="" data-src="'Assets/js/Angular/partials/global/info-message.html'"></div>
+            </div>
         </div>
 
     </div>
@@ -28,7 +30,7 @@
     @* jQuery *@
     <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js"></script>
     <script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/jquery-ui.min.js"></script>
-    
+
     @* Angular *@
     <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.0.6/angular.min.js"></script>
     <script src="~/Assets/js/libs/angular-resource.js"></script>
@@ -37,12 +39,15 @@
     <script src="~/Assets/js/libs/ui-bootstrap-tpls-0.3.0.min.js"></script>
 
     @* Useful libs *@
-    <script src="~/Assets/js/libs/underscore.js"></script>
-    <script src="~/Assets/js/libs/sha3.js"></script>
+    @*<script src="~/Assets/js/libs/underscore.js"></script>*@
+    @*<script src="~/Assets/js/libs/sha3.js"></script>*@
 
     @* Controllers, Apps, Resources *@
     <script src="~/Assets/js/angular/resources/resources.js"></script>
-    <script src="~/Assets/js/angular/controllers/performer-portal-menu.js"></script>
+    <script src="~/Assets/js/angular/apps/performer-portal.js"></script>
+    <script src="~/Assets/js/angular/controllers/performer-portal/menu.js"></script>
+    <script src="~/Assets/js/angular/controllers/performer-portal/timereport.js"></script>
+    <script src="~/Assets/js/angular/controllers/global/info-message.js"></script>
 
 </body>
 </html>

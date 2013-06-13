@@ -30,6 +30,15 @@ namespace MvcWebRole
             // Controllers with Actions
             // To handle routes like `/api/VTRouting/route`
             config.Routes.MapHttpRoute(
+                name: "ApiControllerAndIdAndAction",
+                routeTemplate: "api/{controller}/{id}/{action}",
+                defaults: new {},
+                constraints: new { id = @"^\d+$" } // Only integers 
+            );
+
+            // Controllers with Actions
+            // To handle routes like `/api/VTRouting/route`
+            config.Routes.MapHttpRoute(
                 name: "ApiControllerAndAction",
                 routeTemplate: "api/{controller}/{action}"
             );

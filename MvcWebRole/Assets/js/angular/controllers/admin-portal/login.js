@@ -3,11 +3,11 @@
     return $scope.SignIn = function() {
       var hashPassword, loginData;
 
-      hashPassword = String(CryptoJS.SHA3($scope.password, {
+      hashPassword = String(CryptoJS.SHA3($scope.form.password, {
         outputLength: 256
       }));
       loginData = {
-        username: $scope.username,
+        username: $scope.form.username,
         password: hashPassword
       };
       return $http({
