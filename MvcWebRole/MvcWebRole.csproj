@@ -136,35 +136,41 @@
     <Compile Include="Api\Controllers\AssignmentController.cs" />
     <Compile Include="Api\Controllers\ClientController.cs" />
     <Compile Include="Api\Controllers\Helper\RequireHttpsAttribute.cs" />
+    <Compile Include="Api\Controllers\PerformerTimeFreeController.cs" />
     <Compile Include="Api\Controllers\KnowledgeController.cs" />
     <Compile Include="Api\Controllers\PerformerController.cs" />
-    <Compile Include="Api\Controllers\TimeReportController.cs" />
+    <Compile Include="Api\Controllers\PerformerTimeReportController.cs" />
     <Compile Include="Api\Models\KnowledgeView.cs" />
-    <Compile Include="Areas\GardenPage\GardenPageAreaRegistration.cs" />
-    <Compile Include="Areas\GardenPage\Controllers\HomeController.cs" />
-    <Compile Include="Areas\PerformerPortal\Controllers\HomeController.cs" />
-    <Compile Include="Areas\PerformerPortal\PerformerPortalAreaRegistration.cs" />
+    <Compile Include="Api\Models\PerformerTimeFreeView.cs" />
+    <Compile Include="Areas\Garden\GardenAreaRegistration.cs" />
+    <Compile Include="Areas\Garden\Controllers\HomeController.cs" />
+    <Compile Include="Areas\Performer\Controllers\HomeController.cs" />
+    <Compile Include="Areas\Performer\PerformerAreaRegistration.cs" />
+    <Compile Include="Database\Helper\BlobStorage.cs" />
     <Compile Include="Database\Models\AdministratorAccessToken.cs" />
     <Compile Include="Api\Models\AdministratorView.cs" />
     <Compile Include="Api\Models\AssignmentView.cs" />
     <Compile Include="Api\Models\ClientView.cs" />
     <Compile Include="Api\Models\PerformerView.cs" />
-    <Compile Include="Api\Models\TimeReportView.cs" />
+    <Compile Include="Api\Models\PerformerTimeReportView.cs" />
     <Compile Include="Api\Structs\AssignmentInfo.cs" />
     <Compile Include="Api\Structs\ClientInfo.cs" />
     <Compile Include="Api\Structs\PerformerInfo.cs" />
-    <Compile Include="Areas\AdminPortal\AdminPortalAreaRegistration.cs" />
-    <Compile Include="Areas\AdminPortal\Controllers\HomeController.cs" />
+    <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
+    <Compile Include="Areas\Admin\Controllers\HomeController.cs" />
     <Compile Include="Database\Helper\EntityFrameworkContext.cs" />
     <Compile Include="Database\Helper\IEntity.cs" />
     <Compile Include="Database\Models\Administrator.cs" />
     <Compile Include="Database\Models\Assignment.cs" />
-    <Compile Include="Database\Models\Category.cs" />
+    <Compile Include="Database\Models\KnowledgeCategory.cs" />
     <Compile Include="Database\Models\Client.cs" />
+    <Compile Include="Database\Models\ClientCompany.cs" />
+    <Compile Include="Database\Models\ClientPrivate.cs" />
     <Compile Include="Database\Models\Performer.cs" />
     <Compile Include="Database\Models\PerformerAccessToken.cs" />
     <Compile Include="Database\Models\Knowledge.cs" />
-    <Compile Include="Database\Models\TimeReport.cs" />
+    <Compile Include="Database\Models\PerformerTimeFree.cs" />
+    <Compile Include="Database\Models\PerformerTimeReport.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -196,6 +202,18 @@
     <Compile Include="Migrations\201306120741427_knowledge has performers.Designer.cs">
       <DependentUpon>201306120741427_knowledge has performers.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201306171212249_Client types.cs" />
+    <Compile Include="Migrations\201306171212249_Client types.Designer.cs">
+      <DependentUpon>201306171212249_Client types.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201306181104194_Performer free times.cs" />
+    <Compile Include="Migrations\201306181104194_Performer free times.Designer.cs">
+      <DependentUpon>201306181104194_Performer free times.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201306201050454_timefree.cs" />
+    <Compile Include="Migrations\201306201050454_timefree.Designer.cs">
+      <DependentUpon>201306201050454_timefree.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="WebRole.cs" />
@@ -204,6 +222,24 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Content Include="Assets\angular\apps\admin.js">
+      <DependentUpon>admin.coffee</DependentUpon>
+    </Content>
+    <Content Include="Assets\angular\apps\garden.js">
+      <DependentUpon>garden.coffee</DependentUpon>
+    </Content>
+    <Content Include="Assets\angular\apps\performer.js">
+      <DependentUpon>performer.coffee</DependentUpon>
+    </Content>
+    <Content Include="Assets\angular\controllers\database\performertimereport.js">
+      <DependentUpon>performertimereport.coffee</DependentUpon>
+    </Content>
+    <Content Include="Assets\angular\controllers\garden\index.js">
+      <DependentUpon>index.coffee</DependentUpon>
+    </Content>
+    <Content Include="Assets\angular\controllers\global\info.js">
+      <DependentUpon>info.coffee</DependentUpon>
+    </Content>
     <Content Include="Assets\bootstrap\css\bootstrap-responsive.css" />
     <Content Include="Assets\bootstrap\css\bootstrap-responsive.min.css" />
     <Content Include="Assets\bootstrap\css\bootstrap.css" />
@@ -212,9 +248,9 @@
     <Content Include="Assets\bootstrap\img\glyphicons-halflings.png" />
     <Content Include="Assets\bootstrap\js\bootstrap.js" />
     <Content Include="Assets\bootstrap\js\bootstrap.min.js" />
-    <Content Include="Assets\css\admin-portal.css" />
+    <Content Include="Assets\css\admin.css" />
     <Content Include="Assets\css\global.css" />
-    <Content Include="Assets\css\main-page.css" />
+    <Content Include="Assets\css\garden.css" />
     <Content Include="Assets\img\icons\facebook-color.png" />
     <Content Include="Assets\img\icons\facebook-white.png" />
     <Content Include="Assets\img\icons\linkedin-color.png" />
@@ -223,80 +259,66 @@
     <Content Include="Assets\img\icons\rss-white.png" />
     <Content Include="Assets\img\icons\twitter-color.png" />
     <Content Include="Assets\img\icons\twitter-white.png" />
-    <Content Include="Assets\img\performer-default.png" />
-    <Content Include="Assets\js\angular\apps\admin-portal.js">
-      <DependentUpon>admin-portal.coffee</DependentUpon>
-    </Content>
-    <Content Include="Assets\js\angular\apps\garden-page.js">
-      <DependentUpon>garden-page.coffee</DependentUpon>
-    </Content>
-    <Content Include="Assets\js\angular\apps\performer-portal.js">
-      <DependentUpon>performer-portal.coffee</DependentUpon>
-    </Content>
-    <Content Include="Assets\js\angular\controllers\admin-portal\login.js">
+    <Content Include="Assets\angular\controllers\admin\login.js">
       <DependentUpon>login.coffee</DependentUpon>
     </Content>
-    <Content Include="Assets\js\angular\controllers\admin-portal\menu.js">
+    <Content Include="Assets\angular\controllers\admin\menu.js">
       <DependentUpon>menu.coffee</DependentUpon>
     </Content>
-    <Content Include="Assets\js\angular\controllers\database-table\administrator.js">
+    <Content Include="Assets\angular\controllers\database\administrator.js">
       <DependentUpon>administrator.coffee</DependentUpon>
     </Content>
-    <Content Include="Assets\js\angular\controllers\database-table\assignment.js">
+    <Content Include="Assets\angular\controllers\database\assignment.js">
       <DependentUpon>assignment.coffee</DependentUpon>
     </Content>
-    <Content Include="Assets\js\angular\controllers\database-table\client.js">
+    <Content Include="Assets\angular\controllers\database\client.js">
       <DependentUpon>client.coffee</DependentUpon>
     </Content>
-    <Content Include="Assets\js\angular\controllers\database-table\performer.js">
+    <Content Include="Assets\angular\controllers\database\performer.js">
       <DependentUpon>performer.coffee</DependentUpon>
     </Content>
-    <Content Include="Assets\js\angular\controllers\database-table\timereport.js">
-      <DependentUpon>timereport.coffee</DependentUpon>
+    <Content Include="Assets\angular\controllers\global\calendar.js">
+      <DependentUpon>calendar.coffee</DependentUpon>
     </Content>
-    <Content Include="Assets\js\angular\controllers\garden-page\input-form.js">
-      <DependentUpon>input-form.coffee</DependentUpon>
-    </Content>
-    <Content Include="Assets\js\angular\controllers\garden-page\performers-overview.js">
-      <DependentUpon>performers-overview.coffee</DependentUpon>
-    </Content>
-    <Content Include="Assets\js\angular\controllers\global\info-message.js">
-      <DependentUpon>info-message.coffee</DependentUpon>
-    </Content>
-    <Content Include="Assets\js\angular\controllers\performer-portal\menu.js">
+    <Content Include="Assets\angular\controllers\performer\menu.js">
       <DependentUpon>menu.coffee</DependentUpon>
     </Content>
-    <Content Include="Assets\js\angular\controllers\performer-portal\timereport.js">
+    <Content Include="Assets\angular\controllers\performer\timefree.js">
+      <DependentUpon>timefree.coffee</DependentUpon>
+    </Content>
+    <Content Include="Assets\angular\controllers\performer\timereport.js">
       <DependentUpon>timereport.coffee</DependentUpon>
     </Content>
-    <Content Include="Assets\js\angular\partials\admin-portal\login.html" />
-    <Content Include="Assets\js\angular\partials\admin-portal\menu.html" />
-    <Content Include="Assets\js\angular\partials\database-table\administrator.html" />
-    <Content Include="Assets\js\angular\partials\database-table\assignment.html" />
-    <Content Include="Assets\js\angular\partials\database-table\client.html" />
-    <Content Include="Assets\js\angular\partials\database-table\performer.html" />
-    <Content Include="Assets\js\angular\partials\database-table\timereport.html" />
-    <Content Include="Assets\js\angular\partials\garden-page\garden.html" />
-    <Content Include="Assets\js\angular\partials\garden-page\link-menu.html" />
-    <Content Include="Assets\js\angular\partials\garden-page\normal-menu.html" />
-    <Content Include="Assets\js\angular\partials\global\info-message.html" />
-    <Content Include="Assets\js\angular\partials\main-page.html" />
-    <Content Include="Assets\js\angular\partials\performer-portal\menu.html" />
-    <Content Include="Assets\js\angular\partials\performer-portal\timereport.html" />
-    <Content Include="Assets\js\angular\resources\resources.js">
+    <Content Include="Assets\angular\partials\admin\login.html" />
+    <Content Include="Assets\angular\partials\admin\menu.html" />
+    <Content Include="Assets\angular\partials\database\administrator.html" />
+    <Content Include="Assets\angular\partials\database\assignment.html" />
+    <Content Include="Assets\angular\partials\database\client.html" />
+    <Content Include="Assets\angular\partials\database\performer.html" />
+    <Content Include="Assets\angular\partials\database\timereport.html" />
+    <Content Include="Assets\angular\partials\garden\index.html" />
+    <Content Include="Assets\angular\partials\garden\menu.html" />
+    <Content Include="Assets\angular\partials\garden\links.html" />
+    <Content Include="Assets\angular\partials\global\calendar.html" />
+    <Content Include="Assets\angular\partials\global\info.html" />
+    <Content Include="Assets\angular\partials\performer\menu.html" />
+    <Content Include="Assets\angular\partials\performer\timefree.html" />
+    <Content Include="Assets\angular\partials\performer\timereport.html" />
+    <Content Include="Assets\angular\resources\resources.js">
       <DependentUpon>resources.coffee</DependentUpon>
     </Content>
-    <Content Include="Assets\js\libs\angular-resource.js" />
-    <Content Include="Assets\js\libs\angular-strap.js" />
-    <Content Include="Assets\js\libs\angular.js" />
-    <Content Include="Assets\js\libs\bootstrap-datepicker.js" />
-    <Content Include="Assets\js\libs\bootstrap.js" />
-    <Content Include="Assets\js\libs\date.js" />
-    <Content Include="Assets\js\libs\jquery-1.9.1.js" />
-    <Content Include="Assets\js\libs\jquery-ui-1.10.3.custom.min.js" />
-    <Content Include="Assets\js\libs\sha3.js" />
-    <Content Include="Assets\js\libs\ui-bootstrap-tpls-0.3.0.min.js" />
-    <Content Include="Assets\js\libs\underscore.js" />
+    <Content Include="libs\angular-resource.js" />
+    <Content Include="libs\angular-strap.js" />
+    <Content Include="libs\angular.js" />
+    <Content Include="libs\bootstrap-datepicker.js" />
+    <Content Include="libs\bootstrap.js" />
+    <Content Include="libs\date.js" />
+    <Content Include="libs\jquery-1.9.1.js" />
+    <Content Include="libs\jquery-ui-1.10.3.custom.min.js" />
+    <Content Include="libs\ng-upload.min.js" />
+    <Content Include="libs\sha3.js" />
+    <Content Include="libs\ui-bootstrap-tpls-0.3.0.min.js" />
+    <Content Include="libs\underscore.js" />
     <Content Include="Global.asax" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
@@ -307,24 +329,15 @@
     </Content>
     <Content Include="Views\Web.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="App_Data\" />
-    <Folder Include="Areas\GardenPage\Models\" />
-    <Folder Include="Areas\GardenPage\Views\Shared\" />
-    <Folder Include="Controllers\" />
-    <Folder Include="Models\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <Content Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Areas\AdminPortal\Views\Web.config" />
+    <Content Include="Areas\Admin\Views\Web.config" />
   </ItemGroup>
   <ItemGroup>
-    <WCFMetadata Include="Service References\" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="Areas\AdminPortal\Views\Home\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\Home\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201305161231305_Administrators.resx">
@@ -348,69 +361,78 @@
     <EmbeddedResource Include="Migrations\201306120741427_knowledge has performers.resx">
       <DependentUpon>201306120741427_knowledge has performers.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201306171212249_Client types.resx">
+      <DependentUpon>201306171212249_Client types.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201306181104194_Performer free times.resx">
+      <DependentUpon>201306181104194_Performer free times.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201306201050454_timefree.resx">
+      <DependentUpon>201306201050454_timefree.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Assets\js\angular\pages.json" />
+    <Content Include="Assets\angular\controllers\global\info.coffee" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Assets\js\angular\controllers\global\info-message.coffee" />
+    <Content Include="Assets\angular\controllers\database\performertimereport.coffee" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Assets\js\angular\controllers\database-table\timereport.coffee" />
+    <Content Include="Assets\angular\controllers\database\performer.coffee" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Assets\js\angular\controllers\database-table\performer.coffee" />
+    <Content Include="Assets\angular\controllers\database\client.coffee" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Assets\js\angular\controllers\database-table\client.coffee" />
+    <Content Include="Assets\angular\controllers\database\assignment.coffee" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Assets\js\angular\controllers\database-table\assignment.coffee" />
+    <Content Include="Assets\angular\controllers\database\administrator.coffee" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Assets\js\angular\controllers\database-table\administrator.coffee" />
+    <Content Include="Assets\angular\controllers\admin\menu.coffee" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Assets\js\angular\controllers\admin-portal\menu.coffee" />
+    <Content Include="Assets\angular\controllers\admin\login.coffee" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Assets\js\angular\controllers\admin-portal\login.coffee" />
+    <Content Include="Assets\angular\apps\admin.coffee" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Assets\js\angular\apps\admin-portal.coffee" />
+    <Content Include="Assets\angular\resources\resources.coffee" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Assets\js\angular\resources\resources.coffee" />
+    <Content Include="Assets\angular\apps\garden.coffee" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Assets\js\angular\apps\garden-page.coffee" />
+    <Content Include="Areas\Garden\Views\Home\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Areas\GardenPage\Views\Home\Index.cshtml" />
+    <Content Include="Assets\angular\controllers\garden\index.coffee" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Assets\js\angular\controllers\garden-page\input-form.coffee" />
+    <Content Include="Areas\Performer\Views\Web.config" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Assets\js\angular\controllers\garden-page\performers-overview.coffee" />
+    <Content Include="Areas\Performer\Views\Home\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Areas\PerformerPortal\Views\Web.config" />
+    <Content Include="Assets\angular\controllers\performer\menu.coffee" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Areas\PerformerPortal\Views\Home\Index.cshtml" />
+    <Content Include="Assets\angular\apps\performer.coffee" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Assets\js\angular\controllers\performer-portal\menu.coffee" />
+    <Content Include="Assets\angular\controllers\performer\timereport.coffee" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Assets\js\angular\apps\performer-portal.coffee" />
+    <Content Include="Areas\Garden\Views\Web.config" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Assets\js\angular\controllers\performer-portal\timereport.coffee" />
+    <Content Include="Assets\angular\controllers\global\calendar.coffee" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Areas\GardenPage\Views\Web.config" />
+    <Content Include="Assets\angular\controllers\performer\timefree.coffee" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

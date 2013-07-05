@@ -14,10 +14,11 @@ namespace MvcWebRole.Database.Helper
         public DbSet<PerformerAccessToken> performerAccessToken { get; set; }
         public DbSet<Client> clients { get; set; }
         public DbSet<Assignment> assignments { get; set; }
-        public DbSet<TimeReport> timeReports { get; set; }
+        public DbSet<PerformerTimeReport> performerTimeReports { get; set; }
+        public DbSet<PerformerTimeFree> performerTimesFree { get; set; }
         public DbSet<Administrator> administrators { get; set; }
         public DbSet<AdministratorAccessToken> administratorAccessTokens { get; set; }
         public DbSet<Knowledge> knowledges { get; set; }
-        public DbSet<Category> categories { get; set; }
+        public DbSet<KnowledgeCategory> knowledgeCategories { get; set; }
     }
 }

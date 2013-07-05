@@ -15,7 +15,8 @@ namespace MvcWebRole.Database.Models
         public Performer()
         {
             assignments = new HashSet<Assignment>();
-            timeReports = new HashSet<TimeReport>();
+            freeTimes = new HashSet<PerformerTimeFree>();
+            timeReports = new HashSet<PerformerTimeReport>();
             knowledges = new HashSet<Knowledge>();
         }
 
@@ -29,7 +30,9 @@ namespace MvcWebRole.Database.Models
 
         public virtual ICollection<Assignment> assignments { get; set; }
 
-        public virtual ICollection<TimeReport> timeReports { get; set; }
+        public virtual ICollection<PerformerTimeFree> freeTimes { get; set; }
+
+        public virtual ICollection<PerformerTimeReport> timeReports { get; set; }
 
         public virtual ICollection<Knowledge> knowledges { get; set; }
 
@@ -76,6 +79,8 @@ namespace MvcWebRole.Database.Models
         public string taxColumn { get; set; }
 
         public string password { get; set; }
+
+        public string profilePictureUrl { get; set; }
 
         public bool? enabled { get; set; }
 

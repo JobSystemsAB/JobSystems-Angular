@@ -1,0 +1,68 @@
+﻿<html data-ng-app="GardenApp">
+<head>
+
+    @* Stylesheets *@
+    <link href="~/assets/bootstrap/css/bootstrap.css" rel="stylesheet" type="text/css" />
+    <link href="~/assets/css/global.css" rel="stylesheet" type="text/css" />
+    <link href="~/assets/css/garden.css" rel="stylesheet" type="text/css" />
+
+    <title>Trädgårdshjälpen - Ha häcken färdigtrimmad inom en minut</title>
+
+</head>
+
+<body>
+
+    <div
+        style="position: fixed; left: 20px; top: 10%;"
+        data-ng-include=""
+        data-src="'Assets/Angular/partials/garden/links.html'">
+    </div>
+
+    <div class="content-container">
+        @* Placeholder for Views *@
+        <div data-ng-view=""></div>
+    </div>
+
+    <div
+        style="position: fixed; right: 20px; top: 35%;"
+        data-ng-include=""
+        data-src="'Assets/Angular/partials/garden/menu.html'">
+    </div>
+
+    <div data-ng-controller="InfoController" class="footer">
+        <div data-ng-include="" data-src="'Assets/Angular/partials/global/info.html'"></div>
+    </div>
+
+
+
+
+
+    @* -- ONLINE LIBS -- *@
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/jquery-ui.min.js"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.0.6/angular.min.js"></script>
+    <script src="//maps.googleapis.com/maps/api/js?v=3.exp&sensor=false&libraries=places"></script>
+
+    @* -- LIBS -- *@
+    <script src="~/libs/angular-resource.js"></script>
+    <script src="~/libs/angular-strap.js"></script>
+    <script src="~/libs/date.js"></script>
+    <script src="~/libs/ui-bootstrap-tpls-0.3.0.min.js"></script>
+    <script src="~/libs/underscore.js"></script>
+    <script src="~/libs/sha3.js"></script>
+
+    <script src="~/Assets/bootstrap/js/bootstrap.min.js"></script>
+
+    @* -- APP --*@
+    <script src="~/Assets/angular/apps/garden.js"></script>
+
+    @* -- CONTROLLERS -- *@
+    <script src="~/Assets/angular/controllers/garden/index.js"></script>
+    <script src="~/Assets/angular/controllers/global/info.js"></script>
+
+    @* -- RESOURCES -- *@
+    <script src="~/Assets/angular/resources/resources.js"></script>
+    
+</body>
+
+</html>

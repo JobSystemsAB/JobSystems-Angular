@@ -1,4 +1,63 @@
-﻿/* -- DEFAULTS -- */
+﻿/* -- CALENDAR -- */
+
+.calendar {
+    border-spacing: 5px;
+    border-collapse: separate;
+    background-color: gray;
+}
+
+    .calendar .days {
+        background-color: gray;
+        color: white;
+        font-weight: bold;
+    }
+
+    .calendar td {
+        background-color: white;
+        width: 30px;
+        height: 40px;
+        text-align: right;
+        padding-top: 10px;
+        padding-right: 10px;
+    }
+
+        .calendar td:hover {
+            background-color: lightgray;
+            cursor: pointer;
+        }
+
+    .calendar .disabled {
+        background-color: gray;
+    }
+
+    .calendar td.selected {
+        background-color: lightgreen !important;
+    }
+
+    .calendar td.weekend {
+        background-color: lightpink;
+    } 
+
+/* -- FASTIES -- */
+
+.clear {
+    clear: both;
+}
+
+.block {
+    display: block;
+}
+
+.left {
+    float: left;
+}
+
+.right {
+    float: right;
+}
+
+
+/* -- DEFAULTS -- */
 
 table {
     border-collapse: separate;

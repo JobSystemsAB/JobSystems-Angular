@@ -14,7 +14,7 @@ namespace MvcWebRole.Database.Models
         public Assignment()
         {
             performers = new HashSet<Performer>();
-            timeReports = new HashSet<TimeReport>();
+            timeReports = new HashSet<PerformerTimeReport>();
             knowledges = new HashSet<Knowledge>();
         }
 
@@ -28,7 +28,7 @@ namespace MvcWebRole.Database.Models
 
         public virtual ICollection<Performer> performers { get; set; }
 
-        public virtual ICollection<TimeReport> timeReports { get; set; }
+        public virtual ICollection<PerformerTimeReport> timeReports { get; set; }
 
         public virtual ICollection<Knowledge> knowledges { get; set; }
 

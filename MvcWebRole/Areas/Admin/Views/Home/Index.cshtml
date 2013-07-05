@@ -1,0 +1,65 @@
+﻿<html data-ng-app="AdminApp">
+<head>
+
+    @* Stylesheets *@
+    <link href="~/assets/css/global.css" rel="stylesheet" type="text/css" />
+    <link href="~/assets/css/admin.css" rel="stylesheet" type="text/css" />
+    
+    <link href="~/assets/bootstrap/css/bootstrap.css" rel="stylesheet" type="text/css" />
+    <link href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css" rel="stylesheet" type="text/css" />
+
+    <title>Admin Portal</title>
+</head>
+
+<body>
+
+    <div data-ng-controller="AdminMenuController" id="menu">
+        <div data-ng-include="" data-src="'Assets/Angular/partials/admin/menu.html'"></div>
+    </div>
+
+    <div>
+        <div data-ng-view=""></div>
+    </div>
+
+    <div data-ng-controller="InfoController" class="footer">
+        <div data-ng-include="" data-src="'Assets/Angular/partials/global/info.html'"></div>
+    </div>
+
+
+
+
+    @* jQuery *@
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/jquery-ui.min.js"></script>
+
+    @* Angular *@
+    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.0.6/angular.min.js"></script>
+    <script src="~/libs/angular-resource.js"></script>
+    <script src="~/libs/angular-strap.js"></script>
+    <script src="~/libs/date.js"></script>
+    <script src="~/libs/ui-bootstrap-tpls-0.3.0.min.js"></script>
+    <script src="~/libs/ng-upload.min.js"></script>
+
+    @* Useful libs *@
+    <script src="~/libs/underscore.js"></script>
+    <script src="~/libs/sha3.js"></script>
+
+    @* Controllers, Apps, Resources *@
+    <script src="~/Assets/angular/resources/resources.js"></script>
+
+    <script src="~/Assets/angular/apps/admin.js"></script>
+
+    <script src="~/Assets/angular/controllers/database/administrator.js"></script>
+    <script src="~/Assets/angular/controllers/database/assignment.js"></script>
+    <script src="~/Assets/angular/controllers/database/client.js"></script>
+    <script src="~/Assets/angular/controllers/database/performer.js"></script>
+    <script src="~/Assets/angular/controllers/database/timereport.js"></script>
+    
+    <script src="~/Assets/angular/controllers/admin/login.js"></script>
+    <script src="~/Assets/angular/controllers/admin/menu.js"></script>
+    
+    <script src="~/Assets/angular/controllers/global/info.js"></script>
+
+</body>
+
+</html>

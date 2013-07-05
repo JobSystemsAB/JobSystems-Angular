@@ -91,11 +91,11 @@ namespace MvcWebRole.Api.Controllers
         [ActionName("DefaultAction")]
         public HttpResponseMessage Create(ClientView view)
         {
-            if (this._context.clients.Any(c => c.organisationNumber == view.organisationNumber))
-            {
-                return Request.CreateErrorResponse(HttpStatusCode.Conflict, "Organisationnumber in use");
-            }
-            else if (ModelState.IsValid)
+            //if (this._context.clients.Any(c => c.organisationNumber == view.organisationNumber))
+            //{
+            //    return Request.CreateErrorResponse(HttpStatusCode.Conflict, "Organisationnumber in use");
+            //}
+            if (ModelState.IsValid)
             {
                 try
                 {

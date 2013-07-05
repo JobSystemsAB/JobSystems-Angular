@@ -109,7 +109,7 @@ namespace MvcWebRole.Api.Models
                 foreach (var assignment in context.assignments.Where(a => this.assignmentIds.Contains(a.id)))
                     performer.assignments.Add(assignment);
             if (this.timeReportIds != null)
-                foreach (var assignmentTimeReport in context.timeReports.Where(a => this.timeReportIds.Contains(a.id)))
+                foreach (var assignmentTimeReport in context.performerTimeReports.Where(a => this.timeReportIds.Contains(a.id)))
                     performer.timeReports.Add(assignmentTimeReport);
 
             return performer;

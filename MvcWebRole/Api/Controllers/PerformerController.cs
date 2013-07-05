@@ -205,7 +205,7 @@ namespace MvcWebRole.Api.Controllers
         }
 
         [HttpGet]
-        public IQueryable<TimeReportView> TimeReports(int performerId, int assignmentId)
+        public IQueryable<PerformerTimeReportView> TimeReports(int performerId, int assignmentId)
         {
             var performer = this._context.performers.FirstOrDefault(p => p.id == performerId);
             if (performer == null)
@@ -219,10 +219,10 @@ namespace MvcWebRole.Api.Controllers
                 throw new HttpResponseException(Request.CreateResponse(HttpStatusCode.NotFound));            
             }
 
-            var result = new List<TimeReportView>();
+            var result = new List<PerformerTimeReportView>();
             foreach (var timereport in assignment.timeReports)
             {
-                result.Add(new TimeReportView(timereport));
+                result.Add(new PerformerTimeReportView(timereport));
             }
             return result.AsQueryable();
         }

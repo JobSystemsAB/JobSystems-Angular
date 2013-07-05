@@ -76,16 +76,18 @@ namespace MvcWebRole.Api.Models
 
         public Client convert(EntityFrameworkContext context)
         {
-            var client = new Client();
+            //var client = new Client();
 
-            AutoMapper.Mapper.CreateMap<ClientView, Client>();
-            AutoMapper.Mapper.Map<ClientView, Client>(this, client);
+            //AutoMapper.Mapper.CreateMap<ClientView, Client>();
+            //AutoMapper.Mapper.Map<ClientView, Client>(this, client);
 
-            if (this.assignmentIds != null)
-                foreach (var assignment in context.assignments.Where(a => this.assignmentIds.Contains(a.id)))
-                    client.assignments.Add(assignment);
+            //if (this.assignmentIds != null)
+            //    foreach (var assignment in context.assignments.Where(a => this.assignmentIds.Contains(a.id)))
+            //        client.assignments.Add(assignment);
 
-            return client;
+            //return client;
+
+            return null;
         }
     }
 }

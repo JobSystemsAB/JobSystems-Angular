@@ -1,17 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ServiceConfiguration serviceName="JobSystemsAngular" xmlns="http://schemas.microsoft.com/ServiceHosting/2008/10/ServiceConfiguration" osFamily="3" osVersion="*" schemaVersion="2012-10.1.8">
-  <Role name="MvcWebRole">
+  <Role name="MvcApplication1">
     <Instances count="1" />
     <ConfigurationSettings>
       <Setting name="Microsoft.WindowsAzure.Plugins.Diagnostics.ConnectionString" value="UseDevelopmentStorage=true" />
-      <Setting name="Microsoft.WindowsAzure.Plugins.RemoteAccess.Enabled" value="true" />
-      <Setting name="Microsoft.WindowsAzure.Plugins.RemoteAccess.AccountUsername" value="jobsystems" />
-      <Setting name="Microsoft.WindowsAzure.Plugins.RemoteAccess.AccountEncryptedPassword" value="MIIBpQYJKoZIhvcNAQcDoIIBljCCAZICAQAxggFOMIIBSgIBADAyMB4xHDAaBgNVBAMME1dpbmRvd3MgQXp1cmUgVG9vbHMCEDgggkitZ6q9S3IfRVbRt/cwDQYJKoZIhvcNAQEBBQAEggEAkVYXcSd2fN+/yEWRdHj4OzLtIjTiXhQYJeeIMNZYOLSxxJI74ZXg428WOIqd1iZhu5TCRQPTHfGxX3e/faLRjtHvx6jvbQ3g9YoYfdUVoCXb+ZNgo3zaSxuEcxbEikRJe14/COzXNHMumkiK72GTuwNdo01nIijvRH2uExeDJrwSUvMlAZEzjAclmWWLLDNmsHO9knHKKoY1hIoOtzxqYElBO5p1sjXEa2cF55hyUVe85SLd1F0vYS1htbsXbf9vWF0EUNosjf3xNuu7z7axzPGQw62/0Bom3r9o/CkroeS30Mdy5Bybng5dcnyl2JNxyqZNvvzgUpe4t9T0P85TwjA7BgkqhkiG9w0BBwEwFAYIKoZIhvcNAwcECDOVfQLUERXegBipEpbHXqtUnHclzYE4plyjwaQ4G4AKjjI=" />
-      <Setting name="Microsoft.WindowsAzure.Plugins.RemoteAccess.AccountExpiration" value="2014-06-12T23:59:59.0000000+02:00" />
-      <Setting name="Microsoft.WindowsAzure.Plugins.RemoteForwarder.Enabled" value="true" />
     </ConfigurationSettings>
-    <Certificates>
-      <Certificate name="Microsoft.WindowsAzure.Plugins.RemoteAccess.PasswordEncryption" thumbprint="6651367EA3A6DFD362A3D9BE4EB6134AF1D4A9BF" thumbprintAlgorithm="sha1" />
-    </Certificates>
   </Role>
 </ServiceConfiguration>

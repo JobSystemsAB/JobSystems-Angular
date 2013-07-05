@@ -33,7 +33,16 @@ namespace MvcWebRole.Api.Models
 
 
 
-        public string displayName { get { return this.clientInfo.companyName + " (" + this.clientInfo.organisationNumber + ") - " + this.description; } }
+        public string displayName
+        {
+            get
+            {
+                if (this.clientInfo != null)
+                    return this.clientInfo.companyName + " (" + this.clientInfo.organisationNumber + ") - " + this.description;
+                else
+                    return String.Empty;
+            }
+        }
 
 
 
@@ -72,7 +81,7 @@ namespace MvcWebRole.Api.Models
                 foreach (var performer in context.performers.Where(p => this.performerIds.Contains(p.id)))
                     assignment.performers.Add(performer);
             if (this.timeReportsIds != null)
-                foreach (var assignmentTimeReport in context.timeReports.Where(a => this.timeReportsIds.Contains(a.id)))
+                foreach (var assignmentTimeReport in context.performerTimeReports.Where(a => this.timeReportsIds.Contains(a.id)))
                     assignment.timeReports.Add(assignmentTimeReport);
             if (this.clientId != null)
                 assignment.client = context.clients.FirstOrDefault(c => c.id == this.clientId);

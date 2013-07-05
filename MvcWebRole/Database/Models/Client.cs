@@ -9,7 +9,7 @@ using System.Web;
 namespace MvcWebRole.Database.Models
 {
     [Table("Clients")]
-    public class Client : IEntity
+    public abstract class Client : IEntity
     {
         public Client() 
         {
@@ -21,10 +21,6 @@ namespace MvcWebRole.Database.Models
 
         public virtual ICollection<Assignment> assignments { get; set; }
 
-        public string organisationNumber { get; set; }
-
-        public string companyName { get; set; }
-
         public string streetAddress { get; set; }
 
         public string streetAddress2 { get; set; }
@@ -35,21 +31,11 @@ namespace MvcWebRole.Database.Models
 
         public string country { get; set; }
 
-        public string visitAddress { get; set; }
-
-        public string contactPersonName { get; set; }
-
-        public string contactPersonPhone { get; set; }
-
         public string emailAddress { get; set; }
 
         public string phoneNumber { get; set; }
 
         public string SNI { get; set; }
-
-        public string invoiceEmailAddress { get; set; }
-
-        public string invoiceEmailAddressCopy { get; set; }
 
         public string password { get; set; }
 

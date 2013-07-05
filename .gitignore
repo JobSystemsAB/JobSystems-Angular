@@ -8,6 +8,7 @@ TestResults
 Debug/
 JobSystemsAngular/Profiles
 JobSystemsAngular/csx
+Database/
 Database/dbo
 
 *.v11.suo

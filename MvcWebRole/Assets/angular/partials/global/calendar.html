@@ -1,0 +1,35 @@
+﻿<table class="calendar">
+    <caption>
+        <select
+            data-ng-model="current.month"
+            data-ng-options="month.id as month.name for month in names.months['sv']"
+            data-ng-change="changeMonth()"
+            class="input-medium">
+            <option value="">-- Välj månad --</option>
+        </select>
+        <p>{{ current.year }}</p>
+    </caption>
+    <thead>
+        <tr>
+            <th data-ng-repeat="name in names.shortDays['sv']" class="days">
+                {{ name }}
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr data-ng-repeat="week in current.weeks">
+            <td
+                data-ng-repeat="day in week"
+                class="img-rounded"
+                data-ng-class="{selected: isSelected(day.nr), disabled: day.disabled, weekend: day.weekend}"
+                data-ng-click="changeDate(day.nr)">
+                <p data-ng-class="{selected: isSelected(day.nr), disabled: day.disabled, weekend: day.weekend}">
+                    {{ day.nr }}
+                </p>
+                <div data-ng-show="day.freeTimes" style="display: block; position: absolute; margin-left: 25px; margin-top: -14px">
+                    <i class="icon-ok"></i>
+                </div>
+            </td>
+        </tr>
+    </tbody>
+</table>

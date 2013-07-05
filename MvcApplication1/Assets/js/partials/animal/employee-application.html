@@ -1,0 +1,158 @@
+﻿<div class="container">
+
+    <div class="hero-unit">
+
+        <h2>Inom en minut är du del av Sveriges modernaste jobbnätverk!</h2>
+        <br />
+
+        <div class="column left">
+
+            <h4>Ange din information</h4>
+            <hr />
+            <form class="form-horizontal">
+                <input
+                    type="text"
+                    placeholder="Förnamn"
+                    class="span5"
+                    data-ng-model="input.employee.firstName"
+                    data-ng-required="true"/>
+                <i
+                    class="icon-info-sign"
+                    data-tooltip="För och efternamn: För att kunna presentera dig för kunder."
+                    data-tooltip-placement="right" ></i>
+                <br />
+                <input
+                    type="text"
+                    placeholder="Efternamn"
+                    class="span5"
+                    data-ng-model="input.employee.lastName"
+                    data-ng-required="true"/>
+                <i
+                    class="icon-info-sign"
+                    data-tooltip="För och efternamn: För att kunna presentera dig för kunder."
+                    data-tooltip-placement="right" ></i>
+                <br />
+                <input
+                    type="text"
+                    placeholder="Personnummer"
+                    class="span5"
+                    data-ng-model="input.employee.personalNumber"
+                    data-ng-required="true"/>
+                <i
+                    class="icon-info-sign"
+                    data-tooltip="Personnummer: För att kunna betala ut din lön."
+                    data-tooltip-placement="right"></i>
+                <br />
+                <input
+                    id="google-address-search"
+                    type="text"
+                    placeholder="Sök efter adressen..."
+                    class="span5"
+                    data-ng-model="input.employee.addressLong"
+                    data-ng-required="true" />
+                <i
+                    class="icon-info-sign"
+                    data-tooltip="Adress: För att kunna erbjuda dig uppdrag som är nära dig."
+                    data-tooltip-placement="right"></i>
+                <br />
+                <input
+                    type="text"
+                    placeholder="E-post adress"
+                    class="span5"
+                    data-ng-model="input.employee.emailAddress"
+                    data-ng-required="true" />
+                <i
+                    class="icon-info-sign"
+                    data-tooltip="E-post adress: För att kunna skicka dig information om uppdrag. Reklam kommer ej skicka utan tillåtelse."
+                    data-tooltip-placement="right"></i>
+                <br />
+                <input
+                    type="text"
+                    placeholder="Mobilnummer"
+                    class="span5"
+                    data-ng-model="input.employee.mobilePhoneNumber"
+                    data-ng-required="true" />
+                <i
+                    class="icon-info-sign"
+                    data-tooltip="Mobilnummer: För att kunden ska kunna komma i kontakt med dig."
+                    data-tooltip-placement="right"></i>
+                <br />
+                <input
+                    type="text"
+                    placeholder="Telefonnummer"
+                    class="span5"
+                    data-ng-model="input.employee.phoneNumber"
+                    data-ng-required="false" />
+                <i 
+                    class="icon-info-sign"
+                    data-tooltip="Telefonnummer: För att kunden ska kunna komma i kontakt med dig."
+                    data-tooltip-placement="right"></i>
+                <br /><br />
+
+                <input 
+                    type="checkbox" 
+                    id="sms" 
+                    class="left"
+                    data-ng-model="input.employee.sendSms" />
+                <label for="sms" class="left">&nbsp;Kontakta mig via <b>sms</b>&nbsp;</label>
+                <i 
+                    class="icon-info-sign"
+                    data-tooltip="Markera om du vill bli kontaktad om jobberbjudanden via sms."
+                    data-tooltip-placement="right"></i>
+                <div class="clear"></div>
+
+                <input 
+                    type="checkbox" 
+                    id="mail" 
+                    class="left"
+                    data-ng-model="input.employee.sendMail" />
+                <label for="mail" class="left">&nbsp;Kontakta mig via <b>mail</b>&nbsp;</label>
+                <i 
+                    class="icon-info-sign"
+                    data-tooltip="Markera om du vill bli kontaktad om jobberbjudanden via mail."
+                    data-tooltip-placement="right"></i>
+                <br /><br />
+
+                <label class="left">Dessa djur kan jag vakta:&nbsp;&nbsp;</label>
+                <button 
+                    class="btn" 
+                    type="button" 
+                    data-ng-repeat="pet in output.pets"
+                    data-ng-click="addPet(pet.id)"
+                    data-ng-class="{'btn-primary': containsPet(pet.id)}">{{ pet.name }}</button>
+
+            </form>
+
+            <form class="form-horizontal">
+            </form>
+
+            <button class="btn" data-ng-click="order()" type="submit">Ansök</button>
+        </div>
+
+        <div class="column left">
+
+            <h4>... eller hämta från en tidigare registrering</h4>
+            <hr />
+            <form class="form-horizontal">
+                <input
+                    type="text"
+                    class="span4"
+                    placeholder="E-post adress"
+                    data-ng-model="input.login.emailAddress" /><br />
+                <input
+                    type="password"
+                    class="span4"
+                    placeholder="Lösenord"
+                    data-ng-model="input.login.password" /><br /><br />
+                <button
+                    class="btn"
+                    data-ng-click="load()">
+                    Hämta</button>
+            </form>
+        </div>
+
+        <div class="clear"></div>
+
+    </div>
+
+</div>

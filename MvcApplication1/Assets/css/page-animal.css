@@ -1,0 +1,50 @@
+﻿/* -- GARDEN FORM -- */
+
+.column {
+    width: 400px;
+    margin: 10px;
+    overflow: hidden;
+}
+
+.column2 {
+    width: 250px;
+    margin: 0 20px;
+    overflow: hidden;
+}
+
+.container {
+    margin: 20px auto;
+    width: 1024px;
+}
+
+/*.customertype {
+    width: 100%; 
+    text-align: right; 
+    margin: 20px 0;
+}*/
+
+/*.multiple {
+    margin: 3px;
+}*/
+
+/*.performer {
+    background-color: white;
+    padding: 20px;
+}*/
+
+/*.profile-image {
+    width: 80px;
+    margin-right: 20px
+}*/
+
+/*.profile-preview {
+    padding: 5px 10px;
+}*/
+
+/*.profile-icon {
+    margin-top: 4px;
+}*/
+
+/*.profile-icon-text {
+    margin: 0 10px;
+}*/

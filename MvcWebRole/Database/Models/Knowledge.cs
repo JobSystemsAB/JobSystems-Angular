@@ -27,7 +27,7 @@ namespace MvcWebRole.Database.Models
         public string description { get; set; }
 
         [ForeignKey("categoryId")]
-        public virtual Category category { get; set; }
+        public virtual KnowledgeCategory category { get; set; }
 
         public virtual ICollection<Assignment> assignments { get; set; }
 

@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <ServiceDefinition name="JobSystemsAngular" xmlns="http://schemas.microsoft.com/ServiceHosting/2008/10/ServiceDefinition" schemaVersion="2012-10.1.8">
-  <WebRole name="MvcWebRole" vmsize="Small">
+  <WebRole name="MvcApplication1" vmsize="Small">
     <Sites>
       <Site name="Web">
         <Bindings>
@@ -13,8 +13,6 @@
     </Endpoints>
     <Imports>
       <Import moduleName="Diagnostics" />
-      <Import moduleName="RemoteAccess" />
-      <Import moduleName="RemoteForwarder" />
     </Imports>
   </WebRole>
 </ServiceDefinition>
