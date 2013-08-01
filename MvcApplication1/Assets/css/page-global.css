@@ -24,6 +24,20 @@ table {
     border-spacing: 2px;
 }
 
+/* -- FORMS -- */
+
+.form-validate .ng-invalid {
+    background-color: #FA787E;
+}
+
+.form-validate .ng-invalid-required {
+    background-color: lightpink;
+}
+
+.form-validate .ng-valid-required {
+    background-color: lightgreen;
+}
+
     /* -- DATEPICKER -- */
 
     table.ui-datepicker-calendar td {

@@ -5,13 +5,13 @@ namespace MvcApplication1.Migrations
     using System.Data.Entity.Migrations.Infrastructure;
     using System.Resources;
     
-    public sealed partial class first : IMigrationMetadata
+    public sealed partial class asd4 : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(first));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(asd4));
         
         string IMigrationMetadata.Id
         {
-            get { return "201307031037443_first"; }
+            get { return "201307101704154_asd4"; }
         }
         
         string IMigrationMetadata.Source

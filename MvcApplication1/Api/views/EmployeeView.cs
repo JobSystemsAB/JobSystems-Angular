@@ -49,7 +49,9 @@ namespace MvcApplication1.Api.views
 
         public bool sendMail { get; set; }
 
+        // -- TYPES --
 
+        public bool isPet { get; set; }
 
         // -- CONSTRUCTOR --
 
@@ -62,7 +64,7 @@ namespace MvcApplication1.Api.views
             Mapper.CreateMap<Employee, EmployeeView>();
             Mapper.Map<Employee, EmployeeView>(input, this);
 
-            this.created = input.created.ToString().Replace('T', ' ');
+            this.created = input.petEmployee.created.ToString().Replace('T', ' ');
             this.updated = input.updated.ToString().Replace('T', ' ');
         }
 

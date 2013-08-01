@@ -1,206 +1,171 @@
 ﻿<div class="container">
 
-    <div>
-        <h1>Vi tar hand om ditt djur inom en minut!</h1>
-    </div>
+    <form name="form" class="form-horizontal form-validate">
 
-    <div class="hero-unit">
-        <div class="column left">
-            <h2>Vilket djur?</h2>
-            <hr />
-
-            <input 
-                type="radio" 
-                name="animal" 
-                id="animal1" 
-                class="left"
-                value="hund"
-                data-ng-model="input.mission.animal" />
-            <label 
-                for="animal1" 
-                class="left">&nbsp;Hund</label><br />
-            <input 
-                type="radio" 
-                name="animal" 
-                id="animal2"
-                value="katt" 
-                class="left"
-                data-ng-model="input.mission.animal" />
-            <label 
-                for="animal2" 
-                class="left">&nbsp;Katt</label><br />
-            <input 
-                type="radio" 
-                name="animal" 
-                class="left"
-                value="{{ input.otherAnimal }}"
-                data-ng-model="input.mission.animal" />
-            <label 
-                class="left">&nbsp;</label>
-            <input 
-                type="text" 
-                placeholder="Annat djur..." 
-                class="left" 
-                data-ng-model="input.otherAnimal" /><br />
-
+        <div>
+            <h1>Vi tar hand om ditt djur inom en minut!</h1>
         </div>
 
-        <div class="column left">
-            <h2>Var?</h2>
-            <hr />
-            <div>
-
-                <div class="control-group error" data-ng-class="{ success: validate.address()}">
+        <div class="hero-unit">
+            <div class="column left">
+                <h2>Vilket djur?</h2>
+                <hr />
+                <div data-ng-repeat="pet in output.pets | orderBy: 'name'">
                     <input
-                        id="google-address-search"
-                        type="text"
-                        placeholder="Sök efter adressen..."
-                        style="width: 400px"
-                        data-ng-required="true"
-                        data-tooltip="Ange vilken address som uppdraget är på"
-                        data-tooltip-trigger="focus"
-                        data-tooltip-placement="right" />
-                    <span 
-                        class="help-inline"
-                        data-ng-show="!validate.address()">
-                        Adressen måste vara inom Stockholms län</span>
+                        type="radio"
+                        name="pet"
+                        id="pet_{{ pet.id }}"
+                        class="left"
+                        value="{{ pet.id }}"
+                        data-ng-model="input.mission.petId" />
+                    <label
+                        for="pet_{{ pet.id }}"
+                        class="left">
+                        &nbsp;{{ pet.name }}</label><br />
                 </div>
+            </div>
 
-                
+            <div class="column left">
+                <h2>Var?</h2>
+                <hr />
+                <div>
+                    <div class="control-group error" data-ng-class="{ success: validate.address()}">
+                        <input
+                            id="google-address-search"
+                            type="text"
+                            placeholder="Sök efter adressen..."
+                            style="width: 400px"
+                            data-ng-required="true"
+                            data-tooltip="Ange vilken address som uppdraget är på"
+                            data-tooltip-trigger="focus"
+                            data-tooltip-placement="right" 
+                            required />
+                        <span
+                            class="help-inline"
+                            data-ng-show="!validate.address()">Adressen måste vara inom Stockholms län</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="clear"></div>
+        </div>
+
+        <div class="hero-unit">
+
+            <div class="column left">
+                <h2>Datum?</h2>
+                <hr />
+                <div
+                    data-ui-date="dateOptions"
+                    data-ng-model="input.mission.startDate">
+                </div>
+            </div>
+
+            <div class="column left">
+                <h2>Tid?</h2>
+                <hr />
+
+                <timepicker
+                    ng-model="input.mission.startTime"
+                    hour-step="1"
+                    minute-step="15"
+                    show-meridian="false"></timepicker>
 
             </div>
+
+
+            <div class="clear"></div>
+
         </div>
 
-        <div class="clear"></div>
-    </div>
+        <div class="hero-unit">
 
-    <div class="hero-unit">
+            <div class="column left">
+                <h2>Ange kontaktinformation</h2>
+                <hr />
+                <form class="form-horizontal">
+                    <input
+                        type="text"
+                        placeholder="Förnamn"
+                        class="input-xlarge block"
+                        data-ng-model="input.customer.firstName"
+                        data-ng-required="true"
+                        data-tooltip="För och efternamn: För att ge utföraren en kontaktperson."
+                        data-tooltip-trigger="focus"
+                        data-tooltip-placement="right" />
+                    <input
+                        type="text"
+                        placeholder="Efternamn"
+                        class="input-xlarge block"
+                        data-ng-model="input.customer.lastName"
+                        data-ng-required="true"
+                        data-tooltip="För och efternamn: För att ge utföraren en kontaktperson."
+                        data-tooltip-trigger="focus"
+                        data-tooltip-placement="right" />
+                    <input
+                        type="text"
+                        placeholder="Personnummer"
+                        class="input-xlarge block"
+                        data-ng-model="input.customer.personalNumber"
+                        data-ng-required="true"
+                        data-tooltip="Personnummer: Hebövs för RUT och ROT avdrag."
+                        data-tooltip-trigger="focus"
+                        data-tooltip-placement="right" />
+                    <input
+                        type="text"
+                        placeholder="Fastighetsbeteckning"
+                        class="input-xlarge block"
+                        data-ng-model="input.customer.propertyName"
+                        data-ng-required="true"
+                        data-tooltip="Fastighetsbeteckning: Behövs för RUT och ROT avdrag."
+                        data-tooltip-trigger="focus"
+                        data-tooltip-placement="right" />
+                    <input
+                        type="text"
+                        placeholder="Epost-adress"
+                        class="input-xlarge block"
+                        data-ng-model="input.customer.emailAddress"
+                        data-ng-required="true"
+                        data-tooltip="Epost: För att kunna skicka information om utförare och utförda arbeten. Reklam kommer ej skicka utan tillåtelse."
+                        data-tooltip-trigger="focus"
+                        data-tooltip-placement="right" />
+                    <input
+                        type="text"
+                        placeholder="Mobiltelefon"
+                        class="input-xlarge block"
+                        data-ng-model="input.customer.phoneNumber"
+                        data-ng-required="true"
+                        data-tooltip="Mobiltelefon: För att enklare kunna ta kontakt med dig."
+                        data-tooltip-trigger="focus"
+                        data-tooltip-placement="right" />
+                </form>
+            </div>
 
-        <div class="column left">
-            <h2>Datum?</h2>
-            <hr />
-            <div 
-                data-ui-date="dateOptions" 
-                data-ng-model="input.mission.start.date"></div>
-        </div>
-
-        <div class="column left">
-            <h2>Tid?</h2>
-            <hr />
-            <input 
-                class="left" 
-                type="text" 
-                placeholder="00" 
-                style="width: 40px"
-                data-ng-model="input.mission.start.hour"
-                data-ng-required="true"
-                data-tooltip="Ange startid för uppdrag"
-                data-tooltip-trigger="focus"
-                data-tooltip-placement="right" />
-            <label class="left">&nbsp;:&nbsp;</label>
-            <input 
-                class="left" 
-                type="text" 
-                placeholder="00" 
-                style="width: 40px"
-                data-ng-model="input.mission.start.minute"
-                data-ng-required="true"
-                data-tooltip="Ange startid för uppdrag"
-                data-tooltip-trigger="focus"
-                data-tooltip-placement="right" />
-        </div>
-
-        <div class="clear"></div>
-
-    </div>
-
-    <div class="hero-unit">
-
-        <div class="column left">
-            <h2>Ange kontaktinformation</h2>
-            <hr />
-            <form class="form-horizontal">
-                <input
-                    type="text"
-                    placeholder="Förnamn"
-                    class="input-xlarge block"
-                    data-ng-model="input.customer.firstName"
-                    data-ng-required="true"
-                    data-tooltip="För och efternamn: För att ge utföraren en kontaktperson."
-                    data-tooltip-trigger="focus"
-                    data-tooltip-placement="right" />
-                <input
-                    type="text"
-                    placeholder="Efternamn"
-                    class="input-xlarge block"
-                    data-ng-model="input.customer.lastName"
-                    data-ng-required="true"
-                    data-tooltip="För och efternamn: För att ge utföraren en kontaktperson."
-                    data-tooltip-trigger="focus"
-                    data-tooltip-placement="right" />
-                <input
-                    type="text"
-                    placeholder="Personnummer"
-                    class="input-xlarge block"
-                    data-ng-model="input.customer.personalNumber"
-                    data-ng-required="true"
-                    data-tooltip="Personnummer: Hebövs för RUT och ROT avdrag."
-                    data-tooltip-trigger="focus"
-                    data-tooltip-placement="right" />
-                <input
-                    type="text"
-                    placeholder="Fastighetsbeteckning"
-                    class="input-xlarge block"
-                    data-ng-model="input.customer.propertyName"
-                    data-ng-required="true"
-                    data-tooltip="Fastighetsbeteckning: Behövs för RUT och ROT avdrag."
-                    data-tooltip-trigger="focus"
-                    data-tooltip-placement="right" />
+            <div class="column left">
+                <h2>... eller hämta information</h2>
+                <hr />
                 <input
                     type="text"
                     placeholder="Epost-adress"
-                    class="input-xlarge block"
-                    data-ng-model="input.customer.emailAddress"
-                    data-ng-required="true"
-                    data-tooltip="Epost: För att kunna skicka information om utförare och utförda arbeten. Reklam kommer ej skicka utan tillåtelse."
-                    data-tooltip-trigger="focus"
-                    data-tooltip-placement="right" />
-                <input
-                    type="text"
-                    placeholder="Mobiltelefon"
-                    class="input-xlarge block"
-                    data-ng-model="input.customer.phoneNumber"
-                    data-ng-required="true"
-                    data-tooltip="Mobiltelefon: För att enklare kunna ta kontakt med dig."
-                    data-tooltip-trigger="focus"
-                    data-tooltip-placement="right" />
-            </form>
-        </div>
-
-        <div class="column left">
-            <h2>... eller hämta information</h2>
-            <hr />
-            <form class="form-horizontal">
-                <input 
-                    type="text" 
-                    placeholder="Epost-adress" 
                     data-ng-model="input.login.emailAddress" /><br />
-                <input 
-                    type="password" 
-                    placeholder="Lösenord" 
+                <input
+                    type="password"
+                    placeholder="Lösenord"
                     data-ng-model="input.login.password" /><br />
-                <button 
+                <button
                     class="btn"
-                    data-ng-click="load()">Hämta</button>
-            </form>
+                    data-ng-click="load()">
+                    Hämta</button>
+            </div>
+
+            <div class="clear"></div>
+
         </div>
 
-        <div class="clear"></div>
+        <div>
+            <button data-ng-disabled="form.$invalid" class="btn" data-ng-click="order()">Bekräfta och betala</button>
+        </div>
 
-    </div>
-
-    <div>
-        <button class="btn" data-ng-click="order()">Bekräfta och betala</button>
-    </div>
+    </form>
 
 </div>

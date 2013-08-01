@@ -1,0 +1,38 @@
+﻿<div>
+    <h2>Djurvakter</h2>
+
+    <hr />
+
+    <div data-ng-repeat="employee in employees">
+
+        <div class="left" style="width: 20%; text-align: center; margin-top: 10px;">
+            <button type="button" class="btn btn-success">Godkänn</button>
+            <button type="button" class="btn btn-danger">Avböj</button><br /><br />
+
+            <button type="button" class="btn btn-inverse">Disable</button>
+            <button type="button" class="btn btn-inverse">Enable</button>
+        </div>
+
+        <div class="left" style="width: 70%">
+            <h4 class="left">{{ employee.firstName + " " + employee.lastName}}</h4>
+            <h6 class="left">&nbsp; {{ employee.created }}</h6>
+            <div class="clear"></div>
+            
+            <div class="left img-rounded info-box">{{ employee.personalNumber }}</div>
+            <div class="left img-rounded info-box">{{ employee.address.street + " " + employee.address.streetNumber + ", " + employee.address.postalTown }}</div>
+            <div class="left img-rounded info-box">{{ employee.emailAddress }}</div>
+            <div class="left img-rounded info-box">{{ employee.mobilePhoneNumber }}</div>
+            <div class="left img-rounded info-box">Telefon: {{ employee.phoneNumber }}</div>
+            <div class="left img-rounded info-box">Sms: {{ employee.sendSms }}</div>
+            <div class="left img-rounded info-box">Epost: {{ employee.sendMail }}</div>
+            <div class="clear"></div>
+
+        </div>
+
+        <div class="clear"></div>
+
+        <hr />
+
+    </div>
+
+</div>

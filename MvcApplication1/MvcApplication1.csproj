@@ -142,19 +142,25 @@
   <ItemGroup>
     <Compile Include="Api\controllers\AdministratorsController.cs" />
     <Compile Include="Api\controllers\CustomersController.cs" />
-    <Compile Include="Api\controllers\CustomerMissionsController.cs" />
+    <Compile Include="Api\controllers\CustomersPrivateController.cs" />
+    <Compile Include="Api\controllers\EmployeesPetController.cs" />
+    <Compile Include="Api\controllers\MissionsController.cs" />
     <Compile Include="Api\controllers\EmployeesController.cs" />
     <Compile Include="Api\controllers\helpers\GoogleMail.cs" />
+    <Compile Include="Api\controllers\MissionsPetController.cs" />
     <Compile Include="Api\controllers\PetsController.cs" />
     <Compile Include="Api\views\AdministratorView.cs" />
-    <Compile Include="Api\views\Employee_PetView.cs" />
-    <Compile Include="Api\views\Customer_CompanyView.cs" />
-    <Compile Include="Api\views\Customer_PrivateView.cs" />
+    <Compile Include="Api\views\EmployeePetView.cs" />
+    <Compile Include="Api\views\CustomerCompanyView.cs" />
+    <Compile Include="Api\views\CustomerPrivateView.cs" />
     <Compile Include="Api\views\CustomerView.cs" />
-    <Compile Include="Api\views\CustomerMission_PetView.cs" />
+    <Compile Include="Api\views\MissionPetView.cs" />
     <Compile Include="Api\views\EmployeeView.cs" />
+    <Compile Include="Api\views\MissionView.cs" />
     <Compile Include="Api\views\PetView.cs" />
     <Compile Include="App_Start\BundleConfig.cs" />
+    <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
+    <Compile Include="Areas\Admin\Controllers\HomeController.cs" />
     <Compile Include="Areas\Animal\AnimalAreaRegistration.cs" />
     <Compile Include="Areas\Animal\Controllers\HomeController.cs" />
     <Compile Include="Database\Helpers\Address.cs" />
@@ -163,26 +169,34 @@
     <Compile Include="Database\Models\Administrator.cs" />
     <Compile Include="Database\Models\Customer.cs" />
     <Compile Include="Database\Models\Pet.cs" />
-    <Compile Include="Database\Models\Customer_Company.cs" />
-    <Compile Include="Database\Models\CustomerMission.cs" />
-    <Compile Include="Database\Models\Customer_Private.cs" />
-    <Compile Include="Database\Models\CustomerMission_Pet.cs" />
+    <Compile Include="Database\Models\CustomerCompany.cs" />
+    <Compile Include="Database\Models\Mission.cs" />
+    <Compile Include="Database\Models\CustomerPrivate.cs" />
+    <Compile Include="Database\Models\MissionPet.cs" />
     <Compile Include="Database\Models\Employee.cs" />
-    <Compile Include="Database\Models\Employee_Pet.cs" />
+    <Compile Include="Database\Models\EmployeePet.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201307031037443_first.cs" />
-    <Compile Include="Migrations\201307031037443_first.Designer.cs">
-      <DependentUpon>201307031037443_first.cs</DependentUpon>
+    <Compile Include="Migrations\201307081422243_asd.cs" />
+    <Compile Include="Migrations\201307081422243_asd.Designer.cs">
+      <DependentUpon>201307081422243_asd.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201307041848459_pets.cs" />
-    <Compile Include="Migrations\201307041848459_pets.Designer.cs">
-      <DependentUpon>201307041848459_pets.cs</DependentUpon>
+    <Compile Include="Migrations\201307090708449_asd1.cs" />
+    <Compile Include="Migrations\201307090708449_asd1.Designer.cs">
+      <DependentUpon>201307090708449_asd1.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201307050709167_remove application.cs" />
-    <Compile Include="Migrations\201307050709167_remove application.Designer.cs">
-      <DependentUpon>201307050709167_remove application.cs</DependentUpon>
+    <Compile Include="Migrations\201307101700227_asd2.cs" />
+    <Compile Include="Migrations\201307101700227_asd2.Designer.cs">
+      <DependentUpon>201307101700227_asd2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201307101702567_asd3.cs" />
+    <Compile Include="Migrations\201307101702567_asd3.Designer.cs">
+      <DependentUpon>201307101702567_asd3.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201307101704154_asd4.cs" />
+    <Compile Include="Migrations\201307101704154_asd4.Designer.cs">
+      <DependentUpon>201307101704154_asd4.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -191,18 +205,29 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Content Include="Assets\css\page-admin.css" />
     <Content Include="Assets\css\page-animal.css" />
     <Content Include="Assets\css\bootstrap-responsive.min.css" />
     <Content Include="Assets\css\bootstrap.min.css" />
     <Content Include="Assets\css\page-global.css" />
     <Content Include="Assets\img\glyphicons-halflings-white.png" />
     <Content Include="Assets\img\glyphicons-halflings.png" />
+    <Content Include="Assets\js\apps\admin.js">
+      <DependentUpon>admin.coffee</DependentUpon>
+    </Content>
+    <Content Include="Assets\js\controllers\admin\approve-employee.js">
+      <DependentUpon>approve-employee.coffee</DependentUpon>
+    </Content>
     <Content Include="Assets\js\controllers\animal\employee-application.js">
       <DependentUpon>employee-application.coffee</DependentUpon>
     </Content>
+    <Content Include="Assets\js\partials\admin\approve-employee.html" />
     <Content Include="Assets\js\partials\animal\employee-application.html" />
     <Content Include="Assets\js\resources\resources.js">
       <DependentUpon>resources.coffee</DependentUpon>
+    </Content>
+    <Content Include="Assets\js\resources\services.js">
+      <DependentUpon>services.coffee</DependentUpon>
     </Content>
     <Content Include="Global.asax" />
     <Content Include="Libs\angular-resource.js" />
@@ -215,7 +240,7 @@
     </Content>
     <Content Include="Assets\js\partials\animal\index.html" />
     <Content Include="Libs\date.js" />
-    <Content Include="Libs\ui-bootstrap-tpls-0.3.0.min.js" />
+    <Content Include="Libs\ui-bootstrap-tpls-0.4.0.min.js" />
     <Content Include="Libs\underscore.js" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
@@ -225,17 +250,6 @@
       <DependentUpon>Web.config</DependentUpon>
     </Content>
     <Content Include="Views\Web.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Migrations\201307031037443_first.resx">
-      <DependentUpon>201307031037443_first.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201307041848459_pets.resx">
-      <DependentUpon>201307041848459_pets.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201307050709167_remove application.resx">
-      <DependentUpon>201307050709167_remove application.cs</DependentUpon>
-    </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
@@ -257,6 +271,38 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Assets\js\controllers\animal\employee-application.coffee" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Assets\js\apps\admin.coffee" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Areas\Admin\Views\Web.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Assets\js\controllers\admin\approve-employee.coffee" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Areas\Admin\Views\Home\Index.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201307081422243_asd.resx">
+      <DependentUpon>201307081422243_asd.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201307090708449_asd1.resx">
+      <DependentUpon>201307090708449_asd1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201307101700227_asd2.resx">
+      <DependentUpon>201307101700227_asd2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201307101702567_asd3.resx">
+      <DependentUpon>201307101702567_asd3.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201307101704154_asd4.resx">
+      <DependentUpon>201307101704154_asd4.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Assets\js\resources\services.coffee" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

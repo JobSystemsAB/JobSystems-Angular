@@ -8,7 +8,7 @@ using System.Web;
 
 namespace MvcApplication1.Api.views
 {
-    public class Customer_PrivateView
+    public class CustomerCompanyView
     {
 
         public int id { get; set; }
@@ -29,37 +29,33 @@ namespace MvcApplication1.Api.views
 
 
 
-        public string firstName { get; set; }
+        public string organisationNumber { get; set; }
 
-        public string lastName { get; set; }
-
-        public string personalNumber { get; set; }
-
-        public string propertyName { get; set; }
+        public string companyName { get; set; }
 
 
 
         // -- CONSTRUCTOR --
 
-        public Customer_PrivateView()
+        public CustomerCompanyView()
         {
         }
 
-        public Customer_PrivateView(Customer_Private input)
+        public CustomerCompanyView(CustomerCompany input)
         {
-            Mapper.CreateMap<Customer_Private, Customer_PrivateView>();
-            Mapper.Map<Customer_Private, Customer_PrivateView>(input, this);
+            Mapper.CreateMap<CustomerCompany, CustomerCompanyView>();
+            Mapper.Map<CustomerCompany, CustomerCompanyView>(input, this);
 
             this.created = input.created.ToString().Replace('T', ' ');
             this.updated = input.updated.ToString().Replace('T', ' ');
         }
 
-        public Customer_Private convert(EntityFrameworkContext context)
+        public CustomerCompany convert(EntityFrameworkContext context)
         {
-            var output = new Customer_Private();
+            var output = new CustomerCompany();
 
-            Mapper.CreateMap<Customer_PrivateView, Customer_Private>();
-            Mapper.Map<Customer_PrivateView, Customer_Private>(this, output);
+            Mapper.CreateMap<CustomerPrivateView, CustomerPrivate>();
+            Mapper.Map<CustomerCompanyView, CustomerCompany>(this, output);
 
             return output;
         }

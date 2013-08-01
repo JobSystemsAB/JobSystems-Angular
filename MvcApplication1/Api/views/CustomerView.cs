@@ -40,7 +40,7 @@ namespace MvcApplication1.Api.views
             Mapper.CreateMap<Customer, CustomerView>();
             Mapper.Map<Customer, CustomerView>(input, this);
 
-            this.created = input.created.ToString().Replace('T', ' ');
+            this.created = input.ToString().Replace('T', ' ');
             this.updated = input.updated.ToString().Replace('T', ' ');
         }
 

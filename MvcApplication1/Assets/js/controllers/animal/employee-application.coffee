@@ -10,6 +10,8 @@ window.app.controller 'EmployeeApplicationController', ['$scope','$http','Pet', 
     $scope.input.employee.petIds = []
     $scope.input.employee.address = {}
 
+    $scope.alerts = []
+
     ## -- INITIALIZING
 
     input = document.getElementById 'google-address-search'
@@ -27,9 +29,9 @@ window.app.controller 'EmployeeApplicationController', ['$scope','$http','Pet', 
             data: $scope.input.employee
             method: "POST"
         .success (status, data, headers, config) -> 
-            console.log "done"    
+            $scope.addAlert "Din ansökan är nu skickad", "success"
         .error (status, data, headers, config) -> 
-            console.log "fail"
+            $scope.addAlert "Misslyckades skicka ansökan, prova igen eller vänligen kontakta oss", "error"
 
     $scope.load = ->
         $http
@@ -37,9 +39,18 @@ window.app.controller 'EmployeeApplicationController', ['$scope','$http','Pet', 
             data: $scope.input.login
             method: "POST"
         .success (status, data, headers, config) -> 
-           $scope.input.employee = status    
+            $scope.input.employee = status
+            $scope.addAlert "Lyckades logga in och hämta din information", "success"
         .error (status, data, headers, config) -> 
-            console.log "fail"  
+            $scope.addAlert "Inloggningen misslyckades", "error"
+
+    $scope.addAlert = (msg, type) ->
+        $scope.alerts.push 
+            'msg': msg
+            'type': type
+
+    $scope.closeAlert = (index) -> 
+        $scope.alerts.splice index, 1
 
     ## -- HELPER METHODS
 

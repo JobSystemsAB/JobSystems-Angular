@@ -46,15 +46,6 @@ namespace MvcApplication1.Api.controllers
         #endregion
 
         [HttpPost]
-        public HttpResponseMessage SendMissionRequest()
-        {
-            var emails = from employee in this._context.employees
-                         where employee.enabled
-                         select employee;
-            return null;
-        }
-
-        [HttpPost]
         public HttpResponseMessage Login(EmployeeView view)
         {
             var original = this._context.employees.FirstOrDefault(e => e.emailAddress == view.emailAddress);
@@ -73,35 +64,5 @@ namespace MvcApplication1.Api.controllers
             }
         }
 
-        [HttpPost]
-        public HttpResponseMessage CreatePet(Employee_PetView view)
-        {
-            if (ModelState.IsValid)
-            {
-                try
-                {
-                    var original = view.convert(this._context);
-                    original.created = DateTime.UtcNow;
-                    original.updated = DateTime.UtcNow;
-                    original.enabled = true;
-                    original.approved = false;
-                    this._context.pet_employees.Add(original);
-                    this._context.SaveChanges();
-                    view = new Employee_PetView(original);
-
-                    HttpResponseMessage response = Request.CreateResponse(HttpStatusCode.OK, view);
-                    //response.Headers.Location = new Uri(Url.Link("Default", new { id = performer.performerID }));
-                    return response;
-                }
-                catch (Exception ex)
-                {
-                    return Request.CreateErrorResponse(HttpStatusCode.InternalServerError, ex);
-                }
-            }
-            else
-            {
-                return Request.CreateErrorResponse(HttpStatusCode.BadRequest, ModelState);
-            }
-        }
     }
 }

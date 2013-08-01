@@ -29,9 +29,29 @@
         }
       });
     }
+  ]).factory('CustomerPrivate', [
+    '$resource', function($resource) {
+      return $resource('api/customersprivate/:id', {
+        id: '@id'
+      }, {
+        update: {
+          method: 'PUT'
+        }
+      });
+    }
   ]).factory('Mission', [
     '$resource', function($resource) {
-      return $resource('api/customermissions/:id', {
+      return $resource('api/missions/:id', {
+        id: '@id'
+      }, {
+        update: {
+          method: 'PUT'
+        }
+      });
+    }
+  ]).factory('MissionPet', [
+    '$resource', function($resource) {
+      return $resource('api/missionspet/:id', {
         id: '@id'
       }, {
         update: {

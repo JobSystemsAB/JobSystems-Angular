@@ -1,14 +1,17 @@
 (function() {
   window.app.controller('AnimalIndexController', [
-    '$scope', '$http', 'Customer', 'Mission', function($scope, $http, Customer, Mission) {
+    '$scope', '$http', 'CustomerPrivate', 'MissionPet', 'Pet', function($scope, $http, CustomerPrivate, MissionPet, Pet) {
       var autocomplete, input;
 
+      $scope.output = {};
       $scope.input = {};
       $scope.input.mission = {};
       $scope.input.mission.address = {};
-      $scope.input.mission.date = new Date();
+      $scope.input.mission.startDate = new Date();
+      $scope.input.mission.startTime = new Date(2000, 1, 1, 12, 0, 0, 0);
       $scope.validate = {};
       $scope.firstTime = true;
+      $scope.output.pets = Pet.query();
       $scope.dateOptions = {
         monthNames: ['Januari', 'Februari', 'Mars', 'April', 'Maj', 'Juni', 'Juli', 'Augusti', 'September', 'Oktober', 'November', 'December'],
         monthNamesShort: ['Jan', 'Feb', 'Mar', 'Apr', 'Maj', 'Jun', 'Jul', 'Aug', 'Sep', 'Okt', 'Nov', 'Dec'],
@@ -36,10 +39,28 @@
         return $scope.input.mission.address.area === "Stockholms län";
       };
       $scope.order = function() {
-        var customer, mission;
+        var customer;
 
-        customer = new Customer($scope.input.customer);
-        return mission = new Mission($scope.input.mission);
+        $scope.input.customer.address = $scope.input.mission.address;
+        customer = new CustomerPrivate($scope.input.customer);
+        console.log("Creating costumer");
+        return customer.$save(function(data) {
+          console.log("Customer created ", data.id);
+          return $scope.createMission(data.id);
+        }, function(err) {
+          return console.log("error");
+        });
+      };
+      $scope.createMission = function(customerId) {
+        var missionPet;
+
+        $scope.input.mission.customerId = customerId;
+        missionPet = new MissionPet($scope.input.mission);
+        return missionPet.$save(function(data) {
+          return console.log(data);
+        }, function(err) {
+          return console.log("error");
+        });
       };
       $scope.load = function() {
         return $http({

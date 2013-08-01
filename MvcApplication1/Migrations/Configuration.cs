@@ -51,9 +51,9 @@ namespace MvcApplication1.Migrations
                 new Pet { name = "Fågel" }
             );
 
-            context.private_customers.AddOrUpdate(
+            context.privateCustomers.AddOrUpdate(
                 c => c.personalNumber,
-                new Customer_Private
+                new CustomerPrivate
                 {
                     address = new Address
                     {
@@ -78,9 +78,9 @@ namespace MvcApplication1.Migrations
                 }
             );
 
-            context.company_customers.AddOrUpdate(
+            context.companyCustomers.AddOrUpdate(
                 c => c.organisationNumber,
-                new Customer_Company
+                new CustomerCompany
                 {
                     address = new Address
                     {
@@ -119,8 +119,7 @@ namespace MvcApplication1.Migrations
                     },
                     bankAccountNumber = "Bank Number",
                     bankClearingNumber = "Bank Clearing",
-                    bankName = "Bank Name",
-                    created = DateTime.UtcNow,
+                    bankName = "Handelsbanken",
                     emailAddress = "misael@jobsystems.se",
                     enabled = true,
                     firstName = "Misael",
@@ -134,6 +133,15 @@ namespace MvcApplication1.Migrations
                     updated = DateTime.UtcNow
                 }
             );
+
+            //context.pet_employees.AddOrUpdate(
+            //    pe => pe.employeeId,
+            //    new Employee_Pet
+            //    {
+            //        employeeId = context.employees.FirstOrDefault(e => e.personalNumber == "8608120336").id,
+            //        employee = context.employees.FirstOrDefault(e => e.personalNumber == "8608120336")
+            //    }
+            //);
 
         }
     }

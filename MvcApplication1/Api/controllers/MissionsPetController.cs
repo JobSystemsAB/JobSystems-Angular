@@ -9,38 +9,41 @@ using System.Web.Http;
 
 namespace MvcApplication1.Api.controllers
 {
-    public class CustomerMissionsController : ApiController
+    public class MissionsPetController : ApiController
     {
-
         #region CONSTRUCTOR
 
         private EntityFrameworkContext _context;
 
-        public CustomerMissionsController()
+        public MissionsPetController()
         {
             this._context = new EntityFrameworkContext();
         }
 
-        public CustomerMissionsController(EntityFrameworkContext context)
+        public MissionsPetController(EntityFrameworkContext context)
         {
             this._context = context;
         }
 
         #endregion CONSTRUCTOR
 
+        #region DEFAULTS
+
         [HttpPost]
-        public HttpResponseMessage CreatePet(CustomerMission_PetView view)
+        [ActionName("DefaultAction")]
+        public HttpResponseMessage Create(MissionPetView view)
         {
             if (ModelState.IsValid)
             {
                 try
                 {
+                    view.created = DateTime.UtcNow.ToString();
+                    view.enabled = true;
+
                     var original = view.convert(this._context);
-                    original.created = DateTime.UtcNow;
-                    original.enabled = true;
-                    this._context.pet_missions.Add(original);
+                    this._context.petMissions.Add(original);
                     this._context.SaveChanges();
-                    view = new CustomerMission_PetView(original);
+                    view.id = original.id;
 
                     HttpResponseMessage response = Request.CreateResponse(HttpStatusCode.OK, view);
                     return response;
@@ -55,6 +58,8 @@ namespace MvcApplication1.Api.controllers
                 return Request.CreateErrorResponse(HttpStatusCode.BadRequest, ModelState);
             }
         }
+
+        #endregion
 
     }
 }

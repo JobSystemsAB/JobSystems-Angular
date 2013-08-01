@@ -15,29 +15,29 @@
                     placeholder="Förnamn"
                     class="span5"
                     data-ng-model="input.employee.firstName"
-                    data-ng-required="true"/>
+                    data-ng-required="true" />
                 <i
                     class="icon-info-sign"
                     data-tooltip="För och efternamn: För att kunna presentera dig för kunder."
-                    data-tooltip-placement="right" ></i>
+                    data-tooltip-placement="right"></i>
                 <br />
                 <input
                     type="text"
                     placeholder="Efternamn"
                     class="span5"
                     data-ng-model="input.employee.lastName"
-                    data-ng-required="true"/>
+                    data-ng-required="true" />
                 <i
                     class="icon-info-sign"
                     data-tooltip="För och efternamn: För att kunna presentera dig för kunder."
-                    data-tooltip-placement="right" ></i>
+                    data-tooltip-placement="right"></i>
                 <br />
                 <input
                     type="text"
                     placeholder="Personnummer"
                     class="span5"
                     data-ng-model="input.employee.personalNumber"
-                    data-ng-required="true"/>
+                    data-ng-required="true" />
                 <i
                     class="icon-info-sign"
                     data-tooltip="Personnummer: För att kunna betala ut din lön."
@@ -83,43 +83,46 @@
                     class="span5"
                     data-ng-model="input.employee.phoneNumber"
                     data-ng-required="false" />
-                <i 
+                <i
                     class="icon-info-sign"
                     data-tooltip="Telefonnummer: För att kunden ska kunna komma i kontakt med dig."
                     data-tooltip-placement="right"></i>
-                <br /><br />
+                <br />
+                <br />
 
-                <input 
-                    type="checkbox" 
-                    id="sms" 
+                <input
+                    type="checkbox"
+                    id="sms"
                     class="left"
                     data-ng-model="input.employee.sendSms" />
                 <label for="sms" class="left">&nbsp;Kontakta mig via <b>sms</b>&nbsp;</label>
-                <i 
+                <i
                     class="icon-info-sign"
                     data-tooltip="Markera om du vill bli kontaktad om jobberbjudanden via sms."
                     data-tooltip-placement="right"></i>
                 <div class="clear"></div>
 
-                <input 
-                    type="checkbox" 
-                    id="mail" 
+                <input
+                    type="checkbox"
+                    id="mail"
                     class="left"
                     data-ng-model="input.employee.sendMail" />
                 <label for="mail" class="left">&nbsp;Kontakta mig via <b>mail</b>&nbsp;</label>
-                <i 
+                <i
                     class="icon-info-sign"
                     data-tooltip="Markera om du vill bli kontaktad om jobberbjudanden via mail."
                     data-tooltip-placement="right"></i>
-                <br /><br />
+                <br />
+                <br />
 
                 <label class="left">Dessa djur kan jag vakta:&nbsp;&nbsp;</label>
-                <button 
-                    class="btn" 
-                    type="button" 
-                    data-ng-repeat="pet in output.pets"
+                <button
+                    class="btn"
+                    type="button"
+                    data-ng-repeat="pet in output.pets | orderBy: 'name'"
                     data-ng-click="addPet(pet.id)"
-                    data-ng-class="{'btn-primary': containsPet(pet.id)}">{{ pet.name }}</button>
+                    data-ng-class="{'btn-primary': containsPet(pet.id)}">
+                    {{ pet.name }}</button>
 
             </form>
 
@@ -143,7 +146,8 @@
                     type="password"
                     class="span4"
                     placeholder="Lösenord"
-                    data-ng-model="input.login.password" /><br /><br />
+                    data-ng-model="input.login.password" /><br />
+                <br />
                 <button
                     class="btn"
                     data-ng-click="load()">
@@ -155,4 +159,6 @@
 
     </div>
 
+    <alert ng-repeat="alert in alerts" type="alert.type" close="closeAlert($index)">{{alert.msg}}</alert>
+    
 </div>

@@ -30,51 +30,6 @@ namespace MvcApplication1.Api.controllers
         #endregion
 
         [HttpPost]
-        public HttpResponseMessage CreatePrivate(Customer_PrivateView view)
-        {
-            if (ModelState.IsValid)
-            {
-                var customer = this._context.private_customers.FirstOrDefault(c => c.personalNumber == view.personalNumber);
-
-                if (customer == null)
-                {
-                    try
-                    {
-                        var original = view.convert(this._context);
-                        original.created = DateTime.UtcNow;
-                        original.enabled = true;
-                        this._context.private_customers.Add(original);
-                        this._context.SaveChanges();
-                        view = new Customer_PrivateView(original);
-
-                        HttpResponseMessage response = Request.CreateResponse(HttpStatusCode.OK, view);
-                        //response.Headers.Location = new Uri(Url.Link("Default", new { id = performer.performerID }));
-                        return response;
-                    }
-                    catch (Exception ex)
-                    {
-                        return Request.CreateErrorResponse(HttpStatusCode.NotFound, ex);
-                    }
-                }
-                else if (customer.emailAddress == view.emailAddress)
-                {
-                    // update customer
-
-                    HttpResponseMessage response = Request.CreateResponse(HttpStatusCode.OK, view);
-                    return response;
-                }
-                else
-                {
-                    return Request.CreateErrorResponse(HttpStatusCode.BadRequest, ModelState);                    
-                }
-            }
-            else
-            {
-                return Request.CreateErrorResponse(HttpStatusCode.BadRequest, ModelState);
-            }
-        }
-
-        [HttpPost]
         public HttpResponseMessage Login(CustomerView view)
         {
             var original = this._context.customers.FirstOrDefault(p => p.emailAddress == view.emailAddress);
@@ -85,16 +40,16 @@ namespace MvcApplication1.Api.controllers
             }
             else if (view.password == original.password)
             {
-                if (original.GetType().BaseType == typeof(Customer_Private))
+                if (original.GetType().BaseType == typeof(CustomerPrivate))
                 {
-                    var temp = (Customer_Private)original;
-                    var data = new Customer_PrivateView(temp);
+                    var temp = (CustomerPrivate)original;
+                    var data = new CustomerPrivateView(temp);
                     return Request.CreateResponse(HttpStatusCode.OK, data);
                 }
                 else
                 {
-                    var temp = (Customer_Company)original;
-                    var data = new Customer_CompanyView(temp);
+                    var temp = (CustomerCompany)original;
+                    var data = new CustomerCompanyView(temp);
                     return Request.CreateResponse(HttpStatusCode.OK, data);
                 }
             }

@@ -8,6 +8,7 @@
       $scope.input.employee = {};
       $scope.input.employee.petIds = [];
       $scope.input.employee.address = {};
+      $scope.alerts = [];
       input = document.getElementById('google-address-search');
       autocomplete = new google.maps.places.Autocomplete(input);
       $scope.output.pets = Pet.query();
@@ -17,9 +18,9 @@
           data: $scope.input.employee,
           method: "POST"
         }).success(function(status, data, headers, config) {
-          return console.log("done");
+          return $scope.addAlert("Din ansökan är nu skickad", "success");
         }).error(function(status, data, headers, config) {
-          return console.log("fail");
+          return $scope.addAlert("Misslyckades skicka ansökan, prova igen eller vänligen kontakta oss", "error");
         });
       };
       $scope.load = function() {
@@ -28,10 +29,20 @@
           data: $scope.input.login,
           method: "POST"
         }).success(function(status, data, headers, config) {
-          return $scope.input.employee = status;
+          $scope.input.employee = status;
+          return $scope.addAlert("Lyckades logga in och hämta din information", "success");
         }).error(function(status, data, headers, config) {
-          return console.log("fail");
+          return $scope.addAlert("Inloggningen misslyckades", "error");
         });
+      };
+      $scope.addAlert = function(msg, type) {
+        return $scope.alerts.push({
+          'msg': msg,
+          'type': type
+        });
+      };
+      $scope.closeAlert = function(index) {
+        return $scope.alerts.splice(index, 1);
       };
       $scope.removePet = function(id) {
         return $scope.input.employee.petIds = _.filter($scope.input.employee.petIds, function(petId) {

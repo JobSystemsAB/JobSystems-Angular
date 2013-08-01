@@ -1,20 +1,23 @@
 ﻿# This type of controller declaration doesnt bloat the global namespace and also is minification-safe
-window.app.controller 'AnimalIndexController', ['$scope','$http','Customer','Mission', ($scope, $http, Customer, Mission) ->
+window.app.controller 'AnimalIndexController', ['$scope','$http','CustomerPrivate','MissionPet','Pet', ($scope, $http, CustomerPrivate, MissionPet, Pet) ->
 
     ## -- CONSTRUCTOR
+
+    $scope.output = {}
 
     $scope.input = {}
     $scope.input.mission = {}
     $scope.input.mission.address = {}
-    $scope.input.mission.date = new Date()
+    $scope.input.mission.startDate = new Date()
+    $scope.input.mission.startTime = new Date(2000, 1, 1, 12, 0, 0, 0)
 
     $scope.validate = {}
 
     ## -- VARIABLES
 
     $scope.firstTime = true;
+    $scope.output.pets = Pet.query()
 
-    # options for the date
     $scope.dateOptions = 
         monthNames: ['Januari','Februari','Mars','April','Maj','Juni','Juli','Augusti','September','Oktober','November','December']
         monthNamesShort: ['Jan','Feb','Mar','Apr','Maj','Jun','Jul','Aug','Sep','Okt','Nov','Dec']
@@ -28,7 +31,6 @@ window.app.controller 'AnimalIndexController', ['$scope','$http','Customer','Mis
 
     ## -- HELPER METHODS
 
-    # get info from google address components
     $scope.getAddressType = (address_components, type) ->
         temp = _.find address_components, (component) ->
             return _.contains component.types, type
@@ -39,14 +41,32 @@ window.app.controller 'AnimalIndexController', ['$scope','$http','Customer','Mis
 
     ## -- FRONT END METHODS
 
-    # validate given address
     $scope.validate.address = ->
         return $scope.input.mission.address.area == "Stockholms län"
 
-    # order button klick
     $scope.order = ->
-        customer = new Customer($scope.input.customer)
-        mission = new Mission($scope.input.mission)
+        $scope.input.customer.address = $scope.input.mission.address
+        customer = new CustomerPrivate($scope.input.customer)
+
+        console.log "Creating costumer"
+
+        customer.$save(
+            (data) ->
+                console.log "Customer created ", data.id
+                $scope.createMission data.id            
+            , (err) ->
+                console.log "error" )
+        
+    $scope.createMission = (customerId) ->
+        $scope.input.mission.customerId = customerId
+        missionPet = new MissionPet($scope.input.mission)
+
+        missionPet.$save(
+            (data) ->
+                console.log data            
+            , (err) ->
+                console.log "error" )
+        
 
     $scope.load = ->
         $http
@@ -66,7 +86,6 @@ window.app.controller 'AnimalIndexController', ['$scope','$http','Customer','Mis
 
     ## -- LISTENER
 
-    # address changed on google search
     google.maps.event.addListener autocomplete, 'place_changed', ->
         place = autocomplete.getPlace()
 

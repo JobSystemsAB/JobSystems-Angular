@@ -1,0 +1,31 @@
+﻿@using System.Web.Optimization
+
+<html data-ng-app="AdminApp">
+<head>
+
+    @Styles.Render("~/bundle/css")
+    @Styles.Render("~/bundle/admin/css")
+
+    <title>Djurvakt - Hitta ADoer som kan hjälpa dig</title>
+
+</head>
+
+<body>
+
+    <div class="content-container">
+        <div data-ng-view=""></div>
+    </div>
+
+    @* -- ONLINE LIBS -- *@
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/jquery-ui.min.js"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.0.6/angular.min.js"></script>
+    <script src="//maps.googleapis.com/maps/api/js?v=3.exp&sensor=false&libraries=places"></script>
+
+    @Scripts.Render("~/bundle/libs")
+    @Scripts.Render("~/bundle/angular/libs")
+    @Scripts.Render("~/bundle/admin/libs")
+
+</body>
+
+</html>
