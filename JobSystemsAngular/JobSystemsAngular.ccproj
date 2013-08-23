@@ -43,12 +43,12 @@
     <PublishProfile Include="Profiles\jobsystemsStaging.azurePubxml" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\MvcApplication1\MvcApplication1.csproj">
-      <Name>MvcApplication1</Name>
-      <Project>{ea34b74e-f00f-4c02-9652-acbc4333e329}</Project>
+    <ProjectReference Include="..\MvcKissApplication\MvcKissApplication.csproj">
+      <Name>MvcKissApplication</Name>
+      <Project>{6c16e5fb-1027-4279-b94d-e136bcdf8561}</Project>
       <Private>True</Private>
       <RoleType>Web</RoleType>
-      <RoleName>MvcApplication1</RoleName>
+      <RoleName>MvcKissApplication</RoleName>
       <UpdateDiagnosticsConnectionStringOnPublish>True</UpdateDiagnosticsConnectionStringOnPublish>
     </ProjectReference>
   </ItemGroup>

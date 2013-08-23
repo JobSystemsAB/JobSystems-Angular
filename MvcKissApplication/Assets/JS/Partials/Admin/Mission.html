@@ -1,0 +1,32 @@
+﻿<h1>Uppdrag</h1>
+
+<div>
+    <form action="#/mission/0">
+        <button>Skapa nytt uppdrag</button>
+    </form>
+</div>
+
+<div>
+    <table>
+        <tr>
+            <th></th>
+            <th>Id</th>
+            <th>Beskrivning</th>
+            <th></th>
+        </tr>
+        <tr data-ng-repeat="mission in missions">
+            <td>
+                <form action="#/mission/{{ mission.id }}">
+                    <button>Ändra</button>
+                </form>
+            </td>
+            <td>{{ mission.id }}</td>
+            <td>{{ mission.description }}</td>
+            <td>
+                <button data-ng-click="delete(mission)">
+                    Ta bort
+                </button>
+            </td>
+        </tr>
+    </table>
+</div>

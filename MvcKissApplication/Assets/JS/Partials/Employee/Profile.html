@@ -1,0 +1,23 @@
+﻿
+<div>
+    <h3>{{ input.firstName }} {{ input.lastName }}</h3>
+    <label> {{ input.fullAddress }} </label>
+    <label> {{ input.phoneNumber }} </label>
+
+    <p> {{ input.description }} </p>
+</div>
+
+<div>
+    <label data-ng-repeat="category in input.categories">
+        {{ category.name }}
+    </label>
+</div>
+
+<div>
+    <h4>Omdömen:</h4>
+
+    <div data-ng-repeat="comment in input.comments">
+        <b><p> {{ comment.customer }} </p></b>
+        <p> {{ comment.text }} </p>
+    </div>
+</div>

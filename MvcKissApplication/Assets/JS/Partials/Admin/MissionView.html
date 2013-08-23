@@ -1,0 +1,64 @@
+﻿<h1>Ändra uppdrag</h1>
+
+<div>
+    <table>
+        <tr data-ng-show="isNotNew()">
+            <td>Id</td>
+            <td>{{ input.id }}</td>
+        </tr>
+        
+        <tr>
+            <td>Kategori</td>
+            <td>
+                <select data-ng-model="input.categoryId"
+                        data-ng-options="category.id as category.name for category in output.categories | orderBy: 'name'"
+                        data-ng-change="updateSubcategory()">
+                </select>
+            </td>
+        </tr>
+        <tr data-ng-show="hasSubcategory()">
+            <td>Underkategori</td>
+            <td>
+                <select data-ng-model="input.subcategoryId"
+                        data-ng-options="subcategory.id as subcategory.name for subcategory in output.subcategories | orderBy: 'name'"
+                        data-ng-change="updateSubsubcategory()">
+                </select>
+            </td>
+        </tr>
+        <tr data-ng-show="hasSubsubcategory()">
+            <td>Underunderkategori</td>
+            <td>
+                <select data-ng-model="input.subsubcategoryId"
+                        data-ng-options="subsubcategory.id as subsubcategory.name for subsubcategory in output.subsubcategories | orderBy: 'name'">
+                </select>
+            </td>
+        </tr>
+
+
+        <tr>
+            <td>Beskrivning</td>
+            <td>
+                <textarea data-ng-model="input.description"></textarea>
+            </td>
+        </tr>
+        <tr>
+            <td>Adress</td>
+            <td>
+                <input type="text" data-ng-model="input.fullAddress" />
+            </td>
+        </tr>
+        
+        <tr data-ng-repeat="input in output.inputs">
+            <td> {{ input.text }} </td>
+            <td> 
+                <input type="{{ input.type }}" data-ng-model="input.value" />
+            </td>
+        </tr>
+
+    </table>
+</div>
+
+<div>
+    <button data-ng-click="save()">Spara</button>
+    <button data-ng-click="delete()" data-ng-show="isNotNew()">Ta bort</button>
+</div>

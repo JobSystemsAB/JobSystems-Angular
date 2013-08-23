@@ -48,7 +48,7 @@ window.app.controller 'AnimalIndexController', ['$scope','$http','CustomerPrivat
         $scope.input.customer.address = $scope.input.mission.address
         customer = new CustomerPrivate($scope.input.customer)
 
-        console.log "Creating costumer"
+        console.log "Creating Customer"
 
         customer.$save(
             (data) ->

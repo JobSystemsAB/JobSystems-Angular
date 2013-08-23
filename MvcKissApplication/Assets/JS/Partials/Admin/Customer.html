@@ -1,0 +1,34 @@
+﻿<h1>Kunder</h1>
+
+<div>
+    <form action="#/customer/0">
+        <button>Skapa ny kund</button>
+    </form>
+</div>
+
+<div>
+    <table>
+        <tr>
+            <th></th>
+            <th>Id</th>
+            <th>Epost</th>
+            <th></th>
+        </tr>
+        <tr data-ng-repeat="customer in customers">
+            <td>
+                <form action="#/customer/{{ customer.type }}/{{ customer.id }}">
+                    <button>Ändra</button>
+                </form>
+            </td>
+            <td>{{ customer.id }}</td>
+            <td>{{ customer.emailAddress }}</td>
+            <td>{{ customer.phoneNumber }}</td>
+            <td>{{ customer.type }}</td>
+            <td>
+                <button data-ng-click="delete(customer)">
+                    Ta bort
+                </button>
+            </td>
+        </tr>
+    </table>
+</div>

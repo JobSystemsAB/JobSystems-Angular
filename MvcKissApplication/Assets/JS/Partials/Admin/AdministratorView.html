@@ -1,0 +1,33 @@
+﻿<h1>Ändra administrator</h1>
+
+<div>
+    <table>
+        <tr data-ng-show="isNotNew()">
+            <td>Id</td>
+            <td>{{ input.id }}</td>
+        </tr>
+        <tr>
+            <td>Password</td>
+            <td>
+                <input type="password" data-ng-model="input.password" />
+            </td>
+        </tr>
+        <tr>
+            <td>Epost</td>
+            <td>
+                <input type="email" data-ng-model="input.emailAddress" />
+            </td>
+        </tr>
+        <tr>
+            <td>Aktiverad</td>
+            <td>
+                <input type="checkbox" data-ng-model="input.enabled" />
+            </td>
+        </tr>
+    </table>
+</div>
+
+<div>
+    <button data-ng-click="save()">Spara</button>
+    <button data-ng-click="delete()" data-ng-show="isNotNew()">Ta bort</button>
+</div>

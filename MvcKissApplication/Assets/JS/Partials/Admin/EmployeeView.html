@@ -1,0 +1,81 @@
+﻿<h1>Ändra kategori</h1>
+
+<div>
+    <table>
+        <tr data-ng-show="isNotNew()">
+            <td>Id</td>
+            <td>{{ input.id }}</td>
+        </tr>
+        <tr>
+            <td>Beskrivning</td>
+            <td>
+                <textarea data-ng-model="input.infoText"></textarea>
+            </td>
+        </tr>
+        <tr>
+            <td>Förnamn</td>
+            <td>
+                <input type="text" data-ng-model="input.firstName" />
+            </td>
+        </tr>
+        <tr>
+            <td>Efternamn</td>
+            <td>
+                <input type="text" data-ng-model="input.lastName" />
+            </td>
+        </tr>
+        <tr>
+            <td>Epost</td>
+            <td>
+                <input type="text" data-ng-model="input.emailAddress" />
+            </td>
+        </tr>
+        <tr>
+            <td>Telefonnummer</td>
+            <td>
+                <input type="number" data-ng-model="input.phoneNumber" />
+            </td>
+        </tr>
+        <tr>
+            <td>Personnummer</td>
+            <td>
+                <input type="number" data-ng-model="input.personalNumber" />
+            </td>
+        </tr>
+        <tr>
+            <td>Banknamn</td>
+            <td>
+                <input type="text" data-ng-model="input.bankName" />
+            </td>
+        </tr>
+        <tr>
+            <td>Clearingnummer</td>
+            <td>
+                <input type="text" data-ng-model="input.bankClearingNumber" />
+            </td>
+        </tr>
+        <tr>
+            <td>Banknummer</td>
+            <td>
+                <input type="text" data-ng-model="input.bankAccountNumber" />
+            </td>
+        </tr>
+        <tr>
+            <td>password</td>
+            <td>
+                <input type="password" data-ng-model="input.password" />
+            </td>
+        </tr>
+        <tr>
+            <td>Aktiverad</td>
+            <td>
+                <input type="checkbox" data-ng-model="input.enabled" />
+            </td>
+        </tr>
+    </table>
+</div>
+
+<div>
+    <button data-ng-click="save()">Spara</button>
+    <button data-ng-click="delete()" data-ng-show="isNotNew()">Ta bort</button>
+</div>

@@ -1,0 +1,91 @@
+﻿<h1>Ändra kund</h1>
+
+<div>
+    <table>
+        <tr data-ng-show="isNotNew()">
+            <td>Id</td>
+            <td>{{ input.id }}</td>
+        </tr>
+            
+        <tr>
+            <td>Typ</td>
+            <td>
+                <select data-ng-model="input.type">
+                    <option value="CompanyCustomer">Företag</option>
+                    <option value="PrivateCustomer">Privat</option>
+                </select>
+            </td>
+        </tr>
+
+        <tr>
+            <td>Epost</td>
+            <td>
+                <input type="email" data-ng-model="input.emailAddress" />
+            </td>
+        </tr>
+        <tr>
+            <td>Telefonnummer</td>
+            <td>
+                <input type="text" data-ng-model="input.phoneNumber" />
+            </td>
+        </tr>
+        <tr>
+            <td></td>
+            <td>
+                <input type="password" data-ng-model="input.password" />
+            </td>
+        </tr>
+
+        
+        <tr data-ng-show="isPrivate()">
+            <td>Förnamn</td>
+            <td>
+                <input type="text" data-ng-model="input.firstName" />
+            </td>
+        </tr>
+        <tr data-ng-show="isPrivate()">
+            <td>Efternamn</td>
+            <td>
+                <input type="text" data-ng-model="input.lastName" />
+            </td>
+        </tr>
+        <tr data-ng-show="isPrivate()">
+            <td>Personnummer</td>
+            <td>
+                <input type="number" data-ng-model="input.personalNumber" />
+            </td>
+        </tr>
+        <tr data-ng-show="isPrivate()">
+            <td>Fastighetsbeteckning</td>
+            <td>
+                <input type="text" data-ng-model="input.propertyName" />
+            </td>
+        </tr>
+
+        <tr data-ng-show="!isPrivate()">
+            <td>Organisationsnummer</td>
+            <td>
+                <input type="text" data-ng-model="input.organisationNumber" />
+            </td>
+        </tr>
+        <tr data-ng-show="!isPrivate()">
+            <td>Företagsnamn</td>
+            <td>
+                <input type="text" data-ng-model="input.companyName" />
+            </td>
+        </tr>
+
+
+        <tr>
+            <td>Aktiverad</td>
+            <td>
+                <input type="checkbox" data-ng-model="input.enabled" />
+            </td>
+        </tr>
+    </table>
+</div>
+
+<div>
+    <button data-ng-click="save()">Spara</button>
+    <button data-ng-click="delete()" data-ng-show="isNotNew()">Ta bort</button>
+</div>

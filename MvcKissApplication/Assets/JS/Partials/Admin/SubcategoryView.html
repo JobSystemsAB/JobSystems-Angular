@@ -1,0 +1,33 @@
+﻿<h1>Ändra kategori</h1>
+
+<div>
+    <table>
+        <tr data-ng-show="isNotNew()">
+            <td>Id</td>
+            <td>{{ input.id }}</td>
+        </tr>
+        <tr>
+            <td>Lön</td>
+            <td>
+                <input type="number" data-ng-model="input.salary" />
+            </td>
+        </tr>
+        <tr>
+            <td>Namn</td>
+            <td>
+                <input type="text" data-ng-model="input.name" />
+            </td>
+        </tr>
+        <tr>
+            <td>Beskrivning</td>
+            <td>
+                <textarea data-ng-model="input.description"></textarea>
+            </td>
+        </tr>
+    </table>
+</div>
+
+<div>
+    <button data-ng-click="save()">Spara</button>
+    <button data-ng-click="delete()" data-ng-show="isNotNew()">Ta bort</button>
+</div>

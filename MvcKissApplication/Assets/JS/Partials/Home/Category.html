@@ -1,0 +1,191 @@
+﻿<h1>60 sekunder att boka hjälp & 60 minuter att få bekräftelse</h1>
+
+<div>
+    <table>
+        <tr>
+            <td>Kategori</td>
+            <td>
+                <select data-ng-model="input.mission.categoryId"
+                    data-ng-options="category.id as category.name for category in output.categories | orderBy: 'name'"
+                    data-ng-change="updateSubcategory()">
+                </select>
+            </td>
+        </tr>
+        <tr data-ng-show="hasSubcategory()">
+            <td>Underkategori</td>
+            <td>
+                <select data-ng-model="input.mission.subcategoryId"
+                    data-ng-options="subcategory.id as subcategory.name for subcategory in output.subcategories | orderBy: 'name'"
+                    data-ng-change="updateSubsubcategory()">
+                </select>
+            </td>
+        </tr>
+        <tr data-ng-show="hasSubsubcategory()">
+            <td>Underunderkategori</td>
+            <td>
+                <select data-ng-model="input.mission.subsubcategoryId"
+                    data-ng-options="subsubcategory.id as subsubcategory.name for subsubcategory in output.subsubcategories | orderBy: 'name'">
+                </select>
+            </td>
+        </tr>
+    </table>
+</div>
+
+<div>
+    <h3>Beskrivning:</h3>
+    <textarea data-ng-model="input.mission.description"></textarea>
+    <br />
+    <label>{{input.mission.description.length}}/150 tecken</label>
+</div>
+
+<div>
+    <h3>Datum</h3>
+    <input type="date" data-ng-model="input.mission.date" />
+</div>
+
+<div>
+    <h3>Plats</h3>
+    <input type="text" id="google-address-search" data-ng-model="input.mission.fullAddress" />
+    <google-map center="center" draggable="true" zoom="zoom" markers="markers" mark-click="true" refresh="refresh" style="height: 200px; width: 800px; display: block;"></google-map>
+</div>
+
+<div>
+    <h3>Extra</h3>
+    <table>
+        <tr data-ng-repeat="input in output.inputs">
+            <td>{{ input.text }} </td>
+            <td>
+                <input type="{{ input.type }}" data-ng-model="input.value" />
+            </td>
+        </tr>
+    </table>
+</div>
+
+<div>
+    <h3>Hämta från befintlig kund:</h3>
+
+    <label>Epost:</label><br />
+    <input type="email" data-ng-model="input.customer.emailAddress" /><br />
+
+    <label>Password</label><br />
+    <input type="password" data-ng-model="input.customer.password" /><br />
+
+    <button data-ng-click="getCustomer()">Hämta</button>
+</div>
+
+<div>
+    <h3>Kundinformation:</h3>
+
+    <input id="company" type="radio" value="company" name="customerType" data-ng-model="input.customer.type" />
+    <label for="company">Företag</label>
+    <input id="private" type="radio" value="private" name="privateType" data-ng-model="input.customer.type" />
+    <label for="private">Privat</label>
+    <br />
+
+    <label>Epost:</label><br />
+    <input type="email" data-ng-model="input.customer.emailAddress" /><br />
+
+    <label>Telefonnummer:</label><br />
+    <input type="tel" data-ng-model="input.customer.phoneNumber" /><br />
+
+    <div data-ng-show="isCompanyCustomer()">
+        <label>Organisationsnummer:</label><br />
+        <input type="number" data-ng-model="input.customer.organisationNumber" /><br />
+
+        <label>Företagsnamn</label><br />
+        <input type="text" data-ng-model="input.customer.companyName" /><br />
+    </div>
+
+    <div data-ng-show="!isCompanyCustomer()">
+        <label>Förnamn:</label><br />
+        <input type="text" data-ng-model="input.customer.firstName" /><br />
+
+        <label>Efternamn:</label><br />
+        <input type="text" data-ng-model="input.customer.lastName" /><br />
+
+        <label>Personnummer:</label><br />
+        <input type="number" data-ng-model="input.customer.personalNumber" /><br />
+
+        <label>Fastighetsbeteckning:</label><br />
+        <input type="text" data-ng-model="input.customer.propertyName" /><br />
+    </div>
+
+</div>
+
+<div>
+    <button data-ng-click="input.orderInfo = true">Beställ</button>
+</div>
+
+<div data-ng-show="input.orderInfo">
+    <button data-ng-click="input.orderInfo = false">Stäng</button>
+
+    <table>
+        <caption>
+            <h3>Uppdrag</h3>
+        </caption>
+        <tr>
+            <td>Kategori</td>
+            <td>{{ input.mission.categoryId }}</td>
+        </tr>
+        <tr>
+            <td>Underkategori</td>
+            <td>{{ input.mission.subcategoryId }}</td>
+        </tr>
+        <tr>
+            <td>Underunderkategori</td>
+            <td>{{ input.mission.subsubcategoryId }}</td>
+        </tr>
+        <tr>
+            <td>Beskrivning</td>
+            <td>{{ input.mission.description }}</td>
+        </tr>
+        <tr>
+            <td>Datum</td>
+            <td>{{ input.mission.date }}</td>
+        </tr>
+        <tr>
+            <td>Adress</td>
+            <td>{{ input.mission.fullAddress }}</td>
+        </tr>
+    </table>
+
+    <table>
+        <caption>
+            <h3>Kund</h3>
+        </caption>
+        <tr>
+            <td>Epost</td>
+            <td>{{ input.customer.emailAddress }}</td>
+        </tr>
+        <tr>
+            <td>Telefonnummer</td>
+            <td>{{ input.customer.phoneNumber }}</td>
+        </tr>
+        <tr>
+            <td>Organisationsnummer</td>
+            <td>{{ input.customer.organisationNumber }}</td>
+        </tr>
+        <tr>
+            <td>Företagsnamn</td>
+            <td>{{ input.customer.companyName }}</td>
+        </tr>
+        <tr>
+            <td>Förnamn</td>
+            <td>{{ input.customer.firstName }}</td>
+        </tr>
+        <tr>
+            <td>Efternamn</td>
+            <td>{{ input.customer.lastName }}</td>
+        </tr>
+        <tr>
+            <td>personalNumber</td>
+            <td>{{ input.customer.personalNumber }}</td>
+        </tr>
+        <tr>
+            <td>propertyName</td>
+            <td>{{ input.customer.propertyName }}</td>
+        </tr>
+    </table>
+
+    <button data-ng-click="order()">Beställ</button>
+</div>

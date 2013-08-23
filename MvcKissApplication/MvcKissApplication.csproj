@@ -1,0 +1,476 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{6C16E5FB-1027-4279-B94D-E136BCDF8561}</ProjectGuid>
+    <ProjectTypeGuids>{E3E379DF-F4C6-4180-9B81-6769533ABE47};{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>MvcKissApplication</RootNamespace>
+    <AssemblyName>MvcKissApplication</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <MvcBuildViews>false</MvcBuildViews>
+    <UseIISExpress>true</UseIISExpress>
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Antlr3.Runtime">
+      <HintPath>..\packages\WebGrease.1.3.0\lib\Antlr3.Runtime.dll</HintPath>
+    </Reference>
+    <Reference Include="AutoMapper">
+      <HintPath>..\packages\AutoMapper.2.2.1\lib\net40\AutoMapper.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework">
+      <HintPath>..\packages\EntityFramework.5.0.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Microsoft.WindowsAzure.Configuration, Version=1.8.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.WindowsAzure.ConfigurationManager.1.8.0.0\lib\net35-full\Microsoft.WindowsAzure.Configuration.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.WindowsAzure.Diagnostics, Version=1.8.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.WindowsAzure.ServiceRuntime, Version=1.8.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35">
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Microsoft.WindowsAzure.StorageClient, Version=1.7.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\WindowsAzure.Storage.1.7.0.0\lib\net35-full\Microsoft.WindowsAzure.StorageClient.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Data.Entity" />
+    <Reference Include="System.Data.Services.Client" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Web.Optimization">
+      <HintPath>..\packages\Microsoft.AspNet.Web.Optimization.1.1.0\lib\net40\System.Web.Optimization.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Web.Abstractions" />
+    <Reference Include="System.Web.Routing" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Web.Mvc.FixedDisplayModes, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.Mvc.FixedDisplayModes.1.0.0\lib\net40\Microsoft.Web.Mvc.FixedDisplayModes.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\packages\Newtonsoft.Json.4.5.11\lib\net40\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http">
+    </Reference>
+    <Reference Include="System.Net.Http.Formatting, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Client.4.0.20710.0\lib\net40\System.Net.Http.Formatting.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http.WebRequest">
+    </Reference>
+    <Reference Include="System.Web.Helpers, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.2.0.20710.0\lib\net40\System.Web.Helpers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Http, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Core.4.0.20710.0\lib\net40\System.Web.Http.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Http.WebHost, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.WebHost.4.0.20710.0\lib\net40\System.Web.Http.WebHost.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Mvc, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.Mvc.4.0.20710.0\lib\net40\System.Web.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Razor, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.Razor.2.0.20715.0\lib\net40\System.Web.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.2.0.20710.0\lib\net40\System.Web.WebPages.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Deployment, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.2.0.20710.0\lib\net40\System.Web.WebPages.Deployment.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Razor, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.2.0.20710.0\lib\net40\System.Web.WebPages.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="WebGrease">
+      <HintPath>..\packages\WebGrease.1.3.0\lib\WebGrease.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Api\Controllers\AdministratorController.cs" />
+    <Compile Include="Api\Controllers\CategoryController.cs" />
+    <Compile Include="Api\Controllers\CategoryInputController.cs" />
+    <Compile Include="Api\Controllers\WorkShiftController.cs" />
+    <Compile Include="Api\Controllers\PrivateCustomerController.cs" />
+    <Compile Include="Api\Controllers\SubsubcategoryController.cs" />
+    <Compile Include="Api\Controllers\SubcategoryController.cs" />
+    <Compile Include="Api\Controllers\CustomerController.cs" />
+    <Compile Include="Api\Controllers\EmployeeController.cs" />
+    <Compile Include="Api\Controllers\MissionController.cs" />
+    <Compile Include="Api\Helpers\EntityFrameworkRepository.cs" />
+    <Compile Include="Api\Helpers\IRepository.cs" />
+    <Compile Include="Api\ViewModels\AdministratorView.cs" />
+    <Compile Include="Api\Controllers\CompanyCustomerController.cs" />
+    <Compile Include="Api\ViewModels\CategoryInputView.cs" />
+    <Compile Include="Api\ViewModels\CompanyCustomerView.cs" />
+    <Compile Include="Api\ViewModels\CategoryView.cs" />
+    <Compile Include="Api\ViewModels\WorkShiftView.cs" />
+    <Compile Include="App_Start\BundleConfig.cs" />
+    <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
+    <Compile Include="Areas\Admin\Controllers\HomeController.cs" />
+    <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Database\Models\CategoryInput.cs" />
+    <Compile Include="Database\Models\Comment.cs" />
+    <Compile Include="Database\Models\WorkShift.cs" />
+    <Compile Include="Api\ViewModels\SubsubcategoryView.cs" />
+    <Compile Include="Api\ViewModels\SubcategoryView.cs" />
+    <Compile Include="Api\ViewModels\CustomerView.cs" />
+    <Compile Include="Api\ViewModels\MissionView.cs" />
+    <Compile Include="Api\ViewModels\EmployeeView.cs" />
+    <Compile Include="Api\ViewModels\PrivateCustomerView.cs" />
+    <Compile Include="Database\Helpers\Address.cs" />
+    <Compile Include="Database\Helpers\EntityFrameworkContext.cs" />
+    <Compile Include="Database\Helpers\IEntity.cs" />
+    <Compile Include="Database\Models\Administrator.cs" />
+    <Compile Include="Database\Models\Category.cs" />
+    <Compile Include="Database\Models\Customer.cs" />
+    <Compile Include="Database\Models\CompanyCustomer.cs" />
+    <Compile Include="Database\Models\PrivateCustomer.cs" />
+    <Compile Include="Database\Models\Employee.cs" />
+    <Compile Include="Database\Models\Mission.cs" />
+    <Compile Include="Database\Models\Subcategory.cs" />
+    <Compile Include="Database\Models\Subsubcategory.cs" />
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201308061413030_first.cs" />
+    <Compile Include="Migrations\201308061413030_first.Designer.cs">
+      <DependentUpon>201308061413030_first.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201308080821359_category.cs" />
+    <Compile Include="Migrations\201308080821359_category.Designer.cs">
+      <DependentUpon>201308080821359_category.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201308081324111_category1.cs" />
+    <Compile Include="Migrations\201308081324111_category1.Designer.cs">
+      <DependentUpon>201308081324111_category1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201308091057319_dunno.cs" />
+    <Compile Include="Migrations\201308091057319_dunno.Designer.cs">
+      <DependentUpon>201308091057319_dunno.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201308091159083_employee.cs" />
+    <Compile Include="Migrations\201308091159083_employee.Designer.cs">
+      <DependentUpon>201308091159083_employee.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201308191232151_dunno1.cs" />
+    <Compile Include="Migrations\201308191232151_dunno1.Designer.cs">
+      <DependentUpon>201308191232151_dunno1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201308201134376_comment.cs" />
+    <Compile Include="Migrations\201308201134376_comment.Designer.cs">
+      <DependentUpon>201308201134376_comment.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201308221311351_customer no address.cs" />
+    <Compile Include="Migrations\201308221311351_customer no address.Designer.cs">
+      <DependentUpon>201308221311351_customer no address.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="App_Start\FilterConfig.cs" />
+    <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="App_Start\WebApiConfig.cs" />
+    <Content Include="Assets\JS\Apps\Admin.js">
+      <DependentUpon>Admin.coffee</DependentUpon>
+    </Content>
+    <Content Include="Assets\JS\Apps\Employee.js">
+      <DependentUpon>Employee.coffee</DependentUpon>
+    </Content>
+    <Content Include="Assets\JS\Apps\Home.js">
+      <DependentUpon>Home.coffee</DependentUpon>
+    </Content>
+    <Content Include="Assets\JS\Controllers\Admin\Administrator.js">
+      <DependentUpon>Administrator.coffee</DependentUpon>
+    </Content>
+    <Content Include="Assets\JS\Controllers\Admin\AdministratorView.js">
+      <DependentUpon>AdministratorView.coffee</DependentUpon>
+    </Content>
+    <Content Include="Assets\JS\Controllers\Admin\Category.js">
+      <DependentUpon>Category.coffee</DependentUpon>
+    </Content>
+    <Content Include="Assets\JS\Controllers\Admin\CategoryView.js">
+      <DependentUpon>CategoryView.coffee</DependentUpon>
+    </Content>
+    <Content Include="Assets\JS\Controllers\Admin\Customer.js">
+      <DependentUpon>Customer.coffee</DependentUpon>
+    </Content>
+    <Content Include="Assets\JS\Controllers\Admin\CustomerView.js">
+      <DependentUpon>CustomerView.coffee</DependentUpon>
+    </Content>
+    <Content Include="Assets\JS\Controllers\Admin\Employee.js">
+      <DependentUpon>Employee.coffee</DependentUpon>
+    </Content>
+    <Content Include="Assets\JS\Controllers\Admin\EmployeeView.js">
+      <DependentUpon>EmployeeView.coffee</DependentUpon>
+    </Content>
+    <Content Include="Assets\JS\Controllers\Admin\Login.js">
+      <DependentUpon>Login.coffee</DependentUpon>
+    </Content>
+    <Content Include="Assets\JS\Controllers\Admin\Mission.js">
+      <DependentUpon>Mission.coffee</DependentUpon>
+    </Content>
+    <Content Include="Assets\JS\Controllers\Admin\MissionView.js">
+      <DependentUpon>MissionView.coffee</DependentUpon>
+    </Content>
+    <Content Include="Assets\JS\Controllers\Admin\Subcategory.js">
+      <DependentUpon>Subcategory.coffee</DependentUpon>
+    </Content>
+    <Content Include="Assets\JS\Controllers\Admin\SubcategoryView.js">
+      <DependentUpon>SubcategoryView.coffee</DependentUpon>
+    </Content>
+    <Content Include="Assets\JS\Controllers\Admin\Subsubcategory.js">
+      <DependentUpon>Subsubcategory.coffee</DependentUpon>
+    </Content>
+    <Content Include="Assets\JS\Controllers\Admin\SubsubcategoryView.js">
+      <DependentUpon>SubsubcategoryView.coffee</DependentUpon>
+    </Content>
+    <Content Include="Assets\JS\Controllers\Employee\Profile.js">
+      <DependentUpon>Profile.coffee</DependentUpon>
+    </Content>
+    <Content Include="Assets\JS\Controllers\Home\Application.js">
+      <DependentUpon>Application.coffee</DependentUpon>
+    </Content>
+    <Content Include="Assets\JS\Controllers\Home\Category.js">
+      <DependentUpon>Category.coffee</DependentUpon>
+    </Content>
+    <Content Include="Assets\JS\Controllers\Home\Index.js">
+      <DependentUpon>Index.coffee</DependentUpon>
+    </Content>
+    <Content Include="Assets\JS\Partials\Admin\Administrator.html" />
+    <Content Include="Assets\JS\Partials\Admin\AdministratorView.html" />
+    <Content Include="Assets\JS\Partials\Admin\Category.html" />
+    <Content Include="Assets\JS\Partials\Admin\CategoryView.html" />
+    <Content Include="Assets\JS\Partials\Admin\CustomerView.html" />
+    <Content Include="Assets\JS\Partials\Admin\Customer.html" />
+    <Content Include="Assets\JS\Partials\Admin\Login.html" />
+    <Content Include="Assets\JS\Partials\Admin\MissionView.html" />
+    <Content Include="Assets\JS\Partials\Admin\Mission.html" />
+    <Content Include="Assets\JS\Partials\Admin\SubsubcategoryView.html" />
+    <Content Include="Assets\JS\Partials\Admin\SubcategoryView.html" />
+    <Content Include="Assets\JS\Partials\Admin\EmployeeView.html" />
+    <Content Include="Assets\JS\Partials\Admin\Employee.html" />
+    <Content Include="Assets\JS\Partials\Admin\Subcategory.html" />
+    <Content Include="Assets\JS\Partials\Admin\Subsubcategory.html" />
+    <Content Include="Assets\JS\Partials\Employee\Profile.html" />
+    <Content Include="Assets\JS\Partials\Home\Application.html" />
+    <Content Include="Assets\JS\Partials\Home\Category.html" />
+    <Content Include="Assets\JS\Partials\Home\Index.html" />
+    <Content Include="Assets\JS\Resources\Resources.js">
+      <DependentUpon>Resources.coffee</DependentUpon>
+    </Content>
+    <Content Include="Assets\JS\Resources\Services.js">
+      <DependentUpon>Services.coffee</DependentUpon>
+    </Content>
+    <Content Include="Global.asax" />
+    <Content Include="Libs\angular-google-maps.js" />
+    <Content Include="Libs\angular-resource.js" />
+    <Content Include="Libs\bootstrap.min.js" />
+    <Content Include="Libs\date.js" />
+    <Content Include="Libs\ui-bootstrap-tpls-0.4.0.min.js" />
+    <Content Include="Libs\underscore.js" />
+    <Content Include="Web.config" />
+    <Content Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Views\Web.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Home\Index.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Assets\JS\Controllers\Home\Category.coffee" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Assets\JS\Resources\Services.coffee" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Assets\JS\Resources\Resources.coffee" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201308061413030_first.resx">
+      <DependentUpon>201308061413030_first.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201308080821359_category.resx">
+      <DependentUpon>201308080821359_category.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201308081324111_category1.resx">
+      <DependentUpon>201308081324111_category1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201308091057319_dunno.resx">
+      <DependentUpon>201308091057319_dunno.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201308091159083_employee.resx">
+      <DependentUpon>201308091159083_employee.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201308191232151_dunno1.resx">
+      <DependentUpon>201308191232151_dunno1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201308201134376_comment.resx">
+      <DependentUpon>201308201134376_comment.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201308221311351_customer no address.resx">
+      <DependentUpon>201308221311351_customer no address.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Assets\JS\Apps\Home.coffee" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Assets\JS\Controllers\Home\Index.coffee" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Assets\JS\Controllers\Home\Application.coffee" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Assets\JS\Apps\Admin.coffee" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Areas\Admin\Views\Web.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Assets\JS\Controllers\Admin\Category.coffee" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Areas\Admin\Views\Home\Index.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Assets\JS\Controllers\Admin\Administrator.coffee" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Assets\JS\Controllers\Admin\Employee.coffee" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Assets\JS\Controllers\Admin\Subcategory.coffee" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Assets\JS\Controllers\Admin\Subsubcategory.coffee" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Assets\JS\Controllers\Admin\CategoryView.coffee" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Assets\JS\Controllers\Admin\EmployeeView.coffee" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Assets\JS\Controllers\Admin\SubcategoryView.coffee" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Assets\JS\Controllers\Admin\SubsubcategoryView.coffee" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Assets\JS\Controllers\Admin\AdministratorView.coffee" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Assets\JS\Controllers\Admin\Mission.coffee" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Assets\JS\Apps\Employee.coffee" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Assets\JS\Controllers\Employee\Profile.coffee" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Assets\JS\Controllers\Admin\MissionView.coffee" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Assets\JS\Controllers\Admin\Customer.coffee" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Assets\JS\Controllers\Admin\CustomerView.coffee" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Assets\JS\Controllers\Admin\Login.coffee" />
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <Target Name="MvcBuildViews" AfterTargets="AfterBuild" Condition="'$(MvcBuildViews)'=='true'">
+    <AspNetCompiler VirtualPath="temp" PhysicalPath="$(WebProjectOutputDir)" />
+  </Target>
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>0</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>http://localhost:47466/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target> -->
+</Project>

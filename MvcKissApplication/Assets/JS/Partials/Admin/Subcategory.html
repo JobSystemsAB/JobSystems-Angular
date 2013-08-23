@@ -1,0 +1,33 @@
+﻿<h1>Underkategorier</h1>
+
+<div>
+    <form action="#/subcategory/0">
+        <button>Skapa ny underkategori</button>
+    </form>
+</div>
+
+<div>
+    <table>
+        <tr>
+            <th></th>
+            <th>Id</th>
+            <th>Namn</th>
+            <th>Beskrivning</th>
+        </tr>
+        <tr data-ng-repeat="subcategory in subcategories">
+            <td>
+                <form action="#/subcategory/{{ subcategory.id }}">
+                    <button>Ändra</button>
+                </form>
+            </td>
+            <td>{{ subcategory.id }}</td>
+            <td>{{ subcategory.name }}</td>
+            <td>{{ subcategory.description }}</td>
+            <td>
+                <button data-ng-click="delete(subcategory)">
+                    Ta bort
+                </button>
+            </td>
+        </tr>
+    </table>
+</div>

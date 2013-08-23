@@ -48,6 +48,7 @@ namespace MvcApplication1.Api.controllers
                         var original = view.convert(this._context);
                         this._context.privateCustomers.Add(original);
                         this._context.SaveChanges();
+
                         view.id = original.id;
                             
                         HttpResponseMessage response = Request.CreateResponse(HttpStatusCode.OK, view);

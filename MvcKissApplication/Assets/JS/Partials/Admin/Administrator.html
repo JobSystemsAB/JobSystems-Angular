@@ -1,0 +1,32 @@
+﻿<h1>Administratorer</h1>
+
+<div>
+    <form action="#/administrator/0">
+        <button>Skapa ny administrator</button>
+    </form>
+</div>
+
+<div>
+    <table>
+        <tr>
+            <th></th>
+            <th>Id</th>
+            <th>Epost</th>
+            <th></th>
+        </tr>
+        <tr data-ng-repeat="administrator in administrators">
+            <td>
+                <form action="#/administrator/{{ administrator.id }}">
+                    <button>Ändra</button>
+                </form>
+            </td>
+            <td>{{ administrator.id }}</td>
+            <td>{{ administrator.emailAddress }}</td>
+            <td>
+                <button data-ng-click="delete(administrator)">
+                    Ta bort
+                </button>
+            </td>
+        </tr>
+    </table>
+</div>

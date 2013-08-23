@@ -1,0 +1,40 @@
+﻿<h1>Anstälda</h1>
+
+<div>
+    <form action="#/employee/0">
+        <button>Skapa ny anstäld</button>
+    </form>
+</div>
+
+<div>
+    <table>
+        <tr>
+            <th></th>
+            <th>Id</th>
+            <th>Förnamn</th>
+            <th>Efternamn</th>
+            <th>Epost</th>
+            <th>Telefonnummer</th>
+            <th>Personnummer</th>
+            <th></th>
+        </tr>
+        <tr data-ng-repeat="employee in employees">
+            <td>
+                <form action="#/employee/{{ employee.id }}">
+                    <button>Ändra</button>
+                </form>
+            </td>
+            <td>{{ employee.id }}</td>
+            <td>{{ employee.firstName }}</td>
+            <td>{{ employee.lastName }}</td>
+            <td>{{ employee.emailAddress }}</td>
+            <td>{{ employee.phoneNumber }}</td>
+            <td>{{ employee.personalNumber }}</td>
+            <td>
+                <button data-ng-click="delete(employee)">
+                    Ta bort
+                </button>
+            </td>
+        </tr>
+    </table>
+</div>

@@ -1,0 +1,11 @@
+﻿<h1>ADoer - Hitta någon som fixar det åt dig!</h1>
+
+<div>
+    <h3>Kategori:</h3>
+    <label data-ng-show="output.categories.length < 1">Loading...</label>
+
+    <form data-ng-repeat="category in output.categories" action="#/category/{{ category.id }}">
+        <button data-ng-href="category.url">{{ category.name }}</button>
+    </form>
+
+</div>

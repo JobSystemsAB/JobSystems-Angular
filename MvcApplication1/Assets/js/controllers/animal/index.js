@@ -43,7 +43,7 @@
 
         $scope.input.customer.address = $scope.input.mission.address;
         customer = new CustomerPrivate($scope.input.customer);
-        console.log("Creating costumer");
+        console.log("Creating Customer");
         return customer.$save(function(data) {
           console.log("Customer created ", data.id);
           return $scope.createMission(data.id);

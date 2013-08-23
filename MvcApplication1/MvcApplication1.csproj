@@ -141,23 +141,18 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Api\controllers\AdministratorsController.cs" />
+    <Compile Include="Api\controllers\CustomersCompanyController.cs" />
     <Compile Include="Api\controllers\CustomersController.cs" />
     <Compile Include="Api\controllers\CustomersPrivateController.cs" />
-    <Compile Include="Api\controllers\EmployeesPetController.cs" />
     <Compile Include="Api\controllers\MissionsController.cs" />
     <Compile Include="Api\controllers\EmployeesController.cs" />
     <Compile Include="Api\controllers\helpers\GoogleMail.cs" />
-    <Compile Include="Api\controllers\MissionsPetController.cs" />
-    <Compile Include="Api\controllers\PetsController.cs" />
     <Compile Include="Api\views\AdministratorView.cs" />
-    <Compile Include="Api\views\EmployeePetView.cs" />
     <Compile Include="Api\views\CustomerCompanyView.cs" />
     <Compile Include="Api\views\CustomerPrivateView.cs" />
     <Compile Include="Api\views\CustomerView.cs" />
-    <Compile Include="Api\views\MissionPetView.cs" />
     <Compile Include="Api\views\EmployeeView.cs" />
     <Compile Include="Api\views\MissionView.cs" />
-    <Compile Include="Api\views\PetView.cs" />
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
     <Compile Include="Areas\Admin\Controllers\HomeController.cs" />
@@ -167,14 +162,14 @@
     <Compile Include="Database\Helpers\EntityFrameworkContext.cs" />
     <Compile Include="Database\Helpers\IEntity.cs" />
     <Compile Include="Database\Models\Administrator.cs" />
+    <Compile Include="Database\Models\Category.cs" />
     <Compile Include="Database\Models\Customer.cs" />
-    <Compile Include="Database\Models\Pet.cs" />
     <Compile Include="Database\Models\CustomerCompany.cs" />
     <Compile Include="Database\Models\Mission.cs" />
     <Compile Include="Database\Models\CustomerPrivate.cs" />
-    <Compile Include="Database\Models\MissionPet.cs" />
     <Compile Include="Database\Models\Employee.cs" />
-    <Compile Include="Database\Models\EmployeePet.cs" />
+    <Compile Include="Database\Models\Subcategory.cs" />
+    <Compile Include="Database\Models\Subsubcategory.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>

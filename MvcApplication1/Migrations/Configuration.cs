@@ -41,16 +41,6 @@ namespace MvcApplication1.Migrations
                 }
             );
 
-            context.pets.AddOrUpdate(
-                a => a.name,
-                new Pet { name = "Hund" },
-                new Pet { name = "Katt" },
-                new Pet { name = "Häst" },
-                new Pet { name = "Marsvin" },
-                new Pet { name = "Kanin" },
-                new Pet { name = "Fågel" }
-            );
-
             context.privateCustomers.AddOrUpdate(
                 c => c.personalNumber,
                 new CustomerPrivate
@@ -126,7 +116,6 @@ namespace MvcApplication1.Migrations
                     hourSalary = "120",
                     infoText = "Trevlig o klyftig grabb",
                     lastName = "Berrios Salas",
-                    mobilePhoneNumber = "0704333005",
                     password = "misse",
                     personalNumber = "8608120336",
                     phoneNumber = "n/a",
