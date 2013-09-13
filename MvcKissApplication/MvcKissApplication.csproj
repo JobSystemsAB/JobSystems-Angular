@@ -473,15 +473,13 @@
       <DebugInfo>False</DebugInfo>
     </Content>
     <Content Include="Assets\JS\Resources\Services\Text.coffee" />
+    <Content Include="Assets\JS\Controllers\Home\Category.coffee" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\Home\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="Assets\JS\Controllers\Home\Category.coffee" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Assets\JS\Resources\Resources.coffee" />
