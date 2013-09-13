@@ -28,6 +28,11 @@ namespace MvcKissApplication.Api.Helpers
             return db.administrators.FirstOrDefault(x => x.id == id);
         }
 
+        public IEnumerable<Administrator> getAdministrators(int[] ids)
+        {
+            return db.administrators.Where(x => ids.Contains(x.id));
+        }
+
         public Administrator getAdministrator(string email, string password)
         {
             return db.administrators.FirstOrDefault(x => x.emailAddress.ToLower() == email.ToLower() && x.password == password);
@@ -47,12 +52,6 @@ namespace MvcKissApplication.Api.Helpers
             db.SaveChanges();
         }
 
-        //public void updateAdministrator(Administrator model)
-        //{
-        //    db.Entry(model).State = EntityState.Modified;
-        //    db.SaveChanges();
-        //}
-
         #endregion
 
         #region CATEGORY
@@ -65,6 +64,11 @@ namespace MvcKissApplication.Api.Helpers
         public Category getCategory(int id)
         {
             return db.categories.FirstOrDefault(x => x.id == id);
+        }
+
+        public IEnumerable<Category> getCategories(int[] ids)
+        {
+            return db.categories.Where(x => ids.Contains(x.id));
         }
 
         public Category createCategory(Category model)
@@ -81,12 +85,6 @@ namespace MvcKissApplication.Api.Helpers
             db.SaveChanges();
         }
 
-        //public void updateCategory(Category model)
-        //{
-        //    db.Entry(model).State = EntityState.Modified;
-        //    db.SaveChanges();
-        //}
-
         #endregion
 
         #region CATEGORY INPUT
@@ -99,6 +97,11 @@ namespace MvcKissApplication.Api.Helpers
         public CategoryInput getCategoryInput(int id)
         {
             return db.categoryInputs.FirstOrDefault(x => x.id == id);
+        }
+
+        public IEnumerable<CategoryInput> getCategoryInputs(int[] ids)
+        {
+            return db.categoryInputs.Where(x => ids.Contains(x.id));
         }
 
         public CategoryInput createCategoryInput(CategoryInput model)
@@ -115,12 +118,6 @@ namespace MvcKissApplication.Api.Helpers
             db.SaveChanges();
         }
 
-        //public void updateCategoryInput(CategoryInput model)
-        //{
-        //    db.Entry(model).State = EntityState.Modified;
-        //    db.SaveChanges();
-        //}
-
         #endregion
 
         #region COMPANY CUSTOMER
@@ -133,6 +130,11 @@ namespace MvcKissApplication.Api.Helpers
         public CompanyCustomer getCompanyCustomer(int id)
         {
             return db.companyCustomers.FirstOrDefault(x => x.id == id);
+        }
+
+        public IEnumerable<CompanyCustomer> getCompanyCustomers(int[] ids)
+        {
+            return db.companyCustomers.Where(x => ids.Contains(x.id));
         }
 
         public CompanyCustomer createCompanyCustomer(CompanyCustomer model)
@@ -148,12 +150,6 @@ namespace MvcKissApplication.Api.Helpers
             db.companyCustomers.Remove(model);
             db.SaveChanges();
         }
-
-        //public void updateCompanyCustomer(CompanyCustomer model)
-        //{
-        //    db.Entry(model).State = EntityState.Modified;
-        //    db.SaveChanges();
-        //}
 
         #endregion
 
@@ -183,6 +179,11 @@ namespace MvcKissApplication.Api.Helpers
             return db.customers.FirstOrDefault(x => x.emailAddress.ToLower() == email.ToLower() && x.password == password);
         }
 
+        public IEnumerable<Customer> getCustomers(int[] ids)
+        {
+            return db.customers.Where(x => ids.Contains(x.id));
+        }
+
         #endregion
 
         #region EMPLOYEE
@@ -202,6 +203,11 @@ namespace MvcKissApplication.Api.Helpers
             return db.employees.FirstOrDefault(x => x.emailAddress.ToLower() == email.ToLower() && x.password == password);
         }
 
+        public IEnumerable<Employee> getEmployees(int[] ids)
+        {
+            return db.employees.Where(x => ids.Contains(x.id));
+        }
+
         public Employee createEmployee(Employee model)
         {
             db.employees.Add(model);
@@ -216,12 +222,6 @@ namespace MvcKissApplication.Api.Helpers
             db.SaveChanges();
         }
 
-        //public void updateEmployee(Employee model)
-        //{
-        //    db.Entry(model).State = EntityState.Modified;
-        //    db.SaveChanges();
-        //}
-
         #endregion
 
         #region MISSION
@@ -234,6 +234,11 @@ namespace MvcKissApplication.Api.Helpers
         public Mission getMission(int id)
         {
             return db.missions.FirstOrDefault(x => x.id == id);
+        }
+
+        public IEnumerable<Mission> getMissions(int[] ids)
+        {
+            return db.missions.Where(x => ids.Contains(x.id));
         }
 
         public Mission createMission(Mission model)
@@ -250,12 +255,6 @@ namespace MvcKissApplication.Api.Helpers
             db.SaveChanges();
         }
 
-        //public void updateMission(Mission model)
-        //{
-        //    db.Entry(model).State = EntityState.Modified;
-        //    db.SaveChanges();
-        //}
-
         #endregion
 
         #region PRIVATE CUSTOMER
@@ -268,6 +267,11 @@ namespace MvcKissApplication.Api.Helpers
         public PrivateCustomer getPrivateCustomer(int id)
         {
             return db.privateCustomers.FirstOrDefault(x => x.id == id);
+        }
+
+        public IEnumerable<PrivateCustomer> getPrivateCustomers(int[] ids)
+        {
+            return db.privateCustomers.Where(x => ids.Contains(x.id));
         }
 
         public PrivateCustomer createPrivateCustomer(PrivateCustomer model)
@@ -284,79 +288,43 @@ namespace MvcKissApplication.Api.Helpers
             db.SaveChanges();
         }
 
-        //public void updatePrivateCustomer(PrivateCustomer model)
-        //{
-        //    db.Entry(model).State = EntityState.Modified;
-        //    db.SaveChanges();
-        //}
-
         #endregion
 
-        #region SUBCATEGORY
+        #region TEXT
 
-        public IEnumerable<Subcategory> getAllSubcategories()
+        public IEnumerable<Text> getAllTexts()
         {
-            return db.subcategories;
+            return db.texts;
         }
 
-        public Subcategory getSubcategory(int id)
+        public Text getText(int id)
         {
-            return db.subcategories.FirstOrDefault(x => x.id == id);
+            return db.texts.FirstOrDefault(x => x.id == id);
         }
 
-        public Subcategory createSubcategory(Subcategory model)
+        public IEnumerable<Text> getText(int[] ids)
         {
-            db.subcategories.Add(model);
+            return db.texts.Where(x => ids.Contains(x.id));
+        }
+
+        public IEnumerable<Text> getText(string controllerName, string language)
+        {
+            return db.texts.Where(x => x.controllerName == controllerName && x.language == language);
+        }
+
+        public Text createText(Text model)
+        {
+            db.texts.Add(model);
             db.SaveChanges();
             return model;
         }
 
-        public void deleteSubcategory(int id)
+        public void deleteText(int id)
         {
-            var model = db.subcategories.Find(id);
-            db.subcategories.Remove(model);
+            var model = db.texts.Find(id);
+            db.texts.Remove(model);
             db.SaveChanges();
         }
-
-        //public void updateSubcategory(Subcategory model)
-        //{
-        //    db.Entry(model).State = EntityState.Modified;
-        //    db.SaveChanges();
-        //}
-
-        #endregion
-
-        #region SUBSÙBCATEGORY
-
-        public IEnumerable<Subsubcategory> getAllSubsubcategories()
-        {
-            return db.subsubcategories;
-        }
-
-        public Subsubcategory getSubsubcategory(int id)
-        {
-            return db.subsubcategories.FirstOrDefault(x => x.id == id);
-        }
-
-        public Subsubcategory createSubsubcategory(Subsubcategory model)
-        {
-            db.subsubcategories.Add(model);
-            db.SaveChanges();
-            return model;
-        }
-
-        public void deleteSubsubcategory(int id)
-        {
-            var model = db.subsubcategories.Find(id);
-            db.subsubcategories.Remove(model);
-            db.SaveChanges();
-        }
-
-        //public void updateSubsubcategory(Subsubcategory model)
-        //{
-        //    db.Entry(model).State = EntityState.Modified;
-        //    db.SaveChanges();
-        //}
 
         #endregion
 
@@ -370,6 +338,11 @@ namespace MvcKissApplication.Api.Helpers
         public WorkShift getWorkShift(int id)
         {
             return db.workShifts.FirstOrDefault(x => x.id == id);
+        }
+
+        public IEnumerable<WorkShift> getWorkShifts(int[] ids)
+        {
+            return db.workShifts.Where(x => ids.Contains(x.id));
         }
 
         public WorkShift createWorkShift(WorkShift model)
@@ -386,18 +359,17 @@ namespace MvcKissApplication.Api.Helpers
             db.SaveChanges();
         }
 
-        //public void updateWorkShift(WorkShift model)
-        //{
-        //    db.Entry(model).State = EntityState.Modified;
-        //    db.SaveChanges();
-        //}
-
         #endregion
 
         public void update(IEntity model)
         {
             db.Entry(model).State = EntityState.Modified;
             db.SaveChanges();
+        }
+
+        public void dispose()
+        {
+            db.Dispose();
         }
 
     }

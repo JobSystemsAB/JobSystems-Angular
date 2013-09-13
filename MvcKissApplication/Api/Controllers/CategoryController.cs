@@ -1,10 +1,12 @@
 ﻿using MvcKissApplication.Api.Helpers;
+using MvcKissApplication.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
+using WebAPI.OutputCache;
 
 namespace MvcKissApplication.Api.ViewModels
 {
@@ -30,6 +32,7 @@ namespace MvcKissApplication.Api.ViewModels
 
         [HttpGet]
         [ActionName("DefaultAction")]
+        [CacheOutput(ClientTimeSpan = 0, ServerTimeSpan = 0)]
         public IEnumerable<CategoryView> Get()
         {
             var models = repo.getAllCategories();
@@ -38,7 +41,33 @@ namespace MvcKissApplication.Api.ViewModels
         }
 
         [HttpGet]
+        [CacheOutput(ClientTimeSpan = 0, ServerTimeSpan = 0)]
+        public Node GetTree()
+        {
+            var categories = repo.getAllCategories();
+            var categoryViews = CategoryView.getViews(categories);
+
+            Node tree = new Node();
+            constructTree(tree, categoryViews.ToArray(), null);
+
+            return tree;
+        }
+
+        private void constructTree(Node node, ICollection<CategoryView> categories, int? currentId)
+        {
+            var children = categories.Where(c => c.parentId == currentId);
+            foreach (var child in children)
+            {
+                Node leaf = new Node();
+                leaf.data = child;
+                node.children.Add(leaf);
+                constructTree(leaf, categories, child.id);
+            }
+        }
+
+        [HttpGet]
         [ActionName("DefaultAction")]
+        [CacheOutput(ClientTimeSpan = 0, ServerTimeSpan = 0)]
         public HttpResponseMessage Get(int id)
         {
             var model = repo.getCategory(id);
@@ -54,6 +83,7 @@ namespace MvcKissApplication.Api.ViewModels
         }
 
         [HttpGet]
+        [CacheOutput(ClientTimeSpan = 0, ServerTimeSpan = 0)]
         public HttpResponseMessage Missions(int id)
         {
             var model = repo.getCategory(id);
@@ -70,6 +100,7 @@ namespace MvcKissApplication.Api.ViewModels
         }
 
         [HttpGet]
+        [CacheOutput(ClientTimeSpan = 0, ServerTimeSpan = 0)]
         public HttpResponseMessage Employees(int id)
         {
             var model = repo.getCategory(id);
@@ -86,7 +117,8 @@ namespace MvcKissApplication.Api.ViewModels
         }
 
         [HttpGet]
-        public HttpResponseMessage Subcategories(int id)
+        [CacheOutput(ClientTimeSpan = 0, ServerTimeSpan = 0)]
+        public HttpResponseMessage Children(int id)
         {
             var model = repo.getCategory(id);
             if (model == null)
@@ -95,13 +127,14 @@ namespace MvcKissApplication.Api.ViewModels
             }
             else
             {
-                var subcategories = model.subcategories;
-                var views = SubcategoryView.getViews(subcategories);
+                var subcategories = model.children;
+                var views = CategoryView.getViews(subcategories);
                 return Request.CreateResponse(HttpStatusCode.OK, views);
             }
         }
 
         [HttpGet]
+        [CacheOutput(ClientTimeSpan = 0, ServerTimeSpan = 0)]
         public HttpResponseMessage CategoryInputs(int id)
         {
             var model = repo.getCategory(id);

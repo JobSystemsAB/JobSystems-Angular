@@ -3,6 +3,7 @@ using MvcKissApplication.Database.Helpers;
 using MvcKissApplication.Database.Models;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
 
@@ -15,6 +16,8 @@ namespace MvcKissApplication.Api.ViewModels
 
         public int id { get; set; }
 
+        [Required]
+        [EmailAddress(ErrorMessage="Ej giltig mailaddress")]
         public string emailAddress { get; set; }
 
         public string phoneNumber { get; set; }

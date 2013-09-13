@@ -1,12 +1,25 @@
 ﻿window.app.controller 'MissionController', 
 
-['$scope', 'Mission', 
-( $scope,   Mission) ->
+['$scope', 'Mission', 'MissionService'
+( $scope,   Mission,   MissionService) ->
 
+    # -- INIT
+
+    $scope.missions = {}
 
     # -- DATA
 
-    $scope.missions = Mission.query()
+    $scope.missions = MissionService.getEmployed()
+        .success (data, status) ->
+            $scope.employed = data
+
+    $scope.missions = MissionService.getUnemployed()
+        .success (data, status) ->
+            $scope.unemployed = data
+
+    $scope.missions = MissionService.getDisabled()
+        .success (data, status) ->
+            $scope.disabled = data
 
     # -- METHOD
 

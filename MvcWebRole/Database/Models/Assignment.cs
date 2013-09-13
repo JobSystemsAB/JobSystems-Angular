@@ -26,11 +26,11 @@ namespace MvcWebRole.Database.Models
         [ForeignKey("clientId")]
         public virtual Client client { get; set; }
 
-        public virtual ICollection<Performer> performers { get; set; }
+        public virtual IEnumerable<Performer> performers { get; set; }
 
-        public virtual ICollection<PerformerTimeReport> timeReports { get; set; }
+        public virtual IEnumerable<PerformerTimeReport> timeReports { get; set; }
 
-        public virtual ICollection<Knowledge> knowledges { get; set; }
+        public virtual IEnumerable<Knowledge> knowledges { get; set; }
 
         public DateTime? created { get; set; }
 

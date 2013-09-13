@@ -1,10 +1,12 @@
 ﻿using MvcKissApplication.Api.Helpers;
+using MvcKissApplication.Database.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
+using WebAPI.OutputCache;
 
 namespace MvcKissApplication.Api.ViewModels
 {
@@ -30,6 +32,7 @@ namespace MvcKissApplication.Api.ViewModels
 
         [HttpGet]
         [ActionName("DefaultAction")]
+        [CacheOutput(ClientTimeSpan = 0, ServerTimeSpan = 0)]
         public IEnumerable<EmployeeView> Get()
         {
             var models = repo.getAllEmployees();
@@ -39,6 +42,7 @@ namespace MvcKissApplication.Api.ViewModels
 
         [HttpGet]
         [ActionName("DefaultAction")]
+        [CacheOutput(ClientTimeSpan = 0, ServerTimeSpan = 0)]
         public HttpResponseMessage Get(int id)
         {
             var model = repo.getEmployee(id);
@@ -54,6 +58,22 @@ namespace MvcKissApplication.Api.ViewModels
         }
 
         [HttpGet]
+        public HttpResponseMessage GetLogin(string email, string password)
+        {
+            var model = repo.getEmployee(email, password);
+            if (model == null)
+            {
+                return Request.CreateResponse(HttpStatusCode.NotFound);
+            }
+            else
+            {
+                var view = new EmployeeView(model);
+                return Request.CreateResponse(HttpStatusCode.OK, view);
+            }
+        }
+
+        [HttpGet]
+        [CacheOutput(ClientTimeSpan = 0, ServerTimeSpan = 0)]
         public HttpResponseMessage Missions(int id)
         {
             var model = repo.getEmployee(id);
@@ -71,6 +91,7 @@ namespace MvcKissApplication.Api.ViewModels
         }
 
         [HttpGet]
+        [CacheOutput(ClientTimeSpan = 0, ServerTimeSpan = 0)]
         public HttpResponseMessage WorkShifts(int id)
         {
             var model = repo.getEmployee(id);
@@ -88,6 +109,7 @@ namespace MvcKissApplication.Api.ViewModels
         }
 
         [HttpGet]
+        [CacheOutput(ClientTimeSpan = 0, ServerTimeSpan = 0)]
         public int Amount()
         {
             return repo.getAllEmployees().Count();
@@ -100,6 +122,7 @@ namespace MvcKissApplication.Api.ViewModels
             var model = view.getModel();
             model.created = DateTime.UtcNow;
             model.updated = DateTime.UtcNow;
+            model.fakeId = Guid.NewGuid();
             model = repo.createEmployee(model);
             view = new EmployeeView(model);
 
@@ -107,6 +130,31 @@ namespace MvcKissApplication.Api.ViewModels
             string uri = Url.Route(null, new { id = view.id });
             response.Headers.Location = new Uri(Request.RequestUri, uri);
             return response;
+        }
+
+        [HttpPost]
+        public HttpResponseMessage ConnectCategory(dynamic input)
+        {
+            var employee = repo.getEmployee((int)input.employeeId.Value);
+
+            if (employee == null)
+            {
+                return Request.CreateResponse(HttpStatusCode.NotFound);
+            }
+            else
+            {
+                var categoryIds = new int[input.categoryIds.Count];
+                for (int i = 0; i < input.categoryIds.Count; i++ )
+                {
+                    categoryIds[i] = (int)input.categoryIds[i];
+                }
+                
+                var categories = repo.getCategories(categoryIds);
+                employee.categories = categories.ToArray();
+                
+                repo.update(employee);
+                return Request.CreateResponse(HttpStatusCode.OK);
+            }
         }
 
         [HttpPut]

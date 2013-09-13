@@ -5,6 +5,7 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
+using WebAPI.OutputCache;
 
 namespace MvcKissApplication.Api.ViewModels
 {
@@ -30,6 +31,7 @@ namespace MvcKissApplication.Api.ViewModels
 
         [HttpGet]
         [ActionName("DefaultAction")]
+        [CacheOutput(ClientTimeSpan = 0, ServerTimeSpan = 0)]
         public IEnumerable<CustomerView> Get()
         {
             var models = repo.getAllCustomers();
@@ -38,6 +40,7 @@ namespace MvcKissApplication.Api.ViewModels
         }
 
         [HttpGet]
+        [CacheOutput(ClientTimeSpan = 0, ServerTimeSpan = 0)]
         public HttpResponseMessage GetLogin(string email, string password)
         {
             var model = repo.getCustomer(email, password);
@@ -53,6 +56,7 @@ namespace MvcKissApplication.Api.ViewModels
         }
 
         [HttpGet]
+        [CacheOutput(ClientTimeSpan = 0, ServerTimeSpan = 0)]
         public HttpResponseMessage Mission(int id)
         {
             var model = repo.getCustomer(id);
@@ -69,6 +73,7 @@ namespace MvcKissApplication.Api.ViewModels
         }
 
         [HttpGet]
+        [CacheOutput(ClientTimeSpan = 0, ServerTimeSpan = 0)]
         public int Amount(int id)
         {
             return repo.getAllCompanyCustomers().Count();

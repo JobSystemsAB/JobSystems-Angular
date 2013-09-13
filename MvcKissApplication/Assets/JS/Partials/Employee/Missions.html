@@ -1,0 +1,38 @@
+﻿<table>
+    
+    <tr>
+        <th>Id</th>
+        <th>Uppdragsgivare</th>
+        <th>Address</th>
+        <th>Mer info</th>
+    </tr>
+
+    <tr data-ng-repeat="mission in output.missionsOngoing">
+        <td>{{ mission.id }}</td>
+        <td>{{ mission.name }}</td>
+        <td>{{ mission.fullAddress }}</td>
+        <td>{{ mission.description }}</td>
+        <td>{{ mission.status }}</td>
+    </tr>
+
+</table>
+
+<table>
+    
+    <tr>
+        <th>Id</th>
+        <th>Uppdragsgivare</th>
+        <th>Address</th>
+        <th>Mer info</th>
+    </tr>
+
+    <tr data-ng-repeat="mission in output.missionsNew">
+        <td>{{ mission.id }}</td>
+        <td>{{ mission.name }}</td>
+        <td>{{ mission.fullAddress }}</td>
+        <td>{{ mission.description }}</td>
+        <td>{{ mission.status }}</td>
+    </tr>
+    
+</table>
+

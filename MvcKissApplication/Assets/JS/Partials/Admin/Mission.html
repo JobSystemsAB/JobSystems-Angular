@@ -1,30 +1,110 @@
 ﻿<h1>Uppdrag</h1>
 
-<div>
-    <form action="#/mission/0">
-        <button>Skapa nytt uppdrag</button>
-    </form>
-</div>
+<a data-ng-click="currentView=1">
+    <label>Ej bemannade ...</label>
+</a>
 
-<div>
-    <table>
+<a data-ng-click="currentView=2">
+    <label>Bemannade ...</label>
+</a>
+
+<a data-ng-click="currentView=3">
+    <label>Inaktiverade</label>
+</a>
+
+<div data-ng-show="currentView == 1">
+    <table class="js-hor-min">
         <tr>
-            <th></th>
+            <th>
+                <form action="#/mission/0">
+                    <button>
+                        <i class="bs-icon bs-icon-plus"></i>
+                    </button>
+                </form>
+            </th>
             <th>Id</th>
             <th>Beskrivning</th>
             <th></th>
         </tr>
-        <tr data-ng-repeat="mission in missions">
-            <td>
+        <tr data-ng-repeat="mission in unemployed">
+            <td class="btn">
                 <form action="#/mission/{{ mission.id }}">
-                    <button>Ändra</button>
+                    <button>
+                        <i class="bs-icon bs-icon-edit"></i>
+                    </button>
                 </form>
             </td>
             <td>{{ mission.id }}</td>
             <td>{{ mission.description }}</td>
-            <td>
+            <td class="btn">
                 <button data-ng-click="delete(mission)">
-                    Ta bort
+                    <i class="bs-icon bs-icon-remove"></i>
+                </button>
+            </td>
+        </tr>
+    </table>
+</div>
+
+<div data-ng-show="currentView == 2">
+    <table class="js-hor-min">
+        <tr>
+            <th>
+                <form action="#/mission/0">
+                    <button>
+                        <i class="bs-icon bs-icon-plus"></i>
+                    </button>
+                </form>
+            </th>
+            <th>Id</th>
+            <th>Beskrivning</th>
+            <th></th>
+        </tr>
+        <tr data-ng-repeat="mission in employed">
+            <td class="btn">
+                <form action="#/mission/{{ mission.id }}">
+                    <button>
+                        <i class="bs-icon bs-icon-edit"></i>
+                    </button>
+                </form>
+            </td>
+            <td>{{ mission.id }}</td>
+            <td>{{ mission.description }}</td>
+            <td class="btn">
+                <button data-ng-click="delete(mission)">
+                    <i class="bs-icon bs-icon-remove"></i>
+                </button>
+            </td>
+        </tr>
+    </table>
+</div>
+
+<div data-ng-show="currentView == 3">
+    <table class="js-hor-min">
+        <tr>
+            <th>
+                <form action="#/mission/0">
+                    <button>
+                        <i class="bs-icon bs-icon-plus"></i>
+                    </button>
+                </form>
+            </th>
+            <th>Id</th>
+            <th>Beskrivning</th>
+            <th></th>
+        </tr>
+        <tr data-ng-repeat="mission in disabled">
+            <td class="btn">
+                <form action="#/mission/{{ mission.id }}">
+                    <button>
+                        <i class="bs-icon bs-icon-edit"></i>
+                    </button>
+                </form>
+            </td>
+            <td>{{ mission.id }}</td>
+            <td>{{ mission.description }}</td>
+            <td class="btn">
+                <button data-ng-click="delete(mission)">
+                    <i class="bs-icon bs-icon-remove"></i>
                 </button>
             </td>
         </tr>

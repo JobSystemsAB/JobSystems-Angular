@@ -1,6 +1,148 @@
-﻿
-<h1>Bli ADoer</h1>
+﻿<h1>Bli Adoer</h1>
 
 <div>
+    <h3>Kontaktinformation</h3>
+    <table>
+        <tr>
+            <td>Förnamn</td>
+            <td>
+                <input
+                    type="text"
+                    data-ng-model="input.employee.firstName"
+                    data-on-focus="getInputClarification(1)"
+                    data-on-blur="clearInputClarification()" />
+            </td>
+        </tr>
+        <tr>
+            <td>Efternamn</td>
+            <td>
+                <input
+                    type="text"
+                    data-ng-model="input.employee.lastName"
+                    data-on-focus="getInputClarification(2)"
+                    data-on-blur="clearInputClarification()" />
+            </td>
+        </tr>
+        <tr>
+            <td>Telefonnummer</td>
+            <td>
+                <input
+                    type="number"
+                    data-ng-model="input.employee.phoneNumber"
+                    data-on-focus="getInputClarification(3)"
+                    data-on-blur="clearInputClarification()" />
+            </td>
+        </tr>
+        <tr>
+            <td>Epost</td>
+            <td>
+                <input
+                    type="email"
+                    data-ng-model="input.employee.emailAddress"
+                    data-on-focus="getInputClarification(4)"
+                    data-on-blur="clearInputClarification()" />
+            </td>
+        </tr>
+    </table>
+</div>
 
+<div>
+    <p>{{ output.inputClarifications }} </p>
+</div>
+
+<div>
+    <h3>Kunskaper</h3>
+
+    <ul>
+        <li data-ng-repeat="child in categories.children | orderBy: 'data.name'">
+            <label>
+                <input
+                    type="radio"
+                    name="category"
+                    value="{{ child.data.id }}"
+                    data-ng-disabled="child.children.length > 0"
+                    data-ng-checked="child.data.checked"
+                    data-ng-model="child.data.checked"
+                    data-ng-click="categoryClicked(child)" />
+                {{ child.data.name }}
+            </label>
+            <ul>
+                <li data-ng-repeat="child2 in child.children | orderBy: 'data.name'">
+                    <label>
+                        <input
+                            type="checkbox"
+                            data-ng-disabled="child2.children.length > 0"
+                            data-ng-checked="child2.data.checked"
+                            data-ng-model="child2.data.checked"
+                            data-ng-click="categoryClicked(child)" />
+                        {{ child2.data.name }}
+                    </label>
+                    <ul>
+                        <li data-ng-repeat="child3 in child2.children | orderBy: 'data.name'">
+                            <label>
+                                <input
+                                    type="checkbox"
+                                    data-ng-model="child3.data.checked"
+                                    data-ng-checked="child3.data.checked"
+                                    data-ng-click="categoryClicked(child)" />
+                                {{ child3.data.name }}
+                            </label>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+        </li>
+    </ul>
+
+
+
+    <ul>
+        <li data-ng-repeat="category in output.categories">
+            <label>
+                <input
+                    type="radio"
+                    name="category"
+                    value="{{ category.id }}"
+                    data-ng-disabled="categoryHasChildren(category.id)"
+                    data-ng-checked="category.checked"
+                    data-ng-model="category.checked"
+                    data-ng-click="categoryClicked(category)" />
+                {{ category.name }}
+            </label>
+            <ul>
+                <li data-ng-repeat="subcategory in output.groupedSubcategories[category.id]">
+                    <label>
+                        <input
+                            type="checkbox"
+                            data-ng-disabled="subcategoryHasChildren(subcategory.id)"
+                            data-ng-checked="subcategory.checked"
+                            data-ng-model="subcategory.checked"
+                            data-ng-click="subcategoryClicked(subcategory)" />
+                        {{ subcategory.name }}
+                    </label>
+                    <ul>
+                        <li data-ng-repeat="subsubcategory in output.groupedSubsubcategories[subcategory.id]">
+                            <label>
+                                <input
+                                    type="checkbox"
+                                    data-ng-model="subsubcategory.checked"
+                                    data-ng-checked="subsubcategory.checked"
+                                    data-ng-click="subsubcategoryClicked(subsubcategory, category.id)" />
+                                {{ subsubcategory.name }} {{ subsubcategory.id }}
+                            </label>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+        </li>
+    </ul>
+</div>
+
+<div>
+    <h3>Ge en kort personlig beskrivning</h3>
+    <textarea data-ng-model="input.employee.description"></textarea>
+</div>
+
+<div>
+    <button data-ng-click="send()">Bli en adoer</button>
 </div>

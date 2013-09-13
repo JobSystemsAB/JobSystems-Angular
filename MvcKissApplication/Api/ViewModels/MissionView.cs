@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using MvcKissApplication.Api.Helpers;
 using MvcKissApplication.Database.Helpers;
 using MvcKissApplication.Database.Models;
 using System;
@@ -15,15 +16,26 @@ namespace MvcKissApplication.Api.ViewModels
 
         public int id { get; set; }
 
+        public int? hours { get; set; }
+
+        public int? customerId { get; set; }
+
+        public int[] categoryIds { get; set; }
+
         public string description { get; set; }
+
+        public string date { get; set; }
 
         public string created { get; set; }
 
         public string updated { get; set; }
 
+        public string extras { get; set; }
+
         public Address address { get; set; }
 
         public bool enabled { get; set; }
+
 
         #endregion
 
@@ -39,15 +51,19 @@ namespace MvcKissApplication.Api.ViewModels
             
             this.created = model.created.ToString().Replace('T', ' ');
             this.updated = model.updated.ToString().Replace('T', ' ');
+            this.date = model.date == null ? String.Empty : model.date.ToString();
         }
 
-        public Mission getModel()
+        public Mission getModel(IRepository repo)
         {
             var model = new Mission();
 
             Mapper.CreateMap<MissionView, Mission>();
             Mapper.Map<MissionView, Mission>(this, model);
-            
+
+            if (this.customerId != null) { model.customer = repo.getCustomer((int)this.customerId); }
+            if (this.categoryIds.Length > 0) { model.categories = repo.getCategories(this.categoryIds).ToArray(); }
+
             return model;
         }
 

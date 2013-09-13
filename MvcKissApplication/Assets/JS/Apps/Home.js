@@ -1,5 +1,5 @@
 (function() {
-  window.app = angular.module('HomeApp', ['services', 'ui.bootstrap', 'ui.date', 'google-maps']);
+  window.app = angular.module('HomeApp', ['services', 'ui.bootstrap', 'ui.date', 'ui.calendar', 'google-maps']);
 
   window.app.config(function($routeProvider, $locationProvider) {
     $routeProvider.when('/index', {

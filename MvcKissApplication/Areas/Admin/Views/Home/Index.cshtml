@@ -1,27 +1,53 @@
 ﻿@using System.Web.Optimization
 
-<html data-ng-app="AdminApp">
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7" data-ng-app="AdminApp"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8" data-ng-app="AdminApp"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9" data-ng-app="AdminApp"> <![endif]-->
+<!--[if gt IE 8]><!-->
+<html class="no-js" data-ng-app="AdminApp">
+<!--<![endif]-->
+
 <head>
+    @Styles.Render("~/bundle/css")
     <title>Adminportal</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 </head>
 
 <body>
 
-    <div class="content-container">
-        <div data-ng-view=""></div>
+    <!--[if lt IE 7]>
+            <p class="chromeframe">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">activate Google Chrome Frame</a> to improve your experience.</p>
+    <![endif]-->
+
+    <div class="header-container">
+        <header class="wrapper clearfix">
+            <br />
+            <label style="color: white; margin-top: 90px; display: block; float: left"><b>60 sekunder att boka</b></label>
+            <img style="float: left" src="~/Assets/IMG/Logo/adoer.png" />
+            <label style="color: white; margin-top: 90px; display: block; float: left"><b>60 minuter att få bekräftelse</b></label>
+        </header>
+    </div>
+
+    <div class="main-container">
+        <div class="main wrapper clearfix">
+            <div data-ng-view=""></div>
+        </div>
     </div>
 
     @* -- ONLINE LIBS -- *@
-    <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js"></script>
-    <script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/jquery-ui.min.js"></script>
-    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.0.6/angular.min.js"></script>
+    @*<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js"></script>*@
+    @*<script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/jquery-ui.min.js"></script>*@
+    @*<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.0.6/angular.min.js"></script>*@
     <script src="//maps.googleapis.com/maps/api/js?v=3.exp&sensor=false&libraries=places"></script>
 
     @Scripts.Render("~/bundle/libs")
     @Scripts.Render("~/bundle/pages/admin")
     @Scripts.Render("~/bundle/angular/libs")
 
-    
 </body>
 
 </html>

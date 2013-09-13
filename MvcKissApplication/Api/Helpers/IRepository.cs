@@ -13,6 +13,8 @@ namespace MvcKissApplication.Api.Helpers
 
         IEnumerable<Administrator> getAllAdministrators();
 
+        IEnumerable<Administrator> getAdministrators(int[] ids);
+
         Administrator getAdministrator(int id);
 
         Administrator getAdministrator(string email, string password);
@@ -21,13 +23,13 @@ namespace MvcKissApplication.Api.Helpers
 
         void deleteAdministrator(int id);
 
-        //void updateAdministrator(Administrator model);
-
         #endregion
 
         #region CATEGORY
 
         IEnumerable<Category> getAllCategories();
+
+        IEnumerable<Category> getCategories(int[] ids);
 
         Category getCategory(int id);
 
@@ -35,13 +37,13 @@ namespace MvcKissApplication.Api.Helpers
 
         void deleteCategory(int id);
 
-        //void updateCategory(Category model);
-
         #endregion
 
         #region CATEGORY INPUT
 
         IEnumerable<CategoryInput> getAllCategoryInputs();
+
+        IEnumerable<CategoryInput> getCategoryInputs(int[] ids);
 
         CategoryInput getCategoryInput(int id);
 
@@ -49,13 +51,13 @@ namespace MvcKissApplication.Api.Helpers
 
         void deleteCategoryInput(int id);
 
-        //void updateCategoryInput(CategoryInput model);
-
         #endregion
 
         #region COMPANY CUSTOMER
 
         IEnumerable<CompanyCustomer> getAllCompanyCustomers();
+
+        IEnumerable<CompanyCustomer> getCompanyCustomers(int[] ids);
 
         CompanyCustomer getCompanyCustomer(int id);
 
@@ -63,13 +65,13 @@ namespace MvcKissApplication.Api.Helpers
 
         void deleteCompanyCustomer(int id);
 
-        //void updateCompanyCustomer(CompanyCustomer model);
-
         #endregion
 
         #region CUSTOMER
 
         IEnumerable<Customer> getAllCustomers();
+
+        IEnumerable<Customer> getCustomers(int[] ids);
 
         Customer getCustomer(int id);
 
@@ -80,6 +82,8 @@ namespace MvcKissApplication.Api.Helpers
         #region EMPLOYEE
 
         IEnumerable<Employee> getAllEmployees();
+
+        IEnumerable<Employee> getEmployees(int[] ids);
 
         Employee getEmployee(int id);
 
@@ -97,13 +101,13 @@ namespace MvcKissApplication.Api.Helpers
 
         IEnumerable<Mission> getAllMissions();
 
+        IEnumerable<Mission> getMissions(int[] ids);
+
         Mission getMission(int id);
 
         Mission createMission(Mission model);
 
         void deleteMission(int id);
-
-        //void updateMission(Mission model);
 
         #endregion
 
@@ -111,41 +115,29 @@ namespace MvcKissApplication.Api.Helpers
 
         IEnumerable<PrivateCustomer> getAllPrivateCustomers();
 
+        IEnumerable<PrivateCustomer> getPrivateCustomers(int[] ids);
+
         PrivateCustomer getPrivateCustomer(int id);
 
         PrivateCustomer createPrivateCustomer(PrivateCustomer model);
 
         void deletePrivateCustomer(int id);
 
-        //void updatePrivateCustomer(PrivateCustomer model);
-
         #endregion
 
-        #region SUBCATEGORY
+        #region TEXT
 
-        IEnumerable<Subcategory> getAllSubcategories();
+        IEnumerable<Text> getAllTexts();
 
-        Subcategory getSubcategory(int id);
+        IEnumerable<Text> getText(int[] ids);
 
-        Subcategory createSubcategory(Subcategory model);
+        IEnumerable<Text> getText(string controllerName, string language);
 
-        void deleteSubcategory(int id);
+        Text getText(int id);
 
-        //void updateSubcategory(Subcategory model);
+        Text createText(Text model);
 
-        #endregion
-
-        #region SUBSUBCATEGORY
-
-        IEnumerable<Subsubcategory> getAllSubsubcategories();
-
-        Subsubcategory getSubsubcategory(int id);
-
-        Subsubcategory createSubsubcategory(Subsubcategory model);
-
-        void deleteSubsubcategory(int id);
-
-        //void updateSubsubcategory(Subsubcategory model);
+        void deleteText(int id);
 
         #endregion
 
@@ -153,19 +145,21 @@ namespace MvcKissApplication.Api.Helpers
 
         IEnumerable<WorkShift> getAllWorkShifts();
 
+        IEnumerable<WorkShift> getWorkShifts(int[] ids);
+
         WorkShift getWorkShift(int id);
 
         WorkShift createWorkShift(WorkShift model);
 
         void deleteWorkShift(int id);
 
-        //void updateWorkShift(WorkShift model);
-
         #endregion
 
         #region GLOBAL
 
         void update(IEntity model);
+
+        void dispose();
 
         #endregion
 

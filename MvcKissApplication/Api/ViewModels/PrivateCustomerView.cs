@@ -22,6 +22,8 @@ namespace MvcKissApplication.Api.ViewModels
 
         public string type { get { return "PrivateCustomer"; } }
 
+        public string extras { get; set; }
+
         #endregion
 
         public PrivateCustomerView()

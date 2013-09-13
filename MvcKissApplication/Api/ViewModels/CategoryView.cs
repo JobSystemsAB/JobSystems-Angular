@@ -16,6 +16,8 @@ namespace MvcKissApplication.Api.ViewModels
 
         public int salary { get; set; }
 
+        public int? parentId { get; set; }
+
         public string name { get; set; }
 
         public string description { get; set; }
@@ -31,22 +33,33 @@ namespace MvcKissApplication.Api.ViewModels
         {
             Mapper.CreateMap<Category, CategoryView>();
             Mapper.Map<Category, CategoryView>(model, this);
+            this.parentId = model.parent.id;
         }
 
         public Category getModel()
         {
-            var model = new Category();
+            var model = new Category()
+            {
+                description = this.description,
+                id = this.id,
+                name = this.name,
+                salary = this.salary
+            };
 
-            Mapper.CreateMap<CategoryView, Category>();
-            Mapper.Map<CategoryView, Category>(this, model);
-            
             return model;
         }
 
         public static IEnumerable<CategoryView> getViews(IEnumerable<Category> models)
         {
-            Mapper.CreateMap<Category, CategoryView>();
-            var views = Mapper.Map<IEnumerable<Category>, IEnumerable<CategoryView>>(models);
+            var views = from model in models
+                        select new CategoryView()
+                        {
+                            description = model.description,
+                            id = model.id,
+                            name = model.name,
+                            parentId = model.parent == null ? null : (int?) model.parent.id,
+                            salary = model.salary
+                        };
 
             return views;
         }

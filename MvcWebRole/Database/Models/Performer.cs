@@ -28,13 +28,13 @@ namespace MvcWebRole.Database.Models
         [ForeignKey("accessTokenId")]
         public virtual PerformerAccessToken accessToken { get; set; }
 
-        public virtual ICollection<Assignment> assignments { get; set; }
+        public virtual IEnumerable<Assignment> assignments { get; set; }
 
-        public virtual ICollection<PerformerTimeFree> freeTimes { get; set; }
+        public virtual IEnumerable<PerformerTimeFree> freeTimes { get; set; }
 
-        public virtual ICollection<PerformerTimeReport> timeReports { get; set; }
+        public virtual IEnumerable<PerformerTimeReport> timeReports { get; set; }
 
-        public virtual ICollection<Knowledge> knowledges { get; set; }
+        public virtual IEnumerable<Knowledge> knowledges { get; set; }
 
         public string infoText { get; set; }
 

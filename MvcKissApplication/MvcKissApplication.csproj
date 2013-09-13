@@ -66,6 +66,7 @@
     <Reference Include="System.Data.Entity" />
     <Reference Include="System.Data.Services.Client" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.Runtime.Caching" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
@@ -132,21 +133,25 @@
       <Private>True</Private>
       <HintPath>..\packages\Microsoft.AspNet.WebPages.2.0.20710.0\lib\net40\System.Web.WebPages.Razor.dll</HintPath>
     </Reference>
+    <Reference Include="WebAPI.OutputCache">
+      <HintPath>..\packages\Strathweb.CacheOutput.0.4.1\lib\net40\WebAPI.OutputCache.dll</HintPath>
+    </Reference>
     <Reference Include="WebGrease">
       <HintPath>..\packages\WebGrease.1.3.0\lib\WebGrease.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Api\Controllers\AdministratorController.cs" />
+    <Compile Include="Api\Controllers\ApiDocController.cs" />
     <Compile Include="Api\Controllers\CategoryController.cs" />
     <Compile Include="Api\Controllers\CategoryInputController.cs" />
+    <Compile Include="Api\Controllers\TextController.cs" />
     <Compile Include="Api\Controllers\WorkShiftController.cs" />
     <Compile Include="Api\Controllers\PrivateCustomerController.cs" />
-    <Compile Include="Api\Controllers\SubsubcategoryController.cs" />
-    <Compile Include="Api\Controllers\SubcategoryController.cs" />
     <Compile Include="Api\Controllers\CustomerController.cs" />
     <Compile Include="Api\Controllers\EmployeeController.cs" />
     <Compile Include="Api\Controllers\MissionController.cs" />
+    <Compile Include="Api\Filters\ValidationActionFilter.cs" />
     <Compile Include="Api\Helpers\EntityFrameworkRepository.cs" />
     <Compile Include="Api\Helpers\IRepository.cs" />
     <Compile Include="Api\ViewModels\AdministratorView.cs" />
@@ -154,16 +159,19 @@
     <Compile Include="Api\ViewModels\CategoryInputView.cs" />
     <Compile Include="Api\ViewModels\CompanyCustomerView.cs" />
     <Compile Include="Api\ViewModels\CategoryView.cs" />
+    <Compile Include="Api\ViewModels\TextView.cs" />
     <Compile Include="Api\ViewModels\WorkShiftView.cs" />
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
     <Compile Include="Areas\Admin\Controllers\HomeController.cs" />
+    <Compile Include="Areas\Employee\EmployeeAreaRegistration.cs" />
+    <Compile Include="Areas\Tests\Controllers\HomeController.cs" />
+    <Compile Include="Areas\Tests\TestsAreaRegistration.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Database\Models\CategoryInput.cs" />
     <Compile Include="Database\Models\Comment.cs" />
+    <Compile Include="Database\Models\Text.cs" />
     <Compile Include="Database\Models\WorkShift.cs" />
-    <Compile Include="Api\ViewModels\SubsubcategoryView.cs" />
-    <Compile Include="Api\ViewModels\SubcategoryView.cs" />
     <Compile Include="Api\ViewModels\CustomerView.cs" />
     <Compile Include="Api\ViewModels\MissionView.cs" />
     <Compile Include="Api\ViewModels\EmployeeView.cs" />
@@ -178,8 +186,6 @@
     <Compile Include="Database\Models\PrivateCustomer.cs" />
     <Compile Include="Database\Models\Employee.cs" />
     <Compile Include="Database\Models\Mission.cs" />
-    <Compile Include="Database\Models\Subcategory.cs" />
-    <Compile Include="Database\Models\Subsubcategory.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -215,13 +221,74 @@
     <Compile Include="Migrations\201308221311351_customer no address.Designer.cs">
       <DependentUpon>201308221311351_customer no address.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201308230925304_hours in mission.cs" />
+    <Compile Include="Migrations\201308230925304_hours in mission.Designer.cs">
+      <DependentUpon>201308230925304_hours in mission.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201308281020149_category2.cs" />
+    <Compile Include="Migrations\201308281020149_category2.Designer.cs">
+      <DependentUpon>201308281020149_category2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201308281218073_remove categories.cs" />
+    <Compile Include="Migrations\201308281218073_remove categories.Designer.cs">
+      <DependentUpon>201308281218073_remove categories.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201309111117395_texts.cs" />
+    <Compile Include="Migrations\201309111117395_texts.Designer.cs">
+      <DependentUpon>201309111117395_texts.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201309111204557_text.cs" />
+    <Compile Include="Migrations\201309111204557_text.Designer.cs">
+      <DependentUpon>201309111204557_text.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201309111208178_text1.cs" />
+    <Compile Include="Migrations\201309111208178_text1.Designer.cs">
+      <DependentUpon>201309111208178_text1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201309121145498_guid.cs" />
+    <Compile Include="Migrations\201309121145498_guid.Designer.cs">
+      <DependentUpon>201309121145498_guid.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201309121336184_unknown.cs" />
+    <Compile Include="Migrations\201309121336184_unknown.Designer.cs">
+      <DependentUpon>201309121336184_unknown.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Models\MvcKissApplicationContext.cs" />
+    <Compile Include="Models\Node.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Content Include="Assets\CSS\bootstrap-responsive.min.css" />
+    <Content Include="Assets\CSS\bootstrap.min.css" />
+    <Content Include="Assets\CSS\fullcalendar.css" />
+    <Content Include="Assets\CSS\jasmine.css" />
+    <Content Include="Assets\CSS\jobsystems.css">
+      <DependentUpon>jobsystems.scss</DependentUpon>
+    </Content>
+    <Content Include="Assets\CSS\main.css" />
+    <Content Include="Assets\CSS\normalize.css" />
+    <Content Include="Assets\CSS\partials\_all.css">
+      <DependentUpon>_all.scss</DependentUpon>
+    </Content>
+    <Content Include="Assets\CSS\partials\_colors.css">
+      <DependentUpon>_colors.scss</DependentUpon>
+    </Content>
+    <Content Include="Assets\CSS\partials\_table.css">
+      <DependentUpon>_table.scss</DependentUpon>
+    </Content>
+    <Content Include="Assets\IMG\glyphicons-halflings-white.png" />
+    <Content Include="Assets\IMG\glyphicons-halflings.png" />
+    <Content Include="Assets\IMG\Logo\adoer.png" />
+    <Content Include="Assets\IMG\TMP\background-gray.png" />
+    <Content Include="Assets\IMG\TMP\background-white.png" />
+    <Content Include="Assets\IMG\TMP\dn.png" />
+    <Content Include="Assets\IMG\TMP\work.jpg" />
+    <Content Include="Assets\IMG\TMP\person.jpg" />
+    <Content Include="Assets\IMG\TMP\top.jpg" />
     <Content Include="Assets\JS\Apps\Admin.js">
       <DependentUpon>Admin.coffee</DependentUpon>
     </Content>
@@ -276,8 +343,17 @@
     <Content Include="Assets\JS\Controllers\Admin\SubsubcategoryView.js">
       <DependentUpon>SubsubcategoryView.coffee</DependentUpon>
     </Content>
+    <Content Include="Assets\JS\Controllers\Employee\Login.js">
+      <DependentUpon>Login.coffee</DependentUpon>
+    </Content>
+    <Content Include="Assets\JS\Controllers\Employee\Missions.js">
+      <DependentUpon>Missions.coffee</DependentUpon>
+    </Content>
     <Content Include="Assets\JS\Controllers\Employee\Profile.js">
       <DependentUpon>Profile.coffee</DependentUpon>
+    </Content>
+    <Content Include="Assets\JS\Controllers\Global\Alert.js">
+      <DependentUpon>Alert.coffee</DependentUpon>
     </Content>
     <Content Include="Assets\JS\Controllers\Home\Application.js">
       <DependentUpon>Application.coffee</DependentUpon>
@@ -303,22 +379,68 @@
     <Content Include="Assets\JS\Partials\Admin\Employee.html" />
     <Content Include="Assets\JS\Partials\Admin\Subcategory.html" />
     <Content Include="Assets\JS\Partials\Admin\Subsubcategory.html" />
+    <Content Include="Assets\JS\Partials\Employee\Login.html" />
+    <Content Include="Assets\JS\Partials\Employee\Missions.html" />
     <Content Include="Assets\JS\Partials\Employee\Profile.html" />
+    <Content Include="Assets\JS\Partials\Global\Footer.html" />
+    <Content Include="Assets\JS\Partials\Global\Header.html" />
+    <Content Include="Assets\JS\Partials\Global\Menu.html" />
     <Content Include="Assets\JS\Partials\Home\Application.html" />
     <Content Include="Assets\JS\Partials\Home\Category.html" />
     <Content Include="Assets\JS\Partials\Home\Index.html" />
+    <Content Include="Areas\Tests\Views\Web.config" />
+    <None Include="Areas\Tests\Views\Home\Index.cshtml" />
+    <Content Include="Assets\JS\Resources\Directives.js">
+      <DependentUpon>Directives.coffee</DependentUpon>
+    </Content>
     <Content Include="Assets\JS\Resources\Resources.js">
       <DependentUpon>Resources.coffee</DependentUpon>
     </Content>
-    <Content Include="Assets\JS\Resources\Services.js">
-      <DependentUpon>Services.coffee</DependentUpon>
+    <Content Include="Assets\JS\Resources\Services\Administrator.js">
+      <DependentUpon>Administrator.coffee</DependentUpon>
+    </Content>
+    <Content Include="Assets\JS\Resources\Services\Alert.js">
+      <DependentUpon>Alert.coffee</DependentUpon>
+    </Content>
+    <Content Include="Assets\JS\Resources\Services\Category.js">
+      <DependentUpon>Category.coffee</DependentUpon>
+    </Content>
+    <Content Include="Assets\JS\Resources\Services\Customer.js">
+      <DependentUpon>Customer.coffee</DependentUpon>
+    </Content>
+    <Content Include="Assets\JS\Resources\Services\Employee.js">
+      <DependentUpon>Employee.coffee</DependentUpon>
+    </Content>
+    <Content Include="Assets\JS\Resources\Services\GoogleMaps.js">
+      <DependentUpon>GoogleMaps.coffee</DependentUpon>
+    </Content>
+    <Content Include="Assets\JS\Resources\Services\Mission.js">
+      <DependentUpon>Mission.coffee</DependentUpon>
+    </Content>
+    <Content Include="Assets\JS\Resources\Services\Text.js">
+      <DependentUpon>Text.coffee</DependentUpon>
+    </Content>
+    <Content Include="Assets\JS\Tests\Controllers\Home\IndexSpec.js">
+      <DependentUpon>IndexSpec.coffee</DependentUpon>
+    </Content>
+    <Content Include="Assets\JS\Tests\Resources\_Services.js">
+      <DependentUpon>ServicesSpec.coffee</DependentUpon>
     </Content>
     <Content Include="Global.asax" />
-    <Content Include="Libs\angular-google-maps.js" />
-    <Content Include="Libs\angular-resource.js" />
+    <Content Include="Libs\Angular-UI\ui-bootstrap-tpls-0.5.0.min.js" />
+    <Content Include="Libs\Angular\angular-google-maps.js" />
+    <Content Include="Libs\Jasmine\angular-mocks.js" />
+    <Content Include="Libs\Angular\angular-resource.js" />
+    <Content Include="Libs\Angular\angular.min.js" />
     <Content Include="Libs\bootstrap.min.js" />
-    <Content Include="Libs\date.js" />
-    <Content Include="Libs\ui-bootstrap-tpls-0.4.0.min.js" />
+    <Content Include="Libs\Angular-UI\calendar.js" />
+    <Content Include="Libs\Angular-UI\date.js" />
+    <Content Include="Libs\fullcalendar.min.js" />
+    <Content Include="Libs\gcal.js" />
+    <Content Include="Libs\Jasmine\jasmine-html.js" />
+    <Content Include="Libs\Jasmine\jasmine.js" />
+    <Content Include="Libs\JQuery\jquery-1.10.2.min.js" />
+    <Content Include="Libs\JQuery\jquery-ui-1.10.3.custom.min.js" />
     <Content Include="Libs\underscore.js" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
@@ -328,6 +450,29 @@
       <DependentUpon>Web.config</DependentUpon>
     </Content>
     <Content Include="Views\Web.config" />
+    <Content Include="Assets\CSS\jobsystems.scss">
+      <Compile>True</Compile>
+      <Minify>True</Minify>
+      <CompileStyle>Nested</CompileStyle>
+      <DebugInfo>False</DebugInfo>
+    </Content>
+    <Content Include="Assets\JS\Tests\Controllers\Home\IndexSpec.coffee" />
+    <Content Include="Assets\JS\Tests\Resources\ServicesSpec.coffee" />
+    <Content Include="Assets\JS\Resources\Services\Administrator.coffee" />
+    <Content Include="Assets\JS\Resources\Services\Alert.coffee" />
+    <Content Include="Assets\JS\Resources\Services\Category.coffee" />
+    <Content Include="Assets\JS\Resources\Services\Customer.coffee" />
+    <Content Include="Assets\JS\Resources\Services\Employee.coffee" />
+    <Content Include="Assets\JS\Resources\Services\GoogleMaps.coffee" />
+    <Content Include="Assets\JS\Resources\Services\Mission.coffee" />
+    <Content Include="Assets\JS\Tests\Resources\ResourcesSpec.coffee" />
+    <Content Include="Assets\CSS\partials\_all.scss">
+      <Compile>True</Compile>
+      <Minify>True</Minify>
+      <CompileStyle>Nested</CompileStyle>
+      <DebugInfo>False</DebugInfo>
+    </Content>
+    <Content Include="Assets\JS\Resources\Services\Text.coffee" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\Home\Index.cshtml" />
@@ -337,9 +482,6 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Assets\JS\Controllers\Home\Category.coffee" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="Assets\JS\Resources\Services.coffee" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Assets\JS\Resources\Resources.coffee" />
@@ -368,6 +510,30 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201308221311351_customer no address.resx">
       <DependentUpon>201308221311351_customer no address.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201308230925304_hours in mission.resx">
+      <DependentUpon>201308230925304_hours in mission.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201308281020149_category2.resx">
+      <DependentUpon>201308281020149_category2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201308281218073_remove categories.resx">
+      <DependentUpon>201308281218073_remove categories.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201309111117395_texts.resx">
+      <DependentUpon>201309111117395_texts.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201309111204557_text.resx">
+      <DependentUpon>201309111204557_text.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201309111208178_text1.resx">
+      <DependentUpon>201309111208178_text1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201309121145498_guid.resx">
+      <DependentUpon>201309121145498_guid.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201309121336184_unknown.resx">
+      <DependentUpon>201309121336184_unknown.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
@@ -438,6 +604,47 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Assets\JS\Controllers\Admin\Login.coffee" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Assets\JS\Resources\Directives.coffee" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Assets\JS\Controllers\Employee\Login.coffee" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Assets\JS\Controllers\Employee\Missions.coffee" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Areas\Employee\Views\Web.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Areas\Employee\Controllers\" />
+    <Folder Include="Areas\Employee\Models\" />
+    <Folder Include="Areas\Employee\Views\Shared\" />
+    <Folder Include="Areas\Tests\Models\" />
+    <Folder Include="Areas\Tests\Views\Shared\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Libs\JQuery\jquery-1.10.2.min.map" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Assets\JS\Controllers\Global\Alert.coffee" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Assets\CSS\partials\_table.scss">
+      <Compile>True</Compile>
+      <Minify>True</Minify>
+      <CompileStyle>Nested</CompileStyle>
+      <DebugInfo>False</DebugInfo>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Assets\CSS\partials\_colors.scss">
+      <Compile>True</Compile>
+      <Minify>True</Minify>
+      <CompileStyle>Nested</CompileStyle>
+      <DebugInfo>False</DebugInfo>
+    </Content>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

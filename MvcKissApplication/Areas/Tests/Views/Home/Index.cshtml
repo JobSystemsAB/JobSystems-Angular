@@ -1,0 +1,40 @@
+﻿@using System.Web.Optimization
+
+<!DOCTYPE html>
+<html>
+<head>
+    @Styles.Render("~/bundle/css/jasmine")
+  <title>Tests</title>
+</head>
+<body>
+
+    <script src="//maps.googleapis.com/maps/api/js?v=3.exp&sensor=false&libraries=places"></script>
+    
+    @Scripts.Render("~/bundle/jquery/libs")
+    @Scripts.Render("~/bundle/angular/libs")
+    @Scripts.Render("~/bundle/angular-ui/libs")
+    @Scripts.Render("~/bundle/jasmine/libs")
+    @Scripts.Render("~/bundle/libs")
+
+    @Scripts.Render("~/bundle/pages/home")
+
+    @Scripts.Render("~/bundle/angular/global")
+    @Scripts.Render("~/bundle/angular/resources")
+
+    @Scripts.Render("~/bundle/tests")
+
+
+  <!-- bootstrap jasmine! -->
+  <script>
+      var jasmineEnv = jasmine.getEnv();
+
+      // Tell it to add an Html Reporter
+      // this will add detailed HTML-formatted results
+      // for each spec ran.
+      jasmineEnv.addReporter(new jasmine.HtmlReporter());
+
+      // Execute the tests!
+      jasmineEnv.execute();
+  </script>
+</body>
+</html>

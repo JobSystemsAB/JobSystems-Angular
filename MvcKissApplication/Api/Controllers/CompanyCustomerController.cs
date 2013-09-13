@@ -5,6 +5,7 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
+using WebAPI.OutputCache;
 
 namespace MvcKissApplication.Api.ViewModels
 {
@@ -30,6 +31,7 @@ namespace MvcKissApplication.Api.ViewModels
 
         [HttpGet]
         [ActionName("DefaultAction")]
+        [CacheOutput(ClientTimeSpan = 0, ServerTimeSpan = 0)]
         public IEnumerable<CompanyCustomerView> Get()
         {
             var models = repo.getAllCompanyCustomers();
@@ -39,6 +41,7 @@ namespace MvcKissApplication.Api.ViewModels
 
         [HttpGet]
         [ActionName("DefaultAction")]
+        [CacheOutput(ClientTimeSpan = 0, ServerTimeSpan = 0)]
         public HttpResponseMessage Get(int id)
         {
             var model = repo.getCompanyCustomer(id);
@@ -54,6 +57,7 @@ namespace MvcKissApplication.Api.ViewModels
         }
 
         [HttpGet]
+        [CacheOutput(ClientTimeSpan = 0, ServerTimeSpan = 0)]
         public int Amount()
         {
             return repo.getAllCompanyCustomers().Count();
@@ -66,6 +70,8 @@ namespace MvcKissApplication.Api.ViewModels
             var model = view.getModel();
             model.created = DateTime.UtcNow;
             model.updated = DateTime.UtcNow;
+            model.enabled = true;
+            model.fakeId = Guid.NewGuid();
             model = repo.createCompanyCustomer(model);
             view = new CompanyCustomerView(model);
 

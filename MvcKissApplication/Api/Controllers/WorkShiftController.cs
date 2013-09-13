@@ -5,6 +5,7 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
+using WebAPI.OutputCache;
 
 namespace MvcKissApplication.Api.ViewModels
 {
@@ -30,6 +31,7 @@ namespace MvcKissApplication.Api.ViewModels
 
         [HttpGet]
         [ActionName("DefaultAction")]
+        [CacheOutput(ClientTimeSpan = 0, ServerTimeSpan = 0)]
         public IEnumerable<WorkShiftView> Get()
         {
             var models = repo.getAllWorkShifts();
@@ -39,6 +41,7 @@ namespace MvcKissApplication.Api.ViewModels
 
         [HttpGet]
         [ActionName("DefaultAction")]
+        [CacheOutput(ClientTimeSpan = 0, ServerTimeSpan = 0)]
         public HttpResponseMessage Get(int id)
         {
             var model = repo.getWorkShift(id);
@@ -54,6 +57,7 @@ namespace MvcKissApplication.Api.ViewModels
         }
 
         [HttpGet]
+        [CacheOutput(ClientTimeSpan = 0, ServerTimeSpan = 0)]
         public double AmountMinutes()
         {
             return repo.getAllWorkShifts().Select(w => w.span.Minutes).Sum();

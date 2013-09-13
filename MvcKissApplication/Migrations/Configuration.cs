@@ -57,48 +57,275 @@ namespace MvcKissApplication.Migrations
                 },
                 new Category
                 {
-                    id = 2,
+                    id = 4,
                     description = "",
                     name = "Städning",
                     salary = 130
                 },
                 new Category
                 {
-                    id = 3,
+                    id = 8,
                     description = "",
                     name = "Husdjurspassning",
-                    salary = 130
+                    salary = 130,                    
                 },
                 new Category
                 {
-                    id = 4,
+                    id = 12,
                     description = "",
                     name = "Trädgårdsarbete",
                     salary = 130
                 },
                 new Category
                 {
-                    id = 5,
+                    id = 16,
                     description = "",
                     name = "Läxhjälp, hemläxor m.m.",
                     salary = 130
                 },
                 new Category
                 {
-                    id = 6,
+                    id = 36,
                     description = "",
                     name = "Övrigt",
                     salary = 130
                 },
-                new Category 
-                { 
-                    id = 7,
+                new Category
+                {
+                    id = 37,
                     description = "",
                     name = "Snöskottning",
                     salary = 130
                 }
                 );
 
+            context.categories.AddOrUpdate
+            (
+                c => c.id,
+                new Category
+                {
+                    id = 2,
+                    name = "Barnvakt akut",
+                    description = "",
+                    parent = context.categories.FirstOrDefault(c => c.id == 1)
+                },
+                new Category
+                {
+                    id = 3,
+                    name = "Barnvakt kontinuerligt",
+                    description = "",
+                    parent = context.categories.FirstOrDefault(c => c.id == 1)
+                },
+                new Category
+                {
+                    id = 38,
+                    name = "Övrigt",
+                    description = "",
+                    parent = context.categories.FirstOrDefault(c => c.id == 1)
+                },
+                new Category
+                {
+                    id = 5,
+                    name = "Städning en gång",
+                    description = "",
+                    parent = context.categories.FirstOrDefault(c => c.id == 4)
+                },
+                new Category
+                {
+                    id = 6,
+                    name = "Städning kontinuerligt",
+                    description = "",
+                    parent = context.categories.FirstOrDefault(c => c.id == 4)
+                },
+                new Category
+                {
+                    id = 7,
+                    name = "Övrigt",
+                    description = "",
+                    parent = context.categories.FirstOrDefault(c => c.id == 4)
+                },
+                new Category
+                {
+                    id = 9,
+                    name = "Hundpassning",
+                    description = "",
+                    parent = context.categories.FirstOrDefault(c => c.id == 8)
+                },
+                new Category
+                {
+                    id = 10,
+                    name = "Kattpassning",
+                    description = "",
+                    parent = context.categories.FirstOrDefault(c => c.id == 8)
+                },
+                new Category
+                {
+                    id = 11,
+                    name = "Övrigt",
+                    description = "",
+                    parent = context.categories.FirstOrDefault(c => c.id == 8)
+                },
+                new Category
+                {
+                    id = 13,
+                    name = "Rensning m.m.",
+                    description = "",
+                    parent = context.categories.FirstOrDefault(c => c.id == 12)
+                },
+                new Category
+                {
+                    id = 14,
+                    name = "Snöskottning",
+                    description = "",
+                    parent = context.categories.FirstOrDefault(c => c.id == 12)
+                },
+                new Category
+                {
+                    id = 15,
+                    name = "Övrigt",
+                    description = "",
+                    parent = context.categories.FirstOrDefault(c => c.id == 12)
+                },
+                new Category
+                {
+                    id = 29,
+                    name = "Läxhjälp ålder 13-15 år",
+                    description = "",
+                    parent = context.categories.FirstOrDefault(c => c.id == 16)
+                },
+                new Category
+                {
+                    id = 23,
+                    name = "Läxhjälp ålder 10-12 år",
+                    description = "",
+                    parent = context.categories.FirstOrDefault(c => c.id == 16)
+                },
+                new Category
+                {
+                    id = 17,
+                    name = "Läxhjälp ålder 7-9 år",
+                    description = "",
+                    parent = context.categories.FirstOrDefault(c => c.id == 16)
+                }
+            );
+
+            context.categories.AddOrUpdate
+            (
+                c => c.id,
+                new Category
+                {
+                    id = 18,
+                    description = "",
+                    name = "Svenska",
+                    parent = context.categories.FirstOrDefault(s => s.id == 17)
+                },
+                new Category
+                {
+                    id = 19,
+                    description = "",
+                    name = "Matematik",
+                    parent = context.categories.FirstOrDefault(s => s.id == 17)
+                },
+                new Category
+                {
+                    id = 20,
+                    description = "",
+                    name = "Naturvetenskap",
+                    parent = context.categories.FirstOrDefault(s => s.id == 17)
+                },
+                new Category
+                {
+                    id = 21,
+                    description = "",
+                    name = "Geografi",
+                    parent = context.categories.FirstOrDefault(s => s.id == 17)
+                },
+                new Category
+                {
+                    id = 22,
+                    description = "",
+                    name = "Övrigt",
+                    parent = context.categories.FirstOrDefault(s => s.id == 17)
+                },
+                new Category
+                {
+                    id = 24,
+                    description = "",
+                    name = "Svenska",
+                    parent = context.categories.FirstOrDefault(s => s.id == 23)
+                },
+                new Category
+                {
+                    id = 25,
+                    description = "",
+                    name = "Matematik",
+                    parent = context.categories.FirstOrDefault(s => s.id == 23)
+                },
+                new Category
+                {
+                    id = 26,
+                    description = "",
+                    name = "Naturvetenskap",
+                    parent = context.categories.FirstOrDefault(s => s.id == 23)
+                },
+                new Category
+                {
+                    id = 27,
+                    description = "",
+                    name = "Geografi",
+                    parent = context.categories.FirstOrDefault(s => s.id == 23)
+                },
+                new Category
+                {
+                    id = 28,
+                    description = "",
+                    name = "Övrigt",
+                    parent = context.categories.FirstOrDefault(s => s.id == 23)
+                },
+                new Category
+                {
+                    id = 30,
+                    description = "",
+                    name = "Svenska",
+                    parent = context.categories.FirstOrDefault(s => s.id == 29)
+                },
+                new Category
+                {
+                    id = 31,
+                    description = "",
+                    name = "Matematik",
+                    parent = context.categories.FirstOrDefault(s => s.id == 29)
+                },
+                new Category
+                {
+                    id = 32,
+                    description = "",
+                    name = "Naturvetenskap",
+                    parent = context.categories.FirstOrDefault(s => s.id == 29)
+                },
+                new Category
+                {
+                    id = 33,
+                    description = "",
+                    name = "Geografi",
+                    parent = context.categories.FirstOrDefault(s => s.id == 29)
+                },
+                new Category
+                {
+                    id = 34,
+                    description = "",
+                    name = "Övrigt",
+                    parent = context.categories.FirstOrDefault(s => s.id == 29)
+                },
+                new Category
+                {
+                    id = 35,
+                    name = "Övrigt",
+                    description = "",
+                    parent = context.categories.FirstOrDefault(c => c.id == 16)
+                }
+            );
+            
             context.categoryInputs.AddOrUpdate
                 (
                 c => c.id,
@@ -158,8 +385,8 @@ namespace MvcKissApplication.Migrations
                     type = "checkbox",
                     category = context.categories.FirstOrDefault(c => c.id == 4)
                 },
-                new CategoryInput 
-                { 
+                new CategoryInput
+                {
                     id = 8,
                     name = "numberSquaremeters",
                     text = "Antal kvadratmeter",
@@ -184,225 +411,6 @@ namespace MvcKissApplication.Migrations
                 }
                 );
 
-            context.subcategories.AddOrUpdate
-                (
-                s => s.id,
-                new Subcategory 
-                { 
-                    id = 1,
-                    name = "Barnvakt akut",
-                    description = "",
-                    category = context.categories.FirstOrDefault(c => c.id == 1)
-                },
-                new Subcategory
-                {
-                    id = 2,
-                    name = "Barnvakt kontinuerligt",
-                    description = "",
-                    category = context.categories.FirstOrDefault(c => c.id == 1)
-                },
-                new Subcategory
-                {
-                    id = 3,
-                    name = "Barnvakt enstaka tillfällen",
-                    description = "",
-                    category = context.categories.FirstOrDefault(c => c.id == 1)
-                },
-                new Subcategory
-                {
-                    id = 4,
-                    name = "Övrigt",
-                    description = "",
-                    category = context.categories.FirstOrDefault(c => c.id == 1)
-                },
-                new Subcategory
-                {
-                    id = 5,
-                    name = "Städning en gång",
-                    description = "",
-                    category = context.categories.FirstOrDefault(c => c.id == 2)
-                },
-                new Subcategory
-                {
-                    id = 6,
-                    name = "Städning kontinuerligt",
-                    description = "",
-                    category = context.categories.FirstOrDefault(c => c.id == 2)
-                },
-                new Subcategory
-                {
-                    id = 7,
-                    name = "Övrigt",
-                    description = "",
-                    category = context.categories.FirstOrDefault(c => c.id == 2)
-                },
-                new Subcategory
-                {
-                    id = 8,
-                    name = "Hundpassning",
-                    description = "",
-                    category = context.categories.FirstOrDefault(c => c.id == 3)
-                },
-                new Subcategory
-                {
-                    id = 9,
-                    name = "Kattpassning",
-                    description = "",
-                    category = context.categories.FirstOrDefault(c => c.id == 3)
-                },
-                new Subcategory
-                {
-                    id = 11,
-                    name = "Övrigt",
-                    description = "",
-                    category = context.categories.FirstOrDefault(c => c.id == 3)
-                },
-                new Subcategory
-                {
-                    id = 12,
-                    name = "Gräsklippning",
-                    description = "",
-                    category = context.categories.FirstOrDefault(c => c.id == 4)
-                },
-                new Subcategory
-                {
-                    id = 13,
-                    name = "Rensning m.m.",
-                    description = "",
-                    category = context.categories.FirstOrDefault(c => c.id == 4)
-                },
-                new Subcategory
-                {
-                    id = 14,
-                    name = "Snöskottning",
-                    description = "",
-                    category = context.categories.FirstOrDefault(c => c.id == 4)
-                },
-                new Subcategory
-                {
-                    id = 15,
-                    name = "Övrigt",
-                    description = "",
-                    category = context.categories.FirstOrDefault(c => c.id == 4)
-                },
-                new Subcategory
-                {
-                    id = 16,
-                    name = "Läxhjälp ålder 7-9 år",
-                    description = "",
-                    category = context.categories.FirstOrDefault(c => c.id == 5)
-                },
-                new Subcategory
-                {
-                    id = 17,
-                    name = "Läxhjälp ålder 10-12 år",
-                    description = "",
-                    category = context.categories.FirstOrDefault(c => c.id == 5)
-                },
-                new Subcategory
-                {
-                    id = 18,
-                    name = "Läxhjälp ålder 13-15 år",
-                    description = "",
-                    category = context.categories.FirstOrDefault(c => c.id == 5)
-                },
-                new Subcategory
-                {
-                    id = 19,
-                    name = "Övrigt",
-                    description = "",
-                    category = context.categories.FirstOrDefault(c => c.id == 5)
-                }
-                );
-
-            context.subsubcategories.AddOrUpdate
-                (
-                s => s.id,
-                new Subsubcategory
-                {
-                    id = 1,
-                    description = "",
-                    name = "Svenska",
-                    subcategory = context.subcategories.FirstOrDefault(s => s.id == 16)
-                },
-                new Subsubcategory
-                {
-                    id = 2,
-                    description = "",
-                    name = "Matematik",
-                    subcategory = context.subcategories.FirstOrDefault(s => s.id == 16)
-                },
-                new Subsubcategory
-                {
-                    id = 3,
-                    description = "",
-                    name = "Naturvetenskap",
-                    subcategory = context.subcategories.FirstOrDefault(s => s.id == 16)
-                },
-                new Subsubcategory
-                {
-                    id = 4,
-                    description = "",
-                    name = "Geografi",
-                    subcategory = context.subcategories.FirstOrDefault(s => s.id == 16)
-                },
-                new Subsubcategory
-                {
-                    id = 5,
-                    description = "",
-                    name = "Svenska",
-                    subcategory = context.subcategories.FirstOrDefault(s => s.id == 17)
-                },
-                new Subsubcategory
-                {
-                    id = 6,
-                    description = "",
-                    name = "Matematik",
-                    subcategory = context.subcategories.FirstOrDefault(s => s.id == 17)
-                },
-                new Subsubcategory
-                {
-                    id = 7,
-                    description = "",
-                    name = "Naturvetenskap",
-                    subcategory = context.subcategories.FirstOrDefault(s => s.id == 17)
-                },
-                new Subsubcategory
-                {
-                    id = 8,
-                    description = "",
-                    name = "Geografi",
-                    subcategory = context.subcategories.FirstOrDefault(s => s.id == 17)
-                },
-                new Subsubcategory
-                {
-                    id = 9,
-                    description = "",
-                    name = "Svenska",
-                    subcategory = context.subcategories.FirstOrDefault(s => s.id == 18)
-                },
-                new Subsubcategory
-                {
-                    id = 10,
-                    description = "",
-                    name = "Matematik",
-                    subcategory = context.subcategories.FirstOrDefault(s => s.id == 18)
-                },
-                new Subsubcategory
-                {
-                    id = 11,
-                    description = "",
-                    name = "Naturvetenskap",
-                    subcategory = context.subcategories.FirstOrDefault(s => s.id == 18)
-                },
-                new Subsubcategory
-                {
-                    id = 12,
-                    description = "",
-                    name = "Geografi",
-                    subcategory = context.subcategories.FirstOrDefault(s => s.id == 18)
-                }
-                );
         }
     }
 }

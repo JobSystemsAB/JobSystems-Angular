@@ -5,9 +5,11 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
+using WebAPI.OutputCache;
 
 namespace MvcKissApplication.Api.ViewModels
 {
+    //[Authorize]
     public class MissionController : ApiController
     {
 
@@ -30,15 +32,53 @@ namespace MvcKissApplication.Api.ViewModels
 
         [HttpGet]
         [ActionName("DefaultAction")]
-        public IEnumerable<MissionView> Get()
+        [CacheOutput(ClientTimeSpan = 0, ServerTimeSpan = 0)]
+        public IQueryable<MissionView> Get()
+        {
+            var models = repo.getAllMissions().Where(m => m.enabled);
+            var views = MissionView.getViews(models);
+            return views.AsQueryable();
+        }
+
+        [HttpGet]
+        [CacheOutput(ClientTimeSpan = 0, ServerTimeSpan = 0)]
+        public IQueryable<MissionView> All()
         {
             var models = repo.getAllMissions();
             var views = MissionView.getViews(models);
-            return views;
+            return views.AsQueryable();
+        }
+
+        [HttpGet]
+        [CacheOutput(ClientTimeSpan = 0, ServerTimeSpan = 0)]
+        public IQueryable<MissionView> Disabled()
+        {
+            var models = repo.getAllMissions().Where(m => !m.enabled);
+            var views = MissionView.getViews(models);
+            return views.AsQueryable();
+        }
+
+        [HttpGet]
+        [CacheOutput(ClientTimeSpan = 0, ServerTimeSpan = 0)]
+        public IQueryable<MissionView> Employed()
+        {
+            var models = repo.getAllMissions().Where(m => m.employee != null && m.enabled);
+            var views = MissionView.getViews(models);
+            return views.AsQueryable();
+        }
+
+        [HttpGet]
+        [CacheOutput(ClientTimeSpan = 0, ServerTimeSpan = 0)]
+        public IQueryable<MissionView> Unemployed()
+        {
+            var models = repo.getAllMissions().Where(m => m.employee == null && m.enabled);
+            var views = MissionView.getViews(models);
+            return views.AsQueryable();
         }
 
         [HttpGet]
         [ActionName("DefaultAction")]
+        [CacheOutput(ClientTimeSpan = 0, ServerTimeSpan = 0)]
         public HttpResponseMessage Get(int id)
         {
             var model = repo.getMission(id);
@@ -54,6 +94,7 @@ namespace MvcKissApplication.Api.ViewModels
         }
 
         [HttpGet]
+        [CacheOutput(ClientTimeSpan = 0, ServerTimeSpan = 0)]
         public HttpResponseMessage Customer(int id)
         {
             var model = repo.getMission(id);
@@ -70,6 +111,7 @@ namespace MvcKissApplication.Api.ViewModels
         }
 
         [HttpGet]
+        [CacheOutput(ClientTimeSpan = 0, ServerTimeSpan = 0)]        
         public HttpResponseMessage Employee(int id)
         {
             var model = repo.getMission(id);
@@ -86,6 +128,7 @@ namespace MvcKissApplication.Api.ViewModels
         }
 
         [HttpGet]
+        [CacheOutput(ClientTimeSpan = 0, ServerTimeSpan = 0)]
         public HttpResponseMessage WorkShift(int id)
         {
             var model = repo.getMission(id);
@@ -101,25 +144,15 @@ namespace MvcKissApplication.Api.ViewModels
             }
         }
 
-        [HttpGet]
-        public int Amount()
-        {
-            return repo.getAllMissions().Count();
-        }
-
-        [HttpGet]
-        public int EnabledAmount()
-        {
-            return repo.getAllMissions().Where(m => m.enabled).Count();
-        }
-
         [HttpPost]
         [ActionName("DefaultAction")]
         public HttpResponseMessage Post(MissionView view)
         {
-            var model = view.getModel();
+            var model = view.getModel(repo);
             model.created = DateTime.UtcNow;
             model.updated = DateTime.UtcNow;
+            model.enabled = true;
+            model.fakeId = Guid.NewGuid();
             model = repo.createMission(model);
             view = new MissionView(model);
 
@@ -129,55 +162,25 @@ namespace MvcKissApplication.Api.ViewModels
             return response;
         }
 
-        [HttpPost]
-        public HttpResponseMessage ConnectCategory(dynamic input)
+        public class connectCategoriesInput 
         {
-            var mission = repo.getMission((int)input.missionId.Value);
-            var category = repo.getCategory((int)input.categoryId.Value);
-            if (mission == null || category == null)
-            {
-                return Request.CreateResponse(HttpStatusCode.NotFound);
-            }
-            else
-            {
-                mission.category = category;
-                repo.update(mission);
-                return Request.CreateResponse(HttpStatusCode.OK);
-            }
+            public int missionId { get; set; }
+            public int[] categoryIds { get; set; }
+            public connectCategoriesInput () {}
         }
 
         [HttpPost]
-        public HttpResponseMessage ConnectSubcategory(dynamic input)
+        public HttpResponseMessage ConnectCategories(connectCategoriesInput input)
         {
-            var mission = repo.getMission((int)input.missionId.Value);
-            var subcategory = repo.getSubcategory((int)input.subcategoryId.Value);
-            if (mission == null || subcategory == null)
+            var mission = repo.getMission(input.missionId);
+            var categories = repo.getCategories(input.categoryIds);
+            if (mission == null || categories.Count() < 1)
             {
                 return Request.CreateResponse(HttpStatusCode.NotFound);
             }
             else
             {
-                mission.subcategory = subcategory;
-                mission.category = subcategory.category;
-                repo.update(mission);
-                return Request.CreateResponse(HttpStatusCode.OK);
-            }
-        }
-
-        [HttpPost]
-        public HttpResponseMessage ConnectSubsubcategory(dynamic input)
-        {
-            var mission = repo.getMission((int)input.missionId.Value);
-            var subsubcategory = repo.getSubsubcategory((int)input.subsubcategoryId.Value);
-            if (mission == null || subsubcategory == null)
-            {
-                return Request.CreateResponse(HttpStatusCode.NotFound);
-            }
-            else
-            {
-                mission.subsubcategory = subsubcategory;
-                mission.subcategory = subsubcategory.subcategory;
-                mission.category = subsubcategory.subcategory.category;
+                mission.categories = categories.ToArray();
                 repo.update(mission);
                 return Request.CreateResponse(HttpStatusCode.OK);
             }
@@ -221,7 +224,7 @@ namespace MvcKissApplication.Api.ViewModels
         public void Put(int id, MissionView view)
         {
             view.id = id;
-            var model = view.getModel();
+            var model = view.getModel(repo);
             model.updated = DateTime.UtcNow;
             repo.update(model);
         }

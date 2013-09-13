@@ -29,8 +29,8 @@ namespace MvcWebRole.Database.Models
         [ForeignKey("categoryId")]
         public virtual KnowledgeCategory category { get; set; }
 
-        public virtual ICollection<Assignment> assignments { get; set; }
+        public virtual IEnumerable<Assignment> assignments { get; set; }
 
-        public virtual ICollection<Performer> performers { get; set; }
+        public virtual IEnumerable<Performer> performers { get; set; }
     }
 }

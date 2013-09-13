@@ -15,6 +15,12 @@ namespace MvcKissApplication.Api.ViewModels
 
         public int id { get; set; }
 
+        public int categoryId { get; set; }
+
+        public int[] subcategoryIds { get; set; }
+
+        public int[] subsubcategoryIds { get; set; }
+
         public string infoText { get; set; }
 
         public string firstName { get; set; }

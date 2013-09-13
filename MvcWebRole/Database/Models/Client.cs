@@ -19,7 +19,7 @@ namespace MvcWebRole.Database.Models
         [Key]
         public int id { get; set; }
 
-        public virtual ICollection<Assignment> assignments { get; set; }
+        public virtual IEnumerable<Assignment> assignments { get; set; }
 
         public string streetAddress { get; set; }
 

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MvcKissApplication.Api.Filters;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web.Http;
@@ -9,6 +10,8 @@ namespace MvcKissApplication
     {
         public static void Register(HttpConfiguration config)
         {
+            config.Filters.Add(new ValidationActionFilter());
+
             // Controller Only
             // To handle routes like `/api/VTRouting`
             config.Routes.MapHttpRoute(

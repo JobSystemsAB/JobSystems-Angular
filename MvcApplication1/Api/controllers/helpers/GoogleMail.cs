@@ -11,7 +11,7 @@ namespace MvcApplication1.Api.controllers.helpers
     public class GoogleMail
     {
 
-        public void send(ICollection<Employee> employees)
+        public void send(IEnumerable<Employee> employees)
         {
             var fromAddress = new MailAddress("info@jobsystems.se", "Job Systems AB");
             const string fromPassword = "infoPassword";

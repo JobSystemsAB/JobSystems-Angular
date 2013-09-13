@@ -1,191 +1,159 @@
-﻿<h1>60 sekunder att boka hjälp & 60 minuter att få bekräftelse</h1>
-
-<div>
-    <table>
-        <tr>
-            <td>Kategori</td>
-            <td>
-                <select data-ng-model="input.mission.categoryId"
-                    data-ng-options="category.id as category.name for category in output.categories | orderBy: 'name'"
-                    data-ng-change="updateSubcategory()">
-                </select>
-            </td>
-        </tr>
-        <tr data-ng-show="hasSubcategory()">
-            <td>Underkategori</td>
-            <td>
-                <select data-ng-model="input.mission.subcategoryId"
-                    data-ng-options="subcategory.id as subcategory.name for subcategory in output.subcategories | orderBy: 'name'"
-                    data-ng-change="updateSubsubcategory()">
-                </select>
-            </td>
-        </tr>
-        <tr data-ng-show="hasSubsubcategory()">
-            <td>Underunderkategori</td>
-            <td>
-                <select data-ng-model="input.mission.subsubcategoryId"
-                    data-ng-options="subsubcategory.id as subsubcategory.name for subsubcategory in output.subsubcategories | orderBy: 'name'">
-                </select>
-            </td>
-        </tr>
-    </table>
+﻿<div class="floater contact-floater">
+    <h4 class="shadow vertical-rotate rounded-top">Kontakt</h4>
 </div>
 
-<div>
-    <h3>Beskrivning:</h3>
-    <textarea data-ng-model="input.mission.description"></textarea>
-    <br />
-    <label>{{input.mission.description.length}}/150 tecken</label>
+<div class="floater faq-floater">
+    <h4 class="shadow vertical-rotate rounded-top">F.A.Q.</h4>
 </div>
 
-<div>
-    <h3>Datum</h3>
-    <input type="date" data-ng-model="input.mission.date" />
+<div class="floater book-floater">
+    <h4 class="shadow vertical-rotate rounded-top">Boka</h4>
 </div>
 
-<div>
-    <h3>Plats</h3>
-    <input type="text" id="google-address-search" data-ng-model="input.mission.fullAddress" />
-    <google-map center="center" draggable="true" zoom="zoom" markers="markers" mark-click="true" refresh="refresh" style="height: 200px; width: 800px; display: block;"></google-map>
-</div>
-
-<div>
-    <h3>Extra</h3>
-    <table>
-        <tr data-ng-repeat="input in output.inputs">
-            <td>{{ input.text }} </td>
-            <td>
-                <input type="{{ input.type }}" data-ng-model="input.value" />
-            </td>
-        </tr>
-    </table>
-</div>
-
-<div>
-    <h3>Hämta från befintlig kund:</h3>
-
-    <label>Epost:</label><br />
-    <input type="email" data-ng-model="input.customer.emailAddress" /><br />
-
-    <label>Password</label><br />
-    <input type="password" data-ng-model="input.customer.password" /><br />
-
-    <button data-ng-click="getCustomer()">Hämta</button>
-</div>
-
-<div>
-    <h3>Kundinformation:</h3>
-
-    <input id="company" type="radio" value="company" name="customerType" data-ng-model="input.customer.type" />
-    <label for="company">Företag</label>
-    <input id="private" type="radio" value="private" name="privateType" data-ng-model="input.customer.type" />
-    <label for="private">Privat</label>
-    <br />
-
-    <label>Epost:</label><br />
-    <input type="email" data-ng-model="input.customer.emailAddress" /><br />
-
-    <label>Telefonnummer:</label><br />
-    <input type="tel" data-ng-model="input.customer.phoneNumber" /><br />
-
-    <div data-ng-show="isCompanyCustomer()">
-        <label>Organisationsnummer:</label><br />
-        <input type="number" data-ng-model="input.customer.organisationNumber" /><br />
-
-        <label>Företagsnamn</label><br />
-        <input type="text" data-ng-model="input.customer.companyName" /><br />
+<div class="header-image shadow">
+    <div class="wrapper">
+        <div class="box transparent float-right rounded">
+            <img src="Assets/IMG/Logo/adoer.png" width="150px" />
+            <p>
+                Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.
+            </p>
+            <input type="text" />
+            <button class="btn">Book Now</button>
+        </div>
     </div>
+</div>
 
-    <div data-ng-show="!isCompanyCustomer()">
-        <label>Förnamn:</label><br />
-        <input type="text" data-ng-model="input.customer.firstName" /><br />
+<div class="image-white-background">
+    <div class="wrapper">
 
-        <label>Efternamn:</label><br />
-        <input type="text" data-ng-model="input.customer.lastName" /><br />
+        <div class="info-top">
+            <h1>Uppgift</h1>
+            <hr />
 
-        <label>Personnummer:</label><br />
-        <input type="number" data-ng-model="input.customer.personalNumber" /><br />
+            <select
+                class="width3"
+                data-ng-model="category1"
+                data-ng-options="cat as cat.data.name for cat in categories.children | orderBy: 'data.name'"
+                data-ng-change="getInputs()">
+                <option value="" class="red">-- Kategori --</option>
+            </select>
+            <select
+                class="width3"
+                data-ng-model="category2"
+                data-ng-show="category1.children.length > 0"
+                data-ng-options="cat as cat.data.name for cat in category1.children | orderBy: 'data.name'">
+                <option value="" class="red">-- Underkategori --</option>
+            </select>
+            <select
+                class="width3"
+                data-ng-model="category3"
+                data-ng-show="category2.children.length > 0"
+                data-ng-options="cat as cat.data.name for cat in category2.children | orderBy: 'data.name'">
+                <option value="" class="red">-- Underunderkategori --</option>
+            </select>
+        </div>
 
-        <label>Fastighetsbeteckning:</label><br />
-        <input type="text" data-ng-model="input.customer.propertyName" /><br />
+        <div class="info">
+            <h1>Datum & Tid</h1>
+            <hr />
+            <div data-ui-calendar="uiConfig.calendar" data-ng-model="eventSources" calendar="myCalendar" style="width: 700px">
+            </div>
+
+            <label>
+                <strong>Valt datum:</strong>
+                {{ input.selectedEvent.start | date:'yyyy-MM-dd HH:mm' }}
+            </label>
+        </div>
+
+        <div class="info">
+            <h1>Beskrivning:</h1>
+            <hr />
+            <textarea
+                class="size4 full-width height2"
+                placeholder="Ge en kort beskrivning av arbetet som ska utföras."
+                data-ng-model="input.mission.description"></textarea>
+            <br />
+            <label>{{input.mission.description.length}}/150 tecken</label>
+        </div>
+
+        <div class="info" data-ng-show="output.inputs.length > 0">
+            <h1>Extra</h1>
+            <hr />
+            <div data-ng-switch="input.type" data-ng-repeat="input in output.inputs">
+                <label data-ng-switch-when="radio">
+                    {{ input.text }}
+            <input class="size2" type="radio" data-ng-model="input.value" />
+                </label>
+                <label data-ng-switch-when="checkbox">
+                    {{ input.text }}
+            <input class="size2" type="checkbox" data-ng-model="input.value" />
+                </label>
+                <input
+                    type="text"
+                    class="size2"
+                    placeholder="{{ input.text }}"
+                    data-ng-switch-default=""
+                    data-ng-model="input.value" />
+            </div>
+        </div>
+
+        <div class="info" data-ng-show="false">
+            <h1>Hämta från befintlig kund:</h1>
+            <hr />
+
+            <input type="email" data-ng-model="input.customer.emailAddress" placeholder="Epost" /><br />
+            <input type="password" data-ng-model="input.customer.password" placeholder="lösenord" /><br />
+        </div>
+
+        <div class="info">
+            <h1>Kundinformation:</h1>
+            <hr />
+
+            <div class="float-left">
+
+                <div class="btn-group">
+                    <button type="button" class="btn" data-ng-model="input.customer.type" data-btn-radio="'company'">Företag</button>
+                    <button type="button" class="btn" data-ng-model="input.customer.type" data-btn-radio="'private'">Privat</button>
+                </div>
+                <br /><br />
+
+                <input type="hidden" name="test" value="foo"/>
+
+                <div data-ng-show="isCompanyCustomer()">
+                    <input class="width4" type="text" data-ng-model="input.customer.organisationNumber" placeholder="Organisationsnummer" /><br />
+                    <input class="width4" type="text" data-ng-model="input.customer.companyName" placeholder="Företagsnamn" /><br />
+                </div>
+
+                <div data-ng-show="!isCompanyCustomer()">
+                    <input class="size2" type="text" data-ng-model="input.customer.firstName" placeholder="Förnamn" />
+                    <input class="size2" type="text" data-ng-model="input.customer.lastName" placeholder="Efternamn" /><br />
+                    <input class="width4" type="text" data-ng-model="input.customer.personalNumber" placeholder="Personnummer" /><br />
+                    <input class="width4" type="text" data-ng-model="input.customer.propertyName" placeholder="Fastighetsbeteckning" /><br />
+                </div>
+
+                <input class="width4" type="email" data-ng-model="input.customer.emailAddress" placeholder="Epost" /><br />
+                <input class="width4" type="tel" data-ng-model="input.customer.phoneNumber" placeholder="Mobilnummer" /><br />
+                <input class="width4" type="text" id="google-address-search" data-ng-model="input.mission.fullAddress" placeholder="Adress" /><br />
+            </div>
+
+            <div class="float-right padding-big" style="width: 50%">
+                <p>
+                    Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.
+                </p>
+                <p>
+                    Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.
+                </p>
+                <p>
+                    Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.
+                </p>
+            </div>
+
+            <div class="clear"></div>
+        </div>
+
+        <div class="info">
+            <button class="btn" data-ng-click="order()">Beställ</button>
+        </div>
+
     </div>
-
-</div>
-
-<div>
-    <button data-ng-click="input.orderInfo = true">Beställ</button>
-</div>
-
-<div data-ng-show="input.orderInfo">
-    <button data-ng-click="input.orderInfo = false">Stäng</button>
-
-    <table>
-        <caption>
-            <h3>Uppdrag</h3>
-        </caption>
-        <tr>
-            <td>Kategori</td>
-            <td>{{ input.mission.categoryId }}</td>
-        </tr>
-        <tr>
-            <td>Underkategori</td>
-            <td>{{ input.mission.subcategoryId }}</td>
-        </tr>
-        <tr>
-            <td>Underunderkategori</td>
-            <td>{{ input.mission.subsubcategoryId }}</td>
-        </tr>
-        <tr>
-            <td>Beskrivning</td>
-            <td>{{ input.mission.description }}</td>
-        </tr>
-        <tr>
-            <td>Datum</td>
-            <td>{{ input.mission.date }}</td>
-        </tr>
-        <tr>
-            <td>Adress</td>
-            <td>{{ input.mission.fullAddress }}</td>
-        </tr>
-    </table>
-
-    <table>
-        <caption>
-            <h3>Kund</h3>
-        </caption>
-        <tr>
-            <td>Epost</td>
-            <td>{{ input.customer.emailAddress }}</td>
-        </tr>
-        <tr>
-            <td>Telefonnummer</td>
-            <td>{{ input.customer.phoneNumber }}</td>
-        </tr>
-        <tr>
-            <td>Organisationsnummer</td>
-            <td>{{ input.customer.organisationNumber }}</td>
-        </tr>
-        <tr>
-            <td>Företagsnamn</td>
-            <td>{{ input.customer.companyName }}</td>
-        </tr>
-        <tr>
-            <td>Förnamn</td>
-            <td>{{ input.customer.firstName }}</td>
-        </tr>
-        <tr>
-            <td>Efternamn</td>
-            <td>{{ input.customer.lastName }}</td>
-        </tr>
-        <tr>
-            <td>personalNumber</td>
-            <td>{{ input.customer.personalNumber }}</td>
-        </tr>
-        <tr>
-            <td>propertyName</td>
-            <td>{{ input.customer.propertyName }}</td>
-        </tr>
-    </table>
-
-    <button data-ng-click="order()">Beställ</button>
 </div>

@@ -1,27 +1,70 @@
 ﻿@using System.Web.Optimization
 
-<html data-ng-app="HomeApp">
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7" data-ng-app="HomeApp"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8" data-ng-app="HomeApp"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9" data-ng-app="HomeApp"> <![endif]-->
+<!--[if gt IE 8]><!-->
+<html class="no-js" data-ng-app="HomeApp">
+<!--<![endif]-->
+
 <head>
+    @Styles.Render("~/bundle/css")
+    @Styles.Render("~/bundle/css/angular-ui")
     <title>ADoer - Hitta någon som fixar det åt dig!</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 </head>
 
 <body>
 
-    <div class="content-container">
+    <!--[if lt IE 7]>
+            <p class="chromeframe">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">activate Google Chrome Frame</a> to improve your experience.</p>
+    <![endif]-->
+
+    <div class="header image-gray-background">
+        <header class="wrapper">
+            <div data-ng-include="" data-src="'assets/js/partials/global/header.html'"></div>
+        </header>
+    </div>
+
+    <div class="menu green-background">
+        <div class="wrapper">
+            <div data-ng-include="" data-src="'assets/js/partials/global/menu.html'"></div>
+        </div>
+    </div>
+
+    <div class="main-container">
         <div data-ng-view=""></div>
     </div>
 
+    <div data-ng-controller="AlertController">
+        <alert ng-repeat="alert in alerts" type="alert.type" close="closeAlert($index)">{{alert.msg}}</alert>
+    </div>
+
+
+    <div data-ng-include="" data-src="'assets/js/partials/global/footer.html'"></div>
+
+
     @* -- ONLINE LIBS -- *@
-    <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js"></script>
-    <script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/jquery-ui.min.js"></script>
-    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.0.7/angular.min.js"></script>
+    @*<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js"></script>*@
+    @*<script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/jquery-ui.min.js"></script>*@
+    @*<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.0.7/angular.min.js"></script>*@
     <script src="//maps.googleapis.com/maps/api/js?v=3.exp&sensor=false&libraries=places"></script>
 
-    @Scripts.Render("~/bundle/libs")
-    @Scripts.Render("~/bundle/pages/home")
+    @Scripts.Render("~/bundle/jquery/libs")
     @Scripts.Render("~/bundle/angular/libs")
+    @Scripts.Render("~/bundle/angular-ui/libs")
+    @Scripts.Render("~/bundle/libs")
 
-    
+    @Scripts.Render("~/bundle/pages/home")
+
+    @Scripts.Render("~/bundle/angular/global")
+    @Scripts.Render("~/bundle/angular/resources")
+
+
 </body>
 
 </html>
