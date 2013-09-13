@@ -16,11 +16,24 @@
       $scope.saveMission = function() {
         var mission;
 
+        $scope.input.mission.extras = angular.toJson(_.map($scope.output.inputs, function(input) {
+          return {
+            'id': input.id,
+            'value': input.value
+          };
+        }));
         mission = new Mission($scope.input.mission);
         return mission.$save(function(data) {
           return console.log(data);
         }, function(error) {
           return console.log(error);
+        });
+      };
+      $scope.getInputs = function() {
+        return CategoryService.getCategoryInputs($scope.category1.data.id).success(function(data, status, headers, config) {
+          return $scope.output.inputs = data;
+        }).error(function(data, status, headers, config) {
+          return console.log(status);
         });
       };
       $scope.order = function() {
@@ -45,6 +58,30 @@
       $scope.input.mission.address = {};
       $scope.input.mission.description = "";
       $scope.input.customer.type = "private";
+      $scope.loadEvents = function() {
+        var result, startDate, startMonth;
+
+        startDate = $scope.myCalendar.fullCalendar('getDate');
+        startMonth = startDate.getMonth();
+        result = [];
+        while (startDate.getMonth() === startMonth) {
+          result.push({
+            title: '08:00',
+            start: startDate.toLocaleDateString() + " 08:00:00"
+          });
+          result.push({
+            title: '12:00',
+            start: startDate.toLocaleDateString() + " 12:00:00"
+          });
+          result.push({
+            title: '17:00',
+            start: startDate.toLocaleDateString() + " 17:00:00"
+          });
+          startDate.setDate(startDate.getDate() + 1);
+          console.log(startDate);
+        }
+        return $scope.eventSources[0].events = result;
+      };
       $scope.uiConfig = {
         calendar: {
           height: 450,
@@ -53,12 +90,29 @@
             left: '',
             center: 'title',
             right: 'today prev,next'
+          },
+          viewRender: function() {
+            return $scope.loadEvents();
+          },
+          eventClick: function(event) {
+            $scope.input.selectedEvent = event;
+            return $scope.$apply();
           }
         }
       };
-      $scope.eventSources = [];
+      $scope.eventSources = [
+        {
+          events: [],
+          color: 'yellow',
+          textColor: 'black'
+        }
+      ];
       CategoryService.getTree().success(function(data, status, headers, config) {
-        return $scope.categories = data;
+        $scope.categories = data;
+        $scope.category1 = _.find($scope.categories.children, function(child) {
+          return child.data.id = $routeParams.categoryId;
+        });
+        return $scope.getInputs();
       }).error(function(data, status, headers, config) {
         return console.log(status);
       });
