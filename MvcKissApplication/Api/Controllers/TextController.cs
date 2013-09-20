@@ -65,7 +65,7 @@ namespace MvcKissApplication.Api.controllers
         [CacheOutput(ClientTimeSpan = 0, ServerTimeSpan = 0)]
         public HttpResponseMessage GetPageText(string controllerName, string language)
         {
-            var models = repo.getText(controllerName, language);
+            var models = repo.getTexts(controllerName, language);
             if (models.Count() < 1)
             {
                 return Request.CreateResponse(HttpStatusCode.NotFound);

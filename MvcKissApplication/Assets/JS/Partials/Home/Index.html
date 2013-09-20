@@ -15,12 +15,7 @@
     <div class="wrapper">
         <div class="box transparent float-right rounded">
             <img src="Assets/IMG/Logo/adoer.png" width="150px" />
-            <p 
-                compile="html"
-                contenteditable="true" 
-                data-ng-model="texts['box-text'][0].text">
-                {{ texts['box-text'][0].text }}
-            </p>
+            <div data-ng-bind-html-unsafe="texts['box-text'][0].text"></div>
             <input type="text" />
             <button 
                 class="btn"

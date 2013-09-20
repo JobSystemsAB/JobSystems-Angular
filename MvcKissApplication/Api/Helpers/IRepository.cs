@@ -21,7 +21,7 @@ namespace MvcKissApplication.Api.Helpers
 
         Administrator createAdministrator(Administrator model);
 
-        void deleteAdministrator(int id);
+        Administrator deleteAdministrator(int id);
 
         #endregion
 
@@ -35,7 +35,7 @@ namespace MvcKissApplication.Api.Helpers
 
         Category createCategory(Category model);
 
-        void deleteCategory(int id);
+        Category deleteCategory(int id);
 
         #endregion
 
@@ -49,7 +49,7 @@ namespace MvcKissApplication.Api.Helpers
 
         CategoryInput createCategoryInput(CategoryInput model);
 
-        void deleteCategoryInput(int id);
+        CategoryInput deleteCategoryInput(int id);
 
         #endregion
 
@@ -63,7 +63,7 @@ namespace MvcKissApplication.Api.Helpers
 
         CompanyCustomer createCompanyCustomer(CompanyCustomer model);
 
-        void deleteCompanyCustomer(int id);
+        CompanyCustomer deleteCompanyCustomer(int id);
 
         #endregion
 
@@ -91,9 +91,7 @@ namespace MvcKissApplication.Api.Helpers
 
         Employee createEmployee(Employee model);
 
-        void deleteEmployee(int id);
-
-        //void updateEmployee(Employee model);
+        Employee deleteEmployee(int id);
 
         #endregion
 
@@ -107,7 +105,7 @@ namespace MvcKissApplication.Api.Helpers
 
         Mission createMission(Mission model);
 
-        void deleteMission(int id);
+        Mission deleteMission(int id);
 
         #endregion
 
@@ -121,7 +119,7 @@ namespace MvcKissApplication.Api.Helpers
 
         PrivateCustomer createPrivateCustomer(PrivateCustomer model);
 
-        void deletePrivateCustomer(int id);
+        PrivateCustomer deletePrivateCustomer(int id);
 
         #endregion
 
@@ -129,17 +127,34 @@ namespace MvcKissApplication.Api.Helpers
 
         IEnumerable<Text> getAllTexts();
 
-        IEnumerable<Text> getText(int[] ids);
+        IEnumerable<Text> getTexts(int[] ids);
 
-        IEnumerable<Text> getText(string controllerName, string language);
+        IEnumerable<Text> getTexts(string controllerName, string language);
 
         Text getText(int id);
 
         Text createText(Text model);
 
-        void deleteText(int id);
+        Text deleteText(int id);
 
         #endregion
+
+        #region TEXT MESSAGE
+
+        IEnumerable<TextMessage> getAllTextMessages();
+
+        IEnumerable<TextMessage> getTextMessages(int[] ids);
+
+        TextMessage getTextMessage(int id);
+
+        TextMessage getTextMessage(string id);
+
+        TextMessage createTextMessage(TextMessage model);
+
+        TextMessage deleteTextMessage(int id);
+
+        #endregion
+
 
         #region WORK SHIFT
 
@@ -151,7 +166,7 @@ namespace MvcKissApplication.Api.Helpers
 
         WorkShift createWorkShift(WorkShift model);
 
-        void deleteWorkShift(int id);
+        WorkShift deleteWorkShift(int id);
 
         #endregion
 

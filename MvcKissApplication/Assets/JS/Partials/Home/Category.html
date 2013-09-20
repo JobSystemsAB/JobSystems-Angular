@@ -66,7 +66,7 @@
         </div>
 
         <div class="info">
-            <h1>Beskrivning:</h1>
+            <h1>Beskrivning</h1>
             <hr />
             <textarea
                 class="size4 full-width height2"
@@ -98,7 +98,7 @@
         </div>
 
         <div class="info" data-ng-show="false">
-            <h1>Hämta från befintlig kund:</h1>
+            <h1>Hämta från befintlig kund</h1>
             <hr />
 
             <input type="email" data-ng-model="input.customer.emailAddress" placeholder="Epost" /><br />
@@ -106,7 +106,7 @@
         </div>
 
         <div class="info">
-            <h1>Kundinformation:</h1>
+            <h1>Kundinformation</h1>
             <hr />
 
             <div class="float-left">
@@ -115,9 +115,10 @@
                     <button type="button" class="btn" data-ng-model="input.customer.type" data-btn-radio="'company'">Företag</button>
                     <button type="button" class="btn" data-ng-model="input.customer.type" data-btn-radio="'private'">Privat</button>
                 </div>
-                <br /><br />
+                <br />
+                <br />
 
-                <input type="hidden" name="test" value="foo"/>
+                <input type="hidden" name="test" value="foo" />
 
                 <div data-ng-show="isCompanyCustomer()">
                     <input class="width4" type="text" data-ng-model="input.customer.organisationNumber" placeholder="Organisationsnummer" /><br />
@@ -151,8 +152,42 @@
             <div class="clear"></div>
         </div>
 
+        <div>
+            <form method="post" action="https://sat1.dibspayment.com/dibspaymentwindow/entrypoint" target="_blank">
+                
+                <input type="hidden" name="merchant" value="90151568" />
+                <input type="hidden" name="currency" value="SEK" />
+                <input type="hidden" name="orderId" value="213455" />
+                <input type="hidden" name="amount" value="375" />
+                <input type="hidden" name="language" value="sv_SE" />
+
+                <input type="hidden" name="billingFirstName" value="John" />
+                <input type="hidden" name="billingLastName" value="Doe" />
+                <input type="hidden" name="billingAddress" value="Danderydsgatan 28" />
+                <input type="hidden" name="billingPostalCode" value="11426" />
+                <input type="hidden" name="billingPostalPlace" value="Stockholm" />
+                <input type="hidden" name="billingEmail" value="misael@jobsystems.se" />
+                <input type="hidden" name="billingMobile" value="+46704333005" />
+
+                <input type="hidden" name="oiTypes" value="QUANTITY;UNITCODE;DESCRIPTION;AMOUNT;ITEMID;VATAMOUNT" />
+                <input type="hidden" name="oiNames" value="Items;UnitCode;Description;Amount;ItemId;VatAmount" />
+                <input type="hidden" name="oiRow1" value="1;pcs;ACME Rocket Roller skates\; ultra fast;100;98;25" />
+                <input type="hidden" name="oiRow2" value="1;pcs;ACME Band Aid;100;99;25" />
+                <input type="hidden" name="oiRow3" value="1;pcs;Some description;100;45;25" />
+
+                <input type="hidden" name="acceptReturnUrl" value="https://yourdomain.com/acceptReturnUrl" />
+                <input type="hidden" name="cancelReturnUrl" value="https://yourdomain.com/cancelReturnUrl" />
+                <input type="hidden" name="callbackUrl" value="https://yourdomain.com/callbackUrl" />
+
+                <input type="submit" value="skicka" /> 
+            </form>
+        </div>
+
+
         <div class="info">
             <button class="btn" data-ng-click="order()">Beställ</button>
+            <button class="btn" data-ng-click="dibs()">DIBS</button>
+            <button class="btn" data-ng-click="sendSMS()">SMS</button>
         </div>
 
     </div>

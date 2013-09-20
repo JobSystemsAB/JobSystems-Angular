@@ -42,11 +42,21 @@
     <Reference Include="Antlr3.Runtime">
       <HintPath>..\packages\WebGrease.1.3.0\lib\Antlr3.Runtime.dll</HintPath>
     </Reference>
-    <Reference Include="AutoMapper">
-      <HintPath>..\packages\AutoMapper.2.2.1\lib\net40\AutoMapper.dll</HintPath>
+    <Reference Include="AutoMapper, Version=3.1.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\AutoMapper.3.1.0-ci1021\lib\net40\AutoMapper.dll</HintPath>
+    </Reference>
+    <Reference Include="AutoMapper.Net4">
+      <HintPath>..\packages\AutoMapper.3.1.0-ci1021\lib\net40\AutoMapper.Net4.dll</HintPath>
+    </Reference>
+    <Reference Include="EasyHttp">
+      <HintPath>..\packages\EasyHttp.1.6.58.0\lib\net40\EasyHttp.dll</HintPath>
     </Reference>
     <Reference Include="EntityFramework">
       <HintPath>..\packages\EntityFramework.5.0.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="JsonFx">
+      <HintPath>..\packages\JsonFx.2.0.1209.2802\lib\net40\JsonFx.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="Microsoft.WindowsAzure.Configuration, Version=1.8.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
@@ -146,6 +156,7 @@
     <Compile Include="Api\Controllers\CategoryController.cs" />
     <Compile Include="Api\Controllers\CategoryInputController.cs" />
     <Compile Include="Api\Controllers\TextController.cs" />
+    <Compile Include="Api\Controllers\TextMessageController.cs" />
     <Compile Include="Api\Controllers\WorkShiftController.cs" />
     <Compile Include="Api\Controllers\PrivateCustomerController.cs" />
     <Compile Include="Api\Controllers\CustomerController.cs" />
@@ -159,6 +170,7 @@
     <Compile Include="Api\ViewModels\CategoryInputView.cs" />
     <Compile Include="Api\ViewModels\CompanyCustomerView.cs" />
     <Compile Include="Api\ViewModels\CategoryView.cs" />
+    <Compile Include="Api\ViewModels\TextMessageView.cs" />
     <Compile Include="Api\ViewModels\TextView.cs" />
     <Compile Include="Api\ViewModels\WorkShiftView.cs" />
     <Compile Include="App_Start\BundleConfig.cs" />
@@ -171,6 +183,7 @@
     <Compile Include="Database\Models\CategoryInput.cs" />
     <Compile Include="Database\Models\Comment.cs" />
     <Compile Include="Database\Models\Text.cs" />
+    <Compile Include="Database\Models\TextMessage.cs" />
     <Compile Include="Database\Models\WorkShift.cs" />
     <Compile Include="Api\ViewModels\CustomerView.cs" />
     <Compile Include="Api\ViewModels\MissionView.cs" />
@@ -252,6 +265,18 @@
     <Compile Include="Migrations\201309121336184_unknown.cs" />
     <Compile Include="Migrations\201309121336184_unknown.Designer.cs">
       <DependentUpon>201309121336184_unknown.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201309191433420_textmessage.cs" />
+    <Compile Include="Migrations\201309191433420_textmessage.Designer.cs">
+      <DependentUpon>201309191433420_textmessage.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201309200819399_dunno2.cs" />
+    <Compile Include="Migrations\201309200819399_dunno2.Designer.cs">
+      <DependentUpon>201309200819399_dunno2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201309200858496_apiId.cs" />
+    <Compile Include="Migrations\201309200858496_apiId.Designer.cs">
+      <DependentUpon>201309200858496_apiId.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\MvcKissApplicationContext.cs" />
@@ -402,6 +427,9 @@
     <Content Include="Assets\JS\Resources\Services\Alert.js">
       <DependentUpon>Alert.coffee</DependentUpon>
     </Content>
+    <Content Include="Assets\JS\Resources\Services\Base64.js">
+      <DependentUpon>Base64.coffee</DependentUpon>
+    </Content>
     <Content Include="Assets\JS\Resources\Services\Category.js">
       <DependentUpon>Category.coffee</DependentUpon>
     </Content>
@@ -474,6 +502,7 @@
     </Content>
     <Content Include="Assets\JS\Resources\Services\Text.coffee" />
     <Content Include="Assets\JS\Controllers\Home\Category.coffee" />
+    <Content Include="Assets\JS\Resources\Services\Base64.coffee" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\Home\Index.cshtml" />
@@ -532,6 +561,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201309121336184_unknown.resx">
       <DependentUpon>201309121336184_unknown.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201309191433420_textmessage.resx">
+      <DependentUpon>201309191433420_textmessage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201309200819399_dunno2.resx">
+      <DependentUpon>201309200819399_dunno2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201309200858496_apiId.resx">
+      <DependentUpon>201309200858496_apiId.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
@@ -643,6 +681,9 @@
       <CompileStyle>Nested</CompileStyle>
       <DebugInfo>False</DebugInfo>
     </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

@@ -2,8 +2,8 @@
 
 window.app.controller 'CategoryController', 
 
-['$scope', '$http', '$routeParams', 'CategoryService', 'Mission', 'MissionService', 'Category', 'CustomerService', 'PrivateCustomer', 'CompanyCustomer', 'GoogleMapsService', 
-( $scope,   $http,   $routeParams,   CategoryService,   Mission,   MissionService,   Category,   CustomerService,   PrivateCustomer,   CompanyCustomer,   GoogleMapsService) ->
+['$scope', '$http', '$routeParams', 'Base64Service', 'CategoryService', 'Mission', 'MissionService', 'Category', 'CustomerService', 'PrivateCustomer', 'CompanyCustomer', 'GoogleMapsService', 'TextMessage', 
+( $scope,   $http,   $routeParams,   Base64Service,   CategoryService,   Mission,   MissionService,   Category,   CustomerService,   PrivateCustomer,   CompanyCustomer,   GoogleMapsService,   TextMessage) ->
 
     # -- FRONT METHODS
 
@@ -22,6 +22,7 @@ window.app.controller 'CategoryController',
     # Save mission information
     $scope.saveMission = ->
         
+        $scope.input.mission.date = $scope.input.selectedEvent.start
         $scope.input.mission.extras = angular.toJson _.map $scope.output.inputs, (input) ->
             return { 'id': input.id, 'value': input.value }
 
@@ -70,23 +71,25 @@ window.app.controller 'CategoryController',
 
     # Reload calendar events
     $scope.loadEvents = ->
+        todayDate = new Date()
         startDate = $scope.myCalendar.fullCalendar('getDate')
         startMonth = startDate.getMonth()
         
         result = []
         while startDate.getMonth() == startMonth
-            result.push { title: '08:00', start: startDate.toLocaleDateString() + " 08:00:00" }
-            result.push { title: '12:00', start: startDate.toLocaleDateString() + " 12:00:00" }
-            result.push { title: '17:00', start: startDate.toLocaleDateString() + " 17:00:00" }
+            if startDate > todayDate
+                result.push { title: '08:00', start: startDate.toLocaleDateString() + " 08:00:00" }
+                result.push { title: '12:00', start: startDate.toLocaleDateString() + " 12:00:00" }
+                result.push { title: '17:00', start: startDate.toLocaleDateString() + " 17:00:00" }
+            
             startDate.setDate startDate.getDate() + 1
-            console.log startDate
 
         $scope.eventSources[0].events = result
 
     # Calendar config
     $scope.uiConfig = 
         calendar:
-            height: 450,
+            height: 250,
             editable: true,
             header:
                 left: ''
@@ -100,8 +103,8 @@ window.app.controller 'CategoryController',
 
     $scope.eventSources = [{
         events: []
-        color: 'yellow'   
-        textColor: 'black' 
+        color: '#0CB45D'   
+        textColor: 'white' 
     }]
 
     # Get tree information
@@ -134,5 +137,68 @@ window.app.controller 'CategoryController',
         $scope.input.mission.address.country = GoogleMapsService.getAddressType place.address_components, 'country'
         $scope.input.mission.address.area = GoogleMapsService.getAddressType place.address_components, 'administrative_area_level_1'
 
+    # DIBS
+    $scope.dibs = ->
+        $scope.dibsInput = {}
+        $scope.dibsInput.merchant = 90151568
+        $scope.dibsInput.currency = "SEK"
+        $scope.dibsInput.orderId = 20
+        $scope.dibsInput.amount = 375
+        $scope.dibsInput.language = "en_GB"
+
+        $scope.dibsInput.billingFirstName = "Misael"
+        $scope.dibsInput.billingLastName = "Berrios Salas"
+        $scope.dibsInput.billingAddress = "Testgata 36"
+        $scope.dibsInput.billingPostalCode = "123 12"
+        $scope.dibsInput.billingPostalPlace = "Stockholm"
+        $scope.dibsInput.billingEmail = "misael@jobsystems.se"
+        $scope.dibsInput.billingMobile = "+46 12 34 567"
+
+        $scope.dibsInput.oiTypes = "QUANTITY;DESCRIPTION;AMOUNT;ITEMID"
+        $scope.dibsInput.oiRow1 = "1;Testar lite;2;250"
+
+        $scope.dibsInput.acceptReturnUrl = "http://www.googl.com"
+        $scope.dibsInput.cancelReturnUrl = "http://www.facebook.com"
+        $scope.dibsInput.callbackUrl = "http://www.expressen.se"
+
+        console.log angular.toJson $scope.dibsInput
+
+        delete $http.defaults.headers.common['X-Requested-With']
+        $http.defaults.headers.common = { "Access-Control-Request-Headers": "accept, origin, authorization" }
+        $http
+            url: "https://sat1.dibspayment.com/dibspaymentwindow/entrypoint"
+            method: "POST"
+            data: $scope.dibsInput
+        .success (data, status, headers, config) ->
+            console.log "yay", data, status, headers, config
+        .error (data, status, headers, config) ->
+            console.log "nay", data, status, headers, config
+
+
+        $http
+            url: "https://sat1.dibspayment.com/dibspaymentwindow/entrypoint"
+            method: "JSONP"
+            data: $scope.dibsInput
+        .success (data, status, headers, config) ->
+            console.log "yay", data, status, headers, config
+        .error (data, status, headers, config) ->
+            console.log "nay", data, status, headers, config
+
+
+     $scope.sendSMS = ->
+
+        $scope.sms = {}
+        $scope.sms.from = '+46704333005'
+        $scope.sms.to = '+46704333005'
+        $scope.sms.message = 'Tjaba Richard! Du ska ut o skotta gödsel i Södertälje idag kl 19! Kan du ta det?'
         
+        $http
+            url: "/api/textmessage/postelk"
+            data: $scope.sms
+            method: "POST"
+        .success (data, status, headers, config) ->
+            console.log "yay", data, status, headers, config
+        .error (data, status, headers, config) ->
+            console.log "nay", data, status, headers, config
+
 ]   

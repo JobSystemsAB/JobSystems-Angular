@@ -26,6 +26,9 @@
         
     .factory('Subsubcategory', ['$resource', ($resource) ->
         $resource '/api/subsubcategory/:id', { id: '@id' }, { update: { method: 'PUT' } }])
+    
+    .factory('TextMessage', ['$resource', ($resource) ->
+        $resource '/api/textmessage/:id', { id: '@id' }, { update: { method: 'PUT' } }])
         
     .factory('WorkShift', ['$resource', ($resource) ->
         $resource '/api/workshift/:id', { id: '@id' }, { update: { method: 'PUT' } }])

@@ -45,11 +45,12 @@ namespace MvcKissApplication.Api.Helpers
             return model;
         }
 
-        public void deleteAdministrator(int id)
+        public Administrator deleteAdministrator(int id)
         {
             var model = db.administrators.Find(id);
             db.administrators.Remove(model);
             db.SaveChanges();
+            return model;
         }
 
         #endregion
@@ -78,11 +79,12 @@ namespace MvcKissApplication.Api.Helpers
             return model;
         }
 
-        public void deleteCategory(int id)
+        public Category deleteCategory(int id)
         {
             var model = db.categories.Find(id);
             db.categories.Remove(model);
             db.SaveChanges();
+            return model;
         }
 
         #endregion
@@ -111,11 +113,12 @@ namespace MvcKissApplication.Api.Helpers
             return model;
         }
 
-        public void deleteCategoryInput(int id)
+        public CategoryInput deleteCategoryInput(int id)
         {
             var model = db.categoryInputs.Find(id);
             db.categoryInputs.Remove(model);
             db.SaveChanges();
+            return model;
         }
 
         #endregion
@@ -144,11 +147,12 @@ namespace MvcKissApplication.Api.Helpers
             return model;
         }
 
-        public void deleteCompanyCustomer(int id)
+        public CompanyCustomer deleteCompanyCustomer(int id)
         {
             var model = db.companyCustomers.Find(id);
             db.companyCustomers.Remove(model);
             db.SaveChanges();
+            return model;
         }
 
         #endregion
@@ -215,11 +219,12 @@ namespace MvcKissApplication.Api.Helpers
             return model;
         }
 
-        public void deleteEmployee(int id)
+        public Employee deleteEmployee(int id)
         {
             var model = db.employees.Find(id);
             db.employees.Remove(model);
             db.SaveChanges();
+            return model;
         }
 
         #endregion
@@ -248,11 +253,12 @@ namespace MvcKissApplication.Api.Helpers
             return model;
         }
 
-        public void deleteMission(int id)
+        public Mission deleteMission(int id)
         {
             var model = db.missions.Find(id);
             db.missions.Remove(model);
             db.SaveChanges();
+            return model;
         }
 
         #endregion
@@ -281,11 +287,12 @@ namespace MvcKissApplication.Api.Helpers
             return model;
         }
 
-        public void deletePrivateCustomer(int id)
+        public PrivateCustomer deletePrivateCustomer(int id)
         {
             var model = db.privateCustomers.Find(id);
             db.privateCustomers.Remove(model);
             db.SaveChanges();
+            return model;
         }
 
         #endregion
@@ -302,12 +309,12 @@ namespace MvcKissApplication.Api.Helpers
             return db.texts.FirstOrDefault(x => x.id == id);
         }
 
-        public IEnumerable<Text> getText(int[] ids)
+        public IEnumerable<Text> getTexts(int[] ids)
         {
             return db.texts.Where(x => ids.Contains(x.id));
         }
 
-        public IEnumerable<Text> getText(string controllerName, string language)
+        public IEnumerable<Text> getTexts(string controllerName, string language)
         {
             return db.texts.Where(x => x.controllerName == controllerName && x.language == language);
         }
@@ -319,11 +326,51 @@ namespace MvcKissApplication.Api.Helpers
             return model;
         }
 
-        public void deleteText(int id)
+        public Text deleteText(int id)
         {
             var model = db.texts.Find(id);
             db.texts.Remove(model);
             db.SaveChanges();
+            return model;
+        }
+
+        #endregion
+
+        #region TEXT MESSAGES
+
+        public IEnumerable<TextMessage> getAllTextMessages()
+        {
+            return db.textMessages;            
+        }
+
+        public IEnumerable<TextMessage> getTextMessages(int[] ids)
+        {
+            return db.textMessages.Where(x => ids.Contains(x.id));
+        }
+
+        public TextMessage getTextMessage(int id)
+        {
+            return db.textMessages.FirstOrDefault(x => x.id == id);
+        }
+
+        public TextMessage getTextMessage(string id)
+        {
+            return db.textMessages.FirstOrDefault(x => x.apiId == id);
+        }
+
+        public TextMessage createTextMessage(TextMessage model)
+        {
+            db.textMessages.Add(model);
+            db.SaveChanges();
+            return model;
+        }
+
+        public TextMessage deleteTextMessage(int id)
+        {
+            var model = db.textMessages.Find(id);
+            db.textMessages.Remove(model);
+            db.SaveChanges();
+            return model;
         }
 
         #endregion
@@ -352,11 +399,12 @@ namespace MvcKissApplication.Api.Helpers
             return model;
         }
 
-        public void deleteWorkShift(int id)
+        public WorkShift deleteWorkShift(int id)
         {
             var model = db.workShifts.Find(id);
             db.workShifts.Remove(model);
             db.SaveChanges();
+            return model;
         }
 
         #endregion
