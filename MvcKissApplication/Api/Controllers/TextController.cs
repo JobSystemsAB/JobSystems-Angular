@@ -38,7 +38,26 @@ namespace MvcKissApplication.Api.controllers
         [CacheOutput(ClientTimeSpan = 0, ServerTimeSpan = 0)]
         public IEnumerable<TextView> Get()
         {
-            var models = repo.getAllTexts();
+            var models = repo.getAllTexts().Where(m => m.enabled);
+            var views = TextView.getViews(models);
+            return views;
+        }
+
+        // GET api/text/5
+        [HttpGet]
+        [CacheOutput(ClientTimeSpan = 0, ServerTimeSpan = 0)]
+        public IEnumerable<TextView> GetLangTexts(string language)
+        {
+            var models = repo.getTexts(language).Where(m => m.enabled);
+            var views = TextView.getViews(models);
+            return views;
+        }
+
+        [HttpGet]
+        [CacheOutput(ClientTimeSpan = 0, ServerTimeSpan = 0)]
+        public IEnumerable<TextView> GetPageTexts(string controllerName, string language)
+        {
+            var models = repo.getTexts(controllerName, language).Where(m => m.enabled);
             var views = TextView.getViews(models);
             return views;
         }
@@ -61,22 +80,6 @@ namespace MvcKissApplication.Api.controllers
             }
         }
 
-        [HttpGet]
-        [CacheOutput(ClientTimeSpan = 0, ServerTimeSpan = 0)]
-        public HttpResponseMessage GetPageText(string controllerName, string language)
-        {
-            var models = repo.getTexts(controllerName, language);
-            if (models.Count() < 1)
-            {
-                return Request.CreateResponse(HttpStatusCode.NotFound);
-            }
-            else
-            {
-                var views = TextView.getViews(models);
-                return Request.CreateResponse(HttpStatusCode.OK, views);
-            }
-        }
-
         // POST api/text
         [HttpPost]
         [ActionName("DefaultAction")]
@@ -84,13 +87,34 @@ namespace MvcKissApplication.Api.controllers
         {
             var model = view.getModel();
             model.created = DateTime.UtcNow;
-            model.updated = DateTime.UtcNow;
             model = repo.createText(model);
             view = new TextView(model);
 
             HttpResponseMessage response = Request.CreateResponse(HttpStatusCode.Created, view);
             response.Headers.Location = new Uri(Url.Link("ApiControllerAndId", new { id = view.id }));
             return response;
+        }
+
+        // POST api/text/SaveTexts
+        [HttpPost]
+        public HttpResponseMessage SaveTexts(IEnumerable<TextView> views)
+        {
+            foreach (var view in views)
+            {
+                var original = repo.getText(view.id);
+                if (original.text != view.text)
+                {
+                    var model = view.getModel();
+                    model.enabled = true;
+                    model.created = DateTime.UtcNow;
+                    repo.createText(model);
+
+                    original.enabled = false;
+                    repo.update(original);
+                }
+            }
+
+            return Request.CreateResponse(HttpStatusCode.Created);
         }
 
         // PUT api/text/5
@@ -104,7 +128,6 @@ namespace MvcKissApplication.Api.controllers
             }
             
             var model = view.getModel();
-            model.updated = DateTime.UtcNow;
 
             try
             {
@@ -132,7 +155,7 @@ namespace MvcKissApplication.Api.controllers
             {
                 try 
                 {
-                    repo.deleteAdministrator(id);
+                    repo.deleteText(id);
                 }
                 catch (DbUpdateConcurrencyException ex)
                 {

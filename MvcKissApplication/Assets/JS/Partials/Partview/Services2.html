@@ -1,0 +1,61 @@
+﻿<div
+    class="container"
+    data-ng-controller="ServicesController">
+
+    <div
+        class="row">
+
+        <h1
+            id="services-title"
+            contenteditable="true"
+            data-ng-model="texts['services-title'][0].text"
+            data-compile="texts['services-title'][0].text"></h1>
+
+        <div
+            id="services-text"
+            contenteditable="true"
+            data-ng-model="texts['services-text'][0].text"
+            data-compile="texts['services-text'][0].text"
+            style="margin-bottom: 20px;">
+        </div>
+
+        <div
+            class="col-xs-6 col-sm-4 col-md-3 col-lg-3"
+            data-ng-repeat="category in categories | orderBy: 'name'">
+
+            <div
+                class="shadow img-rounded"
+                style="margin-bottom: 20px; position: relative">
+
+                <img
+                    class="img-rounded"
+                    src="/Assets/IMG/TMP/work.jpg"
+                    style="width: 100%;" />
+
+                <div
+                    style="position: absolute; bottom: 0; right: 0px; padding-right: 20px; width: 100%; text-align: right">
+                    <h5>
+                        <a
+                            class="img-rounded"
+                            style="color: white; position: absolute; bottom: 0; right: 0; padding: 10px 20px; background-color: #0CB45D; width: 100%; opacity: 0.9"
+                            data-ui-sref="service({serviceId: category.id})"
+                            contenteditable="true"
+                            data-ng-model="category.name"
+                            data-compile="category.name"></a>
+                    </h5>
+                    <div class="clear"></div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <div
+        style="text-align: right">
+        <button
+            class="btn btn-danger btn-lg"
+            data-ng-click="save()">
+            Spara ändringar</button>
+    </div>
+
+</div>

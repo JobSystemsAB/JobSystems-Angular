@@ -74,17 +74,26 @@
     <Build Include="scripts\CreateUsersInAzure.sql" />
     <Build Include="scripts\Selects.sql" />
     <Build Include="dbo\Tables\TimeReports.sql" />
-    <Build Include="dbo\Tables\Performers.sql" />
     <Build Include="dbo\Tables\PerformerAccessTokens.sql" />
     <Build Include="dbo\Tables\Knowledges.sql" />
     <Build Include="dbo\Tables\KnowledgeAssignments.sql" />
-    <Build Include="dbo\Tables\Clients.sql" />
     <Build Include="dbo\Tables\Categories.sql" />
     <Build Include="dbo\Tables\Assignments.sql" />
     <Build Include="dbo\Tables\AssignmentPerformers.sql" />
     <Build Include="dbo\Tables\Administrators.sql" />
     <Build Include="dbo\Tables\AdministratorAccessTokens.sql" />
     <Build Include="dbo\Tables\KnowledgePerformers.sql" />
+    <Build Include="dbo\Tables\WorkShifts.sql" />
+    <Build Include="dbo\Tables\Texts.sql" />
+    <Build Include="dbo\Tables\TextMessages.sql" />
+    <Build Include="dbo\Tables\Testimonials.sql" />
+    <Build Include="dbo\Tables\Missions.sql" />
+    <Build Include="dbo\Tables\MissionCategories.sql" />
+    <Build Include="dbo\Tables\Employees.sql" />
+    <Build Include="dbo\Tables\EmployeeCategories.sql" />
+    <Build Include="dbo\Tables\Customers.sql" />
+    <Build Include="dbo\Tables\Comments.sql" />
+    <Build Include="dbo\Tables\CategoryInputs.sql" />
   </ItemGroup>
   <ItemGroup>
     <PostDeploy Include="scripts\Script.PostDeployment.sql" />

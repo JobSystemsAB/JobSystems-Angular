@@ -1,0 +1,72 @@
+﻿<div
+    style="margin-top: 95px;"
+    data-ng-controller="TitleWindowController">
+    
+    <div
+        class="header-image shadow visible-sm visible-md visible-lg">
+
+        <div
+            class="container"
+            style="position: relative">
+
+            <div
+                class="img-rounded pull-right image-gray-background"
+                style="top: 150px; padding: 20px; position: absolute; right: 0; max-width: 500px;">
+
+                <div
+                    id="title-window-text"
+                    contenteditable="true"
+                    data-ng-model="texts['title-window-text'][0].text"
+                    data-compile="texts['title-window-text'][0].text"
+                    style="margin-bottom: 20px">
+                </div>
+
+                <form class="form-inline" role="form">
+                    <input
+                        type="text"
+                        placeholder="Postnummer"
+                        class="form-control"
+                        style="width: 300px" />
+
+                    <button
+                        class="btn green-background"
+                        id="title-window-button"
+                        contenteditable="true"
+                        data-ng-model="texts['title-window-button'][0].text"
+                        data-compile="texts['title-window-button'][0].text"
+                        style="color: white; margin-left: 10px">
+                    </button>
+                </form>
+
+            </div>
+        </div>
+    </div>
+
+    <div
+        class="visible-xs image-gray-background" style="text-align: center; padding: 40px 0;">
+        <form class="form-inline" role="form">
+            <input
+                type="text"
+                placeholder="Postnummer"
+                class="form-control"
+                style="width: 300px; margin: 0 auto;" />
+
+            <button
+                class="btn btn-lg green-background"
+                id="Button1"
+                contenteditable="true"
+                data-ng-model="texts['title-window-button'][0].text"
+                data-compile="texts['title-window-button'][0].text"
+                style="color: white; margin-left: 10px">
+            </button>
+        </form>
+    </div>
+
+    <div 
+        style="text-align: right">
+        <button 
+            class="btn btn-danger btn-lg" 
+            data-ng-click="save()">Spara ändringar</button>
+    </div>
+
+</div>

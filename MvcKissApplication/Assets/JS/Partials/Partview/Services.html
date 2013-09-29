@@ -1,0 +1,38 @@
+﻿<!-- partials/Services.html -->
+
+<div data-ng-controller="ServicesController">
+
+    <div class="container">
+
+        <h1
+            id="services-title"
+            contenteditable="true"
+            data-ng-model="texts['services-title'][0].text"
+            data-compile="texts['services-title'][0].text"></h1>
+
+        <div
+            id="services-text"
+            contenteditable="true"
+            data-ng-model="texts['services-text'][0].text"
+            data-compile="texts['services-text'][0].text">
+        </div>
+        <div class="row">
+            <div data-ng-repeat="category in categories" class="category rounded col-xs-4 col-sm-4 col-md-3 col-lg-3">
+                <div class="category-image"></div>
+                <h5><a data-ui-sref="service({serviceId: category.id})">{{ category.name }}</a></h5>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="container padding-small margin-small" style="background-color: lightsalmon" data-ng-show="false">
+        <div class="float-left">
+            Du är inloggad som Admin. Glöm inte att spara dina ändringar!
+        </div>
+        <div class="float-right">
+            <button data-ng-click="save()">Save</button>
+        </div>
+    </div>
+
+    <div class="clear"></div>
+</div>

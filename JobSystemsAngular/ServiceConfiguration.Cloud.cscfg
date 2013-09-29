@@ -1,9 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ServiceConfiguration serviceName="JobSystemsAngular" xmlns="http://schemas.microsoft.com/ServiceHosting/2008/10/ServiceConfiguration" osFamily="3" osVersion="*" schemaVersion="2012-10.1.8">
   <Role name="MvcKissApplication">
-    <Instances count="1" />
+    <Instances count="2" />
     <ConfigurationSettings>
-      <Setting name="Microsoft.WindowsAzure.Plugins.Diagnostics.ConnectionString" value="UseDevelopmentStorage=true" />
+      <Setting name="Microsoft.WindowsAzure.Plugins.Diagnostics.ConnectionString" value="DefaultEndpointsProtocol=https;AccountName=jobsystems;AccountKey=/3yrVZAK1gkN08s8XVqejDgGj5prsw8QTbivgrlQmrnTSqZFIlMw/jOHmV5lcl65Uwv8zMN4uTmxeDDidhc8eQ==" />
+      <Setting name="Microsoft.WindowsAzure.Plugins.RemoteAccess.Enabled" value="true" />
+      <Setting name="Microsoft.WindowsAzure.Plugins.RemoteAccess.AccountUsername" value="Admin" />
+      <Setting name="Microsoft.WindowsAzure.Plugins.RemoteAccess.AccountEncryptedPassword" value="MIIBnQYJKoZIhvcNAQcDoIIBjjCCAYoCAQAxggFOMIIBSgIBADAyMB4xHDAaBgNVBAMME1dpbmRvd3MgQXp1cmUgVG9vbHMCEEeGyto2cFaTTbiawqcOs4QwDQYJKoZIhvcNAQEBBQAEggEAvFXcyJJe1mr9y3o/BB8ou26vLKb5HAky4tKuhA8/zl0s1JXMhgfUbJUBpI4M5rZRAW6hFvutox5n13NqDoduzhdCfh5d1E91cb+Mj5CSF1NzgeMStPEF2tNl2Hmm81mfDcD+RblPyRIvzzQgDdYGU3PN77l83OQi2G8LTfLzVOiqCx3eDWMIVwgtVs0fkJ1i0CEF+CHrYhW5bYw4rIDD9hyeG0HBlDh6LctaePUZOBZn+SkkizNBf3MaWoDz2vUw1Zv/G2wAAgYLlow+7FiVHC8aF26NwSLj1KOfxUF2T9c2YRjija84pnQGDxu9wksBq4FU9JhEjYfha+3IFOa11DAzBgkqhkiG9w0BBwEwFAYIKoZIhvcNAwcECLz4Qws6ZnrFgBC12pbl/N7AofKpcIslXHgQ" />
+      <Setting name="Microsoft.WindowsAzure.Plugins.RemoteAccess.AccountExpiration" value="2014-09-27T23:59:59.0000000+02:00" />
+      <Setting name="Microsoft.WindowsAzure.Plugins.RemoteForwarder.Enabled" value="true" />
     </ConfigurationSettings>
+    <Certificates>
+      <Certificate name="Microsoft.WindowsAzure.Plugins.RemoteAccess.PasswordEncryption" thumbprint="3EDD67E694734F2C82E42F58EC876F16EDC8F380" thumbprintAlgorithm="sha1" />
+    </Certificates>
   </Role>
 </ServiceConfiguration>

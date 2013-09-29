@@ -164,6 +164,22 @@ namespace MvcKissApplication.Api.ViewModels
             return response;
         }
 
+        // POST api/category/SaveCategories
+        [HttpPost]
+        public HttpResponseMessage SaveCategories(IEnumerable<CategoryView> views)
+        {
+            foreach (var view in views)
+            {
+                var original = repo.getCategory(view.id);
+                if (original.name != view.name)
+                {
+                    repo.update(original);
+                }
+            }
+
+            return Request.CreateResponse(HttpStatusCode.Created);
+        }
+
         [HttpPut]
         [ActionName("DefaultAction")]
         public void Put(int id, CategoryView view)

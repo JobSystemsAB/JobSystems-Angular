@@ -1,0 +1,66 @@
+﻿<!-- partials/Testimonials.html -->
+
+<div
+    class="container"
+    data-ng-controller="TestimonialsController">
+
+    <h1
+        id="testimonials-title"
+        contenteditable="true"
+        data-ng-model="texts['testimonials-title'][0].text"
+        data-compile="texts['testimonials-title'][0].text"></h1>
+
+    <div 
+        class="thumbnail shadow"
+        style="width: 100%;">
+        <div
+            data-carousel=""
+            data-interval="5000"
+            class="carousel slide"
+            style="height: 400px; background-color: #0CB45D; color: white;">
+
+            <div
+                class="carousel-inner"
+                data-slide=""
+                data-ng-repeat="testimonial in testimonials"
+                data-active="testimonial.active"
+                style="padding: 20px 20%; margin-top: 4%; overflow: hidden;">
+
+                <div
+                    class="ScriptMTBold"
+                    style="font-size: 250%; height: 200px;">
+                    <label>"</label>
+
+                    <span
+                        contenteditable="true"
+                        data-ng-model="testimonial.text"
+                        data-compile="testimonial.text"></span>
+
+                    <label>"</label>
+
+                </div>
+                
+                <label
+                    class="float-right"
+                    contenteditable="true"
+                    data-ng-model="testimonial.name"
+                    data-compile="testimonial.name">
+                </label>
+                <label
+                    class="float-right"
+                    style="margin-right: 10px">-</label>
+                
+                <div class="clear"></div>
+
+            </div>
+        </div>
+    </div>
+
+    <div 
+        style="text-align: right">
+        <button 
+            class="btn btn-danger btn-lg" 
+            data-ng-click="save()">Spara ändringar</button>
+    </div>
+
+</div>

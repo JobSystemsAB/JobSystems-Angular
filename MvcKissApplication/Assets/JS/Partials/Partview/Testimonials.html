@@ -1,0 +1,41 @@
+﻿<!-- partials/Testimonials.html -->
+
+<div data-ng-controller="TestimonialsController">
+
+    <div class="container">
+        <h1
+            id="testimonials-title"
+            contenteditable="true"
+            data-ng-model="texts['testimonials-title'][0].text"
+            data-compile="texts['testimonials-title'][0].text"></h1>
+        
+        <div data-carousel="" data-interval="5000" class="testimonial rounded shadow">
+            <div data-slide="" data-ng-repeat="testimonial in testimonials" data-active="testimonial.active">
+                <span class="quote ScriptMTBold">"</span>
+                <span 
+                    class="ScriptMTBold"
+                    contenteditable="true"
+                    data-ng-model="testimonial.text"
+                    data-compile="testimonial.text"></span>
+                <span class="quote ScriptMTBold">"</span><br />
+                <span 
+                    class="float-right"
+                    contenteditable="true"
+                    data-ng-model="testimonial.name"
+                    data-compile="testimonial.name"></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="container padding-small margin-small" style="background-color: lightsalmon" data-ng-show="false">
+        <div class="float-left">
+            Du är inloggad som Admin. Glöm inte att spara dina ändringar!
+        </div>
+        <div class="float-right">
+            <button data-ng-click="save()">Save</button>
+        </div>
+    </div>
+
+    <div class="clear"></div>
+
+</div>

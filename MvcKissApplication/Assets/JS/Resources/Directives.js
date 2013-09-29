@@ -21,59 +21,37 @@
     };
   });
 
-  window.app.directive('contenteditable', function($timeout, $compile) {
+  window.app.directive('contenteditable', function($timeout) {
     return {
       require: 'ngModel',
       link: function(scope, elm, attrs, ctrl) {
-        elm.on('blur', function() {
-          return scope.$apply(attrs.ngModel + ' = "' + elm.html().replace(/"/g, '\\"') + '"');
+        elm.bind('blur', function() {
+          return scope.$apply(function() {
+            return ctrl.$setViewValue(elm.html());
+          });
         });
-        ctrl.$render = function(value) {
-          elm.html(value);
-          return $compile(elm.contents())(scope);
+        ctrl.$render = function() {
+          return elm.html(ctrl.$viewValue);
         };
-        return $timeout(ctrl.$render(), 200);
+        return ctrl.$render();
       }
     };
-    /*
-    window.app.directive('compile', ($compile) ->
-    # directive factory creates a link function
-    return (scope, element, attrs) ->
-        scope.$watch(
-            (scope) -> 
-                # watch the 'compile' expression for changes
-                return scope.$eval attrs.compile
-            ,
-            (value) -> 
-                # when the 'compile' expression changes
-                # assign it into the current DOM
-                element.html value
-                
-                # compile the new DOM and link it to the current
-                # scope.
-                # NOTE: we only compile .childNodes so that
-                # we don't get into infinite loop compiling ourselves
-                $compile(element.contents())(scope)
-        );
-    );
-    */
+  });
 
-    /*
-    window.app.directive 'adminBindHtml', ($timeout) ->
-    return {
-        link: (scope, tElement, tAttrs) ->
-            refresh = ->
-                scope.$apply tAttrs.adminBindHtml + ' = "' + tElement.html().replace(/"/g, '\\"') + '"'
-                $timeout refresh, 200
-                
-            scope.$watch tAttrs.adminBindHtml, (val, oldVal) ->
-                if val != oldVal && tElement.html() != val
-                    tElement.html scope.$eval tAttrs.adminBindHtml
-                    
-            $timeout refresh, 200
-    }
-    */
+  window.app.directive('compile', function($compile, $timeout) {
+    return function(scope, elm, attrs) {
+      return scope.$watch(function(scope) {
+        return scope.$eval(attrs.compile);
+      }, function(value) {
+        elm.html(_.unescape(_.unescape(value)));
+        return $timeout(function() {
+          var template;
 
+          template = $compile(elm.contents());
+          return template(scope);
+        }, 200);
+      });
+    };
   });
 
 }).call(this);

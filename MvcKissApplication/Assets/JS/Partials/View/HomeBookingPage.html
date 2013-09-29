@@ -1,0 +1,163 @@
+﻿<!-- partials/HomeBookingPage.html -->
+
+<div data-ng-controller="HomeBookingPageController">
+
+    <div class="image-white-background">
+        <div class="container info">
+
+            <h1
+                id="testimonials-title"
+                contenteditable="true"
+                data-ng-model="texts['testimonials-title'][0].text"
+                data-compile="texts['testimonials-title'][0].text"></h1>
+            <hr />
+
+            <select
+                class="span3"
+                data-ng-model="category1"
+                data-ng-options="cat as cat.data.name for cat in categories.children | orderBy: 'data.name'"
+                data-ng-change="getInputs()">
+                <option value="" class="red">-- Kategori --</option>
+            </select>
+            <select
+                class="span3"
+                data-ng-model="category2"
+                data-ng-show="category1.children.length > 0"
+                data-ng-options="cat as cat.data.name for cat in category1.children | orderBy: 'data.name'">
+                <option value="" class="red">-- Underkategori --</option>
+            </select>
+            <select
+                class="span3"
+                data-ng-model="category3"
+                data-ng-show="category2.children.length > 0"
+                data-ng-options="cat as cat.data.name for cat in category2.children | orderBy: 'data.name'">
+                <option value="" class="red">-- Underunderkategori --</option>
+            </select>
+        </div>
+    </div>
+
+    <div class="image-gray-background">
+        <div class="container info">
+
+            <h1
+                id="H1"
+                contenteditable="true"
+                data-ng-model="texts['testimonials-title'][0].text"
+                data-compile="texts['testimonials-title'][0].text"></h1>
+            <hr />
+
+            <textarea
+                class="span12 height2"
+                placeholder="Ge en kort beskrivning av arbetet som ska utföras."
+                data-ng-model="mission.description"></textarea>
+            <br />
+
+            <label>{{mission.description.length}}/150 tecken</label>
+
+            <br />
+            <div data-ng-switch="input.type" data-ng-repeat="input in inputs">
+                <label data-ng-switch-when="radio">
+                    <input class="size2" type="radio" data-ng-model="input.value" />
+                    {{ input.text }}
+                </label>
+                <label data-ng-switch-when="checkbox">
+                    <input class="size2" type="checkbox" data-ng-model="input.value" />
+                    {{ input.text }}
+                </label>
+                <input
+                    type="text"
+                    class="size2"
+                    placeholder="{{ input.text }}"
+                    data-ng-switch-default=""
+                    data-ng-model="input.value" />
+            </div>
+
+        </div>
+    </div>
+
+    <div class="image-white-background">
+        <div class="container info">
+            <h1
+                id="H3"
+                contenteditable="true"
+                data-ng-model="texts['testimonials-title'][0].text"
+                data-compile="texts['testimonials-title'][0].text"></h1>
+            <hr />
+
+            <div data-ui-calendar="uiConfig.calendar" data-ng-model="eventSources" calendar="myCalendar" class="span12">
+            </div>
+
+            <label>
+                <strong>Valt datum:</strong>
+                {{ selectedEvent.start | date:'yyyy-MM-dd HH:mm' }}
+            </label>
+        </div>
+    </div>
+
+    <!--<div class="image-gray-background">
+    <div class="container info" data-ng-show="false">
+        <h1>Hämta från befintlig kund</h1>
+        <hr />
+
+        <input type="email" data-ng-model="customer.emailAddress" placeholder="Epost" /><br />
+        <input type="password" data-ng-model="customer.password" placeholder="lösenord" /><br />
+    </div>
+</div>-->
+
+    <div class="image-gray-background">
+        <div class="container info">
+            <h1
+                id="H2"
+                contenteditable="true"
+                data-ng-model="texts['testimonials-title'][0].text"
+                data-compile="texts['testimonials-title'][0].text"></h1>
+            <hr />
+
+            <div class="float-left">
+
+                <div class="btn-group">
+                    <button type="button" class="btn" data-ng-model="customer.type" data-btn-radio="'company'">Företag</button>
+                    <button type="button" class="btn" data-ng-model="customer.type" data-btn-radio="'private'">Privat</button>
+                </div>
+                <br />
+                <br />
+
+                <div data-ng-show="isCompanyCustomer()">
+                    <input class="span4" type="text" data-ng-model="customer.organisationNumber" placeholder="Organisationsnummer" /><br />
+                    <input class="span4" type="text" data-ng-model="customer.companyName" placeholder="Företagsnamn" /><br />
+                </div>
+
+                <div data-ng-show="!isCompanyCustomer()">
+                    <input class="span2" type="text" data-ng-model="customer.firstName" placeholder="Förnamn" />
+                    <input class="span2" type="text" data-ng-model="customer.lastName" placeholder="Efternamn" /><br />
+                    <input class="span4" type="text" data-ng-model="customer.personalNumber" placeholder="Personnummer" /><br />
+                    <input class="span4" type="text" data-ng-model="customer.propertyName" placeholder="Fastighetsbeteckning" /><br />
+                </div>
+
+                <input class="span4" type="email" data-ng-model="customer.emailAddress" placeholder="Epost" /><br />
+                <input class="span4" type="tel" data-ng-model="customer.phoneNumber" placeholder="Mobilnummer" /><br />
+                <input class="span4" type="text" id="google-address-search" data-ng-model="mission.fullAddress" placeholder="Adress" /><br />
+            </div>
+
+            <div
+                class="float-right padding-big"
+                style="width: 50%"
+                id="H4"
+                contenteditable="true"
+                data-ng-model="texts['testimonials-title'][0].text"
+                data-compile="texts['testimonials-title'][0].text">
+            </div>
+
+            <div class="clear"></div>
+        </div>
+    </div>
+
+    <div class="image-white-background">
+        <div class="container info">
+            <button class="btn" data-ng-click="order()">Beställ</button>
+            <button class="btn" data-ng-click="dibs()">DIBS</button>
+            <button class="btn" data-ng-click="sendSMS()">SMS</button>
+        </div>
+    </div>
+
+</div>

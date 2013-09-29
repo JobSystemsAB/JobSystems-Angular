@@ -9,13 +9,17 @@
 <!--<![endif]-->
 
 <head>
-    @Styles.Render("~/bundle/css")
-    @Styles.Render("~/bundle/css/angular-ui")
+
     <title>ADoer - Hitta någon som fixar det åt dig!</title>
+
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width">
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    @Styles.Render("~/bundle/css")
+    @Styles.Render("~/bundle/css/angular-ui")
 </head>
 
 <body>
@@ -24,29 +28,19 @@
             <p class="chromeframe">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">activate Google Chrome Frame</a> to improve your experience.</p>
     <![endif]-->
 
-    <div class="header image-gray-background">
-        <header class="wrapper">
-            <div data-ng-include="" data-src="'assets/js/partials/global/header.html'"></div>
-        </header>
-    </div>
-
-    <div class="menu green-background">
-        <div class="wrapper">
-            <div data-ng-include="" data-src="'assets/js/partials/global/menu.html'"></div>
+    @*<div>
+        <div data-ng-include="" data-src="'assets/js/partials/global/header.html'"></div>
+        <div data-ng-include="" data-src="'assets/js/partials/global/menu.html'"></div>
+        <div data-ui-view=""></div>
+        <div data-ng-include="" data-src="'assets/js/partials/global/footer.html'"></div>
+        <div data-ng-controller="AlertController">
+            <alert ng-repeat="alert in alerts" type="alert.type" close="closeAlert($index)">{{alert.msg}}</alert>
         </div>
+    </div>*@
+
+    <div>
+        <div data-ui-view=""></div>
     </div>
-
-    <div class="main-container">
-        <div data-ng-view=""></div>
-    </div>
-
-    <div data-ng-controller="AlertController">
-        <alert ng-repeat="alert in alerts" type="alert.type" close="closeAlert($index)">{{alert.msg}}</alert>
-    </div>
-
-
-    <div data-ng-include="" data-src="'assets/js/partials/global/footer.html'"></div>
-
 
     @* -- ONLINE LIBS -- *@
     @*<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js"></script>*@
@@ -54,10 +48,32 @@
     @*<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.0.7/angular.min.js"></script>*@
     <script src="//maps.googleapis.com/maps/api/js?v=3.exp&sensor=false&libraries=places"></script>
 
-    @Scripts.Render("~/bundle/jquery/libs")
-    @Scripts.Render("~/bundle/angular/libs")
-    @Scripts.Render("~/bundle/angular-ui/libs")
-    @Scripts.Render("~/bundle/libs")
+    <script src="~/Libs/JQuery/jquery-1.10.2.min.js"></script>
+    <script src="~/Libs/JQuery/jquery-ui-1.10.3.custom.min.js"></script>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.0.8/angular.min.js"></script>
+    @*<script src="~/Libs/Angular/angular.min.js"></script>*@
+    <script src="~/Libs/Angular/angular-resource.js"></script>
+    <script src="~/Libs/Angular/angular-google-maps.js"></script>
+
+    <script src="~/Libs/Angular-UI/angular-ui-router.js"></script>
+    <script src="~/Libs/Angular-UI/calendar.js"></script>
+    <script src="~/Libs/Angular-UI/date.js"></script>
+    <script src="~/Libs/Angular-UI/ui-bootstrap-tpls-0.5.0.min.js"></script>
+
+    <script src="~/Libs/Bootstrap/bootstrap.min.js"></script>
+    <script src="~/Libs/Bootstrap/collapse.js"></script>
+    <script src="~/Libs/Bootstrap/transition.js"></script>
+
+    <script src="~/Libs/fullcalendar.min.js"></script>
+    <script src="~/Libs/gcal.js"></script>
+    <script src="~/Libs/underscore.js"></script>
+
+    @*@Scripts.Render("~/bundle/jquery/libs")*@
+    @*@Scripts.Render("~/bundle/angular/libs")*@
+    @*@Scripts.Render("~/bundle/angular-ui/libs")*@
+    @*@Scripts.Render("~/bundle/bootrstrap/libs")*@
+    @*@Scripts.Render("~/bundle/libs")*@
 
     @Scripts.Render("~/bundle/pages/home")
 

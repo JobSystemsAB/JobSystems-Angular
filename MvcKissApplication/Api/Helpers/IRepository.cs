@@ -123,11 +123,29 @@ namespace MvcKissApplication.Api.Helpers
 
         #endregion
 
+        #region TESTIMONIAL
+
+        IEnumerable<Testimonial> getAllTestimonials();
+
+        IEnumerable<Testimonial> getTestimonials(string language);
+
+        IEnumerable<Testimonial> getTestimonials(int[] ids);
+
+        Testimonial getTestimonial(int id);
+
+        Testimonial createTestimonial(Testimonial model);
+
+        Testimonial deleteTestimonial(int id);
+
+        #endregion
+
         #region TEXT
 
         IEnumerable<Text> getAllTexts();
 
         IEnumerable<Text> getTexts(int[] ids);
+
+        IEnumerable<Text> getTexts(string language);
 
         IEnumerable<Text> getTexts(string controllerName, string language);
 

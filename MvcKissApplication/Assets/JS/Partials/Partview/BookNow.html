@@ -1,0 +1,29 @@
+﻿<!-- partials/BookNow.html -->
+
+<div data-ng-controller="BookNowController">
+
+    <div class="container text-center padding-big">
+
+        <input type="text" placeholder="Postnummer" />
+
+        <button
+            class="btn"
+            id="book-now-button"
+            contenteditable="true"
+            data-ng-model="texts['book-now-button'][0].text"
+            data-compile="texts['book-now-button'][0].text">
+        </button>
+    </div>
+
+    <div class="container padding-small margin-small" style="background-color: lightsalmon" data-ng-show="false">
+        <div class="float-left">
+            Du är inloggad som Admin. Glöm inte att spara dina ändringar!
+        </div>
+        <div class="float-right">
+            <button data-ng-click="save()">Save</button>
+        </div>
+    </div>
+
+    <div class="clear"></div>
+
+</div>

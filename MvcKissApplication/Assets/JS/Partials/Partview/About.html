@@ -1,0 +1,44 @@
+﻿<!-- partials/About.html -->
+<div data-ng-controller="AboutController">
+    <div class="container">
+
+
+        <img class="rounded float-right" src="Assets/IMG/TMP/person.jpg" style="width: 400px" />
+
+        <div>
+            <h1
+                id="about-title"
+                contenteditable="true"
+                data-ng-model="texts['about-title'][0].text"
+                data-compile="texts['about-title'][0].text"></h1>
+            <div
+                id="about-short"
+                contenteditable="true"
+                data-ng-model="texts['about-short'][0].text"
+                data-compile="texts['about-short'][0].text">
+            </div>
+        </div>
+
+        <h5>
+            <a>
+                <span
+                    id="about-read-more"
+                    contenteditable="true"
+                    data-ng-model="texts['about-read-more'][0].text"
+                    data-compile="texts['about-read-more'][0].text"></span>
+            </a>
+        </h5>
+    </div>
+
+    <div class="container padding-small margin-small" style="background-color: lightsalmon" data-ng-show="false">
+        <div class="float-left">
+            Du är inloggad som Admin. Glöm inte att spara dina ändringar!
+        </div>
+        <div class="float-right">
+            <button data-ng-click="save()">Save</button>
+        </div>
+    </div>
+
+    <div class="clear"></div>
+
+</div>

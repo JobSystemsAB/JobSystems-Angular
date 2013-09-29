@@ -40,9 +40,6 @@
     <Folder Include="Profiles" />
   </ItemGroup>
   <ItemGroup>
-    <PublishProfile Include="Profiles\jobsystemsStaging.azurePubxml" />
-  </ItemGroup>
-  <ItemGroup>
     <ProjectReference Include="..\MvcKissApplication\MvcKissApplication.csproj">
       <Name>MvcKissApplication</Name>
       <Project>{6c16e5fb-1027-4279-b94d-e136bcdf8561}</Project>
@@ -51,6 +48,9 @@
       <RoleName>MvcKissApplication</RoleName>
       <UpdateDiagnosticsConnectionStringOnPublish>True</UpdateDiagnosticsConnectionStringOnPublish>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <PublishProfile Include="Profiles\adoerdevProduction.azurePubxml" />
   </ItemGroup>
   <!-- Import the target files for this project template -->
   <PropertyGroup>

@@ -297,6 +297,45 @@ namespace MvcKissApplication.Api.Helpers
 
         #endregion
 
+        #region TESTIMONIAL
+
+        public IEnumerable<Testimonial> getAllTestimonials()
+        {
+            return db.testimonials;
+        }
+
+        public Testimonial getTestimonial(int id)
+        {
+            return db.testimonials.FirstOrDefault(x => x.id == id);
+        }
+
+        public IEnumerable<Testimonial> getTestimonials(string language)
+        {
+            return db.testimonials.Where(x => x.language == language);
+        }
+
+        public IEnumerable<Testimonial> getTestimonials(int[] ids)
+        {
+            return db.testimonials.Where(x => ids.Contains(x.id));
+        }
+
+        public Testimonial createTestimonial(Testimonial model)
+        {
+            db.testimonials.Add(model);
+            db.SaveChanges();
+            return model;
+        }
+
+        public Testimonial deleteTestimonial(int id)
+        {
+            var model = db.testimonials.Find(id);
+            db.testimonials.Remove(model);
+            db.SaveChanges();
+            return model;
+        }
+
+        #endregion
+
         #region TEXT
 
         public IEnumerable<Text> getAllTexts()
@@ -312,6 +351,11 @@ namespace MvcKissApplication.Api.Helpers
         public IEnumerable<Text> getTexts(int[] ids)
         {
             return db.texts.Where(x => ids.Contains(x.id));
+        }
+
+        public IEnumerable<Text> getTexts(string language)
+        {
+            return db.texts.Where(x => x.language == language);
         }
 
         public IEnumerable<Text> getTexts(string controllerName, string language)

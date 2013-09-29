@@ -36,9 +36,10 @@ namespace MvcKissApplication
             #region ANGULAR UI
 
             var angularUIBundle = new ScriptBundle("~/bundle/angular-ui/libs");
-            angularUIBundle.Include("~/libs/angular-ui/ui-bootstrap-tpls-0.5.0.min.js");
+            angularUIBundle.Include("~/libs/angular-ui/angular-ui-router.js");            
             angularUIBundle.Include("~/libs/angular-ui/calendar.js");
             angularUIBundle.Include("~/libs/angular-ui/date.js");
+            angularUIBundle.Include("~/libs/angular-ui/ui-bootstrap-tpls-0.5.0.min.js");
 
             bundles.Add(angularUIBundle);
             
@@ -84,10 +85,20 @@ namespace MvcKissApplication
 
             #endregion
 
+            #region BOOTSTRAP
+
+            var bootstrapBundle = new ScriptBundle("~/bundle/bootrstrap/libs");
+            bootstrapBundle.Include("~/libs/bootstrap/bootstrap.js");
+            bootstrapBundle.Include("~/libs/bootstrap/collapse.js");
+            bootstrapBundle.Include("~/libs/bootstrap/transition.js");
+
+            bundles.Add(bootstrapBundle);
+
+            #endregion
+
             #region OTHER
 
             var otherBundle = new ScriptBundle("~/bundle/libs");
-            otherBundle.Include("~/libs/bootstrap.js");
             otherBundle.Include("~/libs/fullcalendar.min.js");
             otherBundle.Include("~/libs/gcal.js");
             otherBundle.Include("~/libs/underscore.js");
@@ -101,6 +112,8 @@ namespace MvcKissApplication
             var pageHomeBundle = new ScriptBundle("~/bundle/pages/home");
             pageHomeBundle.Include("~/assets/js/apps/home.js");
             pageHomeBundle.Include("~/assets/js/controllers/home/*.js");
+            pageHomeBundle.Include("~/assets/js/partials/partview/*.js");
+            pageHomeBundle.Include("~/assets/js/partials/view/*.js");
 
             bundles.Add(pageHomeBundle);
 
@@ -122,8 +135,8 @@ namespace MvcKissApplication
             cssGlobalBundle.Include("~/assets/css/main.css");
             cssGlobalBundle.Include("~/assets/css/normalize.css");
             cssGlobalBundle.Include("~/assets/css/jobsystems.css");
-            cssGlobalBundle.Include("~/assets/css/bootstrap.min.css");
-            cssGlobalBundle.Include("~/assets/css/bootstrap-responsive.min.css");
+            cssGlobalBundle.Include("~/assets/css/bootstrap.css");
+            cssGlobalBundle.Include("~/assets/css/bootstrap-theme.css");
 
             bundles.Add(cssGlobalBundle);
 

@@ -7,10 +7,23 @@
           method: "GET"
         });
       };
-      return this.getTree = function() {
+      this.getAll = function() {
+        return $http({
+          url: "/api/category",
+          method: "GET"
+        });
+      };
+      this.getTree = function() {
         return $http({
           url: "/api/category/gettree",
           method: "GET"
+        });
+      };
+      return this.saveCategories = function(categories) {
+        return $http({
+          url: "/api/category/savecategories",
+          method: "POST",
+          data: categories
         });
       };
     }

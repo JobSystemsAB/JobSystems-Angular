@@ -14,62 +14,41 @@ window.app.directive 'onBlur', ->
                 scope.$apply attrs.onBlur
     }
 
-    
-window.app.directive 'contenteditable', ($timeout, $compile) ->
+window.app.directive 'contenteditable', ($timeout) ->
     return { 
         require: 'ngModel'
         link: (scope, elm, attrs, ctrl) ->
 
             # view -> model
-            elm.on 'blur', ->
-                scope.$apply attrs.ngModel + ' = "' + elm.html().replace(/"/g, '\\"') + '"'
-
-                #scope.$apply ->
-                    #ctrl.$setViewValue elm.html().replace(/"/g, '\\"')
-                    #attrs.ngModel + ' = "' + elm.html().replace(/"/g, '\\"') + '"'
-                    #console.log attrs.ngModel
+            elm.bind 'blur', ->
+                scope.$apply ->
+                    ctrl.$setViewValue elm.html()
+                
             # model -> view
-            ctrl.$render = (value) ->
-                elm.html value
-                $compile(elm.contents())(scope)
- 
+            ctrl.$render = ->
+                elm.html ctrl.$viewValue
+        
             # load init value from DOM
-            $timeout ctrl.$render(), 200
+            ctrl.$render()
+           
     }
-    ###
-window.app.directive('compile', ($compile) ->
-    # directive factory creates a link function
-    return (scope, element, attrs) ->
+
+window.app.directive 'compile', ($compile, $timeout) ->
+    return (scope, elm, attrs) ->
         scope.$watch(
-            (scope) -> 
+            (scope) ->
                 # watch the 'compile' expression for changes
                 return scope.$eval attrs.compile
-            ,
-            (value) -> 
+
+            , (value) ->
                 # when the 'compile' expression changes
                 # assign it into the current DOM
-                element.html value
-                
-                # compile the new DOM and link it to the current
-                # scope.
-                # NOTE: we only compile .childNodes so that
-                # we don't get into infinite loop compiling ourselves
-                $compile(element.contents())(scope)
-        );
-    );
-    ###
-    ###
-window.app.directive 'adminBindHtml', ($timeout) ->
-    return {
-        link: (scope, tElement, tAttrs) ->
-            refresh = ->
-                scope.$apply tAttrs.adminBindHtml + ' = "' + tElement.html().replace(/"/g, '\\"') + '"'
-                $timeout refresh, 200
-                
-            scope.$watch tAttrs.adminBindHtml, (val, oldVal) ->
-                if val != oldVal && tElement.html() != val
-                    tElement.html scope.$eval tAttrs.adminBindHtml
-                    
-            $timeout refresh, 200
-    }
-    ###
+                elm.html _.unescape _.unescape value
+ 
+                $timeout ->
+                    # compile the new DOM and link it to the current scope.
+                    # NOTE: we only compile .childNodes so that we don't get into infinite loop compiling ourselves
+                    template = $compile elm.contents()
+                    template scope
+                , 200
+        )

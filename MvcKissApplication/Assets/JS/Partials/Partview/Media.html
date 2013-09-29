@@ -1,0 +1,30 @@
+﻿<!-- partials/Media.html -->
+
+<div data-ng-controller="MediaController">
+
+    <div class="container">
+
+        <h1
+            id="media-title"
+            contenteditable="true"
+            data-ng-model="texts['media-title'][0].text"
+            data-compile="texts['media-title'][0].text"></h1>
+        
+        <div data-ng-repeat="hej in [1, 2, 3, 4, 5]">
+            <img src="Assets/IMG/TMP/dn.png" style="height: 50px; float: left;" />
+        </div>
+
+    </div>
+
+    <div class="container padding-small margin-small" style="background-color: lightsalmon" data-ng-show="false">
+        <div class="float-left">
+            Du är inloggad som Admin. Glöm inte att spara dina ändringar!
+        </div>
+        <div class="float-right">
+            <button data-ng-click="save()">Save</button>
+        </div>
+    </div>
+
+    <div class="clear"></div>
+
+</div>

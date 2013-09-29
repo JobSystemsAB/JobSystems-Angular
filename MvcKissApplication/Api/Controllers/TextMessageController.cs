@@ -35,8 +35,8 @@ namespace MvcKissApplication.Api.Controllers
         [HttpPost]
         public HttpResponseMessage PostElk(TextMessageView view)
         {
-            var deliveredUrl = "http://www.adoer.se/api/sms/delivered";
-            var responseUrl = "http://www.adoer.se/api/sms/recieve";
+            var deliveredUrl = "http://www.adoer.se/api/sms/deliveredelk";
+            var responseUrl = "http://www.adoer.se/api/sms/recieveelk";
             var apiUrl = "https://api.46elks.com/a1/SMS";
 
             var username = "u6d73bed464ac3ed22cee974d4ccff303";
@@ -78,7 +78,7 @@ namespace MvcKissApplication.Api.Controllers
         }
 
         [HttpPost]
-        public HttpResponseMessage Recieve(TextMessageView view)
+        public HttpResponseMessage RecieveElk(TextMessageView view)
         {
             TextMessage model = new TextMessage
             {
@@ -102,7 +102,7 @@ namespace MvcKissApplication.Api.Controllers
         }
 
         [HttpPost]
-        public HttpResponseMessage Delivered(elkDeliveryReport view)
+        public HttpResponseMessage DeliveredElk(elkDeliveryReport view)
         {
             var model = repo.getTextMessage(view.id);
 

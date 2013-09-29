@@ -1,0 +1,36 @@
+﻿<!-- partials/BookNow.html -->
+
+<div 
+    class="image-gray-background"
+    style="padding: 40px 0">
+    <div
+        class="container"
+        data-ng-controller="BookNowController"
+        style="text-align: center">
+
+        <form class="form-inline" role="form">
+            <input
+                type="text"
+                placeholder="Postnummer"
+                class="form-control"
+                style="width: 300px; margin: 0 auto;" />
+
+            <button
+                class="btn btn-lg green-background"
+                id="book-now-button"
+                contenteditable="true"
+                data-ng-model="texts['book-now-button'][0].text"
+                data-compile="texts['book-now-button'][0].text"
+                style="color: white; margin-left: 10px">
+            </button>
+        </form>
+
+        <div
+            style="text-align: right">
+            <button
+                class="btn btn-danger btn-lg"
+                data-ng-click="save()">
+                Spara ändringar</button>
+        </div>
+    </div>
+</div>

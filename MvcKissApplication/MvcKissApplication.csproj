@@ -155,6 +155,7 @@
     <Compile Include="Api\Controllers\ApiDocController.cs" />
     <Compile Include="Api\Controllers\CategoryController.cs" />
     <Compile Include="Api\Controllers\CategoryInputController.cs" />
+    <Compile Include="Api\Controllers\TestimonialController.cs" />
     <Compile Include="Api\Controllers\TextController.cs" />
     <Compile Include="Api\Controllers\TextMessageController.cs" />
     <Compile Include="Api\Controllers\WorkShiftController.cs" />
@@ -182,6 +183,7 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Database\Models\CategoryInput.cs" />
     <Compile Include="Database\Models\Comment.cs" />
+    <Compile Include="Database\Models\Testimonial.cs" />
     <Compile Include="Database\Models\Text.cs" />
     <Compile Include="Database\Models\TextMessage.cs" />
     <Compile Include="Database\Models\WorkShift.cs" />
@@ -278,6 +280,26 @@
     <Compile Include="Migrations\201309200858496_apiId.Designer.cs">
       <DependentUpon>201309200858496_apiId.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201309240907517_enabled.cs" />
+    <Compile Include="Migrations\201309240907517_enabled.Designer.cs">
+      <DependentUpon>201309240907517_enabled.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201309250748311_dunno3.cs" />
+    <Compile Include="Migrations\201309250748311_dunno3.Designer.cs">
+      <DependentUpon>201309250748311_dunno3.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201309250932142_text updated.cs" />
+    <Compile Include="Migrations\201309250932142_text updated.Designer.cs">
+      <DependentUpon>201309250932142_text updated.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201309260831201_testimonial.cs" />
+    <Compile Include="Migrations\201309260831201_testimonial.Designer.cs">
+      <DependentUpon>201309260831201_testimonial.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201309280851004_dunno4.cs" />
+    <Compile Include="Migrations\201309280851004_dunno4.Designer.cs">
+      <DependentUpon>201309280851004_dunno4.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\MvcKissApplicationContext.cs" />
     <Compile Include="Models\Node.cs" />
@@ -287,8 +309,8 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
-    <Content Include="Assets\CSS\bootstrap-responsive.min.css" />
-    <Content Include="Assets\CSS\bootstrap.min.css" />
+    <Content Include="Assets\CSS\bootstrap-theme.css" />
+    <Content Include="Assets\CSS\bootstrap.css" />
     <Content Include="Assets\CSS\fullcalendar.css" />
     <Content Include="Assets\CSS\jasmine.css" />
     <Content Include="Assets\CSS\jobsystems.css">
@@ -415,6 +437,64 @@
     <Content Include="Assets\JS\Partials\Home\Index.html" />
     <Content Include="Areas\Tests\Views\Web.config" />
     <None Include="Areas\Tests\Views\Home\Index.cshtml" />
+    <Content Include="Assets\JS\Partials\Partview\About.js">
+      <DependentUpon>About.coffee</DependentUpon>
+    </Content>
+    <Content Include="Assets\JS\Partials\Partview\About2.html" />
+    <Content Include="Assets\JS\Partials\Partview\BookNow.html" />
+    <Content Include="Assets\JS\Partials\Partview\BookNow.js">
+      <DependentUpon>BookNow.coffee</DependentUpon>
+    </Content>
+    <Content Include="Assets\JS\Partials\Partview\BookNow2.html" />
+    <Content Include="Assets\JS\Partials\Partview\Map2.html" />
+    <Content Include="Assets\JS\Partials\Partview\Media2.html" />
+    <Content Include="Assets\JS\Partials\Partview\Menu.html" />
+    <Content Include="Assets\JS\Partials\Partview\Price.html" />
+    <Content Include="Assets\JS\Partials\Partview\Map.js">
+      <DependentUpon>Map.coffee</DependentUpon>
+    </Content>
+    <Content Include="Assets\JS\Partials\Partview\Media.js">
+      <DependentUpon>Media.coffee</DependentUpon>
+    </Content>
+    <Content Include="Assets\JS\Partials\Partview\Price.js">
+      <DependentUpon>Price.coffee</DependentUpon>
+    </Content>
+    <Content Include="Assets\JS\Partials\Partview\Price2.html" />
+    <Content Include="Assets\JS\Partials\Partview\Services.html" />
+    <Content Include="Assets\JS\Partials\Partview\Services.js">
+      <DependentUpon>Services.coffee</DependentUpon>
+    </Content>
+    <Content Include="Assets\JS\Partials\Partview\Services2.html" />
+    <Content Include="Assets\JS\Partials\Partview\Testimonials.js">
+      <DependentUpon>Testimonials.coffee</DependentUpon>
+    </Content>
+    <Content Include="Assets\JS\Partials\Partview\Testimonials2.html" />
+    <Content Include="Assets\JS\Partials\Partview\TitleWindow.html" />
+    <Content Include="Assets\JS\Partials\Partview\TitleWindow.js">
+      <DependentUpon>TitleWindow.coffee</DependentUpon>
+    </Content>
+    <Content Include="Assets\JS\Partials\Partview\TitleWindow2.html" />
+    <Content Include="Assets\JS\Partials\Partview\Why.js">
+      <DependentUpon>Why.coffee</DependentUpon>
+    </Content>
+    <Content Include="Assets\JS\Partials\Partview\Why2.html" />
+    <Content Include="Assets\JS\Partials\View\HomeBookingPage.html" />
+    <Content Include="Assets\JS\Partials\View\HomeBookingPage.js">
+      <DependentUpon>HomeBookingPage.coffee</DependentUpon>
+    </Content>
+    <Content Include="Assets\JS\Partials\View\HomeIndexBody.html" />
+    <Content Include="Assets\JS\Partials\Partview\About.html" />
+    <Content Include="Assets\JS\Partials\Partview\Why.html" />
+    <Content Include="Assets\JS\Partials\Partview\Map.html" />
+    <Content Include="Assets\JS\Partials\Partview\Media.html" />
+    <Content Include="Assets\JS\Partials\Partview\Testimonials.html" />
+    <Content Include="Assets\JS\Partials\View\HomeIndexBody.js">
+      <DependentUpon>HomeIndexBody.coffee</DependentUpon>
+    </Content>
+    <Content Include="Assets\JS\Partials\View\HomeLandingPage.html" />
+    <Content Include="Assets\JS\Partials\View\HomeLandingPage.js">
+      <DependentUpon>HomeLandingPage.coffee</DependentUpon>
+    </Content>
     <Content Include="Assets\JS\Resources\Directives.js">
       <DependentUpon>Directives.coffee</DependentUpon>
     </Content>
@@ -445,6 +525,9 @@
     <Content Include="Assets\JS\Resources\Services\Mission.js">
       <DependentUpon>Mission.coffee</DependentUpon>
     </Content>
+    <Content Include="Assets\JS\Resources\Services\Testimonial.js">
+      <DependentUpon>Testimonial.coffee</DependentUpon>
+    </Content>
     <Content Include="Assets\JS\Resources\Services\Text.js">
       <DependentUpon>Text.coffee</DependentUpon>
     </Content>
@@ -455,12 +538,15 @@
       <DependentUpon>ServicesSpec.coffee</DependentUpon>
     </Content>
     <Content Include="Global.asax" />
+    <Content Include="Libs\Angular-UI\angular-ui-router.js" />
     <Content Include="Libs\Angular-UI\ui-bootstrap-tpls-0.5.0.min.js" />
     <Content Include="Libs\Angular\angular-google-maps.js" />
+    <Content Include="Libs\Bootstrap\bootstrap.min.js" />
+    <Content Include="Libs\Bootstrap\collapse.js" />
+    <Content Include="Libs\Bootstrap\transition.js" />
     <Content Include="Libs\Jasmine\angular-mocks.js" />
     <Content Include="Libs\Angular\angular-resource.js" />
     <Content Include="Libs\Angular\angular.min.js" />
-    <Content Include="Libs\bootstrap.min.js" />
     <Content Include="Libs\Angular-UI\calendar.js" />
     <Content Include="Libs\Angular-UI\date.js" />
     <Content Include="Libs\fullcalendar.min.js" />
@@ -503,6 +589,21 @@
     <Content Include="Assets\JS\Resources\Services\Text.coffee" />
     <Content Include="Assets\JS\Controllers\Home\Category.coffee" />
     <Content Include="Assets\JS\Resources\Services\Base64.coffee" />
+    <Content Include="Assets\JS\Partials\Partview\About.coffee" />
+    <Content Include="Assets\JS\Partials\View\HomeIndexBody.coffee" />
+    <Content Include="Assets\JS\Partials\Partview\BookNow.coffee" />
+    <Content Include="Assets\JS\Partials\Partview\Why.coffee" />
+    <Content Include="Assets\JS\Partials\Partview\Map.coffee" />
+    <Content Include="Assets\JS\Partials\Partview\Media.coffee" />
+    <Content Include="Assets\JS\Partials\Partview\Services.coffee" />
+    <Content Include="Assets\JS\Partials\Partview\Testimonials.coffee" />
+    <Content Include="Assets\JS\Partials\Partview\TitleWindow.coffee" />
+    <Content Include="Assets\JS\Partials\Partview\Price.coffee" />
+    <Content Include="Assets\JS\Partials\View\HomeLandingPage.coffee" />
+    <Content Include="Assets\JS\Partials\View\HomeBookingPage.coffee" />
+    <Content Include="Assets\JS\Resources\Services\Testimonial.coffee" />
+    <Content Include="Assets\Fonts\Candara.ttf" />
+    <Content Include="Assets\Fonts\ScriptMTBold.ttf" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\Home\Index.cshtml" />
@@ -570,6 +671,21 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201309200858496_apiId.resx">
       <DependentUpon>201309200858496_apiId.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201309240907517_enabled.resx">
+      <DependentUpon>201309240907517_enabled.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201309250748311_dunno3.resx">
+      <DependentUpon>201309250748311_dunno3.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201309250932142_text updated.resx">
+      <DependentUpon>201309250932142_text updated.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201309260831201_testimonial.resx">
+      <DependentUpon>201309260831201_testimonial.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201309280851004_dunno4.resx">
+      <DependentUpon>201309280851004_dunno4.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

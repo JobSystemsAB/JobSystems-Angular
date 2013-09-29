@@ -1,0 +1,47 @@
+﻿<!-- partials/Why.html -->
+
+<div data-ng-controller="WhyController">
+
+    <div class="container">
+
+
+        <img class="rounded float-left" src="Assets/IMG/TMP/person.jpg" style="width: 400px" />
+
+        <div>
+            <h1
+                id="why-title"
+                contenteditable="true"
+                data-ng-model="texts['why-title'][0].text"
+                data-compile="texts['why-title'][0].text"></h1>
+            <div
+                id="why-short"
+                contenteditable="true"
+                data-ng-model="texts['why-short'][0].text"
+                data-compile="texts['why-short'][0].text">
+            </div>
+        </div>
+
+        <h5>
+            <a>
+                <span
+                    id="why-read-more"
+                    contenteditable="true"
+                    data-ng-model="texts['why-read-more'][0].text"
+                    data-compile="texts['why-read-more'][0].text"></span>
+            </a>
+        </h5>
+
+    </div>
+
+    <div class="container padding-small margin-small" style="background-color: lightsalmon" data-ng-show="false">
+        <div class="float-left">
+            Du är inloggad som Admin. Glöm inte att spara dina ändringar!
+        </div>
+        <div class="float-right">
+            <button data-ng-click="save()">Save</button>
+        </div>
+    </div>
+
+    <div class="clear"></div>
+
+</div>

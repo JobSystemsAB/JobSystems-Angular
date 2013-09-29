@@ -1,0 +1,64 @@
+﻿<!-- partials/Map.html -->
+
+<div data-ng-controller="MapController">
+   
+     <div class="container">
+        <h1
+            id="map-title"
+            contenteditable="true"
+            data-ng-model="texts['map-title'][0].text"
+            data-compile="texts['map-title'][0].text"></h1>
+        
+        <div class="map rounded shadow">
+            <div data-google-map=""
+                data-center="center"
+                draggable="true"
+                data-zoom="zoom"
+                data-markers="markers"
+                data-mark-click="false"
+                data-refresh="refresh"
+                style="height: 500px; width: 100%; display: block;">
+            </div>
+
+            <div class="contact-info">
+
+                <div style="width: 100%">
+                    <div style="width: 30%" class="float-left">
+                        <h5
+                            id="map-address"
+                            contenteditable="true"
+                            data-ng-model="texts['map-address'][0].text"
+                            data-compile="texts['map-address'][0].text"></h5>
+                    </div>
+                    <div style="width: 40%" class="float-left">
+                        <h5
+                            id="map-phone-number"
+                            contenteditable="true"
+                            data-ng-model="texts['map-phone-number'][0].text"
+                            data-compile="texts['map-phone-number'][0].text"></h5>
+                    </div>
+                    <div style="width: 30%" class="float-left">
+                        <h5
+                            id="map-email"
+                            contenteditable="true"
+                            data-ng-model="texts['map-email'][0].text"
+                            data-compile="texts['map-email'][0].text"></h5>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <div class="container padding-small margin-small" style="background-color: lightsalmon" data-ng-show="false">
+        <div class="float-left">
+            Du är inloggad som Admin. Glöm inte att spara dina ändringar!
+        </div>
+        <div class="float-right">
+            <button data-ng-click="save()">Save</button>
+        </div>
+    </div>
+
+    <div class="clear"></div>
+
+</div>

@@ -2,6 +2,9 @@
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <RemoteDesktopMoreOptions>False</RemoteDesktopMoreOptions>
-    <ActivePublishProfile>jobsystemsStaging</ActivePublishProfile>
+    <ActivePublishProfile>adoerdevProduction</ActivePublishProfile>
+    <PackageProfile>Cloud</PackageProfile>
+    <PackageSolutionConfiguration>Release</PackageSolutionConfiguration>
+    <PackageEnableRemoteDesktop>False</PackageEnableRemoteDesktop>
   </PropertyGroup>
 </Project>

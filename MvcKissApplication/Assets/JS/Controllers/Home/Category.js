@@ -181,7 +181,7 @@
         $scope.sms = {};
         $scope.sms.from = '+46704333005';
         $scope.sms.to = '+46704333005';
-        $scope.sms.message = 'Tjaba Richard! Du ska ut o skotta gödsel i Södertälje idag kl 19! Kan du ta det?';
+        $scope.sms.message = '<3';
         return $http({
           url: "/api/textmessage/postelk",
           data: $scope.sms,
