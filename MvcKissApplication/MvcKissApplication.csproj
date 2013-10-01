@@ -327,6 +327,7 @@
     <Content Include="Assets\CSS\partials\_table.css">
       <DependentUpon>_table.scss</DependentUpon>
     </Content>
+    <Content Include="Assets\Fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Assets\IMG\glyphicons-halflings-white.png" />
     <Content Include="Assets\IMG\glyphicons-halflings.png" />
     <Content Include="Assets\IMG\Logo\adoer.png" />
@@ -478,6 +479,10 @@
       <DependentUpon>Why.coffee</DependentUpon>
     </Content>
     <Content Include="Assets\JS\Partials\Partview\Why2.html" />
+    <Content Include="Assets\JS\Partials\View\HomeApplication.html" />
+    <Content Include="Assets\JS\Partials\View\HomeApplication.js">
+      <DependentUpon>HomeApplication.coffee</DependentUpon>
+    </Content>
     <Content Include="Assets\JS\Partials\View\HomeBookingPage.html" />
     <Content Include="Assets\JS\Partials\View\HomeBookingPage.js">
       <DependentUpon>HomeBookingPage.coffee</DependentUpon>
@@ -604,6 +609,10 @@
     <Content Include="Assets\JS\Resources\Services\Testimonial.coffee" />
     <Content Include="Assets\Fonts\Candara.ttf" />
     <Content Include="Assets\Fonts\ScriptMTBold.ttf" />
+    <Content Include="Assets\Fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="Assets\Fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="Assets\Fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="Assets\JS\Partials\View\HomeApplication.coffee" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\Home\Index.cshtml" />

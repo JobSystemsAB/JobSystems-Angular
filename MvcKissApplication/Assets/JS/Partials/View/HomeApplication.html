@@ -1,0 +1,158 @@
+﻿<div
+    class="image-white-background"
+    data-ng-controller="HomeApplicationController">
+    <div
+        class="container">
+
+        <div style="text-align: center">
+            <iframe width="900" height="507" src="http://www.youtube.com/embed/oE5kpLreTEU" frameborder="0" allowfullscreen></iframe>
+            <div contenteditable="true"
+                data-ng-model="texts['application-video-text'][0].text"
+                data-compile="texts['application-video-text'][0].text">
+            </div>
+        </div>
+
+        <hr />
+
+        <div>
+            <div class="info col-xs-12 col-sm-6 col-md-6 col-lg-6">
+                <input
+                    type="text"
+                    class="form-control"
+                    data-ng-model="input.employee.firstName"
+                    placeholder="Förnamn" />
+
+                <input
+                    type="text"
+                    class="form-control"
+                    data-ng-model="input.employee.lastName"
+                    placeholder="Efternamn" />
+
+                <input
+                    type="text"
+                    class="form-control"
+                    data-ng-model="input.employee.phoneNumber"
+                    placeholder="Telefonnummer" />
+
+                <input
+                    type="email"
+                    class="form-control"
+                    data-ng-model="input.employee.emailAddress"
+                    placeholder="Epost" />
+            </div>
+
+            <div
+                class="col-xs-12 col-sm-6 col-md-6 col-lg-6"
+                contenteditable="true"
+                data-ng-model="texts['application-input-text'][0].text"
+                data-compile="texts['application-input-text'][0].text">
+            </div>
+        </div>
+
+        <div class="clear"></div>
+
+        <hr />
+
+        <div class="row">
+            <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
+                <div data-ng-repeat="child in categories.children | orderBy: 'data.name'">
+
+                    <div class="input-group green-background img-rounded" style="cursor: pointer; color: white; padding: 5px; border: 1px solid #008840; width: 100%;" data-ng-click="categoryClicked(child, 1)">
+                        <label>
+                            <input type="radio" name="category">
+                            {{ child.data.name }}
+                        </label>
+                    </div>
+
+                </div>
+            </div>
+            <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
+                <div data-ng-repeat="child in category[1].children | orderBy: 'data.name'">
+
+                    <div class="input-group green-background img-rounded" style="cursor: pointer; color: white; padding: 5px; border: 1px solid #008840; width: 100%;" data-ng-click="categoryClicked(child, 2)">
+                        <label>
+                            <input type="radio" name="category">
+                            {{ child.data.name }}
+                        </label>
+                    </div>
+
+                </div>
+            </div>
+            <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
+                <div data-ng-repeat="child in category[2].children | orderBy: 'data.name'">
+
+                    <div class="input-group green-background img-rounded" style="cursor: pointer; color: white; padding: 5px; border: 1px solid #008840; width: 100%;" data-ng-click="categoryClicked(child, 3)">
+                        <label>
+                            <input type="radio" name="category">
+                            {{ child.data.name }}
+                        </label>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+        <div class="clear"></div>
+
+        <!--<div class="panel-group info" id="accordion">
+        <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4" data-ng-repeat="child in categories.children | orderBy: 'data.name'">
+            <h5 class="panel-title">
+                <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="{{ '#' + child.data.id }}">
+                    <input type="radio" name="category" value="{{ child.data.id }}" data-ng-disabled="child.children.length > 0" data-ng-checked="child.data.checked" data-ng-model="child.data.checked" data-ng-click="categoryClicked(child)" />
+                    {{ child.data.name }}
+                </a>
+            </h5>
+            <div id="{{ child.data.id }}" class="panel-collapse collapse">
+                <div class="panel-body">
+                    <div class="panel-group">
+                        <div data-ng-repeat="child2 in child.children | orderBy: 'data.name'" data-ng-show="child.children.length > 0">
+                            <h4 class="panel-title">
+                                <a class="accordion-toggle" data-toggle="collapse" data-parent="{{ '#' + child.data.id }}" href="{{ '#' + child2.data.id }}">
+                                    <input type="checkbox" data-ng-disabled="child2.children.length > 0" data-ng-checked="child2.data.checked" data-ng-model="child2.data.checked" data-ng-click="categoryClicked(child)" />
+                                    {{ child2.data.name }}
+                                </a>
+                            </h4>
+                            <div id="{{ child2.data.id }}" data-ng-show="child2.children.length > 0" class="panel-collapse collapse">
+                                <div class="panel-body">
+                                    <div class="panel-group" id="Div1">
+                                        <div data-ng-repeat="child3 in child2.children | orderBy: 'data.name'">
+                                            <h4 class="panel-title">
+                                                <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="{{ '#' + child3.data.id }}">
+                                                    <input type="checkbox" data-ng-model="child3.data.checked" data-ng-checked="child3.data.checked" data-ng-click="categoryClicked(child)" />
+                                                    {{ child3.data.name }}
+                                                </a>
+                                            </h4>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="clear"></div>
+    </div>-->
+
+        <hr />
+
+        <div class="info">
+            <textarea
+                class="form-control"
+                data-ng-model="input.employee.description"
+                placeholder="Ge en kort personlig presentation..."
+                style="height: 200px; margin-top: 20px"></textarea>
+        </div>
+
+        <hr />
+
+        <div class="info" style="text-align: center">
+            <button
+                class="btn btn-lg green-background"
+                style="color: white; margin: 20px;"
+                data-ng-click="send()">
+                Bli en adoer</button>
+        </div>
+
+    </div>
+</div>

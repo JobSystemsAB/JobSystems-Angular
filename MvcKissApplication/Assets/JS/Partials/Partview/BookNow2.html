@@ -1,6 +1,6 @@
 ﻿<!-- partials/BookNow.html -->
 
-<div 
+<div
     class="image-gray-background"
     style="padding: 40px 0">
     <div
@@ -18,11 +18,18 @@
             <button
                 class="btn btn-lg green-background"
                 id="book-now-button"
-                contenteditable="true"
+                data-ng-click="goToBooking()"
                 data-ng-model="texts['book-now-button'][0].text"
                 data-compile="texts['book-now-button'][0].text"
                 style="color: white; margin-left: 10px">
             </button>
+
+            <br />
+            <label contenteditable="true"
+                data-ng-model="texts['book-now-button'][0].text"
+                data-compile="texts['book-now-button'][0].text">
+            </label>
+
         </form>
 
         <div

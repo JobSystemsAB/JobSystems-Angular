@@ -25,6 +25,7 @@
         }).error(function(data, status, headers, config) {
           return console.log(status);
         });
+        console.log($scope.categories);
         return CategoryService.saveCategories($scope.categories).success(function(data, status, headers, config) {
           return console.log(status);
         }).error(function(data, status, headers, config) {

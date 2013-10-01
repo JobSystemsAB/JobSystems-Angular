@@ -37,9 +37,8 @@
                     <h5>
                         <a
                             class="img-rounded"
-                            style="color: white; position: absolute; bottom: 0; right: 0; padding: 10px 20px; background-color: #0CB45D; width: 100%; opacity: 0.9"
+                            style="color: white; position: absolute; bottom: 0; right: 0; padding: 10px 20px; background-color: #0CB45D; width: 100%; opacity: 0.9; text-decoration: none; cursor: pointer;"
                             data-ui-sref="service({serviceId: category.id})"
-                            contenteditable="true"
                             data-ng-model="category.name"
                             data-compile="category.name"></a>
                     </h5>
@@ -47,6 +46,11 @@
                 </div>
 
             </div>
+
+            <label contenteditable="true"
+                data-ng-model="category.name"
+                data-compile="category.name">
+            </label>
         </div>
     </div>
 

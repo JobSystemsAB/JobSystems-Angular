@@ -22,7 +22,7 @@ window.app.directive 'contenteditable', ($timeout) ->
             # view -> model
             elm.bind 'blur', ->
                 scope.$apply ->
-                    ctrl.$setViewValue elm.html()
+                    ctrl.$setViewValue elm.html().replace('<span class="ng-scope">', '').replace('</span>', '');
                 
             # model -> view
             ctrl.$render = ->

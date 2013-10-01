@@ -97,7 +97,8 @@
 
 
     <ul>
-        <li data-ng-repeat="category in output.categories">
+        <li data-ng-repeat="category in output.categories" class="">
+            <div style="width: 25%">
             <label>
                 <input
                     type="radio"
@@ -109,6 +110,7 @@
                     data-ng-click="categoryClicked(category)" />
                 {{ category.name }}
             </label>
+            </div>
             <ul>
                 <li data-ng-repeat="subcategory in output.groupedSubcategories[category.id]">
                     <label>

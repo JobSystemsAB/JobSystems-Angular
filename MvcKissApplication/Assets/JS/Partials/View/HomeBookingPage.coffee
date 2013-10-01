@@ -1,7 +1,11 @@
 ﻿window.app.controller 'HomeBookingPageController', 
 
-['$scope', '$stateParams', 'CategoryService', 'GoogleMapsService', 'CompanyCustomer', 'Mission', 'PrivateCustomer',
-( $scope,   $stateParams,   CategoryService,   GoogleMapsService,   CompanyCustomer,   Mission,   PrivateCustomer) ->
+['$scope', '$stateParams', 'CategoryService', 'GoogleMapsService', 'TextService', 'CompanyCustomer', 'Mission', 'PrivateCustomer',
+( $scope,   $stateParams,   CategoryService,   GoogleMapsService,   TextService,   CompanyCustomer,   Mission,   PrivateCustomer) ->
+
+    # INIT
+
+    $scope.category = []
 
     # METHOD: GET IS COMPANY CUSTOMER
     
@@ -42,22 +46,32 @@
         )
     
     # METHOD: LOAD CATEGORY TREE
-    
+
     CategoryService.getTree()
         .success (data, status, headers, config) ->
             $scope.categories = data
             if $stateParams.serviceId
-                $scope.category1 = _.find $scope.categories.children, (child) ->
+                $scope.category[1] = _.find $scope.categories.children, (child) ->
                     child.data.id = $stateParams.serviceId
                 $scope.getInputs()
             console.log status
         .error (data, status, headers, config) ->
             console.log status
-    
+
+    # LOAD TEXTS
+
+    TextService.getTexts('HomeBookingPageController', 'sv')
+        .success (data, status, headers, config) ->
+            $scope.textsOriginal = data
+            $scope.texts = _.groupBy $scope.textsOriginal, (text) -> 
+                text.elementId
+        .error (data, status, headers, config) ->
+            console.log status
+
     # METHOD: LOAD EXTRA INPUTS
     
     $scope.getInputs = ->
-        CategoryService.getCategoryInputs($scope.category1.data.id)
+        CategoryService.getCategoryInputs($scope.category[1].data.id)
             .success (data, status, headers, config) ->
                 $scope.inputs = data
                 console.log status
@@ -84,21 +98,21 @@
     
     # GOOGLE ADDRESS LISTENER
     
-    google.maps.event.addListener autocomplete, 'place_changed', ->
-        place = autocomplete.getPlace()
+    #google.maps.event.addListener autocomplete, 'place_changed', ->
+        #place = autocomplete.getPlace()
 
-        $scope.mission.address.latitude = place.geometry.location.lat()
-        $scope.mission.address.longitude = place.geometry.location.lng()
+        #$scope.mission.address.latitude = place.geometry.location.lat()
+        #$scope.mission.address.longitude = place.geometry.location.lng()
         
-        $scope.mission.address.streetNumber = GoogleMapsService.getAddressType place.address_components, 'street_number'
-        $scope.mission.address.street = GoogleMapsService.getAddressType place.address_components, 'route'
-        $scope.mission.address.postalCode = GoogleMapsService.getAddressType place.address_components, 'postal_code'
-        $scope.mission.address.postalTown = GoogleMapsService.getAddressType place.address_components, 'postal_town'
-        $scope.mission.address.country = GoogleMapsService.getAddressType place.address_components, 'country'
-        $scope.mission.address.area = GoogleMapsService.getAddressType place.address_components, 'administrative_area_level_1'
+        #$scope.mission.address.streetNumber = GoogleMapsService.getAddressType place.address_components, 'street_number'
+        #$scope.mission.address.street = GoogleMapsService.getAddressType place.address_components, 'route'
+        #$scope.mission.address.postalCode = GoogleMapsService.getAddressType place.address_components, 'postal_code'
+        #$scope.mission.address.postalTown = GoogleMapsService.getAddressType place.address_components, 'postal_town'
+        #$scope.mission.address.country = GoogleMapsService.getAddressType place.address_components, 'country'
+        #$scope.mission.address.area = GoogleMapsService.getAddressType place.address_components, 'administrative_area_level_1'
     
     # STATIC DATA
-
+    
     $scope.mission = { description: '' }
     $scope.customer = { type: 'private' }
     

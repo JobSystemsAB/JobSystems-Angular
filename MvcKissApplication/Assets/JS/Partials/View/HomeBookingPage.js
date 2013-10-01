@@ -1,8 +1,9 @@
 (function() {
   window.app.controller('HomeBookingPageController', [
-    '$scope', '$stateParams', 'CategoryService', 'GoogleMapsService', 'CompanyCustomer', 'Mission', 'PrivateCustomer', function($scope, $stateParams, CategoryService, GoogleMapsService, CompanyCustomer, Mission, PrivateCustomer) {
+    '$scope', '$stateParams', 'CategoryService', 'GoogleMapsService', 'TextService', 'CompanyCustomer', 'Mission', 'PrivateCustomer', function($scope, $stateParams, CategoryService, GoogleMapsService, TextService, CompanyCustomer, Mission, PrivateCustomer) {
       var autocomplete, google_address_search;
 
+      $scope.category = [];
       $scope.isCompanyCustomer = function() {
         return $scope.customer.type === 'company';
       };
@@ -41,7 +42,7 @@
       CategoryService.getTree().success(function(data, status, headers, config) {
         $scope.categories = data;
         if ($stateParams.serviceId) {
-          $scope.category1 = _.find($scope.categories.children, function(child) {
+          $scope.category[1] = _.find($scope.categories.children, function(child) {
             return child.data.id = $stateParams.serviceId;
           });
           $scope.getInputs();
@@ -50,8 +51,16 @@
       }).error(function(data, status, headers, config) {
         return console.log(status);
       });
+      TextService.getTexts('HomeBookingPageController', 'sv').success(function(data, status, headers, config) {
+        $scope.textsOriginal = data;
+        return $scope.texts = _.groupBy($scope.textsOriginal, function(text) {
+          return text.elementId;
+        });
+      }).error(function(data, status, headers, config) {
+        return console.log(status);
+      });
       $scope.getInputs = function() {
-        return CategoryService.getCategoryInputs($scope.category1.data.id).success(function(data, status, headers, config) {
+        return CategoryService.getCategoryInputs($scope.category[1].data.id).success(function(data, status, headers, config) {
           $scope.inputs = data;
           return console.log(status);
         }).error(function(data, status, headers, config) {
@@ -84,19 +93,6 @@
         }
         return $scope.eventSources[0].events = result;
       };
-      google.maps.event.addListener(autocomplete, 'place_changed', function() {
-        var place;
-
-        place = autocomplete.getPlace();
-        $scope.mission.address.latitude = place.geometry.location.lat();
-        $scope.mission.address.longitude = place.geometry.location.lng();
-        $scope.mission.address.streetNumber = GoogleMapsService.getAddressType(place.address_components, 'street_number');
-        $scope.mission.address.street = GoogleMapsService.getAddressType(place.address_components, 'route');
-        $scope.mission.address.postalCode = GoogleMapsService.getAddressType(place.address_components, 'postal_code');
-        $scope.mission.address.postalTown = GoogleMapsService.getAddressType(place.address_components, 'postal_town');
-        $scope.mission.address.country = GoogleMapsService.getAddressType(place.address_components, 'country');
-        return $scope.mission.address.area = GoogleMapsService.getAddressType(place.address_components, 'administrative_area_level_1');
-      });
       $scope.mission = {
         description: ''
       };

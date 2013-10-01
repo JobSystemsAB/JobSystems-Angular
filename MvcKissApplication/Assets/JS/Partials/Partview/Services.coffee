@@ -34,6 +34,7 @@
             .error (data, status, headers, config) ->
                 console.log status
 
+        console.log $scope.categories
         CategoryService.saveCategories($scope.categories)
             .success (data, status, headers, config) ->
                 console.log status

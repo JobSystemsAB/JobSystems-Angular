@@ -1,7 +1,7 @@
 ﻿window.app.controller 'BookNowController', 
 
-['$scope', 'TextService',
-( $scope,   TextService) ->
+['$scope', '$state', '$stateParams', 'TextService',
+( $scope,   $state,   $stateParams,   TextService) ->
 
     # STATIC DATA
 
@@ -26,5 +26,8 @@
                 console.log status
             .error (data, status, headers, config) ->
                 console.log status
+
+    $scope.goToBooking = ->
+        $state.go 'book', { serviceId: $stateParams.serviceId }
 
 ]

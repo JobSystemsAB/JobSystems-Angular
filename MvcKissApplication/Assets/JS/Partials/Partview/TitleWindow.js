@@ -1,6 +1,6 @@
 (function() {
   window.app.controller('TitleWindowController', [
-    '$scope', '$stateParams', 'TextService', function($scope, $stateParams, TextService) {
+    '$scope', '$state', '$stateParams', 'TextService', function($scope, $state, $stateParams, TextService) {
       var files;
 
       $scope.text - (files = ['title-window-text', 'title-window-book-text', 'title-window-button']);
@@ -13,11 +13,16 @@
       }).error(function(data, status, headers, config) {
         return console.log(status);
       });
-      return $scope.save = function() {
+      $scope.save = function() {
         return TextService.saveTexts($scope.textsOriginal).success(function(data, status, headers, config) {
           return console.log(status);
         }).error(function(data, status, headers, config) {
           return console.log(status);
+        });
+      };
+      return $scope.goToBooking = function() {
+        return $state.go('book', {
+          serviceId: $scope.currentCategoryId
         });
       };
     }

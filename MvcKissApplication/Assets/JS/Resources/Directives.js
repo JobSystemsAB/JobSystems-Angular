@@ -27,7 +27,7 @@
       link: function(scope, elm, attrs, ctrl) {
         elm.bind('blur', function() {
           return scope.$apply(function() {
-            return ctrl.$setViewValue(elm.html());
+            return ctrl.$setViewValue(elm.html().replace('<span class="ng-scope">', '').replace('</span>', ''));
           });
         });
         ctrl.$render = function() {

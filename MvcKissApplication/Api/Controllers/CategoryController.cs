@@ -173,6 +173,7 @@ namespace MvcKissApplication.Api.ViewModels
                 var original = repo.getCategory(view.id);
                 if (original.name != view.name)
                 {
+                    original.name = view.name;
                     repo.update(original);
                 }
             }

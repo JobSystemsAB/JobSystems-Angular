@@ -35,6 +35,9 @@
       }).state('book', {
         url: "/book/:serviceId",
         templateUrl: "/assets/js/partials/view/homebookingpage.html"
+      }).state('application', {
+        url: "/application",
+        templateUrl: "/assets/js/partials/view/homeapplication.html"
       });
     }
   ]);
