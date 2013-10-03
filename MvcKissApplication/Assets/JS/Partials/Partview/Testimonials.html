@@ -1,41 +1,67 @@
 ﻿<!-- partials/Testimonials.html -->
 
-<div data-ng-controller="TestimonialsController">
+<div
+    class="container"
+    data-ng-controller="TestimonialsController">
 
-    <div class="container">
-        <h1
-            id="testimonials-title"
-            contenteditable="true"
-            data-ng-model="texts['testimonials-title'][0].text"
-            data-compile="texts['testimonials-title'][0].text"></h1>
-        
-        <div data-carousel="" data-interval="5000" class="testimonial rounded shadow">
-            <div data-slide="" data-ng-repeat="testimonial in testimonials" data-active="testimonial.active">
-                <span class="quote ScriptMTBold">"</span>
-                <span 
+    <h1
+        id="testimonials-title"
+        contenteditable="false"
+        data-ng-model="texts['testimonials-title'][0].text"
+        data-compile="texts['testimonials-title'][0].text"></h1>
+
+    <div 
+        class="thumbnail shadow"
+        style="width: 100%;">
+        <div
+            data-carousel=""
+            data-interval="5000"
+            class="carousel slide"
+            style="height: 400px; background-color: #0CB45D; color: white;">
+
+            <div
+                class="carousel-inner"
+                data-slide=""
+                data-ng-repeat="testimonial in testimonials"
+                data-active="testimonial.active"
+                style="padding: 20px 20%; margin-top: 4%; overflow: hidden;">
+
+                <div
                     class="ScriptMTBold"
-                    contenteditable="true"
-                    data-ng-model="testimonial.text"
-                    data-compile="testimonial.text"></span>
-                <span class="quote ScriptMTBold">"</span><br />
-                <span 
+                    style="font-size: 250%; height: 200px;">
+                    <label>"</label>
+
+                    <span
+                        contenteditable="false"
+                        data-ng-model="testimonial.text"
+                        data-compile="testimonial.text"></span>
+
+                    <label>"</label>
+
+                </div>
+                
+                <label
                     class="float-right"
-                    contenteditable="true"
+                    contenteditable="false"
                     data-ng-model="testimonial.name"
-                    data-compile="testimonial.name"></span>
+                    data-compile="testimonial.name">
+                </label>
+                <label
+                    class="float-right"
+                    style="margin-right: 10px">-</label>
+                
+                <div class="clear"></div>
+
             </div>
         </div>
     </div>
 
-    <div class="container padding-small margin-small" style="background-color: lightsalmon" data-ng-show="false">
-        <div class="float-left">
-            Du är inloggad som Admin. Glöm inte att spara dina ändringar!
-        </div>
-        <div class="float-right">
-            <button data-ng-click="save()">Save</button>
-        </div>
+    <div 
+        style="text-align: right"
+        data-ng-show="isAdmin">
+        <button 
+            class="btn btn-danger btn-lg" 
+            data-ng-click="save()">Spara ändringar</button>
     </div>
-
-    <div class="clear"></div>
 
 </div>

@@ -1,47 +1,51 @@
-﻿<!-- partials/Why.html -->
+﻿<div
+    class="container"
+    data-ng-controller="WhyController">
 
-<div data-ng-controller="WhyController">
+    <div
+        class="row">
 
-    <div class="container">
+        <div
+            class="col-xs-12 col-sm-7 col-md-7 col-lg-7"
+            style="padding-right: 10px">
 
-
-        <img class="rounded float-left" src="Assets/IMG/TMP/person.jpg" style="width: 400px" />
-
-        <div>
             <h1
                 id="why-title"
-                contenteditable="true"
+                contenteditable="isAdmin"
                 data-ng-model="texts['why-title'][0].text"
                 data-compile="texts['why-title'][0].text"></h1>
             <div
                 id="why-short"
-                contenteditable="true"
+                contenteditable="{{ isAdmin }}"
                 data-ng-model="texts['why-short'][0].text"
                 data-compile="texts['why-short'][0].text">
             </div>
+            <h5>
+                <a>
+                    <span
+                        id="why-read-more"
+                        contenteditable="{{ isAdmin }}"
+                        data-ng-model="texts['why-read-more'][0].text"
+                        data-compile="texts['why-read-more'][0].text"></span>
+                </a>
+            </h5>
         </div>
 
-        <h5>
-            <a>
-                <span
-                    id="why-read-more"
-                    contenteditable="true"
-                    data-ng-model="texts['why-read-more'][0].text"
-                    data-compile="texts['why-read-more'][0].text"></span>
-            </a>
-        </h5>
-
-    </div>
-
-    <div class="container padding-small margin-small" style="background-color: lightsalmon" data-ng-show="false">
-        <div class="float-left">
-            Du är inloggad som Admin. Glöm inte att spara dina ändringar!
-        </div>
-        <div class="float-right">
-            <button data-ng-click="save()">Save</button>
+        <div
+            class="col-xs-12 col-sm-5 col-md-5 col-lg-5">
+            <img
+                class="img-thumbnail shadow"
+                src="/Assets/IMG/TMP/person.jpg"
+                style="width: 100%; margin: 0;" />
         </div>
     </div>
 
-    <div class="clear"></div>
+    <div 
+        data-ng-show="isAdmin"
+        style="text-align: right">
+        <button 
+            class="btn btn-danger btn-lg" 
+            data-ng-click="save()">Spara ändringar</button>
+    </div>
 
 </div>

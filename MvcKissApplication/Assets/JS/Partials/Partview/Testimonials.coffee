@@ -1,7 +1,7 @@
 ﻿window.app.controller 'TestimonialsController', 
 
-['$scope', 'TextService', 'TestimonialService',
-( $scope,   TextService,   TestimonialService) ->
+['$scope', 'AlertService', 'TextService', 'TestimonialService',
+( $scope,   AlertService,   TextService,   TestimonialService) ->
 
     # STATIC DATA
 
@@ -14,16 +14,14 @@
             $scope.textsOriginal = data
             $scope.texts = _.groupBy $scope.textsOriginal, (text) -> 
                 text.elementId
-            console.log status
         .error (data, status, headers, config) ->
-            console.log status
+            AlertService.addAlert 'danger', 'Misslyckades att hämta texterna, vänligen prova igen och kontakta en tekniker om problemet kvarstår.'
 
     TestimonialService.getTestimonials('sv')
         .success (data, status, headers, config) ->
             $scope.testimonials = data
-            console.log status
         .error (data, status, headers, config) ->
-            console.log status
+            AlertService.addAlert 'danger', 'Misslyckades att spara referenser, vänligen prova igen och kontakta en tekniker om problemet kvarstår.'
 
     # SAVE DATA
 
@@ -31,16 +29,17 @@
         
         TextService.saveTexts($scope.textsOriginal)
             .success (data, status, headers, config) ->
-                console.log status
+                AlertService.addAlert 'success', 'Tester sparades.'
+
             .error (data, status, headers, config) ->
-                console.log status
+                AlertService.addAlert 'danger', 'Misslyckades att spara texterna, vänligen prova igen och kontakta en tekniker om problemet kvarstår.'
+
 
         TestimonialService.saveTestimonials($scope.testimonials)
             .success (data, status, headers, config) ->
-                console.log status
+                AlertService.addAlert 'success', 'Referenser sparades.'
+
             .error (data, status, headers, config) ->
-                console.log status
-
-
+                AlertService.addAlert 'danger', 'Misslyckades att spara referenserna, vänligen prova igen och kontakta en tekniker om problemet kvarstår.'
 
 ]

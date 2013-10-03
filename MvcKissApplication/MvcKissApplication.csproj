@@ -300,6 +300,10 @@
     <Compile Include="Migrations\201309280851004_dunno4.Designer.cs">
       <DependentUpon>201309280851004_dunno4.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201310021207592_admintoken.cs" />
+    <Compile Include="Migrations\201310021207592_admintoken.Designer.cs">
+      <DependentUpon>201310021207592_admintoken.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\MvcKissApplicationContext.cs" />
     <Compile Include="Models\Node.cs" />
@@ -441,16 +445,22 @@
     <Content Include="Assets\JS\Partials\Partview\About.js">
       <DependentUpon>About.coffee</DependentUpon>
     </Content>
-    <Content Include="Assets\JS\Partials\Partview\About2.html" />
-    <Content Include="Assets\JS\Partials\Partview\BookNow.html" />
+    <Content Include="Assets\JS\Partials\Partview\About.html" />
+    <Content Include="Assets\JS\Partials\Partview\Alert.html" />
+    <Content Include="Assets\JS\Partials\Partview\Alert.js">
+      <DependentUpon>Alert.coffee</DependentUpon>
+    </Content>
     <Content Include="Assets\JS\Partials\Partview\BookNow.js">
       <DependentUpon>BookNow.coffee</DependentUpon>
     </Content>
-    <Content Include="Assets\JS\Partials\Partview\BookNow2.html" />
-    <Content Include="Assets\JS\Partials\Partview\Map2.html" />
-    <Content Include="Assets\JS\Partials\Partview\Media2.html" />
+    <Content Include="Assets\JS\Partials\Partview\BookNow.html" />
+    <Content Include="Assets\JS\Partials\Partview\Footer.html" />
+    <Content Include="Assets\JS\Partials\Partview\Footer.js">
+      <DependentUpon>Footer.coffee</DependentUpon>
+    </Content>
+    <Content Include="Assets\JS\Partials\Partview\Map.html" />
+    <Content Include="Assets\JS\Partials\Partview\Media.html" />
     <Content Include="Assets\JS\Partials\Partview\Menu.html" />
-    <Content Include="Assets\JS\Partials\Partview\Price.html" />
     <Content Include="Assets\JS\Partials\Partview\Map.js">
       <DependentUpon>Map.coffee</DependentUpon>
     </Content>
@@ -460,25 +470,27 @@
     <Content Include="Assets\JS\Partials\Partview\Price.js">
       <DependentUpon>Price.coffee</DependentUpon>
     </Content>
-    <Content Include="Assets\JS\Partials\Partview\Price2.html" />
-    <Content Include="Assets\JS\Partials\Partview\Services.html" />
+    <Content Include="Assets\JS\Partials\Partview\Price.html" />
     <Content Include="Assets\JS\Partials\Partview\Services.js">
       <DependentUpon>Services.coffee</DependentUpon>
     </Content>
-    <Content Include="Assets\JS\Partials\Partview\Services2.html" />
+    <Content Include="Assets\JS\Partials\Partview\Services.html" />
     <Content Include="Assets\JS\Partials\Partview\Testimonials.js">
       <DependentUpon>Testimonials.coffee</DependentUpon>
     </Content>
-    <Content Include="Assets\JS\Partials\Partview\Testimonials2.html" />
-    <Content Include="Assets\JS\Partials\Partview\TitleWindow.html" />
+    <Content Include="Assets\JS\Partials\Partview\Testimonials.html" />
     <Content Include="Assets\JS\Partials\Partview\TitleWindow.js">
       <DependentUpon>TitleWindow.coffee</DependentUpon>
     </Content>
-    <Content Include="Assets\JS\Partials\Partview\TitleWindow2.html" />
+    <Content Include="Assets\JS\Partials\Partview\TitleWindow.html" />
     <Content Include="Assets\JS\Partials\Partview\Why.js">
       <DependentUpon>Why.coffee</DependentUpon>
     </Content>
-    <Content Include="Assets\JS\Partials\Partview\Why2.html" />
+    <Content Include="Assets\JS\Partials\Partview\Why.html" />
+    <Content Include="Assets\JS\Partials\View\HomeAdminLogin.html" />
+    <Content Include="Assets\JS\Partials\View\HomeAdminLogin.js">
+      <DependentUpon>HomeAdminLogin.coffee</DependentUpon>
+    </Content>
     <Content Include="Assets\JS\Partials\View\HomeApplication.html" />
     <Content Include="Assets\JS\Partials\View\HomeApplication.js">
       <DependentUpon>HomeApplication.coffee</DependentUpon>
@@ -488,11 +500,6 @@
       <DependentUpon>HomeBookingPage.coffee</DependentUpon>
     </Content>
     <Content Include="Assets\JS\Partials\View\HomeIndexBody.html" />
-    <Content Include="Assets\JS\Partials\Partview\About.html" />
-    <Content Include="Assets\JS\Partials\Partview\Why.html" />
-    <Content Include="Assets\JS\Partials\Partview\Map.html" />
-    <Content Include="Assets\JS\Partials\Partview\Media.html" />
-    <Content Include="Assets\JS\Partials\Partview\Testimonials.html" />
     <Content Include="Assets\JS\Partials\View\HomeIndexBody.js">
       <DependentUpon>HomeIndexBody.coffee</DependentUpon>
     </Content>
@@ -561,6 +568,7 @@
     <Content Include="Libs\JQuery\jquery-1.10.2.min.js" />
     <Content Include="Libs\JQuery\jquery-ui-1.10.3.custom.min.js" />
     <Content Include="Libs\underscore.js" />
+    <Content Include="Libs\underscore.string.js" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -613,6 +621,9 @@
     <Content Include="Assets\Fonts\glyphicons-halflings-regular.ttf" />
     <Content Include="Assets\Fonts\glyphicons-halflings-regular.woff" />
     <Content Include="Assets\JS\Partials\View\HomeApplication.coffee" />
+    <Content Include="Assets\JS\Partials\View\HomeAdminLogin.coffee" />
+    <Content Include="Assets\JS\Partials\Partview\Alert.coffee" />
+    <Content Include="Assets\JS\Partials\Partview\Footer.coffee" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\Home\Index.cshtml" />
@@ -695,6 +706,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201309280851004_dunno4.resx">
       <DependentUpon>201309280851004_dunno4.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201310021207592_admintoken.resx">
+      <DependentUpon>201310021207592_admintoken.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

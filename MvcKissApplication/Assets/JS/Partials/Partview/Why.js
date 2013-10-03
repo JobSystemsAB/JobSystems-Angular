@@ -1,6 +1,6 @@
 (function() {
   window.app.controller('WhyController', [
-    '$scope', 'TextService', function($scope, TextService) {
+    '$scope', 'AlertService', 'TextService', function($scope, AlertService, TextService) {
       var files;
 
       $scope.text - (files = ['why-title', 'why-short', 'why-read-more']);
@@ -10,13 +10,13 @@
           return text.elementId;
         });
       }).error(function(data, status, headers, config) {
-        return console.log(status);
+        return AlertService.addAlert('danger', 'Misslyckades att hämta texterna, vänligen prova igen och kontakta en tekniker om problemet kvarstår.');
       });
       return $scope.save = function() {
         return TextService.saveTexts($scope.textsOriginal).success(function(data, status, headers, config) {
-          return console.log(status);
+          return AlertService.addAlert('success', 'Texter sparade.');
         }).error(function(data, status, headers, config) {
-          return console.log(status);
+          return AlertService.addAlert('danger', 'Misslyckades att spara texterna, vänligen prova igen och kontakta en tekniker om problemet kvarstår.');
         });
       };
     }

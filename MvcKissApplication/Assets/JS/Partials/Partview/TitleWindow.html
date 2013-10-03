@@ -1,41 +1,79 @@
-﻿<!-- partials/TitleWindow.html -->
+﻿<div
+    style="margin-top: 95px;"
+    data-ng-controller="TitleWindowController">
 
-<div data-ng-controller="TitleWindowController">
-    
-    <div class="container">
-        <div class="box transparent float-right rounded">
+    <div
+        class="header-image shadow visible-sm visible-md visible-lg">
 
-            <img src="Assets/IMG/Logo/adoer.png" width="150px" />
+        <div
+            class="container"
+            style="position: relative">
 
             <div
-                id="title-window-text"
-                contenteditable="true"
-                data-ng-model="texts['title-window-text'][0].text"
-                data-compile="texts['title-window-text'][0].text">
-            </div>
+                class="img-rounded pull-right image-gray-background"
+                style="top: 150px; padding: 20px; position: absolute; right: 0; max-width: 550px;">
 
-            <input type="text" placeholder="Postnummer"/>
+                <div
+                    contenteditable="false"
+                    data-ng-model="texts['title-window-text'][0].text"
+                    data-compile="texts['title-window-text'][0].text"
+                    style="margin-bottom: 20px">
+                </div>
+
+                <form class="form-inline" role="form">
+                    <input
+                        type="text"
+                        placeholder="Postnummer"
+                        class="form-control"
+                        style="width: 300px" />
+
+                    <button
+                        class="btn btn-lg green-background"
+                        data-ng-click="goToBooking()"
+                        data-ng-model="texts['title-window-button'][0].text"
+                        data-compile="texts['title-window-button'][0].text"
+                        style="color: white; margin-left: 10px">
+                    </button>
+
+                    <label
+                        data-ng-show="isAdmin"
+                        contenteditable="false"
+                        data-ng-model="texts['title-window-button'][0].text"
+                        data-compile="texts['title-window-button'][0].text">
+                    </label>
+
+                </form>
+
+            </div>
+        </div>
+    </div>
+
+    <div
+        class="visible-xs image-gray-background" style="text-align: center; padding: 40px 0;">
+        <form class="form-inline" role="form">
+            <input
+                type="text"
+                placeholder="Postnummer"
+                class="form-control"
+                style="width: 300px; margin: 0 auto;" />
 
             <button
-                id="title-window-button"
-                class="btn"
-                contenteditable="true"
-                data-ui-sref="book({serviceId: currentCategoryId})"
+                class="btn btn-lg green-background"
+                contenteditable="false"
                 data-ng-model="texts['title-window-button'][0].text"
-                data-compile="texts['title-window-button'][0].text">
+                data-compile="texts['title-window-button'][0].text"
+                style="color: white; margin-left: 10px">
             </button>
-        </div>
+        </form>
     </div>
 
-    <div class="container padding-small margin-small" style="background-color: lightsalmon" data-ng-show="false">
-        <div class="float-left">
-            Du är inloggad som Admin. Glöm inte att spara dina ändringar!
-        </div>
-        <div class="float-right">
-            <button data-ng-click="save()">Save</button>
-        </div>
+    <div
+        data-ng-show="isAdmin"
+        style="text-align: right">
+        <button
+            class="btn btn-danger btn-lg"
+            data-ng-click="save()">
+            Spara ändringar</button>
     </div>
-
-    <div class="clear"></div>
 
 </div>

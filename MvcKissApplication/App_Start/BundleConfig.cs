@@ -102,6 +102,7 @@ namespace MvcKissApplication
             otherBundle.Include("~/libs/fullcalendar.min.js");
             otherBundle.Include("~/libs/gcal.js");
             otherBundle.Include("~/libs/underscore.js");
+            otherBundle.Include("~/libs/underscore.string.js");
 
             bundles.Add(otherBundle);
 

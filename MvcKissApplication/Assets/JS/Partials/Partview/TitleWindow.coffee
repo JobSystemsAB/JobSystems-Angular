@@ -1,7 +1,7 @@
 ﻿window.app.controller 'TitleWindowController', 
 
-['$scope', '$state', '$stateParams', 'TextService',
-( $scope,   $state,   $stateParams,   TextService) ->
+['$scope', '$state', '$stateParams', 'AlertService', 'TextService',
+( $scope,   $state,   $stateParams,   AlertService,   TextService) ->
 
     # STATIC DATA
 
@@ -19,7 +19,8 @@
             $scope.texts = _.groupBy $scope.textsOriginal, (text) -> 
                 text.elementId
         .error (data, status, headers, config) ->
-            console.log status
+            AlertService.addAlert 'danger', 'Misslyckades att hämta texterna, vänligen prova igen och kontakta en tekniker om problemet kvarstår.'
+
     
     # SAVE DATA
 
@@ -27,9 +28,10 @@
 
         TextService.saveTexts($scope.textsOriginal)
             .success (data, status, headers, config) ->
-                console.log status
+                AlertService.addAlert 'success', 'Texter sparade.'
             .error (data, status, headers, config) ->
-                console.log status
+                AlertService.addAlert 'danger', 'Misslyckades att spara texterna, vänligen prova igen och kontakta en tekniker om problemet kvarstår.'
+
 
     # GO TO BOOKING PAGE
 

@@ -71,6 +71,9 @@ namespace MvcKissApplication.Api.controllers
             }
             else
             {
+                model.authToken = Guid.NewGuid();
+                repo.update(model);
+
                 var view = new AdministratorView(model);
                 return Request.CreateResponse(HttpStatusCode.OK, view);
             }

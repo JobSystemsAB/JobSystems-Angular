@@ -1,0 +1,14 @@
+﻿<div data-ng-include="" data-src="'assets/js/partials/partview/alert.html'"></div>
+
+<div data-ng-controller="HomeAdminLoginController">
+    <div class="jumbotron shadow" style="position: fixed; top: 50%; left: 50%; width: 600px; margin-top: -200px; margin-left: -300px">
+        <img src="/Assets/IMG/Logo/adoer.png" style="height: 50px; margin-bottom: 10px" />
+        <h5>Admin login</h5>
+        <input type="email" placeholder="Epost" class="form-control" data-ng-model="admin.email" />
+        <input type="password" placeholder="Password" class="form-control" data-ng-model="admin.password" />
+        <input type="button" class="btn green-background pull-right" style="color: white; margin-top: 10px" value="Logga in" data-ng-click="tryLogin()" />
+    </div>
+</div>
+
+
+

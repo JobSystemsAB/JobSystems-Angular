@@ -43,4 +43,7 @@ window.app.config ['$stateProvider', '$urlRouterProvider', ($stateProvider, $url
             url: "/application"
             templateUrl: "/assets/js/partials/view/homeapplication.html"
 
+        .state 'admin',
+            url: "/admin"
+            templateUrl: "/assets/js/partials/view/homeadminlogin.html"
 ]

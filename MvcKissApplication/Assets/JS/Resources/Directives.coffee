@@ -14,7 +14,7 @@ window.app.directive 'onBlur', ->
                 scope.$apply attrs.onBlur
     }
 
-window.app.directive 'contenteditable', ($timeout) ->
+window.app.directive 'contenteditable', ($timeout, $rootScope) ->
     return { 
         require: 'ngModel'
         link: (scope, elm, attrs, ctrl) ->
@@ -22,10 +22,11 @@ window.app.directive 'contenteditable', ($timeout) ->
             # view -> model
             elm.bind 'blur', ->
                 scope.$apply ->
-                    ctrl.$setViewValue elm.html().replace('<span class="ng-scope">', '').replace('</span>', '');
-                
+                    ctrl.$setViewValue elm.html().replace('<span class="ng-scope">', '').replace('</span>', '')
+
             # model -> view
             ctrl.$render = ->
+                attrs.$set 'contenteditable', $rootScope.isAdmin
                 elm.html ctrl.$viewValue
         
             # load init value from DOM

@@ -38,6 +38,9 @@
       }).state('application', {
         url: "/application",
         templateUrl: "/assets/js/partials/view/homeapplication.html"
+      }).state('admin', {
+        url: "/admin",
+        templateUrl: "/assets/js/partials/view/homeadminlogin.html"
       });
     }
   ]);

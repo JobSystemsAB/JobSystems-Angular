@@ -1,7 +1,7 @@
 ﻿window.app.controller 'HomeBookingPageController', 
 
-['$scope', '$stateParams', 'CategoryService', 'GoogleMapsService', 'TextService', 'CompanyCustomer', 'Mission', 'PrivateCustomer',
-( $scope,   $stateParams,   CategoryService,   GoogleMapsService,   TextService,   CompanyCustomer,   Mission,   PrivateCustomer) ->
+['$scope', '$stateParams', '$http', 'CategoryService', 'GoogleMapsService', 'TextService', 'AlertService', 'CompanyCustomer', 'Mission', 'PrivateCustomer',
+( $scope,   $stateParams,   $http,   CategoryService,   GoogleMapsService,   TextService,   AlertService,   CompanyCustomer,   Mission,   PrivateCustomer) ->
 
     # INIT
 
@@ -24,9 +24,9 @@
 
         mission.$save(
             (data) ->
-                console.log data
+                AlertService.addAlert 'success', 'Uppdrag skapades.'
             , (error) ->
-                console.log error
+                AlertService.addAlert 'danger', 'Misslyckades skapa uppdraget, vänligen prova igen och kontakta en tekniker om problemet kvarstår.'
         )
     
     # METHOD: SAVE ORDER
@@ -41,8 +41,9 @@
         customer.$save(
             (data) ->
                 $scope.mission.customerId = data.id
+                AlertService.addAlert 'success', 'Kund skapad.'
             , (error) ->
-                console.log error
+                AlertService.addAlert 'danger', 'Misslyckades skapa kund, vänligen prova igen och kontakta en tekniker om problemet kvarstår.'
         )
     
     # METHOD: LOAD CATEGORY TREE
@@ -54,9 +55,10 @@
                 $scope.category[1] = _.find $scope.categories.children, (child) ->
                     child.data.id = $stateParams.serviceId
                 $scope.getInputs()
-            console.log status
+
         .error (data, status, headers, config) ->
-            console.log status
+            AlertService.addAlert 'danger', 'Misslyckades med att hämta kategorier, vänligen prova igen och kontakta en tekniker om problemet kvarstår.'
+
 
     # LOAD TEXTS
 
@@ -66,7 +68,7 @@
             $scope.texts = _.groupBy $scope.textsOriginal, (text) -> 
                 text.elementId
         .error (data, status, headers, config) ->
-            console.log status
+            AlertService.addAlert 'danger', 'Misslyckades med att hämta texter, vänligen prova igen och kontakta en tekniker om problemet kvarstår.'
 
     # METHOD: LOAD EXTRA INPUTS
     
@@ -74,9 +76,9 @@
         CategoryService.getCategoryInputs($scope.category[1].data.id)
             .success (data, status, headers, config) ->
                 $scope.inputs = data
-                console.log status
             .error (data, status, headers, config) ->
-                console.log status
+                AlertService.addAlert 'danger', 'Misslyckades med att hämta extra informationsfält, vänligen prova igen och kontakta en tekniker om problemet kvarstår.'
+
     
     # METHOD: LOAD CALENDAR EVENTS
     
@@ -96,6 +98,16 @@
 
         $scope.eventSources[0].events = result
     
+    # METHOD: SAVE CHANGES
+
+    $scope.save = ->
+
+        TextService.saveTexts($scope.textsOriginal)
+            .success (data, status, headers, config) ->
+                AlertService.addAlert 'success', 'Texter sparade.'
+            .error (data, status, headers, config) ->
+                AlertService.addAlert 'danger', 'Misslyckades att spara texterna, vänligen prova igen och kontakta en tekniker om problemet kvarstår.'
+
     # GOOGLE ADDRESS LISTENER
     
     #google.maps.event.addListener autocomplete, 'place_changed', ->
@@ -143,4 +155,57 @@
     google_address_search = document.getElementById 'google-address-search'
     autocomplete = new google.maps.places.Autocomplete google_address_search
     
+    # DIBS
+    $scope.dibs = ->
+
+        $scope.dibsInput = {}
+
+        $scope.dibsInput.test = "1"
+
+        $scope.dibsInput.merchant = "90151568"
+        $scope.dibsInput.currency = "SEK"
+        $scope.dibsInput.orderId = "213455"
+        $scope.dibsInput.amount = "375"
+        $scope.dibsInput.language = "sv_SE"
+
+        $scope.dibsInput.billingFirstName = "John"
+        $scope.dibsInput.billingLastName = "Doe"
+        $scope.dibsInput.billingAddress = "Danderydsgatan 28"
+        $scope.dibsInput.billingPostalCode = "11426"
+        $scope.dibsInput.billingPostalPlace = "Stockholm"
+        $scope.dibsInput.billingEmail = "misael@jobsystems.se"
+        $scope.dibsInput.billingMobile = "+46704333005"
+
+        $scope.dibsInput.oiTypes = "QUANTITY;UNITCODE;DESCRIPTION;AMOUNT;ITEMID;VATAMOUNT"
+        $scope.dibsInput.oiNames = "Items;UnitCode;Description;Amount;ItemId;VatAmount"
+        $scope.dibsInput.oiRow1 = "1;pcs;ACME Rocket Roller skates\; ultra fast;100;98;25"
+        $scope.dibsInput.oiRow2 = "1;pcs;ACME Band Aid;100;99;25"
+        $scope.dibsInput.oiRow3 = "1;pcs;Some description;100;45;25"
+
+        $scope.dibsInput.acceptReturnUrl = "https://yourdomain.com/acceptReturnUrl"
+        $scope.dibsInput.cancelReturnUrl = "https://yourdomain.com/cancelReturnUrl"
+        $scope.dibsInput.callbackUrl = "https://yourdomain.com/callbackUrl"
+
+        console.log angular.toJson $scope.dibsInput
+
+        delete $http.defaults.headers.common['X-Requested-With']
+        $http.defaults.headers.common = { "Access-Control-Request-Headers": "accept, origin, authorization" }
+        $http
+            url: "https://sat1.dibspayment.com/dibspaymentwindow/entrypoint"
+            method: "POST"
+            data: $scope.dibsInput
+        .success (data, status, headers, config) ->
+            console.log "yay", data, status, headers, config
+        .error (data, status, headers, config) ->
+            console.log "nay", data, status, headers, config
+
+
+        $http
+            url: "https://sat1.dibspayment.com/dibspaymentwindow/entrypoint"
+            method: "JSONP"
+            data: $scope.dibsInput
+        .success (data, status, headers, config) ->
+            console.log "yay", data, status, headers, config
+        .error (data, status, headers, config) ->
+            console.log "nay", data, status, headers, config
 ]

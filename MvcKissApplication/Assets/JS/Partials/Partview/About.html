@@ -1,44 +1,50 @@
-﻿<!-- partials/About.html -->
-<div data-ng-controller="AboutController">
-    <div class="container">
+﻿<div
+    class="container"
+    data-ng-controller="AboutController">
 
+    <div
+        class="row">
+        <div
+            class="col-xs-12 col-sm-5 col-md-5 col-lg-5">
+            <img
+                class="img-thumbnail shadow"
+                src="/Assets/IMG/TMP/person.jpg"
+                style="width: 100%; margin: 0;" />
+        </div>
 
-        <img class="rounded float-right" src="Assets/IMG/TMP/person.jpg" style="width: 400px" />
+        <div
+            class="col-xs-12 col-sm-7 col-md-7 col-lg-7"
+            style="padding-left: 10px">
 
-        <div>
             <h1
                 id="about-title"
-                contenteditable="true"
+                contenteditable="false"
                 data-ng-model="texts['about-title'][0].text"
                 data-compile="texts['about-title'][0].text"></h1>
             <div
                 id="about-short"
-                contenteditable="true"
+                contenteditable="false"
                 data-ng-model="texts['about-short'][0].text"
                 data-compile="texts['about-short'][0].text">
             </div>
-        </div>
-
-        <h5>
-            <a>
-                <span
-                    id="about-read-more"
-                    contenteditable="true"
-                    data-ng-model="texts['about-read-more'][0].text"
-                    data-compile="texts['about-read-more'][0].text"></span>
-            </a>
-        </h5>
-    </div>
-
-    <div class="container padding-small margin-small" style="background-color: lightsalmon" data-ng-show="false">
-        <div class="float-left">
-            Du är inloggad som Admin. Glöm inte att spara dina ändringar!
-        </div>
-        <div class="float-right">
-            <button data-ng-click="save()">Save</button>
+            <h5>
+                <a>
+                    <span
+                        id="about-read-more"
+                        contenteditable="false"
+                        data-ng-model="texts['about-read-more'][0].text"
+                        data-compile="texts['about-read-more'][0].text"></span>
+                </a>
+            </h5>
         </div>
     </div>
 
-    <div class="clear"></div>
+    <div 
+        data-ng-show="isAdmin"
+        style="text-align: right">
+        <button 
+            class="btn btn-danger btn-lg" 
+            data-ng-click="save()">Spara ändringar</button>
+    </div>
 
 </div>

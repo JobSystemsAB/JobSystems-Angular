@@ -21,7 +21,7 @@
     };
   });
 
-  window.app.directive('contenteditable', function($timeout) {
+  window.app.directive('contenteditable', function($timeout, $rootScope) {
     return {
       require: 'ngModel',
       link: function(scope, elm, attrs, ctrl) {
@@ -31,6 +31,7 @@
           });
         });
         ctrl.$render = function() {
+          attrs.$set('contenteditable', $rootScope.isAdmin);
           return elm.html(ctrl.$viewValue);
         };
         return ctrl.$render();

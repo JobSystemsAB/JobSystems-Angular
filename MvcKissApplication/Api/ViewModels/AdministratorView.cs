@@ -22,6 +22,8 @@ namespace MvcKissApplication.Api.ViewModels
 
         public string updated { get; set; }
 
+        public string authToken { get; set; }
+
         public bool enabled { get; set; }
 
         #endregion
