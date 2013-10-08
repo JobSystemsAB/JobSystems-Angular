@@ -1,0 +1,154 @@
+﻿<!-- HomeLandingView.html -->
+
+<div data-ng-show="isAdmin">
+    <button class="btn btn-danger btn-lg" style="display: block; position: fixed; bottom: 0; margin: 20px; z-index: 100;" data-ng-click="save()">
+        Spara ändringar
+    </button>
+</div>
+
+<div style="margin-top: 95px;">
+    <div class="header-image shadow visible-sm visible-md visible-lg">
+        <div class="container" style="position: relative">
+            <div class="img-rounded pull-right image-gray-background" style="top: 150px; padding: 20px; position: absolute; right: 0; max-width: 550px;">
+                <div contenteditable="false" data-ng-model="texts['title-window-text'][0].text" data-compile="texts['title-window-text'][0].text" style="margin-bottom: 20px">
+                </div>
+                <form class="form-inline" role="form">
+                    <input type="text" placeholder="Postnummer" class="form-control" style="width: 300px" />
+                    <button class="btn btn-lg highlight-background" data-ng-click="goToBooking()" data-ng-model="texts['title-window-button'][0].text" data-compile="texts['title-window-button'][0].text" style="color: white; margin-left: 10px">
+                    </button>
+                    <div data-ng-show="isAdmin" contenteditable="false" data-ng-model="texts['title-window-button'][0].text" data-compile="texts['title-window-button'][0].text">
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <div class="visible-xs image-gray-background" style="text-align: center; padding: 40px 0;">
+        <form class="form-inline" role="form">
+            <input type="text" placeholder="Postnummer" class="form-control" style="width: 300px; margin: 0 auto;" />
+            <button class="btn btn-lg highlight-background" contenteditable="false" data-ng-model="texts['title-window-button'][0].text" data-compile="texts['title-window-button'][0].text" style="color: white; margin-left: 10px">
+            </button>
+        </form>
+    </div>
+</div>
+
+<div class="info-top image-white-background" style="margin-bottom: 0;">
+
+    <div class="container info">
+        <div class="row">
+            <div class="col-xs-12 col-sm-5 col-md-5 col-lg-5">
+                <img class="img-thumbnail shadow" src="/Content/IMG/TMP/person.jpg" style="width: 100%; margin: 0;" />
+            </div>
+            <div class="col-xs-12 col-sm-7 col-md-7 col-lg-7" style="padding-left: 10px">
+                <h1 id="price-title" contenteditable="false" data-ng-model="texts['price-title'][0].text" data-compile="texts['price-title'][0].text"></h1>
+                <div id="price-short" contenteditable="false" data-ng-model="texts['price-short'][0].text" data-compile="texts['price-short'][0].text">
+                </div>
+                <h5>
+                    <a>
+                        <span id="price-read-more" contenteditable="false" data-ng-model="texts['price-read-more'][0].text" data-compile="texts['price-read-more'][0].text"></span>
+                    </a>
+                </h5>
+            </div>
+        </div>
+    </div>
+
+    <hr />
+
+    <div class="container info">
+        <div class="row">
+            <div class="col-xs-12 col-sm-7 col-md-7 col-lg-7" style="padding-right: 10px">
+                <h1 id="why-title" contenteditable="false" data-ng-model="texts['why-title'][0].text" data-compile="texts['why-title'][0].text"></h1>
+                <div id="why-short" contenteditable="false" data-ng-model="texts['why-short'][0].text" data-compile="texts['why-short'][0].text">
+                </div>
+                <h5>
+                    <a>
+                        <span id="why-read-more" contenteditable="false" data-ng-model="texts['why-read-more'][0].text" data-compile="texts['why-read-more'][0].text"></span>
+                    </a>
+                </h5>
+            </div>
+
+            <div class="col-xs-12 col-sm-5 col-md-5 col-lg-5">
+                <img class="img-thumbnail shadow" src="/Content/IMG/TMP/person.jpg" style="width: 100%; margin: 0;" />
+            </div>
+        </div>
+    </div>
+
+    <hr />
+
+    <div class="container info">
+        <div class="row">
+            <div class="col-xs-12 col-sm-5 col-md-5 col-lg-5">
+                <img class="img-thumbnail shadow" src="/Content/IMG/TMP/person.jpg" style="width: 100%; margin: 0;" />
+            </div>
+            <div class="col-xs-12 col-sm-7 col-md-7 col-lg-7" style="padding-left: 10px">
+                <h1 id="about-title" contenteditable="false" data-ng-model="texts['about-title'][0].text" data-compile="texts['about-title'][0].text"></h1>
+                <div id="about-short" contenteditable="false" data-ng-model="texts['about-short'][0].text" data-compile="texts['about-short'][0].text">
+                </div>
+                <h5>
+                    <a id="about-read-more" contenteditable="false" data-ng-model="texts['about-read-more'][0].text" data-compile="texts['about-read-more'][0].text"></a>
+                </h5>
+            </div>
+        </div>
+    </div>
+
+    <hr />
+
+    <div class="container info">
+        <h1 contenteditable="false" data-ng-model="texts['map-title'][0].text" data-compile="texts['map-title'][0].text"></h1>
+        <div contenteditable="false" data-ng-model="texts['map-short'][0].text" data-compile="texts['map-short'][0].text">
+        </div>
+        <div class="thumbnail shadow" style="width: 100%;">
+            <div data-google-map="" data-center="center" draggable="false" data-zoom="zoom" data-markers="markers" data-mark-click="false" data-refresh="refresh" style="height: 500px; display: block;">
+            </div>
+            <div class="row">
+                <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4" style="text-align: center;">
+                    <h5 contenteditable="false" data-ng-model="texts['map-address'][0].text" data-compile="texts['map-address'][0].text"></h5>
+                </div>
+                <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4" style="text-align: center;">
+                    <h5 contenteditable="false" data-ng-model="texts['map-phone-number'][0].text" data-compile="texts['map-phone-number'][0].text"></h5>
+                </div>
+                <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4" style="text-align: center;">
+                    <h5 contenteditable="false" data-ng-model="texts['map-email'][0].text" data-compile="texts['map-email'][0].text"></h5>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <hr />
+
+    <div class="container info">
+        <h1 contenteditable="false" data-ng-model="texts['testimonials-title'][0].text" data-compile="texts['testimonials-title'][0].text"></h1>
+        <div class="thumbnail shadow" style="width: 100%;">
+            <div data-carousel="" data-interval="5000" class="carousel slide" style="height: 400px; background-color: #0CB45D; color: white;">
+                <div class="carousel-inner" data-slide="" data-ng-repeat="testimonial in testimonials" data-active="testimonial.active" style="padding: 20px 20%; margin-top: 4%; overflow: hidden;">
+                    <div class="ScriptMTBold" style="font-size: 250%; height: 200px;">
+                        {{ "&ldquo;" + testimonial.text + "&bdquo;" }}
+                    </div>
+                    <div class="float-right" contenteditable="false" data-ng-model="testimonial.name" data-compile="testimonial.name">
+                    </div>
+                    <label class="float-right" style="margin-right: 10px">-</label>
+                    <div class="clear"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <hr />
+
+    <div class="info" style="padding: 40px 0">
+        <div class="container" style="text-align: center">
+            <form class="form-inline" role="form">
+                <input type="text" placeholder="Postnummer" class="form-control" style="width: 300px; margin: 0 auto;" />
+
+                <button class="btn btn-lg highlight-background" data-ng-click="goToBooking()" data-ng-model="texts['book-now-button'][0].text" data-compile="texts['book-now-button'][0].text" style="color: white; margin-left: 10px">
+                </button>
+
+                <br />
+                <div data-ng-show="isAdmin" contenteditable="false" data-ng-model="texts['book-now-button'][0].text" data-compile="texts['book-now-button'][0].text">
+                </div>
+            </form>
+        </div>
+    </div>
+
+
+</div>

@@ -1,0 +1,79 @@
+﻿<div style="margin: 20px;">
+    <div class="row">
+
+        <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
+
+            <h2>Texts:</h2>
+            <hr />
+
+            <div class="panel-group" id="accordion">
+                <div class="panel panel-default" data-ng-repeat="(key,val) in texts | orderBy: 'key'">
+                    <div class="panel-heading">
+                        <h4 class="panel-title">
+                            <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#{{key}}">
+                                {{ key }}
+                            </a>
+                            <span class="pull-right">
+                                {{ val.length }} / {{ unique(val) }}
+                            </span>
+                        </h4>
+                    </div>
+                    <div id="{{key}}" class="panel-collapse collapse">
+                        <div class="panel-body">
+                            <button data-ng-repeat="text in val | orderBy: ['elementId','created']" class="btn btn-default" data-ng-click="select(text)">
+                                {{ text.elementId }}
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
+
+            <h2>Info:</h2>
+            <hr />
+
+            Element id:
+        <input class="form-control" type="text" disabled="" style="width: 100%" data-ng-model="selected.elementId" /><br />
+
+            Id:
+        <input class="form-control" type="text" disabled="" style="width: 100%" data-ng-model="selected.id" /><br />
+
+            Language:
+        <input class="form-control" type="text" disabled="" style="width: 100%" data-ng-model="selected.language" /><br />
+
+            Controller name:
+        <input class="form-control" type="text" disabled="" style="width: 100%" data-ng-model="selected.controllerName" /><br />
+
+            Created:
+        <input class="form-control" type="text" disabled="" style="width: 100%" data-ng-model="selected.created" /><br />
+
+            Enabled:
+        <input type="checkbox" data-ng-model="selected.enabled" /><br />
+
+            <button class="btn btn-success pull-right" data-ng-click="update()">Update</button>
+
+        </div>
+        <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+            <h2>Edit:</h2>
+            <hr />
+            <div
+                class="form-control"
+                contenteditable="true"
+                data-ng-model="selected.text"
+                style="width: 90%; height: 300px; background-color: lightgray; overflow: scroll;">
+            </div>
+            <br />
+
+            <h2>Preview:</h2>
+            <hr />
+            <div
+                class="form-control"
+                data-compile="selected.text"
+                style="width: 90%; height: 300px; background-color: lightgray; overflow: scroll;">
+            </div>
+        </div>
+    </div>
+</div>

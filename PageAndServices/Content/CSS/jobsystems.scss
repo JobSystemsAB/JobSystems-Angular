@@ -1,0 +1,25 @@
+﻿$color-highlight: #0CB45D;
+$color-highlight-opposite: #FFFFFF;
+
+$font-cursive: Times, serif;
+$font-normal: Arial;
+
+$space-small: 5px;
+$space-normal: 10px;
+$space-big: 20px;
+$space-huge: 40px;
+
+@import "partials/fonts";
+
+@import "partials/bootstrap";
+@import "partials/background";
+@import "partials/colors";
+@import "partials/elements";
+@import "partials/helpers";
+@import "partials/shapes";
+@import "partials/table";
+@import "partials/text";
+
+
+
+

@@ -1,0 +1,12 @@
+.carousel-control.right,
+.carousel-control.left {
+	font-size: 450%;
+	margin-top: 5%;
+	background-image: none !important;
+}
+
+@media (max-width: 768px) {
+	h5 {
+		font-size: 90% !important;
+	}
+}

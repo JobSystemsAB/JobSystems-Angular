@@ -1,0 +1,176 @@
+﻿/* ------
+   TABLE 
+   ------ */
+
+$table-color: #6678b1;
+$table-header-color: #6678b1;
+$table-hover-color: #6678b1;
+$table-bkgr-color: #6678b1;
+$table-header-bkgr-color: #6678b1;
+$table-hover-bkgr-color: #6678b1;
+
+table.js-hor-min {
+	
+	width: 100%;
+	margin: 2%;
+	text-align: left;
+	border-collapse: collapse;
+
+	th {
+		font-size: 115%;
+		font-weight: normal;
+		padding: 10px 8px;
+		color: $table-header-color;
+		border-bottom: 2px solid $table-color; 
+	}
+
+	td {
+		color: $table-color;
+		padding: 9px 8px 0px 8px;
+	}
+
+	td.btn {
+		width: 10%;
+	}
+
+	tbody tr:hover td {
+		color: $table-hover-color;
+	}
+}
+
+table.js-hor-min2 {
+	
+	width: 100%;
+	margin: 2%;
+	text-align: left;
+	border-collapse: collapse;
+
+	th {
+		font-size: 115%;
+		font-weight: normal;
+		padding: 10px 8px;
+		color: $table-header-color;
+		border-bottom: 2px solid $table-color; 
+	}
+
+	td {
+		color: $table-color;
+		padding: 9px 8px 0px 8px;
+		border-bottom: 1px solid $table-color; 
+	}
+
+	td.btn {
+		width: 10%;
+	}
+
+	tbody tr:hover td {
+		color: $table-hover-color;
+	}
+}
+
+table.js-ver-min {
+	
+	margin: 2%;
+	width: 100%;
+	text-align: left;
+	border-collapse: collapse;
+
+	th {
+		padding: 8px 2px;
+		font-weight: normal;
+		font-size: 115%;
+		border-bottom: 2px solid $table-color;
+		color: $table-header-color;
+	}
+
+	td {
+		padding: 12px 2px 0px 2px;
+		color: $table-color;
+	}
+}
+
+table.js-hor-box{
+	
+	margin: 2%;
+	width: 100%;
+	text-align: left;
+	border-collapse: collapse;
+
+	th {
+		font-size: 115%;
+		font-weight: normal;
+		padding: 8px;
+		background: $table-header-bkgr-color;
+		border-top: 4px solid $table-hover-color;
+		border-bottom: 1px solid #fff;
+		color: $table-header-color;
+	}
+
+	td {
+		padding: 8px;
+		background: $table-bkgr-color; 
+		border-bottom: 1px solid #fff;
+		color: $table-color;
+		border-top: 1px solid transparent;
+	}
+
+	tr:hover td {
+		background: $table-hover-bkgr-color;
+		color: $table-hover-color;
+	}
+}
+
+table.js-ver-box {
+	
+	margin: 2%;
+	width: 100%;
+	text-align: center;
+	border-collapse: collapse;
+	border-top: 7px solid $table-header-bkgr-color;
+	border-bottom: 7px solid $table-header-bkgr-color;
+
+	th {
+		font-size: 115%;
+		font-weight: normal;
+		padding: 8px;
+		background: $table-bkgr-color;
+		border-right: 1px solid $table-header-bkgr-color;
+		border-left: 1px solid $table-header-bkgr-color;
+		color: $table-header-color;
+	}
+
+	td {
+		padding: 8px;
+		background: $table-bkgr-color; 
+		border-right: 1px solid $table-header-bkgr-color;
+		border-left: 1px solid $table-header-bkgr-color;
+		color: $table-color;
+	}
+
+}
+
+tabe.js-hor-zebra {
+	
+	margin: 2%;
+	width: 100%;
+	text-align: left;
+	border-collapse: collapse;
+
+	th {
+		font-size: 115%;
+		font-weight: normal;
+		padding: 10px 8px;
+		color: $table-header-color;
+	}
+
+	td {
+		padding: 8px;
+		color: $table-color;
+	}
+
+	.odd {
+		background: $table-hover-bkgr-color; 
+	}
+} 
+
+

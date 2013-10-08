@@ -1,0 +1,12 @@
+.highlight-opposite-color {
+	color: $color-highlight-opposite;
+}
+
+.highlight-color {
+	color: $color-highlight;
+}
+
+.transparent {
+	opacity: 0.95;
+	filter: alpha(opacity=95);
+}

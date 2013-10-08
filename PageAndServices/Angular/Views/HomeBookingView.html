@@ -1,0 +1,203 @@
+﻿<!-- HomeBookingView.html -->
+
+<div class="image-white-background">
+
+    <div
+        data-ng-show="isAdmin">
+        <button
+            class="btn btn-danger btn-lg"
+            style="display: block; position: fixed; bottom: 0; margin: 20px; z-index: 100;"
+            data-ng-click="save()">
+            Spara ändringar</button>
+    </div>
+
+    <div class="container" style="margin-top: 95px">
+
+        <div class="info">
+            <h1
+                contenteditable="false"
+                data-ng-model="texts['book-title'][0].text"
+                data-compile="texts['book-title'][0].text"></h1>
+
+            <div
+                contenteditable="false"
+                data-ng-model="texts['book-description'][0].text"
+                data-compile="texts['book-description'][0].text">
+            </div>
+
+        </div>
+
+        <hr />
+
+        <div class="info">
+            <div class="row">
+                <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
+                    <select
+                        class="form-control"
+                        data-ng-model="category[1]"
+                        data-ng-options="cat as cat.data.name for cat in categories.children | orderBy: 'data.name'"
+                        data-ng-change="getInputs()">
+                        <option value="" class="red">-- Kategori --</option>
+                    </select>
+                </div>
+                <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
+                    <select
+                        class="form-control"
+                        data-ng-model="category[2]"
+                        data-ng-show="category[1].children.length > 0"
+                        data-ng-options="cat as cat.data.name for cat in category[1].children | orderBy: 'data.name'">
+                        <option value="" class="red">-- Underkategori --</option>
+                    </select>
+                </div>
+                <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
+                    <select
+                        class="form-control"
+                        data-ng-model="category[3]"
+                        data-ng-show="category[2].children.length > 0"
+                        data-ng-options="cat as cat.data.name for cat in category[2].children | orderBy: 'data.name'">
+                        <option value="" class="red">-- Underunderkategori --</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+
+        <div class="info">
+            <textarea
+                style="width: 100%; height: 300px"
+                class="form-control"
+                placeholder="Ge en kort beskrivning av arbetet som ska utföras."
+                data-ng-model="mission.description"></textarea>
+            <br />
+
+            <label>{{mission.description.length}}/150 tecken</label>
+
+            <br />
+            <div data-ng-switch="input.type" data-ng-repeat="input in inputs">
+                <label data-ng-switch-when="radio" class="form-control">
+                    <input type="radio" data-ng-model="input.value" />
+                    {{ input.text }}
+                </label>
+                <label data-ng-switch-when="checkbox" class="form-control">
+                    <input type="checkbox" data-ng-model="input.value" />
+                    {{ input.text }}
+                </label>
+                <input
+                    type="text"
+                    class="form-control"
+                    placeholder="{{ input.text }}"
+                    data-ng-switch-default=""
+                    data-ng-model="input.value" />
+            </div>
+        </div>
+
+        <hr />
+
+        <div class="info">
+
+            <div data-ui-calendar="uiConfig.calendar" data-ng-model="eventSources" data-calendar="myCalendar" class="span12">
+            </div>
+
+            <label>
+                <strong>Valt datum:</strong>
+                {{ selectedEvent.start | date:'yyyy-MM-dd HH:mm' }}
+            </label>
+        </div>
+
+        <hr />
+
+        <div class="info">
+            <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+
+                <div class="btn-group">
+                    <button type="button" class="btn btn-default" data-ng-class="{'btn-success': isCompanyCustomer()}" data-ng-model="customer.type" data-btn-radio="'company'">Företag</button>
+                    <button type="button" class="btn btn-default" data-ng-class="{'btn-success': !isCompanyCustomer()}" data-ng-model="customer.type" data-btn-radio="'private'">Privat</button>
+                </div>
+                <br />
+                <br />
+
+                <div data-ng-show="isCompanyCustomer()">
+                    <input class="form-control" type="text" data-ng-model="customer.organisationNumber" placeholder="Organisationsnummer *" />
+                    <input class="form-control" type="text" data-ng-model="customer.companyName" placeholder="Företagsnamn *" />
+                </div>
+
+                <div data-ng-show="!isCompanyCustomer()">
+                    <input class="form-control" type="text" data-ng-model="customer.firstName" placeholder="Förnamn *" />
+                    <input class="form-control" type="text" data-ng-model="customer.lastName" placeholder="Efternamn *" />
+                    <input class="form-control" type="text" data-ng-model="customer.personalNumber" placeholder="Personnummer *" />
+                    <input class="form-control" type="text" data-ng-model="customer.propertyName" placeholder="Fastighetsbeteckning *" />
+                </div>
+
+                <input class="form-control" type="email" data-ng-model="customer.emailAddress" placeholder="Epost *" />
+                <input class="form-control" type="tel" data-ng-model="customer.phoneNumber" placeholder="Mobilnummer *" />
+                <input class="form-control" type="text" id="google-address-search" data-ng-model="mission.fullAddress" placeholder="Adress *" data-googleplace="" />
+            </div>
+
+            <div
+                class="col-xs-12 col-sm-6 col-md-6 col-lg-6"
+                contenteditable="false"
+                data-ng-model="texts['book-input-description'][0].text"
+                data-compile="texts['book-input-description'][0].text">
+            </div>
+
+        </div>
+
+        <div class="clear"></div>
+
+        <hr />
+
+        <div class="info" style="text-align: center">
+            <button
+                class="btn btn-lg highlight-background"
+                style="color: white;"
+                data-ng-click="order()"
+                contenteditable="false"
+                data-ng-model="texts['book-button'][0].text"
+                data-compile="texts['book-button'][0].text">
+                Beställ</button>
+            <br />
+            <div
+                data-ng-show="isAdmin"
+                contenteditable="false"
+                data-ng-model="texts['book-button'][0].text"
+                data-compile="texts['book-button'][0].text">
+            </div>
+            <br />
+            <button class="btn btn-default" data-ng-click="dibs()">DIBS</button>
+            <button class="btn btn-default" data-ng-click="sendSMS()">SMS</button>
+        </div>
+
+        <div>
+            <form method="post" action="https://sat1.dibspayment.com/dibspaymentwindow/entrypoint" target="_blank">
+
+                <input type="hidden" name="test" value="1" />
+
+                <input type="hidden" name="merchant" value="90151568" />
+                <input type="hidden" name="currency" value="SEK" />
+                <input type="hidden" name="orderId" value="213455" />
+                <input type="hidden" name="amount" value="375" />
+                <input type="hidden" name="language" value="sv_SE" />
+
+                <input type="hidden" name="billingFirstName" value="John" />
+                <input type="hidden" name="billingLastName" value="Doe" />
+                <input type="hidden" name="billingAddress" value="Danderydsgatan 28" />
+                <input type="hidden" name="billingPostalCode" value="11426" />
+                <input type="hidden" name="billingPostalPlace" value="Stockholm" />
+                <input type="hidden" name="billingEmail" value="misael@jobsystems.se" />
+                <input type="hidden" name="billingMobile" value="+46704333005" />
+
+                <input type="hidden" name="oiTypes" value="QUANTITY;UNITCODE;DESCRIPTION;AMOUNT;ITEMID;VATAMOUNT" />
+                <input type="hidden" name="oiNames" value="Items;UnitCode;Description;Amount;ItemId;VatAmount" />
+                <input type="hidden" name="oiRow1" value="1;pcs;ACME Rocket Roller skates\; ultra fast;100;98;25" />
+                <input type="hidden" name="oiRow2" value="1;pcs;ACME Band Aid;100;99;25" />
+                <input type="hidden" name="oiRow3" value="1;pcs;Some description;100;45;25" />
+
+                <input type="hidden" name="acceptReturnUrl" value="https://yourdomain.com/acceptReturnUrl" />
+                <input type="hidden" name="cancelReturnUrl" value="https://yourdomain.com/cancelReturnUrl" />
+                <input type="hidden" name="callbackUrl" value="https://yourdomain.com/callbackUrl" />
+
+                <input type="submit" value="skicka" />
+            </form>
+        </div>
+
+    </div>
+</div>

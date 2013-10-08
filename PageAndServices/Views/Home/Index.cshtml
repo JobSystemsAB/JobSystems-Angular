@@ -1,0 +1,44 @@
+﻿@using System.Web.Optimization
+
+<!DOCTYPE html>
+
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7" data-ng-app="HomeApp"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8" data-ng-app="HomeApp"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9" data-ng-app="HomeApp"> <![endif]-->
+<!--[if gt IE 8]><!-->
+<html class="no-js" data-ng-app="HomeApp">
+<!--<![endif]-->
+
+<head>
+    <title>Adoer</title>
+
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+
+    @Styles.Render("~/bundle/css")
+</head>
+<body>
+
+    <!--[if lt IE 7]>
+            <p class="chromeframe">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">activate Google Chrome Frame</a> to improve your experience.</p>
+    <![endif]-->
+
+    @*<div data-ng-view=""></div>*@
+
+    <div data-ui-view="header"></div>
+    <div data-ui-view="body"></div>
+    <div data-ui-view="footer"></div>
+
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/jquery-ui.min.js"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.0.8/angular.min.js"></script>
+    <script src="//maps.googleapis.com/maps/api/js?v=3.exp&sensor=false&libraries=places"></script>
+
+    @Scripts.Render("~/bundle/libs")
+    @Scripts.Render("~/bundle/app")
+
+</body>
+</html>

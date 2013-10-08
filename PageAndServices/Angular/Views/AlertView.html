@@ -1,0 +1,15 @@
+﻿<!-- AlertView.html -->
+
+<div
+    data-ng-controller="AlertController">
+    <div
+        data-alert=""
+        data-ng-repeat="alert in alerts"
+        data-type="alert.type"
+        data-close="closeAlert($index)"
+        style="margin: 0 auto; width: 90%;">
+    
+            {{ alert.msg }}
+    
+    </div>
+</div>

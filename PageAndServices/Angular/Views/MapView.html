@@ -1,0 +1,78 @@
+﻿<!-- MapView.html -->
+
+<div
+    class="container"
+    data-ng-controller="MapController">
+
+    <h1
+        id="map-title"
+        contenteditable="false"
+        data-ng-model="texts['map-title'][0].text"
+        data-compile="texts['map-title'][0].text"></h1>
+
+    <div
+        id="map-short"
+        contenteditable="false"
+        data-ng-model="texts['map-short'][0].text"
+        data-compile="texts['map-short'][0].text">
+    </div>
+
+    <div
+        class="thumbnail shadow"
+        style="width: 100%;">
+        <div
+            data-google-map=""
+            data-center="center"
+            draggable="true"
+            data-zoom="zoom"
+            data-markers="markers"
+            data-mark-click="false"
+            data-refresh="refresh"
+            style="height: 500px; display: block;">
+        </div>
+
+        <div
+            class="row">
+            <div
+                class="col-xs-12 col-sm-12 col-md-4 col-lg-4"
+                style="text-align: center;">
+                <h5
+                    id="map-address"
+                    contenteditable="false"
+                    data-ng-model="texts['map-address'][0].text"
+                    data-compile="texts['map-address'][0].text"></h5>
+            </div>
+
+            <div
+                class="col-xs-12 col-sm-12 col-md-4 col-lg-4"
+                style="text-align: center;">
+                <h5
+                    id="map-phone-number"
+                    contenteditable="false"
+                    data-ng-model="texts['map-phone-number'][0].text"
+                    data-compile="texts['map-phone-number'][0].text"></h5>
+            </div>
+
+            <div
+                class="col-xs-12 col-sm-12 col-md-4 col-lg-4"
+                style="text-align: center;">
+                <h5
+                    id="map-email"
+                    contenteditable="false"
+                    data-ng-model="texts['map-email'][0].text"
+                    data-compile="texts['map-email'][0].text"></h5>
+            </div>
+        </div>
+    </div>
+
+    <div 
+        style="text-align: right"
+        data-ng-show="isAdmin">
+        <button 
+            class="btn btn-danger btn-lg" 
+            data-ng-click="save()">Spara ändringar</button>
+    </div>
+
+</div>
+
+

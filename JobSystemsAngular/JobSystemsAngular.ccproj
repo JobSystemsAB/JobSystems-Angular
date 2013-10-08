@@ -40,17 +40,17 @@
     <Folder Include="Profiles" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\MvcKissApplication\MvcKissApplication.csproj">
-      <Name>MvcKissApplication</Name>
-      <Project>{6c16e5fb-1027-4279-b94d-e136bcdf8561}</Project>
-      <Private>True</Private>
-      <RoleType>Web</RoleType>
-      <RoleName>MvcKissApplication</RoleName>
-      <UpdateDiagnosticsConnectionStringOnPublish>True</UpdateDiagnosticsConnectionStringOnPublish>
-    </ProjectReference>
+    <PublishProfile Include="Profiles\adoerdevProduction.azurePubxml" />
   </ItemGroup>
   <ItemGroup>
-    <PublishProfile Include="Profiles\adoerdevProduction.azurePubxml" />
+    <ProjectReference Include="..\PageAndServices\PageAndServices.csproj">
+      <Name>PageAndServices</Name>
+      <Project>{c0b3d203-0ebd-4aa1-8926-cec4acb2e1e0}</Project>
+      <Private>True</Private>
+      <RoleType>Web</RoleType>
+      <RoleName>PageAndServices</RoleName>
+      <UpdateDiagnosticsConnectionStringOnPublish>True</UpdateDiagnosticsConnectionStringOnPublish>
+    </ProjectReference>
   </ItemGroup>
   <!-- Import the target files for this project template -->
   <PropertyGroup>

@@ -1,0 +1,140 @@
+﻿<!-- HomeApplicationView.html -->
+
+<div
+    class="image-white-background">
+
+    <div data-ng-show="isAdmin">
+        <button
+            class="btn btn-danger btn-lg"
+            style="display: block; position: fixed; bottom: 0; margin: 20px; z-index: 100;"
+            data-ng-click="save()">
+            Spara ändringar</button>
+    </div>
+
+    <div
+        class="container" style="margin-top: 95px">
+
+        <div class="info-top" style="text-align: center">
+            <iframe width="100%" height="507" src="http://www.youtube.com/embed/oE5kpLreTEU" frameborder="0" allowfullscreen></iframe>
+            <div contenteditable="false"
+                style="text-align: left; margin-top: 20px"
+                data-ng-model="texts['application-video-text'][0].text"
+                data-compile="texts['application-video-text'][0].text">
+            </div>
+        </div>
+
+        <hr />
+
+        <div class="info">
+            <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+                <input
+                    type="text"
+                    class="form-control"
+                    data-ng-model="input.employee.firstName"
+                    placeholder="Förnamn" />
+
+                <input
+                    type="text"
+                    class="form-control"
+                    data-ng-model="input.employee.lastName"
+                    placeholder="Efternamn" />
+
+                <input
+                    type="text"
+                    class="form-control"
+                    data-ng-model="input.employee.phoneNumber"
+                    placeholder="Telefonnummer" />
+
+                <input
+                    type="email"
+                    class="form-control"
+                    data-ng-model="input.employee.emailAddress"
+                    placeholder="Epost" />
+            </div>
+
+            <div
+                class="col-xs-12 col-sm-6 col-md-6 col-lg-6"
+                contenteditable="false"
+                data-ng-model="texts['application-input-text'][0].text"
+                data-compile="texts['application-input-text'][0].text">
+            </div>
+
+            <div class="clear"></div>
+
+        </div>
+
+        <div class="clear"></div>
+
+        <hr />
+
+        <div class="row info">
+            <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
+                <div data-ng-repeat="child in categories.children | orderBy: 'data.name'">
+
+                    <div class="input-group highlight-background img-rounded" style="cursor: pointer; color: white; padding: 5px; border: 1px solid #008840; width: 100%;" data-ng-click="categoryClicked(child, 1)">
+                        <label>
+                            <input type="radio" name="category" data-ng-checked="child.data.checked" data-ng-model="child.data.checked" data-ng-disabled="child.children.length > 0">
+                            <label data-compile="child.data.name"></label>
+                        </label>
+                    </div>
+
+                </div>
+            </div>
+            <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
+                <div data-ng-repeat="child in category[1].children | orderBy: 'data.name'">
+
+                    <div class="input-group highlight-background img-rounded" style="cursor: pointer; color: white; padding: 5px; border: 1px solid #008840; width: 100%;" data-ng-click="categoryClicked(child, 2)">
+                        <label>
+                            <input type="checkbox" data-ng-checked="child.data.checked" data-ng-model="child.data.checked" data-ng-disabled="child.children.length > 0">
+                            <label data-compile="child.data.name"></label>
+                        </label>
+                    </div>
+
+                </div>
+            </div>
+            <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
+                <div data-ng-repeat="child in category[2].children | orderBy: 'data.name'">
+
+                    <div class="input-group highlight-background img-rounded" style="cursor: pointer; color: white; padding: 5px; border: 1px solid #008840; width: 100%;" data-ng-click="categoryClicked(child, 3)">
+                        <label>
+                            <input type="checkbox" data-ng-checked="child.data.checked" data-ng-model="child.data.checked">
+                            <label data-compile="child.data.name"></label>
+                        </label>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+        <div class="clear"></div>
+
+        <hr />
+
+        <div class="info">
+            <textarea
+                class="form-control"
+                data-ng-model="input.employee.description"
+                placeholder="Ge en kort personlig presentation..."
+                style="height: 200px; margin-top: 20px"></textarea>
+        </div>
+
+        <hr />
+
+        <div class="info" style="text-align: center">
+            <button
+                class="btn btn-lg highlight-background"
+                style="color: white; margin: 20px;"
+                data-ng-click="send()"
+                data-compile="texts['application-button'][0].text">
+            </button>
+
+            <div
+                contenteditable="false"
+                data-ng-show="isAdmin"
+                data-ng-model="texts['application-button'][0].text"
+                data-compile="texts['application-button'][0].text">
+            </div>
+        </div>
+
+    </div>
+</div>
