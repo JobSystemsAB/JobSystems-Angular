@@ -1,7 +1,115 @@
 (function() {
   window.app.controller('HomeBookingController', [
     '$scope', '$stateParams', '$http', 'CategoryService', 'GoogleMapsService', 'TextService', 'AlertService', 'MissionService', 'PrivateCustomerService', 'CompanyCustomerService', function($scope, $stateParams, $http, CategoryService, GoogleMapsService, TextService, AlertService, MissionService, PrivateCustomerService, CompanyCustomerService) {
+      $scope.isAdmin = true;
       $scope.category = [];
+      $scope.controllerName = 'homebooking';
+      $scope.currentLang = 'sv';
+      $scope.textsOriginal = [
+        {
+          controllerName: $scope.controllerName,
+          language: $scope.currentLang,
+          elementId: 'book-title',
+          text: 'book-title'
+        }, {
+          controllerName: $scope.controllerName,
+          language: $scope.currentLang,
+          elementId: 'book-description',
+          text: 'book-description'
+        }, {
+          controllerName: $scope.controllerName,
+          language: $scope.currentLang,
+          elementId: 'calendar-description',
+          text: 'calendar-description'
+        }, {
+          controllerName: $scope.controllerName,
+          language: $scope.currentLang,
+          elementId: 'book-button',
+          text: 'book-button'
+        }, {
+          controllerName: $scope.controllerName,
+          language: $scope.currentLang,
+          elementId: 'category-first',
+          text: 'category-first'
+        }, {
+          controllerName: $scope.controllerName,
+          language: $scope.currentLang,
+          elementId: 'category-second',
+          text: 'category-second'
+        }, {
+          controllerName: $scope.controllerName,
+          language: $scope.currentLang,
+          elementId: 'category-third',
+          text: 'category-third'
+        }, {
+          controllerName: $scope.controllerName,
+          language: $scope.currentLang,
+          elementId: 'mission-description',
+          text: 'mission-description'
+        }, {
+          controllerName: $scope.controllerName,
+          language: $scope.currentLang,
+          elementId: 'input-organisationNumber-description',
+          text: 'input-organisationNumber-description'
+        }, {
+          controllerName: $scope.controllerName,
+          language: $scope.currentLang,
+          elementId: 'input-companyName-description',
+          text: 'input-companyName-description'
+        }, {
+          controllerName: $scope.controllerName,
+          language: $scope.currentLang,
+          elementId: 'input-firstName-description',
+          text: 'input-firstName-description'
+        }, {
+          controllerName: $scope.controllerName,
+          language: $scope.currentLang,
+          elementId: 'input-lastName-description',
+          text: 'input-lastName-description'
+        }, {
+          controllerName: $scope.controllerName,
+          language: $scope.currentLang,
+          elementId: 'input-personalNumber-description',
+          text: 'input-personalNumber-description'
+        }, {
+          controllerName: $scope.controllerName,
+          language: $scope.currentLang,
+          elementId: 'input-propertyName-description',
+          text: 'input-propertyName-description'
+        }, {
+          controllerName: $scope.controllerName,
+          language: $scope.currentLang,
+          elementId: 'input-emailAddress-description',
+          text: 'input-emailAddress-description'
+        }, {
+          controllerName: $scope.controllerName,
+          language: $scope.currentLang,
+          elementId: 'input-phoneNumber-description',
+          text: 'input-phoneNumber-description'
+        }, {
+          controllerName: $scope.controllerName,
+          language: $scope.currentLang,
+          elementId: 'input-fullAddress-description',
+          text: 'input-fullAddress-description'
+        }
+      ];
+      $scope.uniteTexts = function(data) {
+        var dataGroup, originalGroup;
+
+        originalGroup = _.groupBy($scope.textsOriginal, function(text) {
+          return text.elementId;
+        });
+        dataGroup = _.groupBy(data, function(text) {
+          return text.elementId;
+        });
+        _.each(dataGroup, function(val, key) {
+          return originalGroup[key] = val;
+        });
+        $scope.texts = originalGroup;
+        return $scope.textsOriginal = _.map(originalGroup, function(val, key) {
+          return val[0];
+        });
+      };
       $scope.isCompanyCustomer = function() {
         return $scope.customer.type === 'company';
       };
@@ -35,6 +143,11 @@
           });
         }
       };
+      TextService.getAllByControllerAndLanguage($scope.controllerName, 'sv').success(function(data, status, headers, config) {
+        return $scope.uniteTexts(data);
+      }).error(function(data, status, headers, config) {
+        return AlertService.addAlert('danger', 'Misslyckades att hämta texterna, vänligen prova igen och kontakta en tekniker om problemet kvarstår.');
+      });
       CategoryService.getTree().success(function(data, status, headers, config) {
         $scope.categories = data;
         if ($stateParams.serviceId) {
@@ -45,14 +158,6 @@
         }
       }).error(function(data, status, headers, config) {
         return AlertService.addAlert('danger', 'Misslyckades med att hämta kategorier, vänligen prova igen och kontakta en tekniker om problemet kvarstår.');
-      });
-      TextService.getAllByControllerAndLanguage('HomeBookingPageController', 'sv').success(function(data, status, headers, config) {
-        $scope.textsOriginal = data;
-        return $scope.texts = _.groupBy($scope.textsOriginal, function(text) {
-          return text.elementId;
-        });
-      }).error(function(data, status, headers, config) {
-        return AlertService.addAlert('danger', 'Misslyckades med att hämta texter, vänligen prova igen och kontakta en tekniker om problemet kvarstår.');
       });
       $scope.getInputs = function() {
         return CategoryService.getInputs($scope.category[1].data.id).success(function(data, status, headers, config) {
@@ -108,21 +213,6 @@
         $scope.mission.address.area = GoogleMapsService.getAddressType(place.address_components, 'administrative_area_level_1');
         return console.log($scope.mission.address);
       };
-      /*
-      google.maps.event.addListener $scope.autocomplete, 'place_changed', ->
-          place = $scope.autocomplete.getPlace()
-      
-          $scope.mission.address.latitude = place.geometry.location.lat()
-          $scope.mission.address.longitude = place.geometry.location.lng()
-          
-          $scope.mission.address.streetNumber = GoogleMapsService.getAddressType place.address_components, 'street_number'
-          $scope.mission.address.street = GoogleMapsService.getAddressType place.address_components, 'route'
-          $scope.mission.address.postalCode = GoogleMapsService.getAddressType place.address_components, 'postal_code'
-          $scope.mission.address.postalTown = GoogleMapsService.getAddressType place.address_components, 'postal_town'
-          $scope.mission.address.country = GoogleMapsService.getAddressType place.address_components, 'country'
-          $scope.mission.address.area = GoogleMapsService.getAddressType place.address_components, 'administrative_area_level_1'
-      */
-
       $scope.mission = {
         description: ''
       };

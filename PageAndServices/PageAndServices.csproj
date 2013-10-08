@@ -257,20 +257,14 @@
     <Content Include="Angular\Apps\HomeApp.js">
       <DependentUpon>HomeApp.coffee</DependentUpon>
     </Content>
-    <Content Include="Angular\Controllers\AboutController.js">
-      <DependentUpon>AboutController.coffee</DependentUpon>
-    </Content>
     <Content Include="Angular\Controllers\AdminServicesController.js">
       <DependentUpon>AdminServicesController.coffee</DependentUpon>
     </Content>
     <Content Include="Angular\Controllers\AdminTextsController.js">
       <DependentUpon>AdminTextsController.coffee</DependentUpon>
     </Content>
-    <Content Include="Angular\Controllers\Alert.js">
+    <Content Include="Angular\Controllers\AlertController.js">
       <DependentUpon>AlertController.coffee</DependentUpon>
-    </Content>
-    <Content Include="Angular\Controllers\BookNowController.js">
-      <DependentUpon>BookNowController.coffee</DependentUpon>
     </Content>
     <Content Include="Angular\Controllers\FooterController.js">
       <DependentUpon>FooterController.coffee</DependentUpon>
@@ -290,32 +284,14 @@
     <Content Include="Angular\Controllers\HomeLandingController.js">
       <DependentUpon>HomeLandingController.coffee</DependentUpon>
     </Content>
-    <Content Include="Angular\Controllers\MapController.js">
-      <DependentUpon>MapController.coffee</DependentUpon>
-    </Content>
-    <Content Include="Angular\Controllers\Media.js">
-      <DependentUpon>MediaController.coffee</DependentUpon>
-    </Content>
-    <Content Include="Angular\Controllers\PriceController.js">
-      <DependentUpon>PriceController.coffee</DependentUpon>
-    </Content>
-    <Content Include="Angular\Controllers\ServicesController.js">
-      <DependentUpon>ServicesController.coffee</DependentUpon>
-    </Content>
-    <Content Include="Angular\Controllers\TestimonialsController.js">
-      <DependentUpon>TestimonialsController.coffee</DependentUpon>
-    </Content>
-    <Content Include="Angular\Controllers\TitleWindowController.js">
-      <DependentUpon>TitleWindowController.coffee</DependentUpon>
-    </Content>
-    <Content Include="Angular\Controllers\WhyController.js">
-      <DependentUpon>WhyController.coffee</DependentUpon>
-    </Content>
     <Content Include="Angular\Directives\CompileDirective.js">
       <DependentUpon>CompileDirective.coffee</DependentUpon>
     </Content>
     <Content Include="Angular\Directives\ContentEditableDirective.js">
       <DependentUpon>ContentEditableDirective.coffee</DependentUpon>
+    </Content>
+    <Content Include="Angular\Directives\GooglePlace.js">
+      <DependentUpon>GooglePlace.coffee</DependentUpon>
     </Content>
     <Content Include="Angular\Directives\OnBlurDirective.js">
       <DependentUpon>OnBlurDirective.coffee</DependentUpon>
@@ -326,7 +302,7 @@
     <Content Include="Angular\Services\AdministratorService.js">
       <DependentUpon>AdministratorService.coffee</DependentUpon>
     </Content>
-    <Content Include="Angular\Services\Alert.js">
+    <Content Include="Angular\Services\AlertService.js">
       <DependentUpon>AlertService.coffee</DependentUpon>
     </Content>
     <Content Include="Angular\Services\Base64.js">
@@ -365,25 +341,16 @@
     <Content Include="Angular\Services\WorkShiftService.js">
       <DependentUpon>WorkShiftService.coffee</DependentUpon>
     </Content>
-    <Content Include="Angular\Views\AboutView.html" />
     <Content Include="Angular\Views\AdminServicesView.html" />
     <Content Include="Angular\Views\AdminTextsView.html" />
     <Content Include="Angular\Views\AlertView.html" />
-    <Content Include="Angular\Views\BookNowView.html" />
     <Content Include="Angular\Views\FooterView.html" />
     <Content Include="Angular\Views\HomeAdminLoginView.html" />
     <Content Include="Angular\Views\HomeApplicationView.html" />
     <Content Include="Angular\Views\HomeBookingView.html" />
     <Content Include="Angular\Views\HomeIndexBodyView.html" />
     <Content Include="Angular\Views\HomeLandingView.html" />
-    <Content Include="Angular\Views\MapView.html" />
-    <Content Include="Angular\Views\MediaView.html" />
     <Content Include="Angular\Views\MenuView.html" />
-    <Content Include="Angular\Views\PriceView.html" />
-    <Content Include="Angular\Views\ServicesView.html" />
-    <Content Include="Angular\Views\TestimonialsView.html" />
-    <Content Include="Angular\Views\TitleWindowView.html" />
-    <Content Include="Angular\Views\WhyView.html" />
     <Content Include="Content\CSS\bootstrap-theme.css" />
     <Content Include="Content\CSS\bootstrap.css" />
     <Content Include="Content\CSS\fullcalendar.css" />
@@ -413,6 +380,7 @@
     <Content Include="Content\CSS\partials\_bootstrap.scss" />
     <Content Include="Angular\Controllers\AdminServicesController.coffee" />
     <Content Include="Angular\Controllers\AdminTextsController.coffee" />
+    <Content Include="Angular\Directives\GooglePlace.coffee" />
     <None Include="Content\CSS\partials\_colors.scss" />
     <None Include="Microsoft.WindowsAzure.Caching\ClientPerfCountersInstaller.exe">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
@@ -577,37 +545,10 @@
     <Content Include="Angular\Controllers\HomeAdminLoginController.coffee" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Angular\Controllers\WhyController.coffee" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="Angular\Controllers\TitleWindowController.coffee" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="Angular\Controllers\TestimonialsController.coffee" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="Angular\Controllers\ServicesController.coffee" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="Angular\Controllers\PriceController.coffee" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="Angular\Controllers\MediaController.coffee" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="Angular\Controllers\MapController.coffee" />
-  </ItemGroup>
-  <ItemGroup>
     <Content Include="Angular\Controllers\FooterController.coffee" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Angular\Controllers\BookNowController.coffee" />
-  </ItemGroup>
-  <ItemGroup>
     <Content Include="Angular\Controllers\AlertController.coffee" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="Angular\Controllers\AboutController.coffee" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Angular\Apps\HomeApp.coffee" />

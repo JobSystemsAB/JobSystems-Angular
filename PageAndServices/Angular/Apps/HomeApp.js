@@ -71,132 +71,6 @@
             controller: 'FooterController'
           }
         }
-      }).state('tradgard', {
-        url: "/tradgard",
-        data: {
-          serviceName: 'tradgard'
-        },
-        views: {
-          'header': {
-            templateUrl: '/Angular/Views/MenuView.html'
-          },
-          'body': {
-            templateUrl: '/Angular/Views/HomeLandingView.html',
-            controller: 'HomeLandingController'
-          },
-          'footer': {
-            templateUrl: '/Angular/Views/FooterView.html',
-            controller: 'FooterController'
-          }
-        }
-      }).state('barnpassning', {
-        url: "/barnpassning",
-        data: {
-          serviceName: 'barnpassning'
-        },
-        views: {
-          'header': {
-            templateUrl: '/Angular/Views/MenuView.html'
-          },
-          'body': {
-            templateUrl: '/Angular/Views/HomeLandingView.html',
-            controller: 'HomeLandingController'
-          },
-          'footer': {
-            templateUrl: '/Angular/Views/FooterView.html',
-            controller: 'FooterController'
-          }
-        }
-      }).state('husdjurspassning', {
-        url: "/husdjurspassning",
-        data: {
-          serviceName: 'husdjurspassninig'
-        },
-        views: {
-          'header': {
-            templateUrl: '/Angular/Views/MenuView.html'
-          },
-          'body': {
-            templateUrl: '/Angular/Views/HomeLandingView.html',
-            controller: 'HomeLandingController'
-          },
-          'footer': {
-            templateUrl: '/Angular/Views/FooterView.html',
-            controller: 'FooterController'
-          }
-        }
-      }).state('laxhjalp', {
-        url: "/laxhjalp",
-        data: {
-          serviceName: 'laxhjalp'
-        },
-        views: {
-          'header': {
-            templateUrl: '/Angular/Views/MenuView.html'
-          },
-          'body': {
-            templateUrl: '/Angular/Views/HomeLandingView.html',
-            controller: 'HomeLandingController'
-          },
-          'footer': {
-            templateUrl: '/Angular/Views/FooterView.html',
-            controller: 'FooterController'
-          }
-        }
-      }).state('snoskottning', {
-        url: "/snoskottning",
-        data: {
-          serviceName: 'snoskattning'
-        },
-        views: {
-          'header': {
-            templateUrl: '/Angular/Views/MenuView.html'
-          },
-          'body': {
-            templateUrl: '/Angular/Views/HomeLandingView.html',
-            controller: 'HomeLandingController'
-          },
-          'footer': {
-            templateUrl: '/Angular/Views/FooterView.html',
-            controller: 'FooterController'
-          }
-        }
-      }).state('stadning', {
-        url: "/stadning",
-        data: {
-          serviceName: 'stadning'
-        },
-        views: {
-          'header': {
-            templateUrl: '/Angular/Views/MenuView.html'
-          },
-          'body': {
-            templateUrl: '/Angular/Views/HomeLandingView.html',
-            controller: 'HomeLandingController'
-          },
-          'footer': {
-            templateUrl: '/Angular/Views/FooterView.html',
-            controller: 'FooterController'
-          }
-        }
-      }).state('ovrigt', {
-        url: "/ovrigt",
-        data: {
-          serviceName: 'ovrigt'
-        },
-        views: {
-          'header': {
-            templateUrl: '/Angular/Views/MenuView.html'
-          },
-          'body': {
-            templateUrl: '/Angular/Views/HomeLandingView.html',
-            controller: 'HomeLandingController'
-          },
-          'footer': {
-            templateUrl: '/Angular/Views/FooterView.html',
-            controller: 'FooterController'
-          }
-        }
       }).state('admin', {
         url: "/admin",
         views: {
@@ -228,7 +102,109 @@
             controller: 'AdminTextsController'
           }
         }
+      }).state('service', {
+        url: "/:serviceName",
+        views: {
+          'header': {
+            templateUrl: '/Angular/Views/MenuView.html'
+          },
+          'body': {
+            templateUrl: '/Angular/Views/HomeLandingView.html',
+            controller: 'HomeLandingController'
+          },
+          'footer': {
+            templateUrl: '/Angular/Views/FooterView.html',
+            controller: 'FooterController'
+          }
+        }
       });
+      /*
+      .state 'barnpassning',
+          url: "/barnpassning"
+          data:
+              serviceName: 'barnpassning'
+          views:
+              'header':
+                  templateUrl: '/Angular/Views/MenuView.html'
+              'body':
+                  templateUrl: '/Angular/Views/HomeLandingView.html'
+                  controller: 'HomeLandingController'
+      
+              'footer': 
+                  templateUrl: '/Angular/Views/FooterView.html'
+                  controller: 'FooterController'
+      
+      .state 'husdjurspassning',
+          url: "/husdjurspassning"
+          data:
+              serviceName: 'husdjurspassninig'
+          views:
+              'header':
+                  templateUrl: '/Angular/Views/MenuView.html'
+              'body':
+                  templateUrl: '/Angular/Views/HomeLandingView.html'
+                  controller: 'HomeLandingController'
+              'footer': 
+                  templateUrl: '/Angular/Views/FooterView.html'
+                  controller: 'FooterController'
+      
+      .state 'laxhjalp',
+          url: "/laxhjalp"
+          data:
+              serviceName: 'laxhjalp'
+          views:
+              'header':
+                  templateUrl: '/Angular/Views/MenuView.html'
+              'body':
+                  templateUrl: '/Angular/Views/HomeLandingView.html'
+                  controller: 'HomeLandingController'
+              'footer': 
+                  templateUrl: '/Angular/Views/FooterView.html'
+                  controller: 'FooterController'
+      
+      .state 'snoskottning',
+          url: "/snoskottning"
+          data:
+              serviceName: 'snoskattning'
+          views:
+              'header':
+                  templateUrl: '/Angular/Views/MenuView.html'
+              'body':
+                  templateUrl: '/Angular/Views/HomeLandingView.html'
+                  controller: 'HomeLandingController'
+              'footer': 
+                  templateUrl: '/Angular/Views/FooterView.html'
+                  controller: 'FooterController'
+      
+      .state 'stadning',
+          url: "/stadning"
+          data:
+              serviceName: 'stadning'
+          views:
+              'header':
+                  templateUrl: '/Angular/Views/MenuView.html'
+              'body':
+                  templateUrl: '/Angular/Views/HomeLandingView.html'
+                  controller: 'HomeLandingController'
+              'footer': 
+                  templateUrl: '/Angular/Views/FooterView.html'
+                  controller: 'FooterController'
+      
+      .state 'ovrigt',
+          url: "/ovrigt"
+          data:
+              serviceName: 'ovrigt'
+          views:
+              'header':
+                  templateUrl: '/Angular/Views/MenuView.html'
+              'body':
+                  templateUrl: '/Angular/Views/HomeLandingView.html'
+                  controller: 'HomeLandingController'
+              'footer': 
+                  templateUrl: '/Angular/Views/FooterView.html'
+                  controller: 'FooterController'
+      */
+
     }
   ]);
 

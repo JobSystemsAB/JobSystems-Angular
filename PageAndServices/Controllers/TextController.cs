@@ -86,6 +86,7 @@ namespace PageAndServices.Controllers
         {
             var model = view.getModel();
             model.created = DateTime.UtcNow;
+            model.enabled = true;
             model = repo.createText(model);
             view = new TextView(model);
 
@@ -100,16 +101,25 @@ namespace PageAndServices.Controllers
         {
             foreach (var view in views)
             {
-                var original = repo.getText(view.id);
-                if (original.text != view.text)
-                {
-                    var model = view.getModel();
-                    model.enabled = true;
-                    model.created = DateTime.UtcNow;
-                    repo.createText(model);
 
-                    original.enabled = false;
-                    repo.update(original);
+                if (view.id == 0)
+                {
+                    this.Post(view);
+                }
+                else
+                {
+                    var original = repo.getText(view.id);
+
+                    if (original.text != view.text)
+                    {
+                        var model = view.getModel();
+                        model.enabled = true;
+                        model.created = DateTime.UtcNow;
+                        repo.createText(model);
+
+                        original.enabled = false;
+                        repo.update(original);
+                    }
                 }
             }
 
@@ -147,7 +157,7 @@ namespace PageAndServices.Controllers
             }
             else
             {
-                try 
+                try
                 {
                     repo.deleteText(id);
                 }

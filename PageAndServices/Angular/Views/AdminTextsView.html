@@ -1,4 +1,18 @@
-﻿<div style="margin: 20px;">
+﻿<div style="display: block; position: fixed; bottom: 0; right: 0; margin: 20px; z-index: 100; width: 50%;" data-ng-controller="AlertController">
+    <div data-alert="" data-ng-repeat="alert in alerts" data-type="alert.type" data-close="closeAlert($index)" style="margin: 0 auto;">
+        {{ alert.msg }}
+    </div>
+</div>
+
+<div style="margin: 20px;">
+
+    <div style="margin-bottom: 20px">
+        The left column named "Texts" shows the different available pages. 
+        The left numbers represent the amount of enabled texts and the amount of unique texts, they should always be the same.<br />
+        Clicking on one of the shows all the texts on that page.<br />
+        Clicking on one of the texts shows its information and a field for editing the text and a preview of the result.
+    </div>
+
     <div class="row">
 
         <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
@@ -10,11 +24,9 @@
                 <div class="panel panel-default" data-ng-repeat="(key,val) in texts | orderBy: 'key'">
                     <div class="panel-heading">
                         <h4 class="panel-title">
-                            <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#{{key}}">
-                                {{ key }}
+                            <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#{{key}}">{{ key }}
                             </a>
-                            <span class="pull-right">
-                                {{ val.length }} / {{ unique(val) }}
+                            <span class="pull-right">{{ val.length }} / {{ unique(val) }}
                             </span>
                         </h4>
                     </div>
@@ -42,10 +54,10 @@
         <input class="form-control" type="text" disabled="" style="width: 100%" data-ng-model="selected.id" /><br />
 
             Language:
-        <input class="form-control" type="text" disabled="" style="width: 100%" data-ng-model="selected.language" /><br />
+        <input class="form-control" type="text" style="width: 100%" data-ng-model="selected.language" /><br />
 
             Controller name:
-        <input class="form-control" type="text" disabled="" style="width: 100%" data-ng-model="selected.controllerName" /><br />
+        <input class="form-control" type="text" style="width: 100%" data-ng-model="selected.controllerName" /><br />
 
             Created:
         <input class="form-control" type="text" disabled="" style="width: 100%" data-ng-model="selected.created" /><br />

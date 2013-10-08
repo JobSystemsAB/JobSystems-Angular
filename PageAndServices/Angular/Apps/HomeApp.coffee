@@ -63,12 +63,38 @@ window.app.config ['$stateProvider', '$urlRouterProvider', ($stateProvider, $url
                     templateUrl: '/Angular/Views/FooterView.html'
                     controller: 'FooterController'
 
+        # ADMIN
+        
+        .state 'admin',
+            url: "/admin"
+            views:
+                'header':
+                    templateUrl: '/Angular/Views/MenuView.html'
+                'body':
+                    templateUrl: '/Angular/Views/HomeAdminLoginView.html'
+                    controller: 'HomeAdminLoginController'
+                'footer': 
+                    templateUrl: '/Angular/Views/FooterView.html'
+                    controller: 'FooterController'
+
+        .state 'adminServices',
+            url: "/admin/services"
+            views:
+                'body':
+                    templateUrl: '/Angular/Views/AdminServicesView.html'
+                    controller: 'AdminServicesController'
+
+        .state 'adminTexts',
+            url: "/admin/texts"
+            views:
+                'body':
+                    templateUrl: '/Angular/Views/AdminTextsView.html'
+                    controller: 'AdminTextsController'
+
         # LANDING PAGES
     
-        .state 'tradgard',
-            url: "/tradgard"
-            data:
-                serviceName: 'tradgard'
+        .state 'service',
+            url: "/:serviceName"
             views:
                 'header':
                     templateUrl: '/Angular/Views/MenuView.html'
@@ -78,8 +104,9 @@ window.app.config ['$stateProvider', '$urlRouterProvider', ($stateProvider, $url
                     
                 'footer': 
                     templateUrl: '/Angular/Views/FooterView.html'
-                    controller: 'FooterController'
-
+                    controller: 'FooterController'        
+        
+        ###
         .state 'barnpassning',
             url: "/barnpassning"
             data:
@@ -165,32 +192,7 @@ window.app.config ['$stateProvider', '$urlRouterProvider', ($stateProvider, $url
                     templateUrl: '/Angular/Views/FooterView.html'
                     controller: 'FooterController'
 
-        # ADMIN
-        
-        .state 'admin',
-            url: "/admin"
-            views:
-                'header':
-                    templateUrl: '/Angular/Views/MenuView.html'
-                'body':
-                    templateUrl: '/Angular/Views/HomeAdminLoginView.html'
-                    controller: 'HomeAdminLoginController'
-                'footer': 
-                    templateUrl: '/Angular/Views/FooterView.html'
-                    controller: 'FooterController'
+        ###
 
-        .state 'adminServices',
-            url: "/admin/services"
-            views:
-                'body':
-                    templateUrl: '/Angular/Views/AdminServicesView.html'
-                    controller: 'AdminServicesController'
 
-        .state 'adminTexts',
-            url: "/admin/texts"
-            views:
-                'body':
-                    templateUrl: '/Angular/Views/AdminTextsView.html'
-                    controller: 'AdminTextsController'
-        
 ]

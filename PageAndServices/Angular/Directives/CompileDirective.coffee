@@ -1,4 +1,8 @@
-﻿window.app.directive 'compile', ($compile, $timeout) ->
+﻿window.app.directive 'compile', 
+
+['$compile', '$timeout',
+( $compile,   $timeout) ->
+
     return (scope, elm, attrs) ->
         scope.$watch(
             (scope) ->
@@ -17,3 +21,5 @@
                     template scope
                 , 200
         )
+
+]

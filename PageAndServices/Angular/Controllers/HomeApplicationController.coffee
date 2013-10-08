@@ -5,9 +5,35 @@
 
     # INIT
 
+    $scope.isAdmin = true
     $scope.category = []
 
-    # GET CATEGORIES
+    $scope.controllerName = 'homeapplication'
+    $scope.currentLang = 'sv'
+
+    $scope.textsOriginal = [
+        { controllerName: $scope.controllerName, language: $scope.currentLang, elementId: 'input-text', text: 'input-text' }
+        { controllerName: $scope.controllerName, language: $scope.currentLang, elementId: 'employee-description', text: 'employee-description' }
+        { controllerName: $scope.controllerName, language: $scope.currentLang, elementId: 'video-text', text: 'video-text' }
+        { controllerName: $scope.controllerName, language: $scope.currentLang, elementId: 'button', text: 'button' }
+    ]
+
+    # UNITE TEXTS
+
+    $scope.uniteTexts = (data) ->
+        originalGroup = _.groupBy $scope.textsOriginal, (text) -> 
+                text.elementId
+        dataGroup = _.groupBy data, (text) -> 
+                text.elementId
+
+        _.each dataGroup, (val, key) ->
+            originalGroup[key] = val
+
+        $scope.texts = originalGroup
+        $scope.textsOriginal = _.map originalGroup, (val, key) ->
+            val[0]
+
+    # GET DATA
 
     CategoryService.getTree()
         .success (data, status, headers, config) ->
@@ -15,16 +41,11 @@
         .error (data, status, headers, config) ->
             AlertService.addAlert 'danger', 'Misslyckades med att hämta kategorier. Vänligen kontakta kundtjänst om problemet kvarstår.'
             
-
-    # GET TEXTS
-
-    TextService.getAllByControllerAndLanguage('HomeApplicationController', 'sv')
+    TextService.getAllByControllerAndLanguage($scope.controllerName, 'sv')
         .success (data, status, headers, config) ->
-            $scope.textsOriginal = data
-            $scope.texts = _.groupBy $scope.textsOriginal, (text) -> 
-                text.elementId
+            $scope.uniteTexts data
         .error (data, status, headers, config) ->
-            AlertService.addAlert 'danger', 'Misslyckades med att hämta texter. Vänligen kontakta kundtjänst om problemet kvarstår.'
+                AlertService.addAlert 'danger', 'Misslyckades att hämta texterna, vänligen prova igen och kontakta en tekniker om problemet kvarstår.'
             
     # METHOD: CATEGORY CLICKED
 

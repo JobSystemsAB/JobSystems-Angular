@@ -3,7 +3,7 @@
   <Role name="PageAndServices">
     <Instances count="1" />
     <ConfigurationSettings>
-      <Setting name="Microsoft.WindowsAzure.Plugins.Diagnostics.ConnectionString" value="UseDevelopmentStorage=true" />
+      <Setting name="Microsoft.WindowsAzure.Plugins.Diagnostics.ConnectionString" value="DefaultEndpointsProtocol=https;AccountName=adoertest;AccountKey=CHv63s15xJS3hwg3XU7v7XLdyTn8CpdHbI0D8ttZwLI558vN8bNC/tauI98Pksfn9qgjKiQ+l9aPp2YQGDYz8g==" />
     </ConfigurationSettings>
   </Role>
 </ServiceConfiguration>

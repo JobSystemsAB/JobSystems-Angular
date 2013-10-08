@@ -37,7 +37,7 @@
         return $http({
           url: this.baseUrl + "/saveTestimonials",
           method: "POST",
-          data: testimonials
+          data: models
         });
       };
       return this.put = function(model) {

@@ -1,19 +1,59 @@
 (function() {
   window.app.controller('HomeApplicationController', [
     '$scope', '$routeParams', 'CategoryService', 'GoogleMapsService', 'TextService', 'AlertService', 'MissionService', function($scope, $routeParams, CategoryService, GoogleMapsService, TextService, AlertService, MissionService) {
+      $scope.isAdmin = true;
       $scope.category = [];
+      $scope.controllerName = 'homeapplication';
+      $scope.currentLang = 'sv';
+      $scope.textsOriginal = [
+        {
+          controllerName: $scope.controllerName,
+          language: $scope.currentLang,
+          elementId: 'input-text',
+          text: 'input-text'
+        }, {
+          controllerName: $scope.controllerName,
+          language: $scope.currentLang,
+          elementId: 'employee-description',
+          text: 'employee-description'
+        }, {
+          controllerName: $scope.controllerName,
+          language: $scope.currentLang,
+          elementId: 'video-text',
+          text: 'video-text'
+        }, {
+          controllerName: $scope.controllerName,
+          language: $scope.currentLang,
+          elementId: 'button',
+          text: 'button'
+        }
+      ];
+      $scope.uniteTexts = function(data) {
+        var dataGroup, originalGroup;
+
+        originalGroup = _.groupBy($scope.textsOriginal, function(text) {
+          return text.elementId;
+        });
+        dataGroup = _.groupBy(data, function(text) {
+          return text.elementId;
+        });
+        _.each(dataGroup, function(val, key) {
+          return originalGroup[key] = val;
+        });
+        $scope.texts = originalGroup;
+        return $scope.textsOriginal = _.map(originalGroup, function(val, key) {
+          return val[0];
+        });
+      };
       CategoryService.getTree().success(function(data, status, headers, config) {
         return $scope.categories = data;
       }).error(function(data, status, headers, config) {
         return AlertService.addAlert('danger', 'Misslyckades med att hämta kategorier. Vänligen kontakta kundtjänst om problemet kvarstår.');
       });
-      TextService.getAllByControllerAndLanguage('HomeApplicationController', 'sv').success(function(data, status, headers, config) {
-        $scope.textsOriginal = data;
-        return $scope.texts = _.groupBy($scope.textsOriginal, function(text) {
-          return text.elementId;
-        });
+      TextService.getAllByControllerAndLanguage($scope.controllerName, 'sv').success(function(data, status, headers, config) {
+        return $scope.uniteTexts(data);
       }).error(function(data, status, headers, config) {
-        return AlertService.addAlert('danger', 'Misslyckades med att hämta texter. Vänligen kontakta kundtjänst om problemet kvarstår.');
+        return AlertService.addAlert('danger', 'Misslyckades att hämta texterna, vänligen prova igen och kontakta en tekniker om problemet kvarstår.');
       });
       $scope.categoryClicked = function(child, level) {
         if (!child.data.checked) {

@@ -1,19 +1,30 @@
 ﻿<!-- HomeBookingView.html -->
 
-<div class="image-white-background">
+<div
+    data-ng-show="isAdmin">
+    <button
+        class="btn btn-danger btn-lg"
+        style="display: block; position: fixed; bottom: 0; margin: 20px; z-index: 100;"
+        data-ng-click="save()">
+        Spara ändringar</button>
+</div>
 
-    <div
-        data-ng-show="isAdmin">
-        <button
-            class="btn btn-danger btn-lg"
-            style="display: block; position: fixed; bottom: 0; margin: 20px; z-index: 100;"
-            data-ng-click="save()">
-            Spara ändringar</button>
+<div style="display: block; position: fixed; bottom: 0; right: 0; margin: 20px; z-index: 100; width: 50%;" data-ng-controller="AlertController">
+    <div data-alert="" data-ng-repeat="alert in alerts" data-type="alert.type" data-close="closeAlert($index)" style="margin: 0 auto;">
+        {{ alert.msg }}
     </div>
+</div>
 
-    <div class="container" style="margin-top: 95px">
+<div style="margin-top: 95px;">
+    <div class="header-image shadow visible-sm visible-md visible-lg">
+    </div>
+</div>
 
-        <div class="info">
+<div class="info-top image-white-background" style="margin-bottom: 0;">
+
+    <div class="" style="">
+
+        <div class="container info">
             <h1
                 contenteditable="false"
                 data-ng-model="texts['book-title'][0].text"
@@ -29,7 +40,7 @@
 
         <hr />
 
-        <div class="info">
+        <div class="container info">
             <div class="row">
                 <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
                     <select
@@ -37,7 +48,7 @@
                         data-ng-model="category[1]"
                         data-ng-options="cat as cat.data.name for cat in categories.children | orderBy: 'data.name'"
                         data-ng-change="getInputs()">
-                        <option value="" class="red">-- Kategori --</option>
+                        <option value="" class="red">{{ texts['category-first'][0].text }}</option>
                     </select>
                 </div>
                 <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
@@ -46,7 +57,7 @@
                         data-ng-model="category[2]"
                         data-ng-show="category[1].children.length > 0"
                         data-ng-options="cat as cat.data.name for cat in category[1].children | orderBy: 'data.name'">
-                        <option value="" class="red">-- Underkategori --</option>
+                        <option value="" class="red">{{ texts['category-second'][0].text }}</option>
                     </select>
                 </div>
                 <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
@@ -55,17 +66,17 @@
                         data-ng-model="category[3]"
                         data-ng-show="category[2].children.length > 0"
                         data-ng-options="cat as cat.data.name for cat in category[2].children | orderBy: 'data.name'">
-                        <option value="" class="red">-- Underunderkategori --</option>
+                        <option value="" class="red">{{ texts['category-second'][0].text }}</option>
                     </select>
                 </div>
             </div>
         </div>
 
-        <div class="info">
+        <div class="container info">
             <textarea
                 style="width: 100%; height: 300px"
                 class="form-control"
-                placeholder="Ge en kort beskrivning av arbetet som ska utföras."
+                placeholder="{{ texts['mission-description'][0].text }}"
                 data-ng-model="mission.description"></textarea>
             <br />
 
@@ -92,7 +103,13 @@
 
         <hr />
 
-        <div class="info">
+        <div class="container info">
+
+            <div
+                contenteditable="false"
+                data-ng-model="texts['calendar-description'][0].text"
+                data-compile="texts['calendar-description'][0].text">
+            </div>
 
             <div data-ui-calendar="uiConfig.calendar" data-ng-model="eventSources" data-calendar="myCalendar" class="span12">
             </div>
@@ -105,8 +122,8 @@
 
         <hr />
 
-        <div class="info">
-            <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+        <div class="container info">
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
 
                 <div class="btn-group">
                     <button type="button" class="btn btn-default" data-ng-class="{'btn-success': isCompanyCustomer()}" data-ng-model="customer.type" data-btn-radio="'company'">Företag</button>
@@ -115,28 +132,42 @@
                 <br />
                 <br />
 
-                <div data-ng-show="isCompanyCustomer()">
-                    <input class="form-control" type="text" data-ng-model="customer.organisationNumber" placeholder="Organisationsnummer *" />
-                    <input class="form-control" type="text" data-ng-model="customer.companyName" placeholder="Företagsnamn *" />
-                </div>
+                <form class="form-inline" role="form">
+                    <div data-ng-show="isCompanyCustomer()">
+                        <input class="form-control" style="width: 50%;" type="text" data-ng-model="customer.organisationNumber" placeholder="Organisationsnummer *" />
+                        <i class="glyphicon glyphicon-info-sign" data-popover-placement="right" data-popover-trigger="mouseenter" data-popover="{{ texts['input-organisationNumber-description'][0].text }}"></i>                    
 
-                <div data-ng-show="!isCompanyCustomer()">
-                    <input class="form-control" type="text" data-ng-model="customer.firstName" placeholder="Förnamn *" />
-                    <input class="form-control" type="text" data-ng-model="customer.lastName" placeholder="Efternamn *" />
-                    <input class="form-control" type="text" data-ng-model="customer.personalNumber" placeholder="Personnummer *" />
-                    <input class="form-control" type="text" data-ng-model="customer.propertyName" placeholder="Fastighetsbeteckning *" />
-                </div>
+                        <input class="form-control" style="width: 50%;" type="text" data-ng-model="customer.companyName" placeholder="Företagsnamn *" />
+                        <i class="glyphicon glyphicon-info-sign" data-popover-placement="right" data-popover-trigger="mouseenter" data-popover="{{ texts['input-companyName-description'][0].text }}"></i>                    
 
-                <input class="form-control" type="email" data-ng-model="customer.emailAddress" placeholder="Epost *" />
-                <input class="form-control" type="tel" data-ng-model="customer.phoneNumber" placeholder="Mobilnummer *" />
-                <input class="form-control" type="text" id="google-address-search" data-ng-model="mission.fullAddress" placeholder="Adress *" data-googleplace="" />
-            </div>
+                    </div>
 
-            <div
-                class="col-xs-12 col-sm-6 col-md-6 col-lg-6"
-                contenteditable="false"
-                data-ng-model="texts['book-input-description'][0].text"
-                data-compile="texts['book-input-description'][0].text">
+                    <div data-ng-show="!isCompanyCustomer()">
+                        
+                        <input class="form-control" style="width: 50%;" type="text" data-ng-model="customer.firstName" placeholder="Förnamn *" />
+                        <i class="glyphicon glyphicon-info-sign" data-popover-placement="right" data-popover-trigger="mouseenter" data-popover="{{ texts['input-firstName-description'][0].text }}"></i>                    
+
+                        <input class="form-control" style="width: 50%;" type="text" data-ng-model="customer.lastName" placeholder="Efternamn *" />
+                        <i class="glyphicon glyphicon-info-sign" data-popover-placement="right" data-popover-trigger="mouseenter" data-popover="{{ texts['input-lastName-description'][0].text }}"></i>                    
+
+                        <input class="form-control" style="width: 50%;" type="text" data-ng-model="customer.personalNumber" placeholder="Personnummer *" />
+                        <i class="glyphicon glyphicon-info-sign" data-popover-placement="right" data-popover-trigger="mouseenter" data-popover="{{ texts['input-personalNumber-description'][0].text }}"></i>                    
+
+                        <input class="form-control" style="width: 50%;" type="text" data-ng-model="customer.propertyName" placeholder="Fastighetsbeteckning *" />
+                        <i class="glyphicon glyphicon-info-sign" data-popover-placement="right" data-popover-trigger="mouseenter" data-popover="{{ texts['input-propertyName-description'][0].text }}"></i>                    
+
+                    </div>
+
+                    <input class="form-control" style="width: 50%;" type="email" data-ng-model="customer.emailAddress" placeholder="Epost *" />
+                    <i class="glyphicon glyphicon-info-sign" data-popover-placement="right" data-popover-trigger="mouseenter" data-popover="{{ texts['input-emailAddress-description'][0].text }}"></i>                                        
+
+                    <input class="form-control" style="width: 50%;" type="tel" data-ng-model="customer.phoneNumber" placeholder="Mobilnummer *" />
+                    <i class="glyphicon glyphicon-info-sign" data-popover-placement="right" data-popover-trigger="mouseenter" data-popover="{{ texts['input-phoneNumber-description'][0].text }}"></i>                    
+
+                    <input class="form-control" style="width: 50%;" type="text" id="google-address-search" data-ng-model="mission.fullAddress" placeholder="Adress *" data-googleplace="" />
+                    <i class="glyphicon glyphicon-info-sign" data-popover-placement="right" data-popover-trigger="mouseenter" data-popover="{{ texts['input-fullAddress-description'][0].text }}"></i>
+
+                </form>
             </div>
 
         </div>
@@ -145,7 +176,7 @@
 
         <hr />
 
-        <div class="info" style="text-align: center">
+        <div class="container info" style="text-align: center">
             <button
                 class="btn btn-lg highlight-background"
                 style="color: white;"

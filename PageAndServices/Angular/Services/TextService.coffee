@@ -40,6 +40,7 @@
         $http
             url: this.baseUrl + "/savetexts"
             method: "POST"
+            data: models
 
     this.put = (model) ->
         $http

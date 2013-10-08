@@ -42,7 +42,8 @@
       this.postAll = function(models) {
         return $http({
           url: this.baseUrl + "/savetexts",
-          method: "POST"
+          method: "POST",
+          data: models
         });
       };
       return this.put = function(model) {

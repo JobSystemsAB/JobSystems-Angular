@@ -3,7 +3,8 @@
     <div class="panel panel-default">
         <div class="panel-heading">
             <h4 class="panel-title">
-                <a class="accordion-toggle" data-toggle="collapse" data-parent="#{{parent.data.id}}" href="#{{parent.data.id}}" data-ng-click="changeSelected(parent.data)">
+                <button class="accordion-toggle" data-toggle="collapse" data-parent="#{{parent.data.id}}" href="#{{parent.data.id}}"><i class="glyphicon glyphicon-chevron-down"></i></button>
+                <a data-ng-click="changeSelected(parent.data)" style="margin-left: 20px; margin-top: 5px; cursor: pointer;">
                     {{ parent.data.order }} - {{ parent.data.name }}
                 </a>
                 <span class="pull-right">
@@ -19,6 +20,12 @@
     </div>
 
 </script>
+
+<div style="display: block; position: fixed; bottom: 0; right: 0; margin: 20px; z-index: 100; width: 50%;" data-ng-controller="AlertController">
+    <div data-alert="" data-ng-repeat="alert in alerts" data-type="alert.type" data-close="closeAlert($index)" style="margin: 0 auto;">
+        {{ alert.msg }}
+    </div>
+</div>
 
 <div style="margin: 20px">
 
@@ -39,10 +46,12 @@
             <div class="panel-group" id="accordion">
                 <div class="panel panel-default">
                     <div class="panel-heading">
-                        <h4 class="panel-title">
-                            <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#TOP" data-ng-click="changeSelected(null)">TOP
+                        <button class="accordion-toggle pull-left" data-toggle="collapse" data-parent="#accordion" href="#TOP"><i class="glyphicon glyphicon-chevron-down"></i></button>
+                        <h4 class="panel-title pull-left" style="margin-left: 20px; margin-top: 5px; cursor: pointer;">
+                            <a data-ng-click="changeSelected(null)">TOP
                             </a>
                         </h4>
+                        <div class="clear"></div>
                     </div>
                     <div id="TOP" class="panel-collapse collapse">
                         <div class="panel-body">
@@ -52,11 +61,16 @@
                 </div>
             </div>
         </div>
-            
+
         <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
 
             <h2>Edit:</h2>
             <hr />
+
+            <button class="btn btn-success pull-right" data-ng-click="update()">Update</button>
+            <button class="btn btn-danger pull-right" data-ng-click="delete()">Delete</button>
+            <br />
+            <br />
 
             Id:
             <input class="form-control" type="text" disabled="" data-ng-model="selected.id" style="width: 100%" /><br />
@@ -105,6 +119,10 @@
         <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
             <h2>New:</h2>
             <hr />
+
+            <button class="btn btn-success pull-right" data-ng-click="create()">Create</button>
+            <br />
+            <br />
 
             Parent id:
             <input class="form-control" type="text" disabled="" data-ng-model="service.parent.id" style="width: 100%" /><br />

@@ -35,7 +35,7 @@
         $http
             url: this.baseUrl + "/saveTestimonials" 
             method: "POST"
-            data: testimonials
+            data: models
 
     this.put = (model) ->
         $http
