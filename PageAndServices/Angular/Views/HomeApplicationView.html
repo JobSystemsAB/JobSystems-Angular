@@ -24,10 +24,17 @@
 
         <div class="info">
             <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
-                <input type="text" class="form-control" data-ng-model="input.employee.firstName" placeholder="Förnamn" />
-                <input type="text" class="form-control" data-ng-model="input.employee.lastName" placeholder="Efternamn" />
-                <input type="text" class="form-control" data-ng-model="input.employee.phoneNumber" placeholder="Telefonnummer" />
-                <input type="email" class="form-control" data-ng-model="input.employee.emailAddress" placeholder="Epost" />
+                <input type="text" class="form-control" data-ng-model="input.employee.firstName" placeholder="Förnamn *" />
+                <i class="glyphicon glyphicon-info-sign" data-popover-placement="right" data-popover-trigger="mouseenter" data-popover="{{ texts['input-firstName-description'][0].text }}"></i>
+
+                <input type="text" class="form-control" data-ng-model="input.employee.lastName" placeholder="Efternamn *" />
+                <i class="glyphicon glyphicon-info-sign" data-popover-placement="right" data-popover-trigger="mouseenter" data-popover="{{ texts['input-lastName-description'][0].text }}"></i>
+
+                <input type="text" class="form-control" data-ng-model="input.employee.phoneNumber" placeholder="Telefonnummer *" />
+                <i class="glyphicon glyphicon-info-sign" data-popover-placement="right" data-popover-trigger="mouseenter" data-popover="{{ texts['input-phoneNumber-description'][0].text }}"></i>
+
+                <input type="email" class="form-control" data-ng-model="input.employee.emailAddress" placeholder="Epost *" />
+                <i class="glyphicon glyphicon-info-sign" data-popover-placement="right" data-popover-trigger="mouseenter" data-popover="{{ texts['input-emailAddress-description'][0].text }}"></i>
             </div>
 
             <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6" contenteditable="false" data-ng-model="texts['input-text'][0].text" data-compile="texts['input-text'][0].text">

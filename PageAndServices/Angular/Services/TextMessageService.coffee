@@ -7,7 +7,7 @@
 
     this.delete = (id) ->
         $http
-            utl: this.baseUrl + "/" + id
+            url: this.baseUrl + "/" + id
             method: "DELETE"
 
     this.get = (id) ->

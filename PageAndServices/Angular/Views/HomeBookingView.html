@@ -43,30 +43,40 @@
         <div class="container info">
             <div class="row">
                 <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
+                    <h3
+                        contenteditable="false"
+                        data-ng-model="texts['category-first'][0].text"
+                        data-compile="texts['category-first'][0].text"></h3>
                     <select
                         class="form-control"
                         data-ng-model="category[1]"
                         data-ng-options="cat as cat.data.name for cat in categories.children | orderBy: 'data.name'"
                         data-ng-change="getInputs()">
-                        <option value="" class="red">{{ texts['category-first'][0].text }}</option>
+                        <option value="">-- Välj --</option>
                     </select>
                 </div>
-                <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
+                <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4" data-ng-show="category[1].children.length > 0">
+                    <h3
+                        contenteditable="false"
+                        data-ng-model="texts['category-second'][0].text"
+                        data-compile="texts['category-second'][0].text"></h3>
                     <select
                         class="form-control"
                         data-ng-model="category[2]"
-                        data-ng-show="category[1].children.length > 0"
                         data-ng-options="cat as cat.data.name for cat in category[1].children | orderBy: 'data.name'">
-                        <option value="" class="red">{{ texts['category-second'][0].text }}</option>
+                        <option value="">-- Välj --</option>
                     </select>
                 </div>
-                <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
+                <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4" data-ng-show="category[2].children.length > 0">
+                    <h3
+                        contenteditable="false"
+                        data-ng-model="texts['category-third'][0].text"
+                        data-compile="texts['category-third'][0].text"></h3>
                     <select
                         class="form-control"
                         data-ng-model="category[3]"
-                        data-ng-show="category[2].children.length > 0"
                         data-ng-options="cat as cat.data.name for cat in category[2].children | orderBy: 'data.name'">
-                        <option value="" class="red">{{ texts['category-second'][0].text }}</option>
+                        <option value="">-- Välj --</option>
                     </select>
                 </div>
             </div>
@@ -135,34 +145,34 @@
                 <form class="form-inline" role="form">
                     <div data-ng-show="isCompanyCustomer()">
                         <input class="form-control" style="width: 50%;" type="text" data-ng-model="customer.organisationNumber" placeholder="Organisationsnummer *" />
-                        <i class="glyphicon glyphicon-info-sign" data-popover-placement="right" data-popover-trigger="mouseenter" data-popover="{{ texts['input-organisationNumber-description'][0].text }}"></i>                    
+                        <i class="glyphicon glyphicon-info-sign" data-popover-placement="right" data-popover-trigger="mouseenter" data-popover="{{ texts['input-organisationNumber-description'][0].text }}"></i>
 
                         <input class="form-control" style="width: 50%;" type="text" data-ng-model="customer.companyName" placeholder="Företagsnamn *" />
-                        <i class="glyphicon glyphicon-info-sign" data-popover-placement="right" data-popover-trigger="mouseenter" data-popover="{{ texts['input-companyName-description'][0].text }}"></i>                    
+                        <i class="glyphicon glyphicon-info-sign" data-popover-placement="right" data-popover-trigger="mouseenter" data-popover="{{ texts['input-companyName-description'][0].text }}"></i>
 
                     </div>
 
                     <div data-ng-show="!isCompanyCustomer()">
-                        
+
                         <input class="form-control" style="width: 50%;" type="text" data-ng-model="customer.firstName" placeholder="Förnamn *" />
-                        <i class="glyphicon glyphicon-info-sign" data-popover-placement="right" data-popover-trigger="mouseenter" data-popover="{{ texts['input-firstName-description'][0].text }}"></i>                    
+                        <i class="glyphicon glyphicon-info-sign" data-popover-placement="right" data-popover-trigger="mouseenter" data-popover="{{ texts['input-firstName-description'][0].text }}"></i>
 
                         <input class="form-control" style="width: 50%;" type="text" data-ng-model="customer.lastName" placeholder="Efternamn *" />
-                        <i class="glyphicon glyphicon-info-sign" data-popover-placement="right" data-popover-trigger="mouseenter" data-popover="{{ texts['input-lastName-description'][0].text }}"></i>                    
+                        <i class="glyphicon glyphicon-info-sign" data-popover-placement="right" data-popover-trigger="mouseenter" data-popover="{{ texts['input-lastName-description'][0].text }}"></i>
 
                         <input class="form-control" style="width: 50%;" type="text" data-ng-model="customer.personalNumber" placeholder="Personnummer *" />
-                        <i class="glyphicon glyphicon-info-sign" data-popover-placement="right" data-popover-trigger="mouseenter" data-popover="{{ texts['input-personalNumber-description'][0].text }}"></i>                    
+                        <i class="glyphicon glyphicon-info-sign" data-popover-placement="right" data-popover-trigger="mouseenter" data-popover="{{ texts['input-personalNumber-description'][0].text }}"></i>
 
                         <input class="form-control" style="width: 50%;" type="text" data-ng-model="customer.propertyName" placeholder="Fastighetsbeteckning *" />
-                        <i class="glyphicon glyphicon-info-sign" data-popover-placement="right" data-popover-trigger="mouseenter" data-popover="{{ texts['input-propertyName-description'][0].text }}"></i>                    
+                        <i class="glyphicon glyphicon-info-sign" data-popover-placement="right" data-popover-trigger="mouseenter" data-popover="{{ texts['input-propertyName-description'][0].text }}"></i>
 
                     </div>
 
                     <input class="form-control" style="width: 50%;" type="email" data-ng-model="customer.emailAddress" placeholder="Epost *" />
-                    <i class="glyphicon glyphicon-info-sign" data-popover-placement="right" data-popover-trigger="mouseenter" data-popover="{{ texts['input-emailAddress-description'][0].text }}"></i>                                        
+                    <i class="glyphicon glyphicon-info-sign" data-popover-placement="right" data-popover-trigger="mouseenter" data-popover="{{ texts['input-emailAddress-description'][0].text }}"></i>
 
                     <input class="form-control" style="width: 50%;" type="tel" data-ng-model="customer.phoneNumber" placeholder="Mobilnummer *" />
-                    <i class="glyphicon glyphicon-info-sign" data-popover-placement="right" data-popover-trigger="mouseenter" data-popover="{{ texts['input-phoneNumber-description'][0].text }}"></i>                    
+                    <i class="glyphicon glyphicon-info-sign" data-popover-placement="right" data-popover-trigger="mouseenter" data-popover="{{ texts['input-phoneNumber-description'][0].text }}"></i>
 
                     <input class="form-control" style="width: 50%;" type="text" id="google-address-search" data-ng-model="mission.fullAddress" placeholder="Adress *" data-googleplace="" />
                     <i class="glyphicon glyphicon-info-sign" data-popover-placement="right" data-popover-trigger="mouseenter" data-popover="{{ texts['input-fullAddress-description'][0].text }}"></i>

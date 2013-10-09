@@ -173,7 +173,7 @@
       };
       $scope.goToBooking = function() {
         return $state.go('book', {
-          serviceUrl: $state.current.data.serviceName
+          serviceName: ''
         });
       };
       return $scope.goToLanding = function(categoryId, categoryUrl) {

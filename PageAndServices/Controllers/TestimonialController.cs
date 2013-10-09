@@ -102,13 +102,8 @@ namespace PageAndServices.Controllers
         // PUT api/text/5
         [HttpPut]
         [ActionName("DefaultAction")]
-        public HttpResponseMessage Put(int id, Testimonial model)
+        public HttpResponseMessage Put(Testimonial model)
         {
-            if (id != model.id)
-            {
-                return Request.CreateResponse(HttpStatusCode.BadRequest);
-            }
-
             try
             {
                 repo.update(model);

@@ -260,6 +260,9 @@
     <Content Include="Angular\Controllers\AdminServicesController.js">
       <DependentUpon>AdminServicesController.coffee</DependentUpon>
     </Content>
+    <Content Include="Angular\Controllers\AdminTestimonialsController.js">
+      <DependentUpon>AdminTestimonialsController.coffee</DependentUpon>
+    </Content>
     <Content Include="Angular\Controllers\AdminTextsController.js">
       <DependentUpon>AdminTextsController.coffee</DependentUpon>
     </Content>
@@ -342,6 +345,7 @@
       <DependentUpon>WorkShiftService.coffee</DependentUpon>
     </Content>
     <Content Include="Angular\Views\AdminServicesView.html" />
+    <Content Include="Angular\Views\AdminTestimonialsView.html" />
     <Content Include="Angular\Views\AdminTextsView.html" />
     <Content Include="Angular\Views\AlertView.html" />
     <Content Include="Angular\Views\FooterView.html" />
@@ -381,6 +385,7 @@
     <Content Include="Angular\Controllers\AdminServicesController.coffee" />
     <Content Include="Angular\Controllers\AdminTextsController.coffee" />
     <Content Include="Angular\Directives\GooglePlace.coffee" />
+    <Content Include="Angular\Controllers\AdminTestimonialsController.coffee" />
     <None Include="Content\CSS\partials\_colors.scss" />
     <None Include="Microsoft.WindowsAzure.Caching\ClientPerfCountersInstaller.exe">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
@@ -415,6 +420,7 @@
     <Content Include="Scripts\Angular-UI\angular-ui-router.js" />
     <Content Include="Scripts\Angular-UI\calendar.js" />
     <Content Include="Scripts\Angular-UI\date.js" />
+    <Content Include="Scripts\Angular-UI\tinymce.js" />
     <Content Include="Scripts\Angular-UI\ui-bootstrap-tpls-0.5.0.min.js" />
     <Content Include="Scripts\Angular\angular-google-maps.js" />
     <Content Include="Scripts\Angular\angular-resource.js" />
@@ -429,6 +435,78 @@
     <Content Include="Scripts\Jasmine\jasmine.js" />
     <Content Include="Scripts\JQuery\jquery-1.10.2.min.js" />
     <Content Include="Scripts\JQuery\jquery-ui-1.10.3.custom.min.js" />
+    <Content Include="Scripts\Tinymce\license.txt" />
+    <Content Include="Scripts\Tinymce\plugins\advlist\plugin.min.js" />
+    <Content Include="Scripts\Tinymce\plugins\anchor\plugin.min.js" />
+    <Content Include="Scripts\Tinymce\plugins\autolink\plugin.min.js" />
+    <Content Include="Scripts\Tinymce\plugins\autoresize\plugin.min.js" />
+    <Content Include="Scripts\Tinymce\plugins\autosave\plugin.min.js" />
+    <Content Include="Scripts\Tinymce\plugins\bbcode\plugin.min.js" />
+    <Content Include="Scripts\Tinymce\plugins\charmap\plugin.min.js" />
+    <Content Include="Scripts\Tinymce\plugins\code\plugin.min.js" />
+    <Content Include="Scripts\Tinymce\plugins\contextmenu\plugin.min.js" />
+    <Content Include="Scripts\Tinymce\plugins\directionality\plugin.min.js" />
+    <Content Include="Scripts\Tinymce\plugins\emoticons\img\smiley-cool.gif" />
+    <Content Include="Scripts\Tinymce\plugins\emoticons\img\smiley-cry.gif" />
+    <Content Include="Scripts\Tinymce\plugins\emoticons\img\smiley-embarassed.gif" />
+    <Content Include="Scripts\Tinymce\plugins\emoticons\img\smiley-foot-in-mouth.gif" />
+    <Content Include="Scripts\Tinymce\plugins\emoticons\img\smiley-frown.gif" />
+    <Content Include="Scripts\Tinymce\plugins\emoticons\img\smiley-innocent.gif" />
+    <Content Include="Scripts\Tinymce\plugins\emoticons\img\smiley-kiss.gif" />
+    <Content Include="Scripts\Tinymce\plugins\emoticons\img\smiley-laughing.gif" />
+    <Content Include="Scripts\Tinymce\plugins\emoticons\img\smiley-money-mouth.gif" />
+    <Content Include="Scripts\Tinymce\plugins\emoticons\img\smiley-sealed.gif" />
+    <Content Include="Scripts\Tinymce\plugins\emoticons\img\smiley-smile.gif" />
+    <Content Include="Scripts\Tinymce\plugins\emoticons\img\smiley-surprised.gif" />
+    <Content Include="Scripts\Tinymce\plugins\emoticons\img\smiley-tongue-out.gif" />
+    <Content Include="Scripts\Tinymce\plugins\emoticons\img\smiley-undecided.gif" />
+    <Content Include="Scripts\Tinymce\plugins\emoticons\img\smiley-wink.gif" />
+    <Content Include="Scripts\Tinymce\plugins\emoticons\img\smiley-yell.gif" />
+    <Content Include="Scripts\Tinymce\plugins\emoticons\plugin.min.js" />
+    <Content Include="Scripts\Tinymce\plugins\example\plugin.min.js" />
+    <Content Include="Scripts\Tinymce\plugins\example_dependency\plugin.min.js" />
+    <Content Include="Scripts\Tinymce\plugins\fullpage\plugin.min.js" />
+    <Content Include="Scripts\Tinymce\plugins\fullscreen\plugin.min.js" />
+    <Content Include="Scripts\Tinymce\plugins\hr\plugin.min.js" />
+    <Content Include="Scripts\Tinymce\plugins\image\plugin.min.js" />
+    <Content Include="Scripts\Tinymce\plugins\importcss\plugin.min.js" />
+    <Content Include="Scripts\Tinymce\plugins\insertdatetime\plugin.min.js" />
+    <Content Include="Scripts\Tinymce\plugins\layer\plugin.min.js" />
+    <Content Include="Scripts\Tinymce\plugins\legacyoutput\plugin.min.js" />
+    <Content Include="Scripts\Tinymce\plugins\link\plugin.min.js" />
+    <Content Include="Scripts\Tinymce\plugins\lists\plugin.min.js" />
+    <Content Include="Scripts\Tinymce\plugins\media\moxieplayer.swf" />
+    <Content Include="Scripts\Tinymce\plugins\media\plugin.min.js" />
+    <Content Include="Scripts\Tinymce\plugins\nonbreaking\plugin.min.js" />
+    <Content Include="Scripts\Tinymce\plugins\noneditable\plugin.min.js" />
+    <Content Include="Scripts\Tinymce\plugins\pagebreak\plugin.min.js" />
+    <Content Include="Scripts\Tinymce\plugins\paste\plugin.min.js" />
+    <Content Include="Scripts\Tinymce\plugins\preview\plugin.min.js" />
+    <Content Include="Scripts\Tinymce\plugins\print\plugin.min.js" />
+    <Content Include="Scripts\Tinymce\plugins\save\plugin.min.js" />
+    <Content Include="Scripts\Tinymce\plugins\searchreplace\plugin.min.js" />
+    <Content Include="Scripts\Tinymce\plugins\spellchecker\plugin.min.js" />
+    <Content Include="Scripts\Tinymce\plugins\tabfocus\plugin.min.js" />
+    <Content Include="Scripts\Tinymce\plugins\table\plugin.min.js" />
+    <Content Include="Scripts\Tinymce\plugins\template\plugin.min.js" />
+    <Content Include="Scripts\Tinymce\plugins\textcolor\plugin.min.js" />
+    <Content Include="Scripts\Tinymce\plugins\visualblocks\css\visualblocks.css" />
+    <Content Include="Scripts\Tinymce\plugins\visualblocks\plugin.min.js" />
+    <Content Include="Scripts\Tinymce\plugins\visualchars\plugin.min.js" />
+    <Content Include="Scripts\Tinymce\plugins\wordcount\plugin.min.js" />
+    <Content Include="Scripts\Tinymce\skins\lightgray\content.inline.min.css" />
+    <Content Include="Scripts\Tinymce\skins\lightgray\content.min.css" />
+    <Content Include="Scripts\Tinymce\skins\lightgray\fonts\icomoon-small.svg" />
+    <Content Include="Scripts\Tinymce\skins\lightgray\fonts\icomoon.svg" />
+    <Content Include="Scripts\Tinymce\skins\lightgray\img\anchor.gif" />
+    <Content Include="Scripts\Tinymce\skins\lightgray\img\loader.gif" />
+    <Content Include="Scripts\Tinymce\skins\lightgray\img\object.gif" />
+    <Content Include="Scripts\Tinymce\skins\lightgray\img\trans.gif" />
+    <Content Include="Scripts\Tinymce\skins\lightgray\img\wline.gif" />
+    <Content Include="Scripts\Tinymce\skins\lightgray\skin.ie7.min.css" />
+    <Content Include="Scripts\Tinymce\skins\lightgray\skin.min.css" />
+    <Content Include="Scripts\Tinymce\themes\modern\theme.min.js" />
+    <Content Include="Scripts\Tinymce\tinymce.min.js" />
     <Content Include="Scripts\underscore.js" />
     <Content Include="Scripts\underscore.string.js" />
     <Content Include="Web.config" />
@@ -437,6 +515,7 @@
     </Content>
     <Content Include="Web.Release.config">
       <DependentUpon>Web.config</DependentUpon>
+      <SubType>Designer</SubType>
     </Content>
     <Content Include="Views\Web.config" />
     <Content Include="OLD\approve-employee.coffee" />
@@ -444,6 +523,14 @@
     <Content Include="OLD\calendar.coffee" />
     <Content Include="OLD\info.coffee" />
     <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Scripts\Tinymce\langs\readme.md" />
+    <Content Include="Scripts\Tinymce\skins\lightgray\fonts\icomoon-small.eot" />
+    <Content Include="Scripts\Tinymce\skins\lightgray\fonts\icomoon-small.ttf" />
+    <Content Include="Scripts\Tinymce\skins\lightgray\fonts\icomoon-small.woff" />
+    <Content Include="Scripts\Tinymce\skins\lightgray\fonts\icomoon.eot" />
+    <Content Include="Scripts\Tinymce\skins\lightgray\fonts\icomoon.ttf" />
+    <Content Include="Scripts\Tinymce\skins\lightgray\fonts\icomoon.woff" />
+    <Content Include="Scripts\Tinymce\skins\lightgray\fonts\readme.md" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Angular\Services\AdministratorService.coffee" />

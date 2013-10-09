@@ -146,7 +146,7 @@
       };
       return $scope.goToBooking = function() {
         return $state.go('book', {
-          serviceUrl: $stateParams.serviceName
+          serviceName: $stateParams.serviceName
         });
       };
     }

@@ -16,6 +16,10 @@
         { controllerName: $scope.controllerName, language: $scope.currentLang, elementId: 'employee-description', text: 'employee-description' }
         { controllerName: $scope.controllerName, language: $scope.currentLang, elementId: 'video-text', text: 'video-text' }
         { controllerName: $scope.controllerName, language: $scope.currentLang, elementId: 'button', text: 'button' }
+        { controllerName: $scope.controllerName, language: $scope.currentLang, elementId: 'input-firstName-description', text: 'input-firstName-description' }
+        { controllerName: $scope.controllerName, language: $scope.currentLang, elementId: 'input-lastName-description', text: 'input-lastName-description' }
+        { controllerName: $scope.controllerName, language: $scope.currentLang, elementId: 'input-phoneNumber-description', text: 'input-phoneNumber-description' }
+        { controllerName: $scope.controllerName, language: $scope.currentLang, elementId: 'input-emailAddress-description', text: 'input-emailAddress-description' }
     ]
 
     # UNITE TEXTS

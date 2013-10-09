@@ -1,0 +1,36 @@
+﻿<div style="display: block; position: fixed; bottom: 0; right: 0; margin: 20px; z-index: 100; width: 50%;" data-ng-controller="AlertController">
+    <div data-alert="" data-ng-repeat="alert in alerts" data-type="alert.type" data-close="closeAlert($index)" style="margin: 0 auto;">
+        {{ alert.msg }}
+    </div>
+</div>
+
+<div style="margin: 20px">
+
+    <h1>Testimonial</h1>
+    <hr />
+
+    <div class="row">
+
+        <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3" data-ng-repeat="testimonial in testimonials" style="padding: 20px">
+
+            <textarea class="form-control" data-ng-model="testimonial.text" style="width: 100%; height: 150px;"></textarea>
+            <input class="form-control" type="text" data-ng-model="testimonial.name" style="width: 100%" />
+            <br />
+            <button class="btn btn-danger pull-right" data-ng-click="delete(testimonial)">Delete</button>
+            <button class="btn btn-success  pull-right" data-ng-click="update(testimonial)">Save</button>
+
+        </div>
+
+        <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3" style="padding: 20px; background-color: lightgray;">
+
+            <textarea class="form-control" data-ng-model="newTestimonial.text" style="width: 100%; height: 150px;" placeholder="Text"></textarea>
+            <input class="form-control" type="text" data-ng-model="newTestimonial.name" style="width: 100%" placeholder="Name" />
+            <input hidden="hidden" type="text" value="sv" data-ng-model="newTestimonial.language" />
+            <input hidden="hidden" type="text" value="true" data-ng-model="newTestimonial.enabled" />
+            <br />
+            <button class="btn btn-success pull-right" data-ng-click="save(newTestimonial)">Create</button>
+
+        </div>
+
+    </div>
+</div>

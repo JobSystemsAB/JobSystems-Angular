@@ -104,7 +104,7 @@
     # GO TO BOOKING
 
     $scope.goToBooking = ->
-        $state.go 'book', { serviceUrl: $state.current.data.serviceName }
+        $state.go 'book', { serviceName: '' }
 
     $scope.goToLanding = (categoryId, categoryUrl) ->
         $state.go 'service', { serviceName: categoryUrl }

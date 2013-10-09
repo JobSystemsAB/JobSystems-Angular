@@ -82,6 +82,6 @@
     # GO TO BOOKING
 
     $scope.goToBooking = ->
-        $state.go 'book', { serviceUrl: $stateParams.serviceName }
+        $state.go 'book', { serviceName: $stateParams.serviceName }
 
 ]

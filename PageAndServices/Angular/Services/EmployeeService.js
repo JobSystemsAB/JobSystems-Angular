@@ -4,7 +4,7 @@
       this.baseUrl = "/api/employee";
       this["delete"] = function(id) {
         return $http({
-          utl: this.baseUrl + "/" + id,
+          url: this.baseUrl + "/" + id,
           method: "DELETE"
         });
       };

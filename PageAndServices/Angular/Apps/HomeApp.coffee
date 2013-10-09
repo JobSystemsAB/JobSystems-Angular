@@ -1,4 +1,4 @@
-﻿window.app = angular.module 'HomeApp', ['ui.bootstrap', 'ui.date', 'ui.calendar', 'ui.router', 'google-maps']
+﻿window.app = angular.module 'HomeApp', ['ui.bootstrap', 'ui.date', 'ui.calendar', 'ui.router', 'ui.tinymce', 'google-maps']
 
 ###
 window.app.config ['$routeProvider', '$locationProvider', ( $routeProvider,   $locationProvider) ->
@@ -51,18 +51,6 @@ window.app.config ['$stateProvider', '$urlRouterProvider', ($stateProvider, $url
                     templateUrl: '/Angular/Views/FooterView.html'
                     controller: 'FooterController'
 
-        .state 'book',
-            url: "/boka/:serviceUrl"
-            views:
-                'header':
-                    templateUrl: '/Angular/Views/MenuView.html'
-                'body':
-                    templateUrl: '/Angular/Views/HomeBookingView.html'
-                    controller: 'HomeBookingController'
-                'footer': 
-                    templateUrl: '/Angular/Views/FooterView.html'
-                    controller: 'FooterController'
-
         # ADMIN
         
         .state 'admin',
@@ -91,6 +79,27 @@ window.app.config ['$stateProvider', '$urlRouterProvider', ($stateProvider, $url
                     templateUrl: '/Angular/Views/AdminTextsView.html'
                     controller: 'AdminTextsController'
 
+        .state 'adminTestimonials',
+            url: "/admin/testimonials"
+            views:
+                'body':
+                    templateUrl: '/Angular/Views/AdminTestimonialsView.html'
+                    controller: 'AdminTestimonialsController'
+
+        # BOOKING PAGE
+
+        .state 'book',
+            url: "/boka/:serviceName"
+            views:
+                'header':
+                    templateUrl: '/Angular/Views/MenuView.html'
+                'body':
+                    templateUrl: '/Angular/Views/HomeBookingView.html'
+                    controller: 'HomeBookingController'
+                'footer': 
+                    templateUrl: '/Angular/Views/FooterView.html'
+                    controller: 'FooterController'
+
         # LANDING PAGES
     
         .state 'service',
@@ -105,94 +114,6 @@ window.app.config ['$stateProvider', '$urlRouterProvider', ($stateProvider, $url
                 'footer': 
                     templateUrl: '/Angular/Views/FooterView.html'
                     controller: 'FooterController'        
-        
-        ###
-        .state 'barnpassning',
-            url: "/barnpassning"
-            data:
-                serviceName: 'barnpassning'
-            views:
-                'header':
-                    templateUrl: '/Angular/Views/MenuView.html'
-                'body':
-                    templateUrl: '/Angular/Views/HomeLandingView.html'
-                    controller: 'HomeLandingController'
-
-                'footer': 
-                    templateUrl: '/Angular/Views/FooterView.html'
-                    controller: 'FooterController'
-
-        .state 'husdjurspassning',
-            url: "/husdjurspassning"
-            data:
-                serviceName: 'husdjurspassninig'
-            views:
-                'header':
-                    templateUrl: '/Angular/Views/MenuView.html'
-                'body':
-                    templateUrl: '/Angular/Views/HomeLandingView.html'
-                    controller: 'HomeLandingController'
-                'footer': 
-                    templateUrl: '/Angular/Views/FooterView.html'
-                    controller: 'FooterController'
-
-        .state 'laxhjalp',
-            url: "/laxhjalp"
-            data:
-                serviceName: 'laxhjalp'
-            views:
-                'header':
-                    templateUrl: '/Angular/Views/MenuView.html'
-                'body':
-                    templateUrl: '/Angular/Views/HomeLandingView.html'
-                    controller: 'HomeLandingController'
-                'footer': 
-                    templateUrl: '/Angular/Views/FooterView.html'
-                    controller: 'FooterController'
-
-        .state 'snoskottning',
-            url: "/snoskottning"
-            data:
-                serviceName: 'snoskattning'
-            views:
-                'header':
-                    templateUrl: '/Angular/Views/MenuView.html'
-                'body':
-                    templateUrl: '/Angular/Views/HomeLandingView.html'
-                    controller: 'HomeLandingController'
-                'footer': 
-                    templateUrl: '/Angular/Views/FooterView.html'
-                    controller: 'FooterController'
-
-        .state 'stadning',
-            url: "/stadning"
-            data:
-                serviceName: 'stadning'
-            views:
-                'header':
-                    templateUrl: '/Angular/Views/MenuView.html'
-                'body':
-                    templateUrl: '/Angular/Views/HomeLandingView.html'
-                    controller: 'HomeLandingController'
-                'footer': 
-                    templateUrl: '/Angular/Views/FooterView.html'
-                    controller: 'FooterController'
-
-        .state 'ovrigt',
-            url: "/ovrigt"
-            data:
-                serviceName: 'ovrigt'
-            views:
-                'header':
-                    templateUrl: '/Angular/Views/MenuView.html'
-                'body':
-                    templateUrl: '/Angular/Views/HomeLandingView.html'
-                    controller: 'HomeLandingController'
-                'footer': 
-                    templateUrl: '/Angular/Views/FooterView.html'
-                    controller: 'FooterController'
-
-        ###
 
 
 ]

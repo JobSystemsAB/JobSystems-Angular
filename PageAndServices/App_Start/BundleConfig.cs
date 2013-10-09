@@ -17,6 +17,8 @@ namespace PageAndServices
             libs.Include("~/Scripts/JQuery/jquery-1.10.2.min.js");
             libs.Include("~/Scripts/JQuery/jquery-ui-1.10.3.custom.min.js");
 
+            libs.Include("~/Scripts/Tinymce/tinymce.min.js");
+
             libs.Include("~/Scripts/Angular/angular.min.js");
             libs.Include("~/Scripts/Angular/angular-google-maps.js");
             libs.Include("~/Scripts/Angular/angular-resource.js");
@@ -25,6 +27,7 @@ namespace PageAndServices
             libs.Include("~/Scripts/Angular-UI/angular-ui-router.js");
             libs.Include("~/Scripts/Angular-UI/calendar.js");
             libs.Include("~/Scripts/Angular-UI/date.js");
+            libs.Include("~/Scripts/Angular-UI/tinymce.js");
 
             libs.Include("~/Scripts/Bootstrap/bootstrap.min.js");
             libs.Include("~/Scripts/Bootstrap/collapse.js");
@@ -63,6 +66,7 @@ namespace PageAndServices
             app.Include("~/Angular/Services/WorkShiftService.js");
 
             app.Include("~/Angular/Controllers/AdminServicesController.js");
+            app.Include("~/Angular/Controllers/AdminTestimonialsController.js");
             app.Include("~/Angular/Controllers/AdminTextsController.js");
             app.Include("~/Angular/Controllers/AlertController.js");
             app.Include("~/Angular/Controllers/FooterController.js");

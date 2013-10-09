@@ -3,7 +3,7 @@
     '$scope', '$stateParams', '$http', 'CategoryService', 'GoogleMapsService', 'TextService', 'AlertService', 'MissionService', 'PrivateCustomerService', 'CompanyCustomerService', function($scope, $stateParams, $http, CategoryService, GoogleMapsService, TextService, AlertService, MissionService, PrivateCustomerService, CompanyCustomerService) {
       $scope.isAdmin = true;
       $scope.category = [];
-      $scope.controllerName = 'homebooking';
+      $scope.controllerName = 'homebooking' + $stateParams.serviceName;
       $scope.currentLang = 'sv';
       $scope.textsOriginal = [
         {

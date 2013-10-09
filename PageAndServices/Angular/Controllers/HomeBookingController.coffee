@@ -8,7 +8,7 @@
     $scope.isAdmin = true
     $scope.category = []
 
-    $scope.controllerName = 'homebooking'
+    $scope.controllerName = 'homebooking' + $stateParams.serviceName
     $scope.currentLang = 'sv'
 
     $scope.textsOriginal = [
