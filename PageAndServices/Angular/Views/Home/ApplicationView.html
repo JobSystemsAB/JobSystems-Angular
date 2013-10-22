@@ -3,16 +3,105 @@
 <div data-ng-include="'/Angular/Views/Partials/AdminSaveView.html'"></div>
 <div data-ng-include="'/Angular/Views/Partials/AlertView.html'"></div>
 
-<div class="info-top image-gray-background">
-    <div class="container info">
-        <div class="info-top">
-            <h1 contenteditable="false" data-ng-model="texts['input-title'][0].text" data-compile="texts['video-title'][0].text"></h1>
-            <iframe width="100%" height="507" src="http://www.youtube.com/embed/oE5kpLreTEU" frameborder="0" allowfullscreen></iframe>
-            <div contenteditable="false" data-ng-model="texts['input-description'][0].text" data-compile="texts['video-description'][0].text"></div>
+<div class="image-white-background">
+    <div class="container">
+        <div class="view">
+            <div class="application-video-view">
+                <iframe width="100%" height="500" src="http://www.youtube.com/embed/Xz5Tx7hNR64" frameborder="0" allowfullscreen></iframe>
+            </div>
+            <div class="application-video-text">
+                <span>input-description</span>
+            </div>
         </div>
     </div>
 </div>
 
+<div class="gray-background">
+    <div class="container">
+        <div class="view">
+            <div class="view-title">
+                <h1>Kontaktinformation</h1>
+            </div>
+            <div class="application-contact-view row">
+                <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+                    <form class="form-inline" role="form">
+                        <input type="text" class="form-control pull-left" style="width: 50%" data-ng-model="employee.firstName" placeholder="Förnamn *" data-tooltip-placement="right" data-tooltip="info" />
+                        <input type="text" class="form-control pull-left" style="width: 50%" data-ng-model="employee.lastName" placeholder="Efternamn *" data-tooltip-placement="right" data-tooltip="info" />
+                        <input type="text" class="form-control" data-ng-model="employee.phoneNumber" placeholder="Telefonnummer *" data-tooltip-placement="right" data-tooltip="info" />
+                        <input type="email" class="form-control" data-ng-model="employee.emailAddress" placeholder="Epost *" data-tooltip-placement="right" data-tooltip="info" />
+                        <input type="text" class="form-control" data-ng-model="employee.fullAddress" placeholder="Sök adress" data-tooltip-placement="right" data-tooltip="info" data-googleplace="" />
+                    </form>
+                </div>
+                <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+                    <span>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="image-white-background">
+    <div class="container">
+        <div class="view">
+            <div class="application-category-view row">
+                <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
+                    <div data-ng-repeat="child in categories.children | orderBy: 'data.name'">
+                        <div class="input-group category-button green-button" data-ng-click="categoryClicked(child, 1)">
+                            <label>
+                                <input type="radio" name="category" data-ng-checked="child.data.checked" data-ng-model="child.data.checked" data-ng-disabled="child.children.length > 0">
+                                <label data-compile="child.data.name"></label>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
+                    <div data-ng-repeat="child in category[1].children | orderBy: 'data.name'">
+                        <div class="input-group category-button green-button" data-ng-click="categoryClicked(child, 2)">
+                            <label>
+                                <input type="checkbox" data-ng-checked="child.data.checked" data-ng-model="child.data.checked" data-ng-disabled="child.children.length > 0">
+                                <label data-compile="child.data.name"></label>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
+                    <div data-ng-repeat="child in category[2].children | orderBy: 'data.name'">
+                        <div class="input-group category-button green-button" data-ng-click="categoryClicked(child, 3)">
+                            <label>
+                                <input type="checkbox" data-ng-checked="child.data.checked" data-ng-model="child.data.checked">
+                                <label data-compile="child.data.name"></label>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="divider">
+            <img src="/Content/IMG/TMP/divider.png" />
+        </div>
+        <div class="view">
+            <div class="application-description-view">
+                <div class="view-title">
+                    <h1>Ge en kort personlig berskrivning</h1>
+                </div>
+                <div class="view-content">
+                    <textarea class="form-control" data-ng-model="employee.description" placeholder="{{ texts['employee-description'][0].text }}"></textarea>
+                </div>
+            </div>
+        </div>
+        <div class="view">
+            <button class="btn btn-lg green-button" data-ng-click="send()">
+                Bli en Adoer
+            </button>
+        </div>
+    </div>
+</div>
+
+
+<!--
 <div class="info image-white-background">
     <div class="container info">
 
@@ -25,8 +114,9 @@
                 <input type="text" class="form-control pull-left" style="width: 50%" data-ng-model="employee.lastName" placeholder="Efternamn *" data-tooltip-placement="top" data-tooltip="{{ texts['input-lastName-description'][0].text }}" />
                 <input type="text" class="form-control" data-ng-model="employee.phoneNumber" placeholder="Telefonnummer *" data-tooltip-placement="top" data-tooltip="{{ texts['input-phoneNumber-description'][0].text }}" />
                 <input type="email" class="form-control" data-ng-model="employee.emailAddress" placeholder="Epost *" data-tooltip-placement="top" data-tooltip="{{ texts['input-emailAddress-description'][0].text }}" />
-            
-                <br /><br />
+
+                <br />
+                <br />
 
                 <div class="input-group">
                     <input class="form-control" type="text" data-ng-model="employee.fullAddress" placeholder="Sök adress" data-tooltip-placement="top" data-tooltip="{{ texts['input-fullAddress-description'][0].text }}" data-googleplace="" />
@@ -39,7 +129,7 @@
                 <input class="form-control pull-left" style="width: 50%" type="text" data-ng-model="employee.address.postalTown" placeholder="Ort" />
                 <input class="form-control" type="text" data-ng-model="employee.address.area" placeholder="Län" />
                 <input class="form-control" type="text" data-ng-model="employee.address.country" placeholder="Land" />
-            
+
             </form>
         </div>
 
@@ -108,4 +198,4 @@
         <div contenteditable="false" data-ng-model="texts['send-description'][0].text" data-compile="texts['send-description'][0].text"></div>
 
     </div>
-</div>
+</div>-->

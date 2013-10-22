@@ -54,10 +54,50 @@ h5  {
 .green-button {
 	background-color: $color-highlight;
 	color: white;
-	@include shadow(0, 2px, 0, 0, darken($color-highlight, 10%)); }
+	@include shadow(2px, 2px, 0, 0, darken($color-highlight, 10%)); }
+
+.green-button:hover,
+.green-button:focus,
+.green-button:active,
+.green-button.active {
+	color: white;
+	background-color: lighten($color-highlight, 10%);
+}
+
+.green-button:active,
+.green-button.active {
+	color: white;
+	background-color: darken($color-highlight, 10%);
+	@include shadow(2px, 2px, 0, 0, darken($color-highlight, 20%));
+}
 
 .view  {
 	margin: 40px 0;
+
+	.application-video-text {
+		margin-top: 20px;
+	}
+
+	.application-category-view {
+		.category-button {
+			cursor: pointer;
+			color: white;
+			padding: 5px;
+			border: 1px solid #008840;
+			width: 100%;
+
+			margin: 10px;
+
+			@include border-radius(5px, 5px, 5px, 5px);
+		}
+	}
+
+	.application-description-view {
+		textarea {
+			height: 200px; 
+			margin-top: 20px;
+		}
+	}
 
 	.book-now-view 
 	{
@@ -136,6 +176,7 @@ h5  {
 			@include border-radius(5px, 5px, 5px, 5px);
 
 			img {
+				width: 100%;
 				height: 100px; }
 
 			h4 {
@@ -171,9 +212,7 @@ h5  {
 	}
 
 	.view-button {
-		margin-top: 20px;
-		
-		@extend .green-button; }
+		margin-top: 20px; }
 
 	.view-image {
 		width: 100%; 

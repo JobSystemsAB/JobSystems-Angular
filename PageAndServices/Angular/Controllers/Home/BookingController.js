@@ -154,7 +154,6 @@
             'value': input.value
           };
         }));
-        console.log($scope.mission);
         return MissionService.postContact($scope.mission).success(function(data, status, headers, config) {
           return AlertService.addAlert('success', 'Uppdrag skapades.');
         }).error(function(data, status, headers, config) {
@@ -260,7 +259,8 @@
         }
       };
       $scope.mission = {
-        description: ''
+        description: '',
+        hours: 0
       };
       $scope.customer = {
         type: 'private'
@@ -293,6 +293,9 @@
           textColor: 'white'
         }
       ];
+      $scope.select = function(categoryNr, categoryObject) {
+        return $scope.category[categoryNr] = categoryObject;
+      };
       return $scope.dibs = function() {
         $scope.dibsInput = {};
         $scope.dibsInput.test = "1";

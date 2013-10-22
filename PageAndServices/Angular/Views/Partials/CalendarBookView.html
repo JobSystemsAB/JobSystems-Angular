@@ -7,10 +7,10 @@
         <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
             <div class="calendar-content">
                 <h1>Antal timmar</h1>
-                <input class="form-control pull-left input-range" type="range" min="0" max="100" data-ng-model="qty.qty" />
-                <input class="form-control pull-left input-range-value" type="text" data-ng-model="qty.qty" disabled />
+                <input class="form-control pull-left input-range" type="range" min="0" max="100" data-ng-model="mission.hours" />
+                <input class="form-control pull-left input-range-value" type="text" data-ng-model="mission.hours" disabled />
                 <div class="clear"></div>
-                <div class="calculation">160 kr/h * {{ qty.qty }} = {{ qty.qty * 160 }} kr total</div>
+                <div class="calculation">{{ category[1].data.salary }} kr/h * {{ mission.hours }} = {{ mission.hours * category[1].data.salary }} kr total</div>
                 <br />
                 <div>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</div>
             </div>

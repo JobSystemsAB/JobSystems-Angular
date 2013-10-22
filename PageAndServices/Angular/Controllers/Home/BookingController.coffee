@@ -7,7 +7,7 @@
 
     $scope.isAdmin = false
     $scope.category = []
-
+    
     $scope.controllerName = 'homebooking' + $stateParams.serviceName
     $scope.currentLang = 'sv'
     
@@ -66,8 +66,6 @@
         $scope.mission.date = $scope.selectedEvent.start
         $scope.mission.extras = angular.toJson _.map $scope.inputs, (input) ->
             return { 'id': input.id, 'value': input.value }
-
-        console.log $scope.mission
 
         MissionService.postContact($scope.mission)
             .success (data, status, headers, config) ->
@@ -177,7 +175,9 @@
     
     # STATIC DATA
     
-    $scope.mission = { description: '' }
+    $scope.mission = 
+        description: ''
+        hours: 0
     $scope.customer = { type: 'private' }
 
     $scope.$watch 'mission.fullAddress', ->
@@ -205,6 +205,11 @@
         textColor: 'white' 
     }]
     
+    # SELECT CATEGORY
+
+    $scope.select = (categoryNr, categoryObject) ->
+        $scope.category[categoryNr] = categoryObject
+
     # GOOGLE ADDRESS STATIC DATA
     
     #$scope.google_address_search = document.getElementById 'google-address-search'
