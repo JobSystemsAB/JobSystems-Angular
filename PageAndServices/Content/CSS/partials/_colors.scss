@@ -6,6 +6,10 @@
 	color: $color-highlight;
 }
 
+.hidden-color {
+	color: gray;
+}
+
 .transparent {
 	opacity: 0.95;
 	filter: alpha(opacity=95);

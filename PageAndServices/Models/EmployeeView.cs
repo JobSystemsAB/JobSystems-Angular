@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using PageAndServices.Helpers;
+using PageAndServices.Repository;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,13 +15,9 @@ namespace PageAndServices.Models
 
         public int id { get; set; }
 
-        public int categoryId { get; set; }
+        public int[] categoryIds { get; set; }
 
-        public int[] subcategoryIds { get; set; }
-
-        public int[] subsubcategoryIds { get; set; }
-
-        public string infoText { get; set; }
+        public string description { get; set; }
 
         public string firstName { get; set; }
 
@@ -62,15 +59,18 @@ namespace PageAndServices.Models
             
             this.created = model.created.ToString().Replace('T', ' ');
             this.updated = model.updated.ToString().Replace('T', ' ');
+            this.categoryIds = model.categories.Select(c => c.id).ToArray();
         }
 
-        public Employee getModel()
+        public Employee getModel(IRepository repo)
         {
             var model = new Employee();
 
             Mapper.CreateMap<EmployeeView, Employee>();
             Mapper.Map<EmployeeView, Employee>(this, model);
-            
+
+            if (this.categoryIds.Length > 0) { model.categories = repo.getCategories(this.categoryIds).ToArray(); }
+
             return model;
         }
 

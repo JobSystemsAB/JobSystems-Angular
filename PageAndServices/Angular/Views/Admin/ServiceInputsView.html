@@ -1,0 +1,61 @@
+﻿<div data-ng-include="" data-src="'Angular/Views/Partials/AlertView.html'"></div>
+
+<div class="admin-box">
+    <h1>Extra Category Inputs</h1>
+
+    <div>
+        <br />
+        <br />
+        <h3>New</h3>
+        <hr />
+
+        <select class="form-control" data-ng-model="newInput.categoryId" data-ng-options="cat.id as cat.name for cat in categories | orderBy: 'name'">
+            <option value="">> Select category</option>
+        </select>
+        <input class="form-control" type="text" data-ng-model="newInput.name" placeholder="name" />
+        <input class="form-control" type="text" data-ng-model="newInput.text" placeholder="text" />
+        <select class="form-control" data-ng-model="newInput.type">
+            <option value="">> Select type</option>
+            <option value="number">Number</option>
+            <option value="text">Text</option>
+            <option value="checkbox">Checkbox</option>
+        </select>
+        <br />
+        <button class="btn btn-success" data-ng-click="create()">Create</button>
+
+    </div>
+
+    <div>
+        <br />
+        <br />
+        <h3>Current</h3>
+        <hr />
+
+        <div data-ng-repeat="category in categories | orderBy: 'order'" class="admin-services-box">
+            <div class="admin-services-name">
+                <h4>{{ category.name }}</h4>
+            </div>
+            <div class="pull-left admin-services-content" data-ng-repeat="input in inputsGrouped[category.id] | orderBy: 'name'">
+
+                <span>Name:</span>
+                <input class="form-control" type="text" data-ng-model="input.name" /><br />
+
+                <span>Text:</span>
+                <input class="form-control" type="text" data-ng-model="input.text" /><br />
+
+                <span>Type:</span>
+                <select class="form-control" data-ng-model="input.type">
+                    <option value="number">Number</option>
+                    <option value="text">Text</option>
+                    <option value="checkbox">Checkbox</option>
+                </select>
+
+                <br />
+                <button class="btn btn-warning pull-right" data-ng-click="update(input)">Update</button>
+                <button class="btn btn-danger pull-right" data-ng-click="delete(input.id)">Delete</button>
+            </div>
+            <div class="clear"></div>
+        </div>
+
+    </div>
+</div>

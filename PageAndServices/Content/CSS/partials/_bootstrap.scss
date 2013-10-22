@@ -5,8 +5,10 @@
 	background-image: none !important;
 }
 
-@media (max-width: 768px) {
-	h5 {
-		font-size: 90% !important;
-	}
+.modal { 
+	display: block; 
+}
+
+.modal-dialog { 
+	width: 70%; 
 }

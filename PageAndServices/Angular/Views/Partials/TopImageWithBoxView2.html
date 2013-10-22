@@ -1,0 +1,19 @@
+﻿<div class="top-box">
+    <div class="header-image shadow visible-sm visible-md visible-lg">
+        <div class="container">
+            <div class="img-rounded top-box-info">
+                <h1 class="ScriptMTBold visible-sm visible-md visible-lg top-box-info-text">60 sekunder att boka<br />
+                    60 minuter att få hjälp
+                </h1>
+                <h5 class="top-box-info-subtext" contenteditable="false" data-ng-model="texts['title-window-text'][0].text" data-compile="texts['title-window-text'][0].text"></h5>
+                <form class="form-inline" role="form">
+                    <input type="text" data-ng-model="input.postalCode" placeholder="Postnummer" class="form-control top-box-input" />
+                    <button class="btn btn-lg highlight-background top-box-button" data-ng-click="goToBooking(input.postalCode)" data-ng-model="texts['title-window-button'][0].text" data-compile="texts['title-window-button'][0].text">
+                    </button>
+                    <div data-ng-show="isAdmin" contenteditable="false" data-ng-model="texts['title-window-button'][0].text" data-compile="texts['title-window-button'][0].text">
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

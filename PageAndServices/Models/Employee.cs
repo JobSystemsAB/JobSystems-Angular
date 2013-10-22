@@ -17,8 +17,8 @@ namespace PageAndServices.Models
 
         public Guid fakeId { get; set; }
 
-        [Column("info_text")]
-        public string infoText { get; set; }
+        [Column("description")]
+        public string description { get; set; }
 
         [Column("first_name")]
         public string firstName { get; set; }

@@ -45,6 +45,13 @@
           data: model
         });
       };
+      this.postContact = function(model) {
+        return $http({
+          url: this.baseUrl + "/postandcontact",
+          method: "POST",
+          data: model
+        });
+      };
       return this.put = function(model) {
         return $http({
           url: this.baseUrl,

@@ -2,6 +2,7 @@
 using PageAndServices.Repository;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity.Infrastructure;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
@@ -61,7 +62,7 @@ namespace PageAndServices.Controllers
         [ActionName("DefaultAction")]
         public HttpResponseMessage Post(CategoryInputView view)
         {
-            var model = view.getModel();
+            var model = view.getModel(repo);
             model = repo.createCategoryInput(model);
             view = new CategoryInputView(model);
 
@@ -73,11 +74,34 @@ namespace PageAndServices.Controllers
 
         [HttpPut]
         [ActionName("DefaultAction")]
-        public void Put(int id, CategoryInputView view)
+        public void Put(CategoryInputView view)
         {
-            view.id = id;
-            var model = view.getModel();
+            var model = view.getModel(repo);
             repo.update(model);
+        }
+
+        [HttpDelete]
+        [ActionName("DefaultAction")]
+        public HttpResponseMessage Delete(int id)
+        {
+            var model = repo.getCategoryInput(id);
+            if (model == null)
+            {
+                return Request.CreateResponse(HttpStatusCode.NotFound);
+            }
+            else
+            {
+                try
+                {
+                    repo.deleteCategoryInput(id);
+                }
+                catch (DbUpdateConcurrencyException ex)
+                {
+                    return Request.CreateErrorResponse(HttpStatusCode.NotFound, ex);
+                }
+
+                return Request.CreateResponse(HttpStatusCode.OK, model);
+            }
         }
     }
 }

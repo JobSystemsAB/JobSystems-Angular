@@ -1,0 +1,76 @@
+﻿<div data-ng-include="" data-src="'Angular/Views/Partials/AlertView.html'"></div>
+
+<div class="admin-box">
+    <h1>Texts</h1>
+
+    <div data-ng-grid="gridOptions" class="admin-grid"></div>
+</div>
+
+<script type="text/ng-template" id="myModalContent.html">
+<div class="modal-dialog">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h3>{{ selected.controllerName }}</h3>
+        </div>
+        <div class="modal-body">
+            <form class="form-horizontal" role="form">
+                <div class="form-group">
+                    <span for="id" class="col-lg-2 control-label">Id:</span>
+                    <div class="col-lg-10">
+                        <input class="form-control" id="id" data-ng-model="selected.id" disabled />
+                    </div>
+                </div>
+                <div class="form-group">
+                    <span for="controllerName" class="col-lg-2 control-label">Controller:</span>
+                    <div class="col-lg-10">
+                        <textarea class="form-control admin-textarea" id="controllerName" data-ng-model="selected.controllerName"></textarea>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <span for="elementId" class="col-lg-2 control-label">Element:</span>
+                    <div class="col-lg-10">
+                        <input type="text" class="form-control" id="elementId" data-ng-model="selected.elementId" />
+                    </div>
+                </div>
+                <div class="form-group">
+                    <span for="language" class="col-lg-2 control-label">Language:</span>
+                    <div class="col-lg-10">
+                        <input type="text" class="form-control" id="language" data-ng-model="selected.language" />
+                    </div>
+                </div>
+                <div class="form-group">
+                    <span for="textEdit" class="col-lg-2 control-label">Text:</span>
+                    <div class="col-lg-10">
+                        <textarea id="textEdit" class="form-control" data-ui-tinymce="tinymceOptions" data-ng-model="selected.text" style="height: 300px;"></textarea>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <span for="textPreview" class="col-lg-2 control-label">Text:</span>
+                    <div class="col-lg-10">
+                        <div id="textPreview" class="form-control" data-compile="selected.text" style="height: 300px; overflow: scroll; background-color: lightgray" disabled></div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <span for="created" class="col-lg-2 control-label">Created:</span>
+                    <div class="col-lg-10">
+                        <input type="text" id="created" data-ng-model="selected.created" />
+                    </div>
+                </div>
+                <div class="form-group">
+                    <span for="enabled" class="col-lg-2 control-label">Enabled:</span>
+                    <div class="col-lg-10">
+                        <input type="checkbox" id="enabled" data-ng-model="selected.enabled" />
+                    </div>
+                </div>
+            </form>
+        </div>
+        <div class="modal-footer">
+            <button class="btn btn-danger pull-left" data-ng-click="deleteModal()">Delete</button>
+            <button class="btn btn-warning pull-right" data-ng-click="closeModal()">Cancel</button>
+            <button class="btn btn-success pull-right" data-ng-click="saveModal()">Save</button>
+        </div>
+    </div>
+</div>
+</script>
+
+

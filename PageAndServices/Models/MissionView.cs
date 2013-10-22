@@ -51,6 +51,7 @@ namespace PageAndServices.Models
             this.created = model.created.ToString().Replace('T', ' ');
             this.updated = model.updated.ToString().Replace('T', ' ');
             this.date = model.date == null ? String.Empty : model.date.ToString();
+            this.categoryIds = model.categories.Select(c => c.id).ToArray();
         }
 
         public Mission getModel(IRepository repo)

@@ -1,0 +1,35 @@
+﻿<!-- FooterView.html -->
+
+<div class="highlight-background">
+    <div class="footer-border">
+    </div>
+</div>
+
+<div class="image-gray-background" style="color: gray;">
+    <div class="container">
+        <div class="row footer-bottom">
+            <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+                <h3>Kontakta oss</h3>
+                <address>
+                    <strong>Jobsystems AB</strong><br />
+                    Danderydsgatan 28<br />
+                    12313 Stockholm<br /><br />
+                    <i class="glyphicon glyphicon-phone-alt" style="margin-right: 10px"></i> 070 - 03 03 003 <br />
+                    <i class="glyphicon glyphicon-envelope" style="margin-right: 10px"></i> info@jobsystems.se
+                </address>
+            </div>
+            <div class="col-xs-8 col-sm-8 col-md-8 col-lg-8">
+                <h3>Tjänster</h3>
+                <div class="row">
+                    <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6" data-ng-repeat="category in categories | orderBy: 'order'">
+                        <span class="cursor-pointer" data-ng-click="goToService(category.id, category.url)">{{ category.name }}</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="container ScriptMTBold footer-copyright">
+            <span>&copy; Copyright Adoer 2013</span>
+        </div>
+    </div>
+</div>

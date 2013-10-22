@@ -10,7 +10,5 @@
 
             google.maps.event.addListener scope.gPlace, 'place_changed', ->
                 scope.$apply ->
-                    console.log element.val()
-                    console.log element
                     model.$setViewValue scope.gPlace.getPlace()            
      }

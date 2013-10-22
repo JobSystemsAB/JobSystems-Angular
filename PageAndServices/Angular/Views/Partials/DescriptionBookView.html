@@ -1,0 +1,23 @@
+﻿<div class="view">
+    <div class="description-view row">
+        <textarea class="form-control description-box" placeholder="Skriv en beskrivning här" data-ng-model="mission.description"></textarea>
+        <br />
+
+        <div class="row">
+            <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+                <div data-ng-switch="input.type" data-ng-repeat="input in inputs">
+                    <label data-ng-switch-when="radio">
+                        <input type="radio" data-ng-model="input.value" />
+                        {{ input.text }}
+                    </label>
+                    <label data-ng-switch-when="checkbox">
+                        <input type="checkbox" data-ng-model="input.value" />
+                        {{ input.text }}
+                    </label>
+                    <label>{{ input.text }}:</label>
+                    <input type="text" class="form-control" placeholder="{{ input.text }}" data-ng-switch-default="" data-ng-model="input.value" />
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,4 +1,5 @@
-﻿using PageAndServices.Models;
+﻿using PageAndServices.Helpers;
+using PageAndServices.Models;
 using PageAndServices.Repository;
 using System;
 using System.Collections.Generic;
@@ -38,6 +39,13 @@ namespace PageAndServices.Controllers
             var models = repo.getAllEmployees();
             var views = EmployeeView.getViews(models);
             return views;
+        }
+
+        [HttpGet]
+        [CacheOutput(ClientTimeSpan = 0, ServerTimeSpan = 0)]
+        public IEnumerable<Position> GetPositions()
+        {
+            return repo.getAllEmployees().Select(e => new Position() { latitude = e.address.latitude, longitude = e.address.longitude });
         }
 
         [HttpGet]
@@ -119,7 +127,7 @@ namespace PageAndServices.Controllers
         [ActionName("DefaultAction")]
         public HttpResponseMessage Post(EmployeeView view)
         {
-            var model = view.getModel();
+            var model = view.getModel(repo);
             model.created = DateTime.UtcNow;
             model.updated = DateTime.UtcNow;
             model.fakeId = Guid.NewGuid();
@@ -162,7 +170,7 @@ namespace PageAndServices.Controllers
         public void Put(int id, EmployeeView view)
         {
             view.id = id;
-            var model = view.getModel();
+            var model = view.getModel(repo);
             model.updated = DateTime.UtcNow;
             repo.update(model);
         }

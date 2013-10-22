@@ -23,11 +23,12 @@ namespace PageAndServices
             libs.Include("~/Scripts/Angular/angular-google-maps.js");
             libs.Include("~/Scripts/Angular/angular-resource.js");
 
-            libs.Include("~/Scripts/Angular-UI/ui-bootstrap-tpls-0.5.0.min.js");
+            libs.Include("~/Scripts/Angular-UI/ui-bootstrap-tpls-0.6.0.js");
             libs.Include("~/Scripts/Angular-UI/angular-ui-router.js");
             libs.Include("~/Scripts/Angular-UI/calendar.js");
             libs.Include("~/Scripts/Angular-UI/date.js");
             libs.Include("~/Scripts/Angular-UI/tinymce.js");
+            libs.Include("~/Scripts/Angular-UI/ng-grid-2.0.7.min.js");
 
             libs.Include("~/Scripts/Bootstrap/bootstrap.min.js");
             libs.Include("~/Scripts/Bootstrap/collapse.js");
@@ -54,6 +55,7 @@ namespace PageAndServices
             app.Include("~/Angular/Services/AlertService.js");
             app.Include("~/Angular/Services/Base64Service.js");
             app.Include("~/Angular/Services/CategoryService.js");
+            app.Include("~/Angular/Services/CategoryInputService.js");
             app.Include("~/Angular/Services/CompanyCustomerService.js");
             app.Include("~/Angular/Services/CustomerService.js");
             app.Include("~/Angular/Services/EmployeeService.js");
@@ -63,18 +65,21 @@ namespace PageAndServices
             app.Include("~/Angular/Services/TestimonialService.js");
             app.Include("~/Angular/Services/TextMessageService.js");
             app.Include("~/Angular/Services/TextService.js");
+            app.Include("~/Angular/Services/ValidationService.js");
             app.Include("~/Angular/Services/WorkShiftService.js");
 
-            app.Include("~/Angular/Controllers/AdminServicesController.js");
-            app.Include("~/Angular/Controllers/AdminTestimonialsController.js");
-            app.Include("~/Angular/Controllers/AdminTextsController.js");
-            app.Include("~/Angular/Controllers/AlertController.js");
-            app.Include("~/Angular/Controllers/FooterController.js");
-            app.Include("~/Angular/Controllers/HomeAdminLoginController.js");
-            app.Include("~/Angular/Controllers/HomeApplicationController.js");
-            app.Include("~/Angular/Controllers/HomeBookingController.js");
-            app.Include("~/Angular/Controllers/HomeIndexBodyController.js");
-            app.Include("~/Angular/Controllers/HomeLandingController.js");
+            app.Include("~/Angular/Controllers/Admin/ServicesController.js");
+            app.Include("~/Angular/Controllers/Admin/EmployeesController.js");
+            app.Include("~/Angular/Controllers/Admin/TestimonialsController.js");
+            app.Include("~/Angular/Controllers/Admin/TextsController.js");
+            app.Include("~/Angular/Controllers/Admin/LoginController.js");
+            app.Include("~/Angular/Controllers/Admin/ServiceInputsController.js");
+            app.Include("~/Angular/Controllers/Partials/AlertController.js");
+            app.Include("~/Angular/Controllers/Partials/FooterController.js");
+            app.Include("~/Angular/Controllers/Home/ApplicationController.js");
+            app.Include("~/Angular/Controllers/Home/BookingController.js");
+            app.Include("~/Angular/Controllers/Home/IndexBodyController.js");
+            app.Include("~/Angular/Controllers/Home/LandingController.js");
 
             bundles.Add(app);
 
@@ -86,7 +91,10 @@ namespace PageAndServices
             styles.Include("~/Content/CSS/bootstrap.css");
             styles.Include("~/Content/CSS/bootstrap-theme.css");
             styles.Include("~/Content/CSS/fullcalendar.css");
-            styles.Include("~/Content/CSS/jobsystems.css");
+            styles.Include("~/Content/CSS/ng-grid.css");
+
+            styles.Include("~/Content/CSS/theme1.css");
+            //styles.Include("~/Content/CSS/theme2.css");
 
             bundles.Add(styles);
 

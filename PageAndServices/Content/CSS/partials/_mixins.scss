@@ -1,0 +1,32 @@
+@mixin border-radius($top-left, $top-right, $bottom-right, $bottom-left) 
+{
+  -webkit-border-radius: $top-left $top-right $bottom-right $bottom-left; /* Safari and Chrome */
+     -moz-border-radius: $top-left $top-right $bottom-right $bottom-left; /* Firefox */
+      -ms-border-radius: $top-left $top-right $bottom-right $bottom-left; /* Internet Explorer */
+       -o-border-radius: $top-left $top-right $bottom-right $bottom-left; /* Opera */
+          border-radius: $top-left $top-right $bottom-right $bottom-left; /* CSS3 */
+}
+
+@mixin shadow($h-shadow, $v-shadow, $blur, $spread, $color)
+{
+	-webkit-box-shadow: $h-shadow $v-shadow $blur $spread $color; /* Safari and Chrome */
+	   -moz-box-shadow: $h-shadow $v-shadow $blur $spread $color; /* Firefox */
+	    -ms-box-shadow: $h-shadow $v-shadow $blur $spread $color; /* Internet Explorer */
+	     -o-box-shadow: $h-shadow $v-shadow $blur $spread $color; /* Opera */
+	        box-shadow: $h-shadow $v-shadow $blur $spread $color; /* CSS3 */
+}
+
+@mixin background-size($size)
+{
+	-webkit-background-size: $size; /* Safari and Chrome */
+       -moz-background-size: $size; /* Firefox */
+	    -ms-background-size: $size; /* Internet Explorer */
+         -o-background-size: $size; /* Opera */
+            background-size: $size; /* CSS3 */
+}
+
+@mixin rgba($r, $g, $b, $a)
+{
+	background:  rgb($r, $g, $b);     /* The Fallback */
+	background: rgba($r, $g, $b, $a); 
+}

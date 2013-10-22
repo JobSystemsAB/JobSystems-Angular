@@ -1,0 +1,27 @@
+﻿<!-- FooterView.html -->
+
+<div class="footer">
+    <div class="footer-top">
+        <div class="container">
+            <ul>
+                <li data-ng-repeat="category in categories | orderBy: 'order'">
+                    <span data-ng-click="goToService(category.id, category.url)">{{ category.name }}</span>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div class="footer-middle">
+        <div class="container">
+            <address>
+                Danderydsgatan 28, 123 13 Stockholm<br />
+                info@jobsystems.se<br />
+                070 - 03 03 003
+            </address>
+        </div>
+    </div>
+    <div class="footer-bottom">
+        <div class="container">
+            <span>&copy; Copyright Adoer 2013</span>
+        </div>
+    </div>
+</div>

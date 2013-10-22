@@ -1,0 +1,122 @@
+﻿<div data-ng-include="" data-src="'Angular/Views/Partials/AlertView.html'"></div>
+
+<div class="admin-box">
+    <h1>Employees</h1>
+
+    <div data-ng-grid="gridOptions" class="admin-grid"></div>
+</div>
+
+<script type="text/ng-template" id="myModalContent.html">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>{{ selected.firstName + ' ' + selected.lastName }}</h3>
+            </div>
+            <div class="modal-body">
+                <form class="form-horizontal" role="form">
+                    <div class="form-group">
+                        <span for="firstName" class="col-lg-2 control-label">First name:</span>
+                        <div class="col-lg-10">
+                            <input type="text" class="form-control" id="firstName" data-ng-model="selected.firstName">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <span for="lastName" class="col-lg-2 control-label">Last name:</span>
+                        <div class="col-lg-10">
+                            <input type="text" class="form-control" id="lastName" data-ng-model="selected.lastName">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <span for="description" class="col-lg-2 control-label">Description:</span>
+                        <div class="col-lg-10">
+                            <input type="text" class="form-control" id="description" data-ng-model="selected.description">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <span for="emailAddress" class="col-lg-2 control-label">Email address:</span>
+                        <div class="col-lg-10">
+                            <input type="text" class="form-control" id="emailAddress" data-ng-model="selected.emailAddress">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <span for="phoneNumber" class="col-lg-2 control-label">Phone number:</span>
+                        <div class="col-lg-10">
+                            <input type="text" class="form-control" id="phoneNumber" data-ng-model="selected.phoneNumber">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <span for="personalNumber" class="col-lg-2 control-label">Personal number:</span>
+                        <div class="col-lg-10">
+                            <input type="text" class="form-control" id="personalNumber" data-ng-model="selected.personalNumber">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <span for="bankName" class="col-lg-2 control-label">Bank name:</span>
+                        <div class="col-lg-10">
+                            <input type="text" class="form-control" id="bankName" data-ng-model="selected.bankName">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <span for="bankClearingNumber" class="col-lg-2 control-label">Bank clearingnumber:</span>
+                        <div class="col-lg-10">
+                            <input type="text" class="form-control" id="bankClearingNumber" data-ng-model="selected.bankClearingNumber">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <span for="address.street" class="col-lg-2 control-label">Street:</span>
+                        <div class="col-lg-10">
+                            <input type="text" class="form-control" id="address.street" data-ng-model="selected.address.street">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <span for="address.streetNumber" class="col-lg-2 control-label">Street number:</span>
+                        <div class="col-lg-10">
+                            <input type="text" class="form-control" id="streetNumber" data-ng-model="selected.address.streetNumber">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <span for="address.postalCode" class="col-lg-2 control-label">Postal code:</span>
+                        <div class="col-lg-10">
+                            <input type="text" class="form-control" id="postalCode" data-ng-model="selected.address.postalCode">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <span for="address.postalTown" class="col-lg-2 control-label">Postal town:</span>
+                        <div class="col-lg-10">
+                            <input type="text" class="form-control" id="postalTown" data-ng-model="selected.address.postalTown">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <span for="address.country" class="col-lg-2 control-label">Country:</span>
+                        <div class="col-lg-10">
+                            <input type="text" class="form-control" id="country" data-ng-model="selected.address.country">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <span for="address.longitude" class="col-lg-2 control-label">Longitude:</span>
+                        <div class="col-lg-10">
+                            <input type="text" class="form-control" id="longitude" data-ng-model="selected.address.longitude">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <span for="address.latitude" class="col-lg-2 control-label">Latitude:</span>
+                        <div class="col-lg-10">
+                            <input type="text" class="form-control" id="latitude" data-ng-model="selected.address.latitude">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <span for="enabled" class="col-lg-2 control-label">Enabled:</span>
+                        <div class="col-lg-10">
+                            <input type="checkbox" id="enabled" data-ng-model="selected.enabled">
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-danger pull-left" data-ng-click="deleteModal()">Delete</button>
+                <button class="btn btn-warning pull-right" data-ng-click="closeModal()">Cancel</button>
+                <button class="btn btn-success pull-right" data-ng-click="saveModal()">Save</button>
+            </div>
+        </div>
+    </div> 
+</script>

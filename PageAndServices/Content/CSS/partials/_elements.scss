@@ -3,45 +3,18 @@ body{
 	font-size: 16px !important;
 }
 
-h1 {
-	font-size: 40px !important;
-}
-
-h5 {
-	font-size: 21px !important;
-}
-
 h1,
 h2,
 h3,
 h4,
 h5 {
-	
 	color: $color-highlight;
-	
-	a {	
-		color: inherit; 
-		::hover { color: inherit; }
-	}
+	font-family: $font-header;
 
 	margin: 0;
 	padding: 0;
 }
 
-h1 {
-	font-family: "Candara";
-}
-
 a {
 	text-decoration: none;
-}
-
-input,
-img {
-	max-width: 100%;
-}
-
-hr {
-	margin: 0;
-	margin-bottom: $space-big;
 }

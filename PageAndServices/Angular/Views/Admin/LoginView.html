@@ -1,0 +1,13 @@
+﻿<!-- HomeAdminLoginView.html -->
+
+<div data-ng-include="" data-src="'Angular/Views/Partials/AlertView.html'"></div>
+
+<div data-ng-controller="HomeAdminLoginController">
+    <div class="jumbotron shadow admin-login-box">
+        <img class="admin-login-image" src="/Content/IMG/Logo/adoer.png" />
+        <h5>Admin login</h5>
+        <input type="email" placeholder="Epost" class="form-control" data-ng-model="admin.email" />
+        <input type="password" placeholder="Password" class="form-control" data-ng-model="admin.password" />
+        <input type="button" class="btn highlight-background pull-right admin-login-button" value="Logga in" data-ng-click="tryLogin()" />
+    </div>
+</div>

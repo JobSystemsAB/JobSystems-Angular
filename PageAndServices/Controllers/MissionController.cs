@@ -1,4 +1,5 @@
-﻿using PageAndServices.Models;
+﻿using PageAndServices.Helpers;
+using PageAndServices.Models;
 using PageAndServices.Repository;
 using System;
 using System.Collections.Generic;
@@ -112,7 +113,7 @@ namespace PageAndServices.Controllers
         }
 
         [HttpGet]
-        [CacheOutput(ClientTimeSpan = 0, ServerTimeSpan = 0)]        
+        [CacheOutput(ClientTimeSpan = 0, ServerTimeSpan = 0)]
         public HttpResponseMessage Employee(int id)
         {
             var model = repo.getMission(id);
@@ -163,11 +164,72 @@ namespace PageAndServices.Controllers
             return response;
         }
 
-        public class connectCategoriesInput 
+        [HttpPost]
+        public HttpResponseMessage PostAndContact(MissionView view)
+        {
+            var response = this.Post(view);
+
+            if (response.StatusCode != HttpStatusCode.OK)
+            {
+                return response;
+            }
+
+            var employees = repo.getAllEmployees()
+                .Where(e => e.enabled == true)
+                .Where(e => view.categoryIds.All(c => e.categories.Select(c2 => c2.id).Contains(c)));
+
+            var models = new List<TextMessageView>();
+            foreach (var employee in employees)
+            {
+                var messageView = new TextMessageView()
+                {
+                    from = "Jobsystems",
+                    message = "Hej " + employee.firstName + "!" +
+                              "\r\nVi har ett nytt uppdrag till dig:" +
+                              "\r\n" +
+                              "\r\nDatum: " + view.date.Split('T')[0] +
+                              "\r\nTid: " + view.date.Split('T')[1].Substring(0, 5) +
+                              "\r\nPlats: " + view.address.street + ", " + view.address.postalCode + " " + view.address.postalTown +
+                              "\r\n" +
+                              "\r\nLåter detta intressant?",
+                    to = employee.phoneNumber,
+                };
+
+                var elkResponse = ElkTextMessage.send(messageView);
+
+                var model = messageView.getModel();
+                model.created = DateTime.UtcNow;
+
+                if (elkResponse.StatusCode == HttpStatusCode.OK)
+                {
+                    var body = elkResponse.DynamicBody;
+
+                    model.apiId = body.id;
+                    model.error = false;
+
+                    model = repo.createTextMessage(model);
+                }
+                else
+                {
+                    var message = elkResponse.RawText.Replace("\"", String.Empty);
+
+                    model.error = true;
+                    model.errorMessage = message;
+                    model = repo.createTextMessage(model);
+                }
+
+                models.Add(new TextMessageView(model));
+
+            }
+
+            return response;
+        }
+
+        public class connectCategoriesInput
         {
             public int missionId { get; set; }
             public int[] categoryIds { get; set; }
-            public connectCategoriesInput () {}
+            public connectCategoriesInput() { }
         }
 
         [HttpPost]

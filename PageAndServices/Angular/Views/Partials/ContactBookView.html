@@ -1,0 +1,47 @@
+﻿<div class="view">
+    <div class="contact-view row">
+        <div class="view-title">
+            <h1>kontakt info</h1>
+        </div>
+        <div class="view-content">
+            <div class="btn-group">
+                <button type="button" class="btn btn-default" data-ng-class="{'btn-success': isCompanyCustomer()}" data-ng-model="customer.type" data-btn-radio="'company'">Företag</button>
+                <button type="button" class="btn btn-default" data-ng-class="{'btn-success': !isCompanyCustomer()}" data-ng-model="customer.type" data-btn-radio="'private'">Privat</button>
+            </div>
+            <br />
+            <br />
+
+            <div class="row">
+                <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+                    <form class="form-inline" role="form">
+
+                        <div data-ng-show="isCompanyCustomer()">
+                            <input class="form-control" type="text" data-ng-model="customer.organisationNumber" placeholder="Organisationsnummer *" tooltip-placement="right" tooltip="info" />
+                            <input class="form-control" type="text" data-ng-model="customer.companyName" placeholder="Företagsnamn *" tooltip-placement="right" tooltip="info" />
+                        </div>
+
+                        <div data-ng-show="!isCompanyCustomer()">
+                            <input class="form-control pull-left" type="text" data-ng-model="customer.firstName" placeholder="Förnamn *" tooltip-placement="right" tooltip="info" />
+                            <input class="form-control pull-left" type="text" data-ng-model="customer.lastName" placeholder="Efternamn *" tooltip-placement="right" tooltip="info" />
+                            <input class="form-control" type="text" data-ng-model="customer.personalNumber" placeholder="Personnummer *" tooltip-placement="right" tooltip="info" />
+                            <input class="form-control" type="text" data-ng-model="customer.propertyName" placeholder="Fastighetsbeteckning *" tooltip-placement="right" tooltip="info" />
+                        </div>
+
+                        <input class="form-control" type="email" data-ng-model="customer.emailAddress" placeholder="Epost *" tooltip-placement="right" tooltip="info" />
+                        <input class="form-control" type="tel" data-ng-model="customer.phoneNumber" placeholder="Mobilnummer *" tooltip-placement="right" tooltip="info" />
+                        <input class="form-control" type="text" data-ng-model="mission.fullAddress" placeholder="Sök adress" tooltip-placement="right" tooltip="info" />
+
+                    </form>
+                </div>
+                <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+                    <span>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.
+                    </span>
+                </div>
+            </div>
+
+            <button class="btn btn-lg green-button order-button" data-ng-click="order()">
+                Beställ
+            </button>
+        </div>
+    </div>
+</div>

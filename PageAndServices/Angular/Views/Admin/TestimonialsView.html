@@ -1,0 +1,30 @@
+﻿<div class="admin-box">
+
+    <h1>Testimonial</h1>
+    <hr />
+
+    <div class="row">
+
+        <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3" data-ng-repeat="testimonial in testimonials" style="padding: 20px">
+
+            <textarea class="form-control admin-textarea" data-ng-model="testimonial.text"></textarea>
+            <input class="form-control" type="text" data-ng-model="testimonial.name" />
+            <br />
+            <button class="btn btn-danger pull-right" data-ng-click="delete(testimonial)">Delete</button>
+            <button class="btn btn-success  pull-right" data-ng-click="update(testimonial)">Save</button>
+
+        </div>
+
+        <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3" style="padding: 20px; background-color: lightgray;">
+
+            <textarea class="form-control admin-textarea" data-ng-model="newTestimonial.text" placeholder="Text"></textarea>
+            <input class="form-control" type="text" data-ng-model="newTestimonial.name" placeholder="Name" />
+            <input hidden="hidden" type="text" value="sv" data-ng-model="newTestimonial.language" />
+            <input hidden="hidden" type="text" value="true" data-ng-model="newTestimonial.enabled" />
+            <br />
+            <button class="btn btn-success pull-right" data-ng-click="save(newTestimonial)">Create</button>
+
+        </div>
+
+    </div>
+</div>

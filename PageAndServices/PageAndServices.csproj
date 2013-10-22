@@ -20,6 +20,7 @@
     <IISExpressAnonymousAuthentication />
     <IISExpressWindowsAuthentication />
     <IISExpressUseClassicPipelineMode />
+    <IsCompassProject>True</IsCompassProject>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -205,10 +206,13 @@
     </Compile>
     <Compile Include="Helpers\Address.cs" />
     <Compile Include="Helpers\BlobStorage.cs" />
+    <Compile Include="Helpers\ElkTextMessage.cs" />
     <Compile Include="Helpers\EntityFrameworkContext.cs" />
     <Compile Include="Helpers\GoogleMail.cs" />
     <Compile Include="Helpers\IEntity.cs" />
+    <Compile Include="Helpers\ITextMessage.cs" />
     <Compile Include="Helpers\Node.cs" />
+    <Compile Include="Helpers\Position.cs" />
     <Compile Include="Migrations\201310031510011_first.cs" />
     <Compile Include="Migrations\201310031510011_first.Designer.cs">
       <DependentUpon>201310031510011_first.cs</DependentUpon>
@@ -220,6 +224,10 @@
     <Compile Include="Migrations\201310072035180_category url.cs" />
     <Compile Include="Migrations\201310072035180_category url.Designer.cs">
       <DependentUpon>201310072035180_category url.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201310111058148_employee description.cs" />
+    <Compile Include="Migrations\201310111058148_employee description.Designer.cs">
+      <DependentUpon>201310111058148_employee description.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Administrator.cs" />
@@ -257,35 +265,41 @@
     <Content Include="Angular\Apps\HomeApp.js">
       <DependentUpon>HomeApp.coffee</DependentUpon>
     </Content>
-    <Content Include="Angular\Controllers\AdminServicesController.js">
-      <DependentUpon>AdminServicesController.coffee</DependentUpon>
+    <Content Include="Angular\Controllers\Admin\EmployeesController.js">
+      <DependentUpon>EmployeesController.coffee</DependentUpon>
     </Content>
-    <Content Include="Angular\Controllers\AdminTestimonialsController.js">
-      <DependentUpon>AdminTestimonialsController.coffee</DependentUpon>
+    <Content Include="Angular\Controllers\Admin\LoginController.js">
+      <DependentUpon>LoginController.coffee</DependentUpon>
     </Content>
-    <Content Include="Angular\Controllers\AdminTextsController.js">
-      <DependentUpon>AdminTextsController.coffee</DependentUpon>
+    <Content Include="Angular\Controllers\Admin\ServiceInputsController.js">
+      <DependentUpon>ServiceInputsController.coffee</DependentUpon>
     </Content>
-    <Content Include="Angular\Controllers\AlertController.js">
+    <Content Include="Angular\Controllers\Admin\ServicesController.js">
+      <DependentUpon>ServicesController.coffee</DependentUpon>
+    </Content>
+    <Content Include="Angular\Controllers\Admin\TestimonialsController.js">
+      <DependentUpon>TestimonialsController.coffee</DependentUpon>
+    </Content>
+    <Content Include="Angular\Controllers\Admin\TextsController.js">
+      <DependentUpon>TextsController.coffee</DependentUpon>
+    </Content>
+    <Content Include="Angular\Controllers\Partials\AlertController.js">
       <DependentUpon>AlertController.coffee</DependentUpon>
     </Content>
-    <Content Include="Angular\Controllers\FooterController.js">
+    <Content Include="Angular\Controllers\Partials\FooterController.js">
       <DependentUpon>FooterController.coffee</DependentUpon>
     </Content>
-    <Content Include="Angular\Controllers\HomeAdminLoginController.js">
-      <DependentUpon>HomeAdminLoginController.coffee</DependentUpon>
+    <Content Include="Angular\Controllers\Home\ApplicationController.js">
+      <DependentUpon>ApplicationController.coffee</DependentUpon>
     </Content>
-    <Content Include="Angular\Controllers\HomeApplicationController.js">
-      <DependentUpon>HomeApplicationController.coffee</DependentUpon>
+    <Content Include="Angular\Controllers\Home\BookingController.js">
+      <DependentUpon>BookingController.coffee</DependentUpon>
     </Content>
-    <Content Include="Angular\Controllers\HomeBookingController.js">
-      <DependentUpon>HomeBookingController.coffee</DependentUpon>
+    <Content Include="Angular\Controllers\Home\IndexBodyController.js">
+      <DependentUpon>IndexBodyController.coffee</DependentUpon>
     </Content>
-    <Content Include="Angular\Controllers\HomeIndexBodyController.js">
-      <DependentUpon>HomeIndexBodyController.coffee</DependentUpon>
-    </Content>
-    <Content Include="Angular\Controllers\HomeLandingController.js">
-      <DependentUpon>HomeLandingController.coffee</DependentUpon>
+    <Content Include="Angular\Controllers\Home\LandingController.js">
+      <DependentUpon>LandingController.coffee</DependentUpon>
     </Content>
     <Content Include="Angular\Directives\CompileDirective.js">
       <DependentUpon>CompileDirective.coffee</DependentUpon>
@@ -310,6 +324,9 @@
     </Content>
     <Content Include="Angular\Services\Base64.js">
       <DependentUpon>Base64Service.coffee</DependentUpon>
+    </Content>
+    <Content Include="Angular\Services\CategoryInputService.js">
+      <DependentUpon>CategoryInputService.coffee</DependentUpon>
     </Content>
     <Content Include="Angular\Services\CategoryService.js">
       <DependentUpon>CategoryService.coffee</DependentUpon>
@@ -341,36 +358,67 @@
     <Content Include="Angular\Services\TextService.js">
       <DependentUpon>TextService.coffee</DependentUpon>
     </Content>
+    <Content Include="Angular\Services\ValidationService.js">
+      <DependentUpon>ValidationService.coffee</DependentUpon>
+    </Content>
     <Content Include="Angular\Services\WorkShiftService.js">
       <DependentUpon>WorkShiftService.coffee</DependentUpon>
     </Content>
-    <Content Include="Angular\Views\AdminServicesView.html" />
-    <Content Include="Angular\Views\AdminTestimonialsView.html" />
-    <Content Include="Angular\Views\AdminTextsView.html" />
-    <Content Include="Angular\Views\AlertView.html" />
-    <Content Include="Angular\Views\FooterView.html" />
-    <Content Include="Angular\Views\HomeAdminLoginView.html" />
-    <Content Include="Angular\Views\HomeApplicationView.html" />
-    <Content Include="Angular\Views\HomeBookingView.html" />
-    <Content Include="Angular\Views\HomeIndexBodyView.html" />
-    <Content Include="Angular\Views\HomeLandingView.html" />
-    <Content Include="Angular\Views\MenuView.html" />
+    <Content Include="Angular\Views\Admin\EmployeesView.html" />
+    <Content Include="Angular\Views\Admin\IndexView.html" />
+    <Content Include="Angular\Views\Admin\ServiceInputsView.html" />
+    <Content Include="Angular\Views\Admin\ServicesView.html" />
+    <Content Include="Angular\Views\Admin\TestimonialsView2.html" />
+    <Content Include="Angular\Views\Admin\TestimonialsView.html" />
+    <Content Include="Angular\Views\Admin\TextsView.html" />
+    <Content Include="Angular\Views\Admin\TextsView2.html" />
+    <Content Include="Angular\Views\Partials\CalendarBookView.html" />
+    <Content Include="Angular\Views\Partials\CategoryBookView.html" />
+    <Content Include="Angular\Views\Partials\ContactBookView.html" />
+    <Content Include="Angular\Views\Partials\DescriptionBookView.html" />
+    <Content Include="Angular\Views\Partials\FooterView2.html" />
+    <Content Include="Angular\Views\Partials\MenuView2.html" />
+    <Content Include="Angular\Views\Partials\FooterView.html" />
+    <Content Include="Angular\Views\Admin\LoginView.html" />
+    <Content Include="Angular\Views\Home\ApplicationView.html" />
+    <Content Include="Angular\Views\Home\BookingView.html" />
+    <Content Include="Angular\Views\Home\IndexView.html" />
+    <Content Include="Angular\Views\Home\LandingView.html" />
+    <Content Include="Angular\Views\Partials\MenuView.html" />
+    <Content Include="Angular\Views\Partials\AboutView.html" />
+    <Content Include="Angular\Views\Partials\AdminSaveView.html" />
+    <Content Include="Angular\Views\Partials\AlertView.html" />
+    <Content Include="Angular\Views\Partials\BookNowView.html" />
+    <Content Include="Angular\Views\Partials\CategoriesView.html" />
+    <Content Include="Angular\Views\Partials\TopImageWithBoxView2.html" />
+    <Content Include="Angular\Views\Partials\MapView.html" />
+    <Content Include="Angular\Views\Partials\PriceView.html" />
+    <Content Include="Angular\Views\Partials\TestimonialsView.html" />
+    <Content Include="Angular\Views\Partials\TopImageWithBoxView.html" />
+    <Content Include="Angular\Views\Partials\WhyView.html" />
     <Content Include="Content\CSS\bootstrap-theme.css" />
     <Content Include="Content\CSS\bootstrap.css" />
     <Content Include="Content\CSS\fullcalendar.css" />
     <Content Include="Content\CSS\jobsystems.css">
       <DependentUpon>jobsystems.scss</DependentUpon>
     </Content>
-    <Content Include="Content\CSS\partials\_table.css">
-      <DependentUpon>_table.scss</DependentUpon>
+    <Content Include="Content\CSS\ng-grid.css" />
+    <Content Include="Content\CSS\Theme1.css">
+      <DependentUpon>Theme1.scss</DependentUpon>
+    </Content>
+    <Content Include="Content\CSS\Theme2.css">
+      <DependentUpon>Theme2.scss</DependentUpon>
     </Content>
     <Content Include="Content\Fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Content\IMG\glyphicons-halflings-white.png" />
     <Content Include="Content\IMG\glyphicons-halflings.png" />
+    <Content Include="Content\IMG\Logo\adoer-white.png" />
     <Content Include="Content\IMG\Logo\adoer.png" />
     <Content Include="Content\IMG\TMP\background-gray.png" />
     <Content Include="Content\IMG\TMP\background-white.png" />
+    <Content Include="Content\IMG\TMP\divider.png" />
     <Content Include="Content\IMG\TMP\dn.png" />
+    <Content Include="Content\IMG\TMP\no-image.png" />
     <Content Include="Content\IMG\TMP\person.jpg" />
     <Content Include="Content\IMG\TMP\top.jpg" />
     <Content Include="Content\IMG\TMP\work.jpg" />
@@ -382,11 +430,19 @@
     <Content Include="Content\CSS\partials\_text.scss" />
     <Content Include="Content\CSS\partials\_fonts.scss" />
     <Content Include="Content\CSS\partials\_bootstrap.scss" />
-    <Content Include="Angular\Controllers\AdminServicesController.coffee" />
-    <Content Include="Angular\Controllers\AdminTextsController.coffee" />
+    <Content Include="Angular\Controllers\Admin\ServicesController.coffee" />
+    <Content Include="Angular\Controllers\Admin\TextsController.coffee" />
     <Content Include="Angular\Directives\GooglePlace.coffee" />
-    <Content Include="Angular\Controllers\AdminTestimonialsController.coffee" />
+    <Content Include="Angular\Controllers\Admin\TestimonialsController.coffee" />
+    <Content Include="Angular\Controllers\Admin\ServiceInputsController.coffee" />
+    <Content Include="Angular\Services\CategoryInputService.coffee" />
+    <Content Include="Angular\Services\ValidationService.coffee" />
+    <Content Include="Angular\Controllers\Admin\EmployeesController.coffee" />
+    <Content Include="Content\CSS\Theme1.scss" />
+    <Content Include="Content\CSS\Theme2.scss" />
+    <Content Include="Content\CSS\partials\_mixins.scss" />
     <None Include="Content\CSS\partials\_colors.scss" />
+    <Content Include="Content\Fonts\MyriadPro.ttf" />
     <None Include="Microsoft.WindowsAzure.Caching\ClientPerfCountersInstaller.exe">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
@@ -420,8 +476,9 @@
     <Content Include="Scripts\Angular-UI\angular-ui-router.js" />
     <Content Include="Scripts\Angular-UI\calendar.js" />
     <Content Include="Scripts\Angular-UI\date.js" />
+    <Content Include="Scripts\Angular-UI\ng-grid-2.0.7.min.js" />
     <Content Include="Scripts\Angular-UI\tinymce.js" />
-    <Content Include="Scripts\Angular-UI\ui-bootstrap-tpls-0.5.0.min.js" />
+    <Content Include="Scripts\Angular-UI\ui-bootstrap-tpls-0.6.0.js" />
     <Content Include="Scripts\Angular\angular-google-maps.js" />
     <Content Include="Scripts\Angular\angular-resource.js" />
     <Content Include="Scripts\Angular\angular.min.js" />
@@ -617,25 +674,25 @@
     <Content Include="Angular\Services\WorkShiftService.coffee" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Angular\Controllers\HomeLandingController.coffee" />
+    <Content Include="Angular\Controllers\Home\LandingController.coffee" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Angular\Controllers\HomeIndexBodyController.coffee" />
+    <Content Include="Angular\Controllers\Home\IndexBodyController.coffee" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Angular\Controllers\HomeBookingController.coffee" />
+    <Content Include="Angular\Controllers\Home\BookingController.coffee" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Angular\Controllers\HomeApplicationController.coffee" />
+    <Content Include="Angular\Controllers\Home\ApplicationController.coffee" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Angular\Controllers\HomeAdminLoginController.coffee" />
+    <Content Include="Angular\Controllers\Admin\LoginController.coffee" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Angular\Controllers\FooterController.coffee" />
+    <Content Include="Angular\Controllers\Partials\FooterController.coffee" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Angular\Controllers\AlertController.coffee" />
+    <Content Include="Angular\Controllers\Partials\AlertController.coffee" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Angular\Apps\HomeApp.coffee" />
@@ -654,6 +711,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201310072035180_category url.resx">
       <DependentUpon>201310072035180_category url.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201310111058148_employee description.resx">
+      <DependentUpon>201310111058148_employee description.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

@@ -4,18 +4,8 @@
 	        box-shadow: 0 5px 10px #aaa;
 }
 
-.vertical-rotate {
-	-webkit-transform: rotate(-90deg);
-	   -moz-transform: rotate(-90deg);
-		-ms-transform: rotate(-90deg);
-		 -o-transform: rotate(-90deg);
-		    transform: rotate(-90deg);
-
-	-webkit-transform-origin: 50% 50%;
-	   -moz-transform-origin: 50% 50%;
-		-ms-transform-origin: 50% 50%;
-		 -o-transform-origin: 50% 50%;
-		    transform-origin: 50% 50%;
-
-		filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=3);
+.highlight-shadow {
+	-webkit-box-shadow: 0 5px 10px #2F8B12;
+	   -moz-box-shadow: 0 5px 10px #2F8B12;
+	        box-shadow: 0 5px 10px #2F8B12;
 }

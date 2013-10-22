@@ -1,0 +1,19 @@
+﻿<div class="view">
+    <div class="calendar-view row">
+        <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+            <div class="calendar-box" data-ui-calendar="uiConfig.calendar" data-ng-model="eventSources" data-calendar="myCalendar">
+            </div>
+        </div>
+        <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+            <div class="calendar-content">
+                <h1>Antal timmar</h1>
+                <input class="form-control pull-left input-range" type="range" min="0" max="100" data-ng-model="qty.qty" />
+                <input class="form-control pull-left input-range-value" type="text" data-ng-model="qty.qty" disabled />
+                <div class="clear"></div>
+                <div class="calculation">160 kr/h * {{ qty.qty }} = {{ qty.qty * 160 }} kr total</div>
+                <br />
+                <div>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</div>
+            </div>
+        </div>
+    </div>
+</div>

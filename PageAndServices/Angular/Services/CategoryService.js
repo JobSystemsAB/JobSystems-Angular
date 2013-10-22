@@ -41,7 +41,7 @@
       };
       this.postAll = function(models) {
         return $http({
-          url: "/api/category/savecategories",
+          url: this.baseUrl + "/savecategories",
           method: "POST",
           data: models
         });

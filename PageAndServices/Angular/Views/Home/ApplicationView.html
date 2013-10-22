@@ -1,0 +1,111 @@
+﻿<!-- HomeApplicationView.html -->
+
+<div data-ng-include="'/Angular/Views/Partials/AdminSaveView.html'"></div>
+<div data-ng-include="'/Angular/Views/Partials/AlertView.html'"></div>
+
+<div class="info-top image-gray-background">
+    <div class="container info">
+        <div class="info-top">
+            <h1 contenteditable="false" data-ng-model="texts['input-title'][0].text" data-compile="texts['video-title'][0].text"></h1>
+            <iframe width="100%" height="507" src="http://www.youtube.com/embed/oE5kpLreTEU" frameborder="0" allowfullscreen></iframe>
+            <div contenteditable="false" data-ng-model="texts['input-description'][0].text" data-compile="texts['video-description'][0].text"></div>
+        </div>
+    </div>
+</div>
+
+<div class="info image-white-background">
+    <div class="container info">
+
+        <h1 contenteditable="false" data-ng-model="texts['input-title'][0].text" data-compile="texts['input-title'][0].text"></h1>
+        <div contenteditable="false" data-ng-model="texts['input-description'][0].text" data-compile="texts['input-description'][0].text"></div>
+
+        <div>
+            <form class="form-inline" role="form">
+                <input type="text" class="form-control pull-left" style="width: 50%" data-ng-model="employee.firstName" placeholder="Förnamn *" data-tooltip-placement="top" data-tooltip="{{ texts['input-firstName-description'][0].text }}" />
+                <input type="text" class="form-control pull-left" style="width: 50%" data-ng-model="employee.lastName" placeholder="Efternamn *" data-tooltip-placement="top" data-tooltip="{{ texts['input-lastName-description'][0].text }}" />
+                <input type="text" class="form-control" data-ng-model="employee.phoneNumber" placeholder="Telefonnummer *" data-tooltip-placement="top" data-tooltip="{{ texts['input-phoneNumber-description'][0].text }}" />
+                <input type="email" class="form-control" data-ng-model="employee.emailAddress" placeholder="Epost *" data-tooltip-placement="top" data-tooltip="{{ texts['input-emailAddress-description'][0].text }}" />
+            
+                <br /><br />
+
+                <div class="input-group">
+                    <input class="form-control" type="text" data-ng-model="employee.fullAddress" placeholder="Sök adress" data-tooltip-placement="top" data-tooltip="{{ texts['input-fullAddress-description'][0].text }}" data-googleplace="" />
+                    <span class="input-group-addon"><i class="glyphicon glyphicon-search"></i></span>
+                </div>
+
+                <input class="form-control pull-left" style="width: 50%" type="text" data-ng-model="employee.address.street" placeholder="Gata" />
+                <input class="form-control pull-left" style="width: 50%" type="text" data-ng-model="employee.address.streetNumber" placeholder="Gatunummer" />
+                <input class="form-control pull-left" style="width: 50%" type="text" data-ng-model="employee.address.postalCode" placeholder="Postnummer" />
+                <input class="form-control pull-left" style="width: 50%" type="text" data-ng-model="employee.address.postalTown" placeholder="Ort" />
+                <input class="form-control" type="text" data-ng-model="employee.address.area" placeholder="Län" />
+                <input class="form-control" type="text" data-ng-model="employee.address.country" placeholder="Land" />
+            
+            </form>
+        </div>
+
+    </div>
+</div>
+
+<div class="info image-gray-background">
+    <div class="container info">
+
+        <h1 contenteditable="false" data-ng-model="texts['service-title'][0].text" data-compile="texts['service-title'][0].text"></h1>
+        <div contenteditable="false" data-ng-model="texts['service-description'][0].text" data-compile="texts['service-description'][0].text"></div>
+
+        <div class="row">
+            <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
+                <div data-ng-repeat="child in categories.children | orderBy: 'data.name'">
+                    <div class="input-group highlight-background img-rounded" style="cursor: pointer; color: white; padding: 5px; border: 1px solid #008840; width: 100%;" data-ng-click="categoryClicked(child, 1)">
+                        <label>
+                            <input type="radio" name="category" data-ng-checked="child.data.checked" data-ng-model="child.data.checked" data-ng-disabled="child.children.length > 0">
+                            <label data-compile="child.data.name"></label>
+                        </label>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
+                <div data-ng-repeat="child in category[1].children | orderBy: 'data.name'">
+                    <div class="input-group highlight-background img-rounded" style="cursor: pointer; color: white; padding: 5px; border: 1px solid #008840; width: 100%;" data-ng-click="categoryClicked(child, 2)">
+                        <label>
+                            <input type="checkbox" data-ng-checked="child.data.checked" data-ng-model="child.data.checked" data-ng-disabled="child.children.length > 0">
+                            <label data-compile="child.data.name"></label>
+                        </label>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
+                <div data-ng-repeat="child in category[2].children | orderBy: 'data.name'">
+                    <div class="input-group highlight-background img-rounded" style="cursor: pointer; color: white; padding: 5px; border: 1px solid #008840; width: 100%;" data-ng-click="categoryClicked(child, 3)">
+                        <label>
+                            <input type="checkbox" data-ng-checked="child.data.checked" data-ng-model="child.data.checked">
+                            <label data-compile="child.data.name"></label>
+                        </label>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="info image-white-background">
+    <div class="container info">
+
+        <h1 contenteditable="false" data-ng-model="texts['about-title'][0].text" data-compile="texts['about-title'][0].text"></h1>
+        <div contenteditable="false" data-ng-model="texts['about-description'][0].text" data-compile="texts['about-description'][0].text"></div>
+
+        <textarea class="form-control" data-ng-model="employee.description" placeholder="{{ texts['employee-description'][0].text }}" style="height: 200px; margin-top: 20px"></textarea>
+    </div>
+</div>
+
+<div class="info image-gray-background">
+    <div class="container info" style="padding: 40px 0; text-align: center">
+
+        <button class="btn btn-lg highlight-background" style="color: white; margin: 20px;" data-ng-click="send()" data-compile="texts['button'][0].text">
+        </button>
+
+        <div contenteditable="false" data-ng-model="texts['send-description'][0].text" data-compile="texts['send-description'][0].text"></div>
+
+    </div>
+</div>

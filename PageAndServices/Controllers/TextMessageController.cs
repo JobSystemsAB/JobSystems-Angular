@@ -1,4 +1,5 @@
 ﻿using EasyHttp.Http;
+using PageAndServices.Helpers;
 using PageAndServices.Models;
 using PageAndServices.Repository;
 using System;
@@ -34,44 +35,32 @@ namespace PageAndServices.Controllers
         [HttpPost]
         public HttpResponseMessage PostElk(TextMessageView view)
         {
-            var deliveredUrl = "http://www.adoer.se/api/sms/deliveredelk";
-            var responseUrl = "http://www.adoer.se/api/sms/recieveelk";
-            var apiUrl = "https://api.46elks.com/a1/SMS";
 
-            var username = "u6d73bed464ac3ed22cee974d4ccff303";
-            var password = "6EEADFB28D47D4C8B27FCAE7F7E58531";
-
-            var data = String.Format("from={0}&to={1}&message={2}&whendelivered={3}$sms_url={4}", 
-                view.from, view.to, view.message, deliveredUrl, responseUrl);
-
-            var http = new EasyHttp.Http.HttpClient();
-            http.Request.SetBasicAuthentication(username, password);
-
-            var ans = http.Post(apiUrl, data, HttpContentTypes.ApplicationXWwwFormUrlEncoded);
+            var respons = ElkTextMessage.send(view);
 
             var model = view.getModel();
             model.created = DateTime.UtcNow;
 
-            if (ans.StatusCode == HttpStatusCode.OK)
+            if (respons.StatusCode == HttpStatusCode.OK)
             {
-                var body = ans.DynamicBody;
+                var body = respons.DynamicBody;
 
                 model.apiId = body.id;
                 model.error = false;
 
                 model = repo.createTextMessage(model);
 
-                return Request.CreateResponse(ans.StatusCode, model);
+                return Request.CreateResponse(respons.StatusCode, model);
             }
             else
             {
-                var message = ans.RawText.Replace("\"", String.Empty);
+                var message = respons.RawText.Replace("\"", String.Empty);
                 
                 model.error = true;
                 model.errorMessage = message;
                 model = repo.createTextMessage(model);
 
-                return Request.CreateResponse(ans.StatusCode, message);
+                return Request.CreateResponse(respons.StatusCode, message);
             }
 
         }

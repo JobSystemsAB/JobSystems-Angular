@@ -41,6 +41,12 @@
             method: "POST"
             data: model
 
+    this.postContact = (model) ->
+        $http
+            url: this.baseUrl + "/postandcontact"
+            method: "POST"
+            data: model
+
     this.put = (model) ->
         $http
             url:this.baseUrl

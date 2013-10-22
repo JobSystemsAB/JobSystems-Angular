@@ -1,0 +1,13 @@
+﻿<div class="view">
+    <div class="services-view">
+        <div class="view-title">
+            <h1>services-title</h1>
+        </div>
+        <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3" data-ng-repeat="category in categories | orderBy: 'order'">
+            <div class="service-box" data-ng-click="goToLanding(category.id, category.url)">
+                <img src="/Content/IMG/TMP/no-image.png" />
+                <h4>{{ category.name }}</h4>
+            </div>
+        </div>
+    </div>
+</div>

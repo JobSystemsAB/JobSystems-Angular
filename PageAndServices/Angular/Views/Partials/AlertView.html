@@ -1,0 +1,5 @@
+﻿<div class="alert-box" data-ng-controller="AlertController">
+    <div class="alert-single" data-alert="" data-ng-repeat="alert in alerts" data-type="alert.type" data-close="closeAlert($index)">
+        {{ alert.msg }}
+    </div>
+</div>

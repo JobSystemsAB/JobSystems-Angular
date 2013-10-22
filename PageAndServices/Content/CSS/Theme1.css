@@ -1,0 +1,310 @@
+@font-face {
+  font-family: "Candara";
+  src: url(/Content/Fonts/Candara.ttf) format("truetype"); }
+
+@font-face {
+  font-family: "ScriptMTBold";
+  src: url(/Content/Fonts/ScriptMTBold.ttf) format("truetype"); }
+
+@font-face {
+  font-family: "MyriadPro";
+  src: url(/Content/Fonts/MyriadPro.ttf) format("truetype"); }
+
+.carousel-control.right,
+.carousel-control.left {
+  font-size: 450%;
+  margin-top: 3%;
+  color: #bbbbbb;
+  background-image: none !important; }
+
+a {
+  text-decoration: none; }
+
+body {
+  font-family: "MyriadPro";
+  font-size: 11pt !important; }
+
+h1,
+h2,
+h3,
+h4,
+h5 {
+  color: #0cb45d;
+  font-family: "Candara"; }
+
+.image-white-background {
+  background-image: url("/Content/IMG/TMP/background-white.png");
+  background-repeat: repeat; }
+
+.image-gray-background, .footer .footer-middle {
+  background-image: url("/Content/IMG/TMP/background-gray.png");
+  background-repeat: repeat; }
+
+.gray-background {
+  background-color: #eaeaea; }
+
+.green-button, .view .view-button {
+  background-color: #0cb45d;
+  color: white;
+  -webkit-box-shadow: 0 2px 0 0 #098444;
+  /* Safari and Chrome */
+  -moz-box-shadow: 0 2px 0 0 #098444;
+  /* Firefox */
+  -ms-box-shadow: 0 2px 0 0 #098444;
+  /* Internet Explorer */
+  -o-box-shadow: 0 2px 0 0 #098444;
+  /* Opera */
+  box-shadow: 0 2px 0 0 #098444;
+  /* CSS3 */ }
+
+.view {
+  margin: 40px 0; }
+  .view .book-now-view {
+    margin-top: 40px;
+    margin-bottom: 80px; }
+    .view .book-now-view form {
+      text-align: center; }
+    .view .book-now-view .book-now-input {
+      width: 400px; }
+  .view .calendar-view .fc-border-separate {
+    background-color: white; }
+  .view .calendar-view .calculation {
+    color: #666666;
+    font-size: 17pt;
+    margin-top: 20px; }
+  .view .calendar-view .calendar-content {
+    margin: 80px 0; }
+  .view .calendar-view .input-range {
+    width: 80%; }
+  .view .calendar-view .input-range-value {
+    width: 10%; }
+  .view .description-view .description-box {
+    width: 100%;
+    height: 300px; }
+  .view .contact-view .order-button {
+    margin-top: 80px; }
+  .view .category-book-view button {
+    margin: 10px;
+    padding: 10px 20px; }
+  .view .category-book-view hr {
+    margin: 50px 0; }
+  .view .services-view .service-box {
+    padding: 10px;
+    margin-bottom: 40px;
+    height: 150px;
+    text-align: center;
+    background-color: white;
+    cursor: pointer;
+    -webkit-box-shadow: 0px 0px 2px 2px #bbbbbb;
+    /* Safari and Chrome */
+    -moz-box-shadow: 0px 0px 2px 2px #bbbbbb;
+    /* Firefox */
+    -ms-box-shadow: 0px 0px 2px 2px #bbbbbb;
+    /* Internet Explorer */
+    -o-box-shadow: 0px 0px 2px 2px #bbbbbb;
+    /* Opera */
+    box-shadow: 0px 0px 2px 2px #bbbbbb;
+    /* CSS3 */
+    -webkit-border-radius: 5px 5px 5px 5px;
+    /* Safari and Chrome */
+    -moz-border-radius: 5px 5px 5px 5px;
+    /* Firefox */
+    -ms-border-radius: 5px 5px 5px 5px;
+    /* Internet Explorer */
+    -o-border-radius: 5px 5px 5px 5px;
+    /* Opera */
+    border-radius: 5px 5px 5px 5px;
+    /* CSS3 */ }
+    .view .services-view .service-box img {
+      height: 100px; }
+    .view .services-view .service-box h4 {
+      font-weight: bold; }
+  .view .testimonial-view .testimonial-box {
+    border: 2px solid lightgray;
+    height: 180px;
+    width: 100%;
+    background-color: white;
+    -webkit-border-radius: 5px 5px 5px 5px;
+    /* Safari and Chrome */
+    -moz-border-radius: 5px 5px 5px 5px;
+    /* Firefox */
+    -ms-border-radius: 5px 5px 5px 5px;
+    /* Internet Explorer */
+    -o-border-radius: 5px 5px 5px 5px;
+    /* Opera */
+    border-radius: 5px 5px 5px 5px;
+    /* CSS3 */ }
+    .view .testimonial-view .testimonial-box div {
+      height: 100%; }
+    .view .testimonial-view .testimonial-box .item {
+      font-family: "ScriptMTBold";
+      font-size: 25px;
+      color: #bbbbbb;
+      width: 100%;
+      height: auto;
+      padding: 20px 10%;
+      text-align: center;
+      margin: auto; }
+  .view .view-button {
+    margin-top: 20px; }
+  .view .view-image {
+    width: 100%;
+    height: 230px;
+    -webkit-border-radius: 5px 5px 5px 5px;
+    /* Safari and Chrome */
+    -moz-border-radius: 5px 5px 5px 5px;
+    /* Firefox */
+    -ms-border-radius: 5px 5px 5px 5px;
+    /* Internet Explorer */
+    -o-border-radius: 5px 5px 5px 5px;
+    /* Opera */
+    border-radius: 5px 5px 5px 5px;
+    /* CSS3 */ }
+  .view .view-image-text {
+    padding: 15px;
+    text-align: center;
+    color: white;
+    display: block;
+    position: relative;
+    bottom: 40px;
+    left: 0px;
+    -webkit-border-radius: 0 0 5px 5px;
+    /* Safari and Chrome */
+    -moz-border-radius: 0 0 5px 5px;
+    /* Firefox */
+    -ms-border-radius: 0 0 5px 5px;
+    /* Internet Explorer */
+    -o-border-radius: 0 0 5px 5px;
+    /* Opera */
+    border-radius: 0 0 5px 5px;
+    /* CSS3 */
+    background: black;
+    /* The Fallback */
+    background: rgba(0, 0, 0, 0.8); }
+
+.footer {
+  font-size: 12pt; }
+  .footer .footer-top {
+    background-color: #0cb45d;
+    color: white;
+    text-align: center; }
+    .footer .footer-top ul {
+      list-style: none;
+      margin: 20px 10px; }
+      .footer .footer-top ul li {
+        padding: 0 10px;
+        margin: 10px 0;
+        display: inline; }
+      .footer .footer-top ul li:not(:first-child) {
+        border-left: 1px solid white; }
+  .footer .footer-middle {
+    color: #666666;
+    position: relative;
+    z-index: 100;
+    padding: 10px 0;
+    font-size: 12pt;
+    -webkit-box-shadow: 0px 3px 3px 0px #098444;
+    /* Safari and Chrome */
+    -moz-box-shadow: 0px 3px 3px 0px #098444;
+    /* Firefox */
+    -ms-box-shadow: 0px 3px 3px 0px #098444;
+    /* Internet Explorer */
+    -o-box-shadow: 0px 3px 3px 0px #098444;
+    /* Opera */
+    box-shadow: 0px 3px 3px 0px #098444;
+    /* CSS3 */ }
+  .footer .footer-bottom {
+    text-align: center;
+    padding: 25px 0;
+    background-color: #0cb45d;
+    color: white;
+    font-family: "Arial";
+    font-size: 12pt; }
+
+.top {
+  height: 565px;
+  background-position: center center;
+  background-repeat: no-repeat;
+  position: relative; }
+  .top img {
+    height: 35px; }
+  .top p {
+    margin: 20px 0; }
+  .top .top-box {
+    display: inline-block;
+    position: relative;
+    top: 200px;
+    right: 0;
+    padding: 20px;
+    -webkit-border-radius: 5px 5px 5px 5px;
+    /* Safari and Chrome */
+    -moz-border-radius: 5px 5px 5px 5px;
+    /* Firefox */
+    -ms-border-radius: 5px 5px 5px 5px;
+    /* Internet Explorer */
+    -o-border-radius: 5px 5px 5px 5px;
+    /* Opera */
+    border-radius: 5px 5px 5px 5px;
+    /* CSS3 */
+    background: #eaeaea;
+    /* The Fallback */
+    background: rgba(234, 234, 234, 0.9); }
+    .top .top-box .top-box-input {
+      width: 300px;
+      margin-top: 3px; }
+
+.menu {
+  width: 100%;
+  border-bottom: 1px solid #098444; }
+  .menu .menu-top {
+    padding: 30px 0; }
+    .menu .menu-top img {
+      height: 50px;
+      margin-right: 130px; }
+    .menu .menu-top span {
+      font-family: "ScriptMTBold";
+      font-size: 17pt;
+      color: #666666; }
+  .menu .menu-bottom {
+    background-color: #0cb45d;
+    color: white; }
+    .menu .menu-bottom ul {
+      -webkit-padding-start: 0px;
+      list-style-type: none;
+      margin: 10px 0px; }
+      .menu .menu-bottom ul li {
+        display: inline;
+        padding: 10px 10px; }
+        .menu .menu-bottom ul li a {
+          color: white;
+          padding: 8px 5px;
+          text-decoration: none;
+          font-family: "Candara";
+          font-size: 14pt; }
+        .menu .menu-bottom ul li .active {
+          border-top: 4px solid #008840; }
+      .menu .menu-bottom ul li:not(:first-child) {
+        border-left: 1px solid white; }
+
+.no-image {
+  background-image: url("/Content/IMG/TMP/no-image.png");
+  -webkit-background-size: cover;
+  /* Safari and Chrome */
+  -moz-background-size: cover;
+  /* Firefox */
+  -ms-background-size: cover;
+  /* Internet Explorer */
+  -o-background-size: cover;
+  /* Opera */
+  background-size: cover;
+  /* CSS3 */ }
+
+.divider img {
+  width: 100%; }
+
+.clear {
+  width: 100%;
+  height: 1px;
+  margin: 0 0 -1px;
+  clear: both; }
+

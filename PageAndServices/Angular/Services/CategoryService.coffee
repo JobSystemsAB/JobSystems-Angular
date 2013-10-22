@@ -38,7 +38,7 @@
 
     this.postAll = (models) ->
         $http
-            url: "/api/category/savecategories"
+            url: this.baseUrl + "/savecategories"
             method: "POST"
             data: models
 

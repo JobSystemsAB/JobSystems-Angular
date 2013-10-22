@@ -1,43 +1,21 @@
 (function() {
-  window.app = angular.module('HomeApp', ['ui.bootstrap', 'ui.date', 'ui.calendar', 'ui.router', 'ui.tinymce', 'google-maps']);
-
-  /*
-  window.app.config ['$routeProvider', '$locationProvider', ( $routeProvider,   $locationProvider) ->
-  
-      $routeProvider.when '/index',
-          templateUrl: '/Angular/Views/HomeIndexBodyView.html'
-          controller: 'HomeIndexBodyController'
-  
-      $routeProvider.when '/service/:serviceId',
-          templateUrl: '/Angular/Views/HomeLandingView.html'
-          controller: 'CategoryController'
-          
-      $routeProvider.when '/application',
-          templateUrl: '/Angular/Views/HomeApplicationView.html'
-          controller: 'ApplicationController'
-  
-      $routeProvider.otherwise
-          redirectTo: '/index'
-  
-  ]
-  */
-
+  window.app = angular.module('HomeApp', ['ui.bootstrap', 'ui.date', 'ui.calendar', 'ui.router', 'ui.tinymce', 'ngGrid', 'google-maps']);
 
   window.app.config([
     '$stateProvider', '$urlRouterProvider', function($stateProvider, $urlRouterProvider) {
       $urlRouterProvider.otherwise("");
-      return $stateProvider.state('index', {
+      return $stateProvider.state('home', {
         url: "",
         views: {
           'header': {
-            templateUrl: '/Angular/Views/MenuView.html'
+            templateUrl: '/Angular/Views/Partials/MenuView.html'
           },
           'body': {
-            templateUrl: '/Angular/Views/HomeIndexBodyView.html',
+            templateUrl: '/Angular/Views/Home/IndexView.html',
             controller: 'HomeIndexBodyController'
           },
           'footer': {
-            templateUrl: '/Angular/Views/FooterView.html',
+            templateUrl: '/Angular/Views/Partials/FooterView.html',
             controller: 'FooterController'
           }
         }
@@ -45,37 +23,46 @@
         url: "/application",
         views: {
           'header': {
-            templateUrl: '/Angular/Views/MenuView.html'
+            templateUrl: '/Angular/Views/Partials/MenuView.html'
           },
           'body': {
-            templateUrl: '/Angular/Views/HomeApplicationView.html',
+            templateUrl: '/Angular/Views/Home/ApplicationView.html',
             controller: 'HomeApplicationController'
           },
           'footer': {
-            templateUrl: '/Angular/Views/FooterView.html',
+            templateUrl: '/Angular/Views/Partials/FooterView.html',
             controller: 'FooterController'
           }
         }
       }).state('admin', {
         url: "/admin",
         views: {
-          'header': {
-            templateUrl: '/Angular/Views/MenuView.html'
-          },
           'body': {
-            templateUrl: '/Angular/Views/HomeAdminLoginView.html',
+            templateUrl: '/Angular/Views/Admin/IndexView.html',
             controller: 'HomeAdminLoginController'
-          },
-          'footer': {
-            templateUrl: '/Angular/Views/FooterView.html',
-            controller: 'FooterController'
+          }
+        }
+      }).state('adminEmployees', {
+        url: "/admin/employees",
+        views: {
+          'body': {
+            templateUrl: '/Angular/Views/Admin/EmployeesView.html',
+            controller: 'AdminEmployeesController'
+          }
+        }
+      }).state('adminLogin', {
+        url: "/admin/login",
+        views: {
+          'body': {
+            templateUrl: '/Angular/Views/Admin/LoginView.html',
+            controller: 'HomeAdminLoginController'
           }
         }
       }).state('adminServices', {
         url: "/admin/services",
         views: {
           'body': {
-            templateUrl: '/Angular/Views/AdminServicesView.html',
+            templateUrl: '/Angular/Views/Admin/ServicesView.html',
             controller: 'AdminServicesController'
           }
         }
@@ -83,7 +70,7 @@
         url: "/admin/texts",
         views: {
           'body': {
-            templateUrl: '/Angular/Views/AdminTextsView.html',
+            templateUrl: '/Angular/Views/Admin/TextsView2.html',
             controller: 'AdminTextsController'
           }
         }
@@ -91,22 +78,30 @@
         url: "/admin/testimonials",
         views: {
           'body': {
-            templateUrl: '/Angular/Views/AdminTestimonialsView.html',
+            templateUrl: '/Angular/Views/Admin/TestimonialsView2.html',
             controller: 'AdminTestimonialsController'
+          }
+        }
+      }).state('adminInputs', {
+        url: "/admin/inputs",
+        views: {
+          'body': {
+            templateUrl: '/Angular/Views/Admin/ServiceInputsView.html',
+            controller: 'AdminServiceInputsController'
           }
         }
       }).state('book', {
         url: "/boka/:serviceName",
         views: {
           'header': {
-            templateUrl: '/Angular/Views/MenuView.html'
+            templateUrl: '/Angular/Views/Partials/MenuView.html'
           },
           'body': {
-            templateUrl: '/Angular/Views/HomeBookingView.html',
+            templateUrl: '/Angular/Views/Home/BookingView.html',
             controller: 'HomeBookingController'
           },
           'footer': {
-            templateUrl: '/Angular/Views/FooterView.html',
+            templateUrl: '/Angular/Views/Partials/FooterView.html',
             controller: 'FooterController'
           }
         }
@@ -114,14 +109,14 @@
         url: "/:serviceName",
         views: {
           'header': {
-            templateUrl: '/Angular/Views/MenuView.html'
+            templateUrl: '/Angular/Views/Partials/MenuView.html'
           },
           'body': {
-            templateUrl: '/Angular/Views/HomeLandingView.html',
+            templateUrl: '/Angular/Views/Home/LandingView.html',
             controller: 'HomeLandingController'
           },
           'footer': {
-            templateUrl: '/Angular/Views/FooterView.html',
+            templateUrl: '/Angular/Views/Partials/FooterView.html',
             controller: 'FooterController'
           }
         }

@@ -10,7 +10,7 @@ namespace PageAndServices
     {
         public static void Register(HttpConfiguration config)
         {
-            config.Filters.Add(new ValidationActionFilter());
+            //config.Filters.Add(new ValidationActionFilter());
 
             // Controller Only
             // To handle routes like `/api/VTRouting`

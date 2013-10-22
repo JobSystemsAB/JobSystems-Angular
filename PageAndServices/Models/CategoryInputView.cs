@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using PageAndServices.Repository;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,6 +13,8 @@ namespace PageAndServices.Models
         #region VARIABLES
 
         public int id { get; set; }
+
+        public int categoryId { get; set; }
 
         public string name { get; set; }
 
@@ -30,22 +33,35 @@ namespace PageAndServices.Models
         {
             Mapper.CreateMap<CategoryInput, CategoryInputView>();
             Mapper.Map<CategoryInput, CategoryInputView>(model, this);
+            
+            this.categoryId = model.category.id;
         }
 
-        public CategoryInput getModel()
+        public CategoryInput getModel(IRepository repo)
         {
             var model = new CategoryInput();
 
             Mapper.CreateMap<CategoryInputView, CategoryInput>();
             Mapper.Map<CategoryInputView, CategoryInput>(this, model);
- 
+
+            model.category = repo.getCategory(this.categoryId);
+
             return model;
         }
 
         public static IEnumerable<CategoryInputView> getViews(IEnumerable<CategoryInput> models)
         {
             Mapper.CreateMap<CategoryInput, CategoryInputView>();
-            var views = Mapper.Map<IEnumerable<CategoryInput>, IEnumerable<CategoryInputView>>(models);
+            
+            var views = from model in models
+                        select new CategoryInputView
+                        {
+                            categoryId = model.category.id,
+                            id = model.id,
+                            name = model.name,
+                            text = model.text,
+                            type = model.type
+                        };
 
             return views;
         }
